@@ -72,7 +72,8 @@
                         <div wire:key="market-data-crypto-{{ $data['symbol'] }}"
                             class="flex items-center border-b border-gray-100 py-3">
                             <div class="flex-none w-12">
-                                <img src="{{ asset($data['iconUrlPath']) }}" width="30" alt="" srcset="">
+                                <img src="{{ asset($data['iconUrlPath']) }}" width="30" alt=""
+                                    srcset="">
                             </div>
                             <div class="flex-1">
                                 <p class="text-xs font-semibold mb-0.5">{{ $data['name'] }}</p>
@@ -80,7 +81,7 @@
                             </div>
                             <div class="flex-1 text-end">
                                 <a href="#"
-                                    class="rounded-xs border border-accent w-24 px-1 pt-1 pb-0 text-center inline-block text-accent hover:bg-accent-hover">
+                                    class="rounded-xs border border-accent w-24 px-1 pt-1 pb-0 text-center inline-block text-accent hover:bg-accent-hover hover:text-white">
                                     <span class="block font-medium text-sm">{{ $data['priceUsd'] }}</span>
                                     <span class="block font-normal text-[11px]">Trade</span>
                                 </a>
@@ -108,8 +109,85 @@
         </div>
 
         <div class="text-center mt-4">
-            <p class="text-gray-400 leading-4 font-medium text-[11px]">* Information regarding past performance is not a reliable indicator of future performance. Leverage restrictions may apply depending on client's circumstances and/or jurisdiction.</p>
+            <p class="text-gray-400 leading-4 font-medium text-[11px]">* Information regarding past performance is not a
+                reliable indicator of future performance. Leverage restrictions may apply depending on client's
+                circumstances and/or jurisdiction.</p>
         </div>
     </div>
     <!-- Assets tab end -->
+
+    <!-- Payment methods slider start -->
+    <div class="mt-12 mb-6 text-center">
+        <h2 class="text-accent font-medium text-xl mb-2">Deposits & Withdrawals</h2>
+        <p class="text-sm font-medium text-gray-600 leading-6">Choose between multiple payment systems to withdraw and
+            deposit your funds quickly and securely.</p>
+    </div>
+
+    <div data-hs-carousel='{
+    "loadingClasses": "opacity-0",
+    "dotsItemClasses": "hs-carousel-active:bg-gray-400 hs-carousel-active:border-gray-400 size-1.5 border border-gray-400 rounded-full cursor-pointer",
+    "slidesQty": {
+      "xs": 3,
+      "lg": 3
+    }
+  }'
+        class="relative">
+        <div class="hs-carousel w-full overflow-hidden bg-white">
+            <div class="relative min-h-18 -mx-1">
+                <div
+                    class="hs-carousel-body absolute top-0 bottom-0 start-0 flex space-x-2 flex-nowrap opacity-0 transition-transform duration-700">
+                    <div class="hs-carousel-slide px-1">
+                        <div class="flex justify-center h-full bg-gray-100 p-6">
+                            <img src="{{ asset('assets/icons/skrill.svg') }}" alt="" srcset="">
+                        </div>
+                    </div>
+                    <div class="hs-carousel-slide px-1">
+                        <div class="flex justify-center h-full bg-gray-100 p-6">
+                            <img src="{{ asset('assets/icons/volet.svg') }}" alt="" srcset="">
+                        </div>
+                    </div>
+                    <div class="hs-carousel-slide px-1">
+                        <div class="flex justify-center h-full bg-gray-100 p-6">
+                            <img src="{{ asset('assets/icons/neteller.svg') }}" alt="" srcset="">
+                        </div>
+                    </div>
+                    <div class="hs-carousel-slide px-1">
+                        <div class="flex justify-center h-full bg-gray-100 p-6">
+                            <img src="{{ asset('assets/icons/mastercard.svg') }}" alt="" srcset="">
+                        </div>
+                    </div>
+                    <div class="hs-carousel-slide px-1">
+                        <div class="flex justify-center h-full bg-gray-100 p-6">
+                            <img src="{{ asset('assets/icons/wire-transfer.svg') }}" alt="" srcset="">
+                        </div>
+                    </div>
+                    <div class="hs-carousel-slide px-1">
+                        <div class="flex justify-center h-full bg-gray-100 p-6">
+                            <img src="{{ asset('assets/icons/visa.svg') }}" alt="" srcset="">
+                        </div>
+                    </div>
+                    <div class="hs-carousel-slide px-1">
+                        <div class="flex justify-center h-full bg-gray-100 p-6">
+                            <img src="{{ asset('assets/icons/visa-plus-mastercard.svg') }}" alt=""
+                                srcset="">
+                        </div>
+                    </div>
+                    <div class="hs-carousel-slide px-1">
+                        <div class="flex justify-center h-full bg-gray-100 p-6">
+                            <img src="{{ asset('assets/icons/volet-usd.svg') }}" alt="" srcset="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="hs-carousel-pagination flex justify-center absolute -bottom-6 start-0 end-0 gap-x-2"></div>
+    </div>
+
+    <div class="mt-12 text-center">
+        <a href="#"
+            class="rounded-xs bg-accent px-6 py-3.5 text-sm inline-block font-medium text-white shadow-xs hover:bg-accent-hover">Open account</a>
+    </div>
+
+    <!-- Payment methods slider end -->
 </div>
