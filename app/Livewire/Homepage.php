@@ -21,7 +21,7 @@ class Homepage extends Component
     {
         try {
             $client = new Client();
-            $endpoint = 'https://rest.coincap.io/v3/assets?ids=bitcoin,ethereum';
+            $endpoint = 'https://rest.coincap.io/v3/assets?ids=bitcoin,ethereum,tether,solana,tron,binance,litecoin';
             $response = $client->request('GET', $endpoint, [
                 'headers' => [
                     'Authorization' => 'Bearer ' . env('COINCAP_API_KEY'),
@@ -43,11 +43,31 @@ class Homepage extends Component
             $dataArr['priceUsd'] = number_format($data->priceUsd, 2);
             
             if ($data->symbol === 'BTC') {
-                $dataArr['iconUrlPath'] = 'https://olympmatix.com/icons/assets/BITCOIN.svg';
+                $dataArr['iconUrlPath'] = 'assets/icons/btc.svg';
             }
             
             if ($data->symbol === 'ETH') {
-                $dataArr['iconUrlPath'] = 'https://olympmatix.com/icons/assets/ETHUSD.svg';
+                $dataArr['iconUrlPath'] = 'assets/icons/eth.svg';
+            }
+            
+            if ($data->symbol === 'USDT') {
+                $dataArr['iconUrlPath'] = 'assets/icons/usdt.svg';
+            }
+            
+            if ($data->symbol === 'SOL') {
+                $dataArr['iconUrlPath'] = 'assets/icons/sol.svg';
+            }
+            
+            if ($data->symbol === 'TRX') {
+                $dataArr['iconUrlPath'] = 'assets/icons/trx.svg';
+            }
+            
+            if ($data->symbol === 'BNB') {
+                $dataArr['iconUrlPath'] = 'assets/icons/bnb.svg';
+            }
+            
+            if ($data->symbol === 'LTC') {
+                $dataArr['iconUrlPath'] = 'assets/icons/ltc.svg';
             }
 
             $this->marketData[] = $dataArr;

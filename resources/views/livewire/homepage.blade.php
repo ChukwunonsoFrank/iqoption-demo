@@ -72,7 +72,7 @@
                         <div wire:key="market-data-crypto-{{ $data['symbol'] }}"
                             class="flex items-center border-b border-gray-100 py-3">
                             <div class="flex-none w-12">
-                                <img src="{{ $data['iconUrlPath'] }}" alt="" srcset="">
+                                <img src="{{ asset($data['iconUrlPath']) }}" width="30" alt="" srcset="">
                             </div>
                             <div class="flex-1">
                                 <p class="text-xs font-semibold mb-0.5">{{ $data['name'] }}</p>
@@ -105,6 +105,10 @@
                     body.
                 </p>
             </div>
+        </div>
+
+        <div class="text-center mt-4">
+            <p class="text-gray-400 leading-4 font-medium text-[11px]">* Information regarding past performance is not a reliable indicator of future performance. Leverage restrictions may apply depending on client's circumstances and/or jurisdiction.</p>
         </div>
     </div>
     <!-- Assets tab end -->
