@@ -90,13 +90,53 @@
                     @endforeach
                 </div>
             </div>
+
             <div id="horizontal-alignment-2" class="hidden" role="tabpanel"
                 aria-labelledby="horizontal-alignment-item-2">
-                <p class="text-gray-500 dark:text-neutral-400">
-                    This is the <em class="font-semibold text-gray-800 dark:text-neutral-200">second</em>
-                    item's
-                    tab body.
-                </p>
+                <div class="flex items-center space-x-1">
+                    <div>
+                        <h3 class="text-zinc-700 font-bold text-lg">
+                            43 <span class="font-medium">Forex pairs</span>
+                        </h3>
+                    </div>
+                    <div>
+                        <i class="fas fa-angle-right text-lg inline-block mt-1 text-accent"></i>
+                    </div>
+                </div>
+
+                <div class="flex items-center justify-between space-x-2 mt-4">
+                    <div class="flex-none w-36">
+                        <p class="text-zinc-700 font-bold text-xl">$100</p>
+                        <p class="text-xs font-medium">Min deposit</p>
+                    </div>
+                    <div class="flex-1">
+                        <p class="text-zinc-700 font-bold text-xl">$10</p>
+                        <p class="text-xs font-medium">Minimum investment</p>
+                    </div>
+                </div>
+
+                <div class="mt-4">
+                    @foreach ($marketData as $data)
+                        <div wire:key="market-data-crypto-{{ $data['symbol'] }}"
+                            class="flex items-center border-b border-gray-100 py-3">
+                            <div class="flex-none w-12">
+                                <img src="{{ asset($data['iconUrlPath']) }}" width="30" alt=""
+                                    srcset="">
+                            </div>
+                            <div class="flex-1">
+                                <p class="text-xs font-semibold mb-0.5">{{ $data['name'] }}</p>
+                                <p class="text-xs font-medium text-gray-400">{{ $data['symbol'] }}</p>
+                            </div>
+                            <div class="flex-1 text-end">
+                                <a href="#"
+                                    class="rounded-xs border border-accent w-24 px-1 pt-1 pb-0 text-center inline-block text-accent hover:bg-accent-hover hover:text-white active:bg-accent-hover active:text-white">
+                                    <span class="block font-medium text-sm">{{ $data['priceUsd'] }}</span>
+                                    <span class="block font-normal text-[11px]">Trade</span>
+                                </a>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
             </div>
             <div id="horizontal-alignment-3" class="hidden" role="tabpanel"
                 aria-labelledby="horizontal-alignment-item-3">
@@ -199,7 +239,7 @@
     <!-- Plaform features start -->
     <div class="mt-20 mb-6 mx-auto px-4">
         <div>
-            <div class="flex items-center space-x-3 mb-6">
+            <div class="flex items-start space-x-3 mb-6">
                 <div class="flex-none w-20">
                     <img src="{{ asset('assets/icons/features-devices.svg') }}" alt="" srcset="">
                 </div>
@@ -209,7 +249,7 @@
                     <a href="#" class="text-accent text-sm font-medium">Download App</a>
                 </div>
             </div>
-            <div class="flex items-center space-x-3 mb-6">
+            <div class="flex items-start space-x-3 mb-6">
                 <div class="flex-none w-20">
                     <img src="{{ asset('assets/icons/features-graduation-cap.svg') }}" alt=""
                         srcset="">
@@ -221,7 +261,7 @@
                     <a href="#" class="text-accent text-sm font-medium">Try Practice Account</a>
                 </div>
             </div>
-            <div class="flex items-center space-x-3">
+            <div class="flex items-start space-x-3">
                 <div class="flex-none w-20">
                     <img src="{{ asset('assets/icons/features-headphones.svg') }}" alt="" srcset="">
                 </div>
@@ -254,8 +294,10 @@
 
                 </div>
                 <div>
-                    <p class="text-zinc-700 group-hover:text-white group-active:text-white font-semibold">For Mobile</p>
-                    <p class="text-gray-400 group-hover:text-white group-active:text-white text-[11px]">.apk 21.5 Mb</p>
+                    <p class="text-zinc-700 group-hover:text-white group-active:text-white font-semibold">For Mobile
+                    </p>
+                    <p class="text-gray-400 group-hover:text-white group-active:text-white text-[11px]">.apk 21.5 Mb
+                    </p>
                 </div>
             </div>
 
@@ -294,8 +336,10 @@
                     </svg>
                 </div>
                 <div>
-                    <p class="text-zinc-700 font-semibold group-hover:text-white group-active:text-white">Open in Browser</p>
-                    <p class="text-gray-400 text-[11px] group-hover:text-white group-active:text-white">Web Platform</p>
+                    <p class="text-zinc-700 font-semibold group-hover:text-white group-active:text-white">Open in
+                        Browser</p>
+                    <p class="text-gray-400 text-[11px] group-hover:text-white group-active:text-white">Web Platform
+                    </p>
                 </div>
             </div>
         </div>
@@ -308,7 +352,8 @@
             <h2 class="text-accent font-medium text-xl mb-10">Features</h2>
             <div class="mb-8">
                 <h3 class="text-accent font-normal text-md mb-4">Analysis & Alerts</h3>
-                <p class="text-sm font-medium text-gray-600 leading-6 tracking-wide text-left">Get the most out of fundamental and
+                <p class="text-sm font-medium text-gray-600 leading-6 tracking-wide text-left">Get the most out of
+                    fundamental and
                     technical
                     analysis with our News Feed and Economic Calendars. More than 100 most widely used technical
                     indicators and widgets. Always stay up-to-date on what is happening in the financial markets with
@@ -318,7 +363,8 @@
 
             <div class="mb-8">
                 <h3 class="text-accent font-normal text-md mb-4">Risk Management</h3>
-                <p class="text-sm font-medium text-gray-600 leading-6 tracking-wide text-left">With features such as Stop Loss/Take
+                <p class="text-sm font-medium text-gray-600 leading-6 tracking-wide text-left">With features such as
+                    Stop Loss/Take
                     Profit, Negative Balance Protection and Trailing Stop, you can manage your losses and profits at the
                     levels you set.</p>
                 <div></div>
@@ -326,7 +372,8 @@
 
             <div>
                 <h3 class="text-accent font-normal text-md mb-4">Trading Community</h3>
-                <p class="text-sm font-medium text-gray-600 leading-6 tracking-wide text-left">Join the massive IQ Option community,
+                <p class="text-sm font-medium text-gray-600 leading-6 tracking-wide text-left">Join the massive IQ
+                    Option community,
                     discuss trading ideas and opportunities, or simply follow other traders with features like Trader
                     Sentiment and Community Live Trades.</p>
                 <div></div>
@@ -341,32 +388,34 @@
             <h2 class="text-accent font-medium text-xl">Start Trading in 3 Steps</h2>
         </div>
         <div>
-            <div class="flex items-center space-x-3 mb-6">
+            <div class="flex items-start space-x-3 mb-6">
                 <div class="flex-none w-20">
-                    <img src="{{ asset('assets/icons/features-devices.svg') }}" alt="" srcset="">
+                    <img src="{{ asset('assets/icons/clipboard.svg') }}" alt="" srcset="">
                 </div>
                 <div class="flex-1">
                     <h3 class="text-accent font-semibold text-md mb-2">Registration</h3>
-                    <p class="text-zinc-700 text-sm font-medium mb-2 leading-6">Open an account for free in just a few minutes</p>
+                    <p class="text-zinc-700 text-sm font-medium mb-2 leading-6">Open an account for free in just a few
+                        minutes</p>
                 </div>
             </div>
-            <div class="flex items-center space-x-3 mb-6">
+            <div class="flex items-start space-x-3 mb-6">
                 <div class="flex-none w-20">
-                    <img src="{{ asset('assets/icons/features-graduation-cap.svg') }}" alt=""
-                        srcset="">
+                    <img src="{{ asset('assets/icons/graduation-cap.svg') }}" alt="" srcset="">
                 </div>
                 <div class="flex-1">
                     <h3 class="text-accent font-semibold text-md mb-2">Practice</h3>
-                    <p class="text-zinc-700 text-sm font-medium mb-2 leading-6">Master your skills with a practice account and educational content</p>
+                    <p class="text-zinc-700 text-sm font-medium mb-2 leading-6">Master your skills with a practice
+                        account and educational content</p>
                 </div>
             </div>
-            <div class="flex items-center space-x-3">
+            <div class="flex items-start space-x-3">
                 <div class="flex-none w-20">
-                    <img src="{{ asset('assets/icons/features-headphones.svg') }}" alt="" srcset="">
+                    <img src="{{ asset('assets/icons/candlesticks.svg') }}" alt="" srcset="">
                 </div>
                 <div class="flex-1">
                     <h3 class="text-accent font-semibold text-md mb-2">Deposit & Trade</h3>
-                    <p class="text-zinc-700 text-sm font-medium mb-2 leading-6">More than 250 instruments and a minimum deposit of $100 for optimal trading</p>
+                    <p class="text-zinc-700 text-sm font-medium mb-2 leading-6">More than 250 instruments and a minimum
+                        deposit of $100 for optimal trading</p>
                 </div>
             </div>
         </div>
@@ -377,4 +426,158 @@
         </div>
     </div>
     <!-- Steps end -->
+
+    <!-- Extra information start -->
+    <div class="mx-auto px-4 mb-3 border-b border-gray-300 pb-4">
+        <div class="mt-12 mb-6">
+            <h2 class="text-accent font-normal text-xl mb-2 text-center">Online Trading Platform</h2>
+            <div class="mb-8">
+                <h3 class="text-gray-600 font-medium text-md mb-5 text-center">CFDs on Stocks, ETFs, Commodities,
+                    Indices,
+                    Cryptocurrencies and Forex</h3>
+                <p class="text-sm font-medium text-gray-600 leading-6 text-left mb-4">
+                    IQ Option is one of the fastest growing online trading brands in the world. Voted the best mobile
+                    trading platform, we have now expanded our offerings to include CFDs on stocks, ETFs and Forex
+                    trading.
+                </p>
+                <p class="text-sm font-medium text-gray-600 leading-6 text-left mb-4">
+                    First founded in 2013, IQ Option has grown massively and now has over 40 million members and
+                    counting! The platform itself has also undergone some changes since 2013, and we are constantly
+                    working to ensure it is fast, accurate, and easy to use.
+                </p>
+                <p class="text-sm font-medium text-gray-600 leading-6 text-left mb-4">
+                    We have also refined our offering and introduced plenty of new products in our bid to continue
+                    giving our customers the ultimate online trading experience and to help them optimize their
+                    investment portfolio. Now, using our platform, our members can try CFDs on currency pairs, CFDs on
+                    stocks, CFDs on commodities, CFDs on cryptocurrencies, as well as CFDs on ETFs.
+                </p>
+            </div>
+
+            <div>
+                <div class="flex items-start space-x-3 mb-6">
+                    <div class="flex-none w-20">
+                        <img src="{{ asset('assets/icons/forex-coins.svg') }}" alt="" srcset="">
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="text-accent font-semibold text-md mb-2">Forex</h3>
+                        <p class="text-zinc-700 text-sm font-medium tracking-wide leading-6">Explore and trade major,
+                            minor and exotic currency pairs with efficient spreads.</p>
+                        <a href="#" class="text-accent text-sm font-medium">Learn More</a>
+                    </div>
+                </div>
+                <div class="flex items-start space-x-3 mb-6">
+                    <div class="flex-none w-20">
+                        <img src="{{ asset('assets/icons/crypto-coins.svg') }}" alt="" srcset="">
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="text-accent font-semibold text-md mb-2">Cryptocurrencies</h3>
+                        <p class="text-zinc-700 text-sm font-medium tracking-wide leading-6">Trade CFDs on popular
+                            digital currencies with leverage.</p>
+                        <a href="#" class="text-accent text-sm font-medium">Learn More</a>
+                    </div>
+                </div>
+                <div class="flex items-start space-x-3">
+                    <div class="flex-none w-20">
+                        <img src="{{ asset('assets/icons/institution.svg') }}" alt="" srcset="">
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="text-accent font-semibold text-md mb-2">Stocks</h3>
+                        <p class="text-zinc-700 text-sm font-medium tracking-wide leading-6">Trade CFDs on stocks of
+                            leading companies and industry giants without actually owning them.</p>
+                        <a href="#" class="text-accent text-sm font-medium">Learn More</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- Extra information end -->
+
+    <!-- Scroll to top start -->
+    <div class="mx-auto px-4 pb-3 mb-6 border-b border-gray-100">
+        <div class="flex items-center">
+            <div class="flex-1">
+                <p class="text-xs text-gray-400 font-medium">Home</p>
+            </div>
+            <div class="flex-none">
+                <div class="border border-accent rounded-full p-2">
+                    <div>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path d="M5 15L12 8L19 15" stroke="#25258E" stroke-width="1" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Scroll to top end -->
+
+    <!-- Footer start -->
+    <div class="mx-auto px-4 border-b border-gray-100 pb-6 mb-8">
+        <div class="text-center mb-12">
+            <p class="font-medium text-gray-400 text-sm mb-3">Terms & Conditions</p>
+            <p class="font-medium text-gray-400 text-sm mb-3">Privacy Policy</p>
+            <p class="font-medium text-gray-400 text-sm mb-3">Affiliate Program</p>
+            <p class="font-medium text-gray-400 text-sm">Contact Us</p>
+        </div>
+        <div>
+            <div class="relative border border-gray-400 p-4 rounded-xs mb-4">
+                <div class="absolute -top-2 bg-white px-2">
+                    <h5 class="text-zinc-700 font-bold text-xs">RISK WARNING:</h5>
+                </div>
+                <div>
+                    <p class="text-gray-400 text-xs font-medium leading-[17px]">
+                        The Financial Products offered by the company include Contracts for Difference ('CFDs') and
+                        other complex financial products. Trading CFDs carries a high level of risk, since leverage can
+                        work both to your advantage and disadvantage. As a result, CFDs may not be suitable for all
+                        investors because it is possible to lose all of your invested capital. You should never invest
+                        money that you cannot afford to lose. Before trading in the complex financial products offered,
+                        please ensure to understand the risks involved.
+                    </p>
+                </div>
+            </div>
+            <p class="text-gray-400 text-xs font-medium leading-[17px]">
+                You are granted limited non-exclusive non-transferable rights to use the IP provided on this website for
+                personal and non-commercial purposes in relation to the services offered on the Website only.
+            </p>
+        </div>
+    </div>
+    <div class="mx-auto px-4">
+        <div>
+            <div class="relative border border-gray-400 p-4 rounded-xs mb-4">
+                <div class="absolute -top-2 bg-white px-2">
+                    <h5 class="text-zinc-700 font-bold text-xs">DOWNLOAD APP</h5>
+                </div>
+                <div>
+                    <div>
+                        <img class="size-5 inline"
+                            src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=500"
+                            alt="Your Company">
+                        <span class="inline text-black font-semibold text-xs"> Company Name</span>
+                    </div>
+                    <div class="mb-1">
+                        <span class="text-[10px] text-zinc-700">Full version, 21.5MB</span>
+                    </div>
+                    <div>
+                        <div
+                            class="flex items-center justify-center rounded-sm bg-black p-1.5 w-full">
+                            <div>
+                                <img class="w-28" src="{{ asset('assets/icons/get-it-on-playstore.svg') }}">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mx-auto px-4 mb-4 text-center">
+        <div></div>
+        <div>
+            <p class="text-zinc-700 text-xs font-medium">Company Name, © 2013-2025</p>
+        </div>
+    </div>
+    <!-- Footer end -->
 </div>
