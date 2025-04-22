@@ -17,8 +17,8 @@
 
 <body>
 
-    <div class="min-h-full">
-        <nav x-data="{ isMobileMenuOpen: false }" class="bg-white">
+    <div class="min-h-full relative">
+        <nav x-data="{ isMobileMenuOpen: false }" class="bg-white fixed w-full top-0 z-10">
             <div class="mx-auto px-4">
                 <div class="flex h-16 items-center justify-between">
                     <div class="flex items-center">
@@ -89,7 +89,7 @@
                 x-transition:enter-end="transform opacity-100 scale-100"
                 x-transition:leave="transition ease-in duration-75"
                 x-transition:leave-start="transform opacity-100 scale-100"
-                x-transition:leave-end="transform opacity-0 scale-95" class="md:hidden" id="mobile-menu">
+                x-transition:leave-end="transform opacity-0 scale-95" class="md:hidden h-screen" id="mobile-menu">
                 <div class="space-y-1 px-4 pt-2 pb-3 sm:px-3">
                     <a href="#" class="block py-4 text-xs font-bold border-b-1 text-zinc-700"
                         aria-current="page">STOCKS</a>
@@ -101,9 +101,7 @@
         </nav>
 
         <main>
-
             {{ $slot }}
-
         </main>
     </div>
 </body>

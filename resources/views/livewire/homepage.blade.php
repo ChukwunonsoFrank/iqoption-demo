@@ -1,4 +1,4 @@
-<div>
+<div class="mt-14">
     <!-- Hero section start -->
     <div class="mx-auto px-8 h-80 hero-banner border">
         <div class="mt-16 text-center w-full">
@@ -68,7 +68,7 @@
                 </div>
 
                 <div class="mt-4">
-                    @foreach ($marketData as $data)
+                    @foreach ($cryptoMarketData as $data)
                         <div wire:key="market-data-crypto-{{ $data['symbol'] }}"
                             class="flex items-center border-b border-gray-100 py-3">
                             <div class="flex-none w-12">
@@ -116,8 +116,8 @@
                 </div>
 
                 <div class="mt-4">
-                    @foreach ($marketData as $data)
-                        <div wire:key="market-data-crypto-{{ $data['symbol'] }}"
+                    @foreach ($forexMarketData as $data)
+                        <div wire:key="market-data-forex-{{ $data['symbol'] }}"
                             class="flex items-center border-b border-gray-100 py-3">
                             <div class="flex-none w-12">
                                 <img src="{{ asset($data['iconUrlPath']) }}" width="30" alt=""
@@ -130,7 +130,7 @@
                             <div class="flex-1 text-end">
                                 <a href="#"
                                     class="rounded-xs border border-accent w-24 px-1 pt-1 pb-0 text-center inline-block text-accent hover:bg-accent-hover hover:text-white active:bg-accent-hover active:text-white">
-                                    <span class="block font-medium text-sm">{{ $data['priceUsd'] }}</span>
+                                    <span class="block font-medium text-sm">{{ $data['price'] }}</span>
                                     <span class="block font-normal text-[11px]">Trade</span>
                                 </a>
                             </div>
@@ -138,13 +138,53 @@
                     @endforeach
                 </div>
             </div>
+
             <div id="horizontal-alignment-3" class="hidden" role="tabpanel"
                 aria-labelledby="horizontal-alignment-item-3">
-                <p class="text-gray-500 dark:text-neutral-400">
-                    This is the <em class="font-semibold text-gray-800 dark:text-neutral-200">third</em> item's
-                    tab
-                    body.
-                </p>
+                <div class="flex items-center space-x-1">
+                    <div>
+                        <h3 class="text-zinc-700 font-bold text-lg">
+                            267 <span class="font-medium">Stocks</span>
+                        </h3>
+                    </div>
+                    <div>
+                        <i class="fas fa-angle-right text-lg inline-block mt-1 text-accent"></i>
+                    </div>
+                </div>
+
+                <div class="flex items-center justify-between space-x-2 mt-4">
+                    <div class="flex-none w-36">
+                        <p class="text-zinc-700 font-bold text-xl">$100</p>
+                        <p class="text-xs font-medium">Min deposit</p>
+                    </div>
+                    <div class="flex-1">
+                        <p class="text-zinc-700 font-bold text-xl">$10</p>
+                        <p class="text-xs font-medium">Minimum investment</p>
+                    </div>
+                </div>
+
+                <div class="mt-4">
+                    @foreach ($stocksMarketData as $data)
+                        <div wire:key="market-data-stocks-{{ $data['symbol'] }}"
+                            class="flex items-center border-b border-gray-100 py-3">
+                            <div class="flex-none w-12">
+                                <img src="{{ asset($data['iconUrlPath']) }}" width="30" alt=""
+                                    srcset="">
+                            </div>
+                            <div class="flex-1">
+                                <p class="text-xs font-semibold mb-0.5">{{ $data['name'] }}</p>
+                                <p class="text-xs font-medium text-gray-400">{{ $data['symbol'] }}</p>
+                            </div>
+                            <div class="flex-1 text-end">
+                                <a href="#"
+                                    class="rounded-xs border border-accent w-24 px-1 pt-1 pb-0 text-center inline-block text-accent hover:bg-accent-hover hover:text-white active:bg-accent-hover active:text-white">
+                                    <span class="block font-medium text-sm">{{ $data['price'] }}</span>
+                                    <span class="block font-normal text-[11px]">Trade</span>
+                                </a>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
             </div>
         </div>
 
@@ -268,6 +308,20 @@
                 <div class="flex-1">
                     <h3 class="text-zinc-700 font-bold text-md mb-2">Customer Service</h3>
                     <p class="text-zinc-700 text-sm font-medium mb-2 tracking-wide">Prompt multilingual support</p>
+                    <div class="flex space-x-2 mb-2">
+                        <div><img width="20" src="{{ asset('assets/icons/multilingual-flag-1.svg') }}" alt=""></div>
+                        <div><img width="20" src="{{ asset('assets/icons/multilingual-flag-2.svg') }}" alt=""></div>
+                        <div><img width="20" src="{{ asset('assets/icons/multilingual-flag-3.svg') }}" alt=""></div>
+                        <div><img width="20" src="{{ asset('assets/icons/multilingual-flag-4.svg') }}" alt=""></div>
+                        <div><img width="20" src="{{ asset('assets/icons/multilingual-flag-5.svg') }}" alt=""></div>
+                    </div>
+                    <div class="flex space-x-2">
+                        <div><img width="20" src="{{ asset('assets/icons/multilingual-flag-6.svg') }}" alt=""></div>
+                        <div><img width="20" src="{{ asset('assets/icons/multilingual-flag-7.svg') }}" alt=""></div>
+                        <div><img width="20" src="{{ asset('assets/icons/multilingual-flag-8.svg') }}" alt=""></div>
+                        <div><img width="20" src="{{ asset('assets/icons/multilingual-flag-9.svg') }}" alt=""></div>
+                        <div><img width="20" src="{{ asset('assets/icons/multilingual-flag-10.svg') }}" alt=""></div>
+                    </div>
                 </div>
             </div>
         </div>
