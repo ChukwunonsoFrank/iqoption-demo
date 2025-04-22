@@ -189,7 +189,8 @@
         </div>
 
         <div class="text-center mt-4">
-            <p class="text-gray-400 leading-4 font-medium text-[11px]">* Information regarding past performance is not a
+            <p class="text-gray-400 leading-4 font-medium text-[11px]">* Information regarding past performance is not
+                a
                 reliable indicator of future performance. Leverage restrictions may apply depending on client's
                 circumstances and/or jurisdiction.</p>
         </div>
@@ -309,18 +310,28 @@
                     <h3 class="text-zinc-700 font-bold text-md mb-2">Customer Service</h3>
                     <p class="text-zinc-700 text-sm font-medium mb-2 tracking-wide">Prompt multilingual support</p>
                     <div class="flex space-x-2 mb-2">
-                        <div><img width="20" src="{{ asset('assets/icons/multilingual-flag-1.svg') }}" alt=""></div>
-                        <div><img width="20" src="{{ asset('assets/icons/multilingual-flag-2.svg') }}" alt=""></div>
-                        <div><img width="20" src="{{ asset('assets/icons/multilingual-flag-3.svg') }}" alt=""></div>
-                        <div><img width="20" src="{{ asset('assets/icons/multilingual-flag-4.svg') }}" alt=""></div>
-                        <div><img width="20" src="{{ asset('assets/icons/multilingual-flag-5.svg') }}" alt=""></div>
+                        <div><img width="20" src="{{ asset('assets/icons/multilingual-flag-1.svg') }}"
+                                alt=""></div>
+                        <div><img width="20" src="{{ asset('assets/icons/multilingual-flag-2.svg') }}"
+                                alt=""></div>
+                        <div><img width="20" src="{{ asset('assets/icons/multilingual-flag-3.svg') }}"
+                                alt=""></div>
+                        <div><img width="20" src="{{ asset('assets/icons/multilingual-flag-4.svg') }}"
+                                alt=""></div>
+                        <div><img width="20" src="{{ asset('assets/icons/multilingual-flag-5.svg') }}"
+                                alt=""></div>
                     </div>
                     <div class="flex space-x-2">
-                        <div><img width="20" src="{{ asset('assets/icons/multilingual-flag-6.svg') }}" alt=""></div>
-                        <div><img width="20" src="{{ asset('assets/icons/multilingual-flag-7.svg') }}" alt=""></div>
-                        <div><img width="20" src="{{ asset('assets/icons/multilingual-flag-8.svg') }}" alt=""></div>
-                        <div><img width="20" src="{{ asset('assets/icons/multilingual-flag-9.svg') }}" alt=""></div>
-                        <div><img width="20" src="{{ asset('assets/icons/multilingual-flag-10.svg') }}" alt=""></div>
+                        <div><img width="20" src="{{ asset('assets/icons/multilingual-flag-6.svg') }}"
+                                alt=""></div>
+                        <div><img width="20" src="{{ asset('assets/icons/multilingual-flag-7.svg') }}"
+                                alt=""></div>
+                        <div><img width="20" src="{{ asset('assets/icons/multilingual-flag-8.svg') }}"
+                                alt=""></div>
+                        <div><img width="20" src="{{ asset('assets/icons/multilingual-flag-9.svg') }}"
+                                alt=""></div>
+                        <div><img width="20" src="{{ asset('assets/icons/multilingual-flag-10.svg') }}"
+                                alt=""></div>
                     </div>
                 </div>
             </div>
@@ -616,8 +627,7 @@
                         <span class="text-[10px] text-zinc-700">Full version, 21.5MB</span>
                     </div>
                     <div>
-                        <div
-                            class="flex items-center justify-center rounded-sm bg-black p-1.5 w-full">
+                        <div class="flex items-center justify-center rounded-sm bg-black p-1.5 w-full">
                             <div>
                                 <img class="w-28" src="{{ asset('assets/icons/get-it-on-playstore.svg') }}">
                             </div>
@@ -635,3 +645,30 @@
     </div>
     <!-- Footer end -->
 </div>
+
+@script
+    <script>
+        $wire.on('fetch-market-data-error', (event) => {
+            const toastMarkup = `
+                <div class="flex p-4">
+                    <div class="shrink-0">
+                        <svg class="shrink-0 size-4 text-red-500 mt-0.5" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"></path>
+                        </svg>
+                    </div>
+                    <div class="ms-3">
+                        <p class="text-xs font-semibold text-gray-700 dark:text-neutral-400">${event.message}</p>
+                    </div>
+                </div>
+            `;
+
+            Toastify({
+                text: toastMarkup,
+                className: "hs-toastify-on:opacity-100 opacity-0 fixed -top-37.5 right-5 z-90 transition-all duration-300 w-80 bg-white text-sm text-gray-700 border border-gray-200 rounded-xl shadow-lg [&>.toast-close]:hidden dark:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-400",
+                duration: 3000,
+                close: true,
+                escapeMarkup: false
+            }).showToast();
+        });
+    </script>
+@endscript
