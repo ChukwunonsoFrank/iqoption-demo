@@ -19,12 +19,12 @@
 
     <div class="min-h-full relative">
         <nav x-data="{ isMobileMenuOpen: false }" class="bg-white fixed w-full top-0 z-10">
-            <div class="mx-auto px-4">
+            <div class="mx-auto px-4 lg:px-6">
                 <div class="flex h-16 items-center justify-between">
                     <div class="flex items-center">
                         <div class="shrink-0 flex items-center space-x-2">
                             <!-- Mobile menu button -->
-                            <button class="md:hidden" type="button" x-on:click="isMobileMenuOpen = !isMobileMenuOpen"
+                            <button class="lg:hidden" type="button" x-on:click="isMobileMenuOpen = !isMobileMenuOpen"
                                 class="relative inline-flex items-center justify-center" aria-controls="mobile-menu"
                                 aria-expanded="false">
                                 {{-- <span class="absolute -inset-0.5"></span> --}}
@@ -49,20 +49,17 @@
                                 src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=500"
                                 alt="Your Company">
                         </div>
-                        <div class="hidden md:block">
+                        <div class="hidden lg:block">
                             <div class="ml-10 flex items-baseline space-x-4">
                                 <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
                                 <a href="#" class="rounded-md px-3 py-2 text-md font-medium text-zinc-700"
-                                    aria-current="page">Stocks</a>
-                                <a href="#" class="rounded-md px-3 py-2 text-md font-medium text-zinc-700">For
-                                    Traders</a>
-                                <a href="#" class="rounded-md px-3 py-2 text-md font-medium text-zinc-700">About
-                                    Us</a>
-                                <a href="#" class="rounded-md px-3 py-2 text-md font-medium text-zinc-700">VIP</a>
+                                    aria-current="page">About Us</a>
+                                <a href="#" class="rounded-md px-3 py-2 text-md font-medium text-zinc-700">Terms</a>
+                                <a href="#" class="rounded-md px-3 py-2 text-md font-medium text-zinc-700">Privacy</a>
                             </div>
                         </div>
                     </div>
-                    <div class="hidden md:block">
+                    <div class="hidden lg:block">
                         <div class="ml-4 flex space-x-2 items-center md:ml-6">
                             <a href="#"
                                 class="rounded-xs border border-accent px-3.5 py-2.5 text-sm font-medium text-accent shadow-xs hover:bg-accent hover:text-white">Log
@@ -72,7 +69,7 @@
                                 Up</a>
                         </div>
                     </div>
-                    <div class="flex space-x-3 md:hidden">
+                    <div class="flex space-x-3 lg:hidden">
                         <div class="border border-accent rounded-full p-2">
                             <!--  Auth button -->
                             <div>
@@ -89,13 +86,12 @@
                 x-transition:enter-end="transform opacity-100 scale-100"
                 x-transition:leave="transition ease-in duration-75"
                 x-transition:leave-start="transform opacity-100 scale-100"
-                x-transition:leave-end="transform opacity-0 scale-95" class="md:hidden h-screen" id="mobile-menu">
+                x-transition:leave-end="transform opacity-0 scale-95" class="lg:hidden h-screen" id="mobile-menu">
                 <div class="space-y-1 px-4 pt-2 pb-3 sm:px-3">
-                    <a href="#" class="block py-4 text-xs font-bold border-b-1 text-zinc-700"
-                        aria-current="page">STOCKS</a>
-                    <a href="#" class="block py-4 text-xs font-bold border-b-1 text-zinc-700">FOR TRADERS</a>
                     <a href="#" class="block py-4 text-xs font-bold border-b-1 text-zinc-700">ABOUT US</a>
-                    <a href="#" class="block py-4 text-xs font-bold text-zinc-700">VIP</a>
+                    <a href="#" class="block py-4 text-xs font-bold border-b-1 text-zinc-700"
+                        aria-current="page">TERMS</a>
+                    <a href="#" class="block py-4 text-xs font-bold border-b-1 text-zinc-700">PRIVACY</a>
                 </div>
             </div>
         </nav>
