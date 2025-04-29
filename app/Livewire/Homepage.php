@@ -5,9 +5,12 @@ namespace App\Livewire;
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Cache;
 use Livewire\Attributes\Layout;
+use Livewire\Attributes\Title;
 use Livewire\Component;
 
 #[Layout('components.layouts.landing-page')]
+
+#[Title('Home')]
 
 class Homepage extends Component
 {
@@ -19,9 +22,9 @@ class Homepage extends Component
 
     public function mount()
     {
-        $this->fetchCryptoMarketData();
-        $this->fetchForexMarketData();
-        $this->fetchStocksMarketData();
+        // $this->fetchCryptoMarketData();
+        // $this->fetchForexMarketData();
+        // $this->fetchStocksMarketData();
     }
 
     public function fetchCryptoMarketData()
@@ -132,6 +135,11 @@ class Homepage extends Component
     public function transformCryptoMarketData($data)
     {
         $marketData = json_decode($data);
+
+        if ($marketData === null) {
+            throw new \Exception('Invalid API data: crypto(null)');
+        }
+
         foreach ($marketData->data as $data) {
             $dataArr = [];
             $dataArr['name'] = $data->name;
@@ -145,6 +153,15 @@ class Homepage extends Component
     public function transformForexMarketData($data, $base)
     {
         $marketData = json_decode($data);
+
+        if ($marketData === null) {
+            throw new \Exception('Invalid API data: forex(null)');
+        }
+
+        if ($base === null) {
+            throw new \Exception('Invalid base currency: forex');
+        }
+
         if ($marketData && isset($marketData->data) && is_object($marketData->data)) {
             foreach ($marketData->data as $currencyCode => $currencyDetails) {
                 $dataArr = [];
@@ -160,6 +177,19 @@ class Homepage extends Component
     public function transformStocksMarketData($data, $name, $symbol)
     {
         $marketData = json_decode($data, true)['Time Series (5min)'];
+
+        if ($marketData === null) {
+            throw new \Exception('Invalid API data: stocks(null)');
+        }
+
+        if ($name === null) {
+            throw new \Exception('Invalid base currency: stocks');
+        }
+
+        if ($symbol === null) {
+            throw new \Exception('Invalid base currency: stocks');
+        }
+
         $assetClosePrice = $marketData[array_key_last($marketData)]['4. close'];
         $dataArr = [];
         $dataArr['name'] = $name;

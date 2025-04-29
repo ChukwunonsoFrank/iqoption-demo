@@ -672,100 +672,6 @@
     </div>
     <!-- Extra information end -->
 
-    <!-- Scroll to top start -->
-    <div class="mx-auto px-4 md:px-12 lg:px-72 pb-3 mb-6 border-b border-gray-100">
-        <div class="flex items-center">
-            <div class="flex-1">
-                <p class="text-xs text-gray-400 font-medium">Home</p>
-            </div>
-            <div class="flex-none">
-                <div class="flex space-x-3 items-center">
-                    <div>
-                        <span class="text-sm font-medium text-accent">Scroll to Top</span>
-                    </div>
-                    <div class="border border-accent rounded-full p-2">
-                        <div>
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path d="M5 15L12 8L19 15" stroke="#25258E" stroke-width="1" stroke-linecap="round"
-                                    stroke-linejoin="round" />
-                            </svg>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Scroll to top end -->
-
-    <!-- Footer start -->
-    <footer class="lg:flex lg:items-start lg:px-72">
-        <div class="mx-auto px-4 md:px-12 border-b border-gray-100 md:border-b-0 pb-6 mb-8 md:mb-0 lg:flex-1 lg:flex lg:items-start lg:px-0">
-            <div class="text-center mb-12 lg:flex-none lg:text-start lg:w-40">
-                <p class="font-medium text-gray-400 text-sm mb-3">Terms & Conditions</p>
-                <p class="font-medium text-gray-400 text-sm mb-3">Privacy Policy</p>
-                <p class="font-medium text-gray-400 text-sm mb-3">Affiliate Program</p>
-                <p class="font-medium text-gray-400 text-sm">Contact Us</p>
-            </div>
-            <div class="lg:flex-1">
-                <div class="relative border border-gray-400 p-4 rounded-xs mb-4">
-                    <div class="absolute -top-2 bg-white px-2">
-                        <h5 class="text-zinc-700 font-bold text-xs">RISK WARNING:</h5>
-                    </div>
-                    <div>
-                        <p class="text-gray-400 text-xs font-medium leading-[17px]">
-                            The Financial Products offered by the company include Contracts for Difference ('CFDs') and
-                            other complex financial products. Trading CFDs carries a high level of risk, since leverage can
-                            work both to your advantage and disadvantage. As a result, CFDs may not be suitable for all
-                            investors because it is possible to lose all of your invested capital. You should never invest
-                            money that you cannot afford to lose. Before trading in the complex financial products offered,
-                            please ensure to understand the risks involved.
-                        </p>
-                    </div>
-                </div>
-                <p class="text-gray-400 text-xs font-medium leading-[17px]">
-                    You are granted limited non-exclusive non-transferable rights to use the IP provided on this website for
-                    personal and non-commercial purposes in relation to the services offered on the Website only.
-                </p>
-            </div>
-        </div>
-    
-        <div class="mx-auto px-4 md:px-12 lg:flex-none lg:w-56 lg:px-4">
-            <div>
-                <div class="relative border border-gray-400 p-4 rounded-xs mb-4">
-                    <div class="absolute -top-2 bg-white px-2">
-                        <h5 class="text-zinc-700 font-bold text-xs">DOWNLOAD APP</h5>
-                    </div>
-                    <div>
-                        <div>
-                            <img class="size-5 inline"
-                                src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=500"
-                                alt="Your Company">
-                            <span class="inline text-black font-semibold text-xs"> Company Name</span>
-                        </div>
-                        <div class="mb-1">
-                            <span class="text-[10px] text-zinc-700">Full version, 21.5MB</span>
-                        </div>
-                        <div>
-                            <div class="flex items-center justify-center rounded-sm bg-black p-1.5 w-full">
-                                <div>
-                                    <img class="w-28" src="{{ asset('assets/icons/get-it-on-playstore.svg') }}">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <div class="mx-auto px-4 md:px-12 mb-4 text-center">
-        <div></div>
-        <div>
-            <p class="text-zinc-700 text-xs font-medium">Company Name, © 2013-2025</p>
-        </div>
-    </div>
-    <!-- Footer end -->
 </div>
 
 @script
@@ -778,7 +684,7 @@
                             <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"></path>
                         </svg>
                     </div>
-                    <div class="ms-3">
+                    <div class="ms-3 flex-1">
                         <p class="text-xs font-semibold text-gray-700 dark:text-neutral-400">${event.message}</p>
                     </div>
                 </div>
@@ -787,7 +693,7 @@
             Toastify({
                 text: toastMarkup,
                 className: "hs-toastify-on:opacity-100 opacity-0 fixed -top-37.5 right-5 z-90 transition-all duration-300 w-80 bg-white text-sm text-gray-700 border border-gray-200 rounded-xl shadow-lg [&>.toast-close]:hidden dark:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-400",
-                duration: 3000,
+                duration: 4000,
                 close: true,
                 escapeMarkup: false
             }).showToast();
