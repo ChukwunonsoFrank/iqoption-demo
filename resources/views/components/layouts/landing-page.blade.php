@@ -46,9 +46,11 @@
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
                                 </svg>
                             </button>
-                            <img class="size-8"
+                            <a href="{{ route('home') }}">
+                                <img class="size-8"
                                 src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=500"
                                 alt="Your Company">
+                            </a>
                         </div>
                         <div class="hidden lg:block">
                             <div class="ml-10 flex items-baseline space-x-4">

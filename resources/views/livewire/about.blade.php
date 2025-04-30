@@ -364,47 +364,41 @@
                         <div
                             class="hs-carousel-body absolute top-0 bottom-0 start-0 flex space-x-2 flex-nowrap opacity-0 transition-transform duration-700">
                             <div class="hs-carousel-slide px-1">
-                                <div class="flex justify-center h-full p-6">
-                                    <img src="{{ asset('assets/icons/skrill.svg') }}" alt="" srcset="">
+                                <div class="flex justify-center h-full p-4">
+                                    <img src="{{ asset('assets/icons/btc.svg') }}" alt="" srcset="">
                                 </div>
                             </div>
                             <div class="hs-carousel-slide px-1">
-                                <div class="flex justify-center h-full p-6">
-                                    <img src="{{ asset('assets/icons/volet.svg') }}" alt="" srcset="">
+                                <div class="flex justify-center h-full p-4">
+                                    <img src="{{ asset('assets/icons/eth.svg') }}" alt="" srcset="">
                                 </div>
                             </div>
                             <div class="hs-carousel-slide px-1">
-                                <div class="flex justify-center h-full p-6">
-                                    <img src="{{ asset('assets/icons/neteller.svg') }}" alt=""
+                                <div class="flex justify-center h-full p-4">
+                                    <img src="{{ asset('assets/icons/usdt.svg') }}" alt=""
                                         srcset="">
                                 </div>
                             </div>
                             <div class="hs-carousel-slide px-1">
-                                <div class="flex justify-center h-full p-6">
-                                    <img src="{{ asset('assets/icons/mastercard.svg') }}" alt=""
+                                <div class="flex justify-center h-full p-4">
+                                    <img src="{{ asset('assets/icons/sol.svg') }}" alt=""
                                         srcset="">
                                 </div>
                             </div>
                             <div class="hs-carousel-slide px-1">
-                                <div class="flex justify-center h-full p-6">
-                                    <img src="{{ asset('assets/icons/wire-transfer.svg') }}" alt=""
+                                <div class="flex justify-center h-full p-4">
+                                    <img src="{{ asset('assets/icons/trx.svg') }}" alt=""
                                         srcset="">
                                 </div>
                             </div>
                             <div class="hs-carousel-slide px-1">
-                                <div class="flex justify-center h-full p-6">
-                                    <img src="{{ asset('assets/icons/visa.svg') }}" alt="" srcset="">
+                                <div class="flex justify-center h-full p-4">
+                                    <img src="{{ asset('assets/icons/bnb.svg') }}" alt="" srcset="">
                                 </div>
                             </div>
                             <div class="hs-carousel-slide px-1">
-                                <div class="flex justify-center h-full p-6">
-                                    <img src="{{ asset('assets/icons/visa-plus-mastercard.svg') }}" alt=""
-                                        srcset="">
-                                </div>
-                            </div>
-                            <div class="hs-carousel-slide px-1">
-                                <div class="flex justify-center h-full p-6">
-                                    <img src="{{ asset('assets/icons/volet-usd.svg') }}" alt=""
+                                <div class="flex justify-center h-full p-4">
+                                    <img src="{{ asset('assets/icons/ltc.svg') }}" alt=""
                                         srcset="">
                                 </div>
                             </div>

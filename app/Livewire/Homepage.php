@@ -22,9 +22,9 @@ class Homepage extends Component
 
     public function mount()
     {
-        // $this->fetchCryptoMarketData();
-        // $this->fetchForexMarketData();
-        // $this->fetchStocksMarketData();
+        $this->fetchCryptoMarketData();
+        $this->fetchForexMarketData();
+        $this->fetchStocksMarketData();
     }
 
     public function fetchCryptoMarketData()
