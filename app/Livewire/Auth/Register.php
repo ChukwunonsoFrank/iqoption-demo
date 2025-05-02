@@ -8,9 +8,13 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Livewire\Attributes\Layout;
+use Livewire\Attributes\Title;
 use Livewire\Component;
 
-#[Layout('components.layouts.auth')]
+#[Layout('components.layouts.landing-page')]
+
+#[Title('Register')]
+
 class Register extends Component
 {
     public string $name = '';

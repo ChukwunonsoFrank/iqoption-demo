@@ -2,13 +2,17 @@
 
 use App\Livewire\About;
 use App\Livewire\Homepage;
+use App\Livewire\Privacy;
 use App\Livewire\Settings\Appearance;
 use App\Livewire\Settings\Password;
 use App\Livewire\Settings\Profile;
+use App\Livewire\Terms;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', Homepage::class)->name('home');
 Route::get('/about', About::class)->name('about');
+Route::get('/terms', Terms::class)->name('terms');
+Route::get('/privacy', Privacy::class)->name('privacy');
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])

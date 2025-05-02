@@ -14,6 +14,10 @@
     <script src="https://kit.fontawesome.com/7016607b5a.js" crossorigin="anonymous"></script>
     @vite('resources/css/app.css')
     @vite('resources/js/app.js')
+
+    <style>
+        [x-cloak] { display: none !important; }
+    </style>
 </head>
 
 <body>
@@ -58,36 +62,38 @@
                                 <a href="{{ route('about') }}"
                                     class="rounded-md px-3 py-2 text-md font-medium text-zinc-700"
                                     aria-current="page">About Us</a>
-                                <a href="#"
+                                <a href="{{ route('terms') }}"
                                     class="rounded-md px-3 py-2 text-md font-medium text-zinc-700">Terms</a>
-                                <a href="#"
+                                <a href="{{ route('privacy') }}"
                                     class="rounded-md px-3 py-2 text-md font-medium text-zinc-700">Privacy</a>
                             </div>
                         </div>
                     </div>
                     <div class="hidden lg:block">
                         <div class="ml-4 flex space-x-2 items-center md:ml-6">
-                            <a href="#"
+                            <a href="{{ route('login') }}"
                                 class="rounded-xs border border-accent px-3.5 py-2.5 text-sm font-medium text-accent shadow-xs hover:bg-accent hover:text-white">Log
                                 In</a>
-                            <a href="#"
+                            <a href="{{ route('register') }}"
                                 class="rounded-xs bg-accent px-3.5 py-2.5 text-sm font-medium text-white shadow-xs hover:bg-accent-hover">Sign
                                 Up</a>
                         </div>
                     </div>
                     <div class="flex space-x-3 lg:hidden">
-                        <div class="border border-accent rounded-full p-2">
-                            <!--  Auth button -->
-                            <div>
-                                <img src="{{ asset('assets/icons/auth.svg') }}" alt="" srcset="">
+                        <a href="{{ route('login') }}">
+                            <div class="border border-accent rounded-full p-2">
+                                <!--  Auth button -->
+                                <div>
+                                    <img src="{{ asset('assets/icons/auth.svg') }}" alt="" srcset="">
+                                </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
                 </div>
             </div>
 
             <!-- Mobile menu, show/hide based on menu state. -->
-            <div x-show="isMobileMenuOpen" x-transition:enter="transition ease-out duration-100"
+            <div x-cloak x-show="isMobileMenuOpen" x-transition:enter="transition ease-out duration-100"
                 x-transition:enter-start="transform opacity-0 scale-95"
                 x-transition:enter-end="transform opacity-100 scale-100"
                 x-transition:leave="transition ease-in duration-75"
@@ -96,9 +102,9 @@
                 <div class="space-y-1 px-4 pt-2 pb-3 sm:px-3">
                     <a href="{{ route('about') }}" class="block py-4 text-xs font-bold border-b-1 text-zinc-700">ABOUT
                         US</a>
-                    <a href="#" class="block py-4 text-xs font-bold border-b-1 text-zinc-700"
+                    <a href="{{ route('terms') }}" class="block py-4 text-xs font-bold border-b-1 text-zinc-700"
                         aria-current="page">TERMS</a>
-                    <a href="#" class="block py-4 text-xs font-bold border-b-1 text-zinc-700">PRIVACY</a>
+                    <a href="{{ route('privacy') }}" class="block py-4 text-xs font-bold border-b-1 text-zinc-700">PRIVACY</a>
                 </div>
             </div>
         </nav>
@@ -138,10 +144,9 @@
             <div
                 class="mx-auto px-4 md:px-12 border-b border-gray-100 md:border-b-0 pb-6 mb-8 md:mb-0 lg:flex-1 lg:flex lg:items-start lg:px-0">
                 <div class="text-center mb-12 lg:flex-none lg:text-start lg:w-40">
-                    <p class="font-medium text-gray-400 text-sm mb-3">Terms & Conditions</p>
-                    <p class="font-medium text-gray-400 text-sm mb-3">Privacy Policy</p>
-                    <p class="font-medium text-gray-400 text-sm mb-3">Affiliate Program</p>
-                    <p class="font-medium text-gray-400 text-sm">Contact Us</p>
+                    <a href="{{ route('about') }}"><p class="font-medium text-gray-400 text-sm mb-3">About</p></a>
+                    <a href="{{ route('terms') }}"><p class="font-medium text-gray-400 text-sm mb-3">Terms & Conditions</p></a>
+                    <a href="{{ route('privacy') }}"><p class="font-medium text-gray-400 text-sm">Privacy Policy</p></a>
                 </div>
                 <div class="lg:flex-1">
                     <div class="relative border border-gray-400 p-4 rounded-xs mb-4">
