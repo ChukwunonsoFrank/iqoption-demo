@@ -1,17 +1,18 @@
 <div class="mt-14">
     <!-- Hero section start -->
-    <div class="mx-auto px-8 lg:px-64 h-80 lg:h-[35rem] hero-banner border">
+    <div class="mx-auto px-8 lg:px-64 h-96 lg:h-[35rem] hero-banner border">
         <div class="mt-16 text-center w-full lg:text-start">
             <h1
-                class="text-white text-2xl md:text-3xl lg:text-4xl font-bold w-72 md:w-82 mx-auto lg:mx-0 tracking-tight lg:leading-12">
+                class="text-white mb-6 text-2xl md:text-3xl lg:text-4xl font-bold w-72 md:w-82 mx-auto lg:mx-0 tracking-tight lg:leading-12">
                 Trade
                 Stocks, Crypto and
                 Forex</h1>
-            <div class="flex justify-center items-center lg:justify-start space-x-4 mt-8">
-                <a href="#"
+                <p class="text-white text-xs font-medium mb-6 mx-auto md:w-[28rem] md:text-[14px] lg:mx-0">Save hours of manual trading with our advanced trading bots across 150+ most popular asset exchanges.</p>
+            <div class="flex justify-center items-center lg:justify-start space-x-4">
+                <a href="{{ route('register') }}"
                     class="rounded-sm bg-accent px-18 py-3.5 text-sm inline-block font-medium text-white shadow-xs hover:bg-accent-hover">Trade
                     Now</a>
-                <a href="#"
+                <a href="{{ route('register') }}"
                     class="hidden md:inline-block rounded-sm border border-white px-4 py-3.5 text-sm font-medium text-white shadow-xs hover:bg-white hover:text-zinc-700">Free
                     Practice Account</a>
             </div>
@@ -20,9 +21,9 @@
     <!-- Hero section end -->
 
     <!-- Assets tab start -->
-    <div class="-mt-14 lg:-mt-64 mx-auto px-4 lg:px-64 lg:mb-40 md:px-12 md:mb-28">
+    <div class="-mt-14 lg:-mt-48 mx-auto px-4 lg:px-64 lg:mb-40 md:px-12 md:mb-28">
         <div>
-            <nav class="-mb-0.5 flex justify-center gap-x-6" aria-label="Tabs" role="tablist"
+            <nav wire:ignore class="-mb-0.5 flex justify-center gap-x-6" aria-label="Tabs" role="tablist"
                 aria-orientation="horizontal">
                 <button type="button"
                     class="hs-tab-active:font-semibold hs-tab-active:border-white font-semibold py-1 px-1 inline-flex items-center gap-x-2 border-b-2 border-transparent text-lg whitespace-nowrap text-white hover:text-blue-600 focus:outline-hidden disabled:opacity-50 disabled:pointer-events-none dark:text-neutral-400 dark:hover:text-blue-500 active"
@@ -99,7 +100,7 @@
                                     <p class="text-sm font-medium">+1.45%</p>
                                 </div>
                                 <div class="flex-none">
-                                    <a href="#"
+                                    <a href="{{ route('register') }}"
                                         class="rounded-xs border border-accent w-24 px-1 pt-1 pb-0 text-center inline-block text-accent hover:bg-accent-hover hover:text-white active:bg-accent-hover active:text-white">
                                         <span class="block font-medium text-sm">{{ $data['priceUsd'] }}</span>
                                         <span class="block md:hidden font-medium text-[11px]">Trade</span>
@@ -107,7 +108,7 @@
                                     </a>
                                 </div>
                                 <div class="hidden md:block flex-none">
-                                    <a href="#"
+                                    <a href="{{ route('register') }}"
                                         class="inline-block rounded-xs border border-buy-green w-24 px-1 pt-1 pb-0 text-center text-buy-green hover:bg-buy-green hover:text-white active:bg-buy-green active:text-white">
                                         <span class="block font-medium text-sm">{{ $data['priceUsd'] }}</span>
                                         <span class="block font-medium text-[11px]">Buy</span>
@@ -121,25 +122,27 @@
 
             <div id="horizontal-alignment-2" class="hidden" role="tabpanel"
                 aria-labelledby="horizontal-alignment-item-2">
-                <div class="flex items-center space-x-1 mb-5">
-                    <div>
-                        <h3 class="text-zinc-700 font-bold text-lg md:text-2xl">
-                            43 <span class="font-medium">Forex pairs</span>
-                        </h3>
+                <div class="lg:flex lg:items-center lg:mb-5">
+                    <div class="flex-1 flex items-center space-x-1 mb-5 lg:mb-0">
+                        <div>
+                            <h3 class="text-zinc-700 font-bold text-lg md:text-2xl">
+                                43 <span class="font-medium">Forex pairs</span>
+                            </h3>
+                        </div>
+                        <div>
+                            <i class="fas fa-angle-right text-lg inline-block mt-1 text-accent"></i>
+                        </div>
                     </div>
-                    <div>
-                        <i class="fas fa-angle-right text-lg inline-block mt-1 text-accent"></i>
-                    </div>
-                </div>
 
-                <div class="flex items-center justify-between space-x-2 mb-5 md:mb-8">
-                    <div class="flex-none w-36">
-                        <p class="text-zinc-700 font-bold text-xl">$100</p>
-                        <p class="text-zinc-700 text-xs font-medium">Min deposit</p>
-                    </div>
-                    <div class="flex-1">
-                        <p class="text-zinc-700 font-bold text-xl">$10</p>
-                        <p class="text-zinc-700 text-xs font-medium">Minimum investment</p>
+                    <div class="flex-1 flex items-center justify-between space-x-2 mb-5 lg:mb-0 md:mb-8">
+                        <div class="flex-none w-36">
+                            <p class="text-zinc-700 font-bold text-xl">$100</p>
+                            <p class="text-zinc-700 text-xs font-medium">Min deposit</p>
+                        </div>
+                        <div class="flex-1">
+                            <p class="text-zinc-700 font-bold text-xl">$10</p>
+                            <p class="text-zinc-700 text-xs font-medium">Minimum investment</p>
+                        </div>
                     </div>
                 </div>
 
@@ -172,7 +175,7 @@
                                     <p class="text-sm font-medium">+1.45%</p>
                                 </div>
                                 <div class="flex-none">
-                                    <a href="#"
+                                    <a href="{{ route('register') }}"
                                         class="rounded-xs border border-accent w-24 px-1 pt-1 pb-0 text-center inline-block text-accent hover:bg-accent-hover hover:text-white active:bg-accent-hover active:text-white">
                                         <span class="block font-medium text-sm">{{ $data['price'] }}</span>
                                         <span class="block md:hidden font-medium text-[11px]">Trade</span>
@@ -180,7 +183,7 @@
                                     </a>
                                 </div>
                                 <div class="hidden md:block flex-none">
-                                    <a href="#"
+                                    <a href="{{ route('register') }}"
                                         class="inline-block rounded-xs border border-buy-green w-24 px-1 pt-1 pb-0 text-center text-buy-green hover:bg-buy-green hover:text-white active:bg-buy-green active:text-white">
                                         <span class="block font-medium text-sm">{{ $data['price'] }}</span>
                                         <span class="block font-medium text-[11px]">Buy</span>
@@ -194,25 +197,27 @@
 
             <div id="horizontal-alignment-3" class="hidden" role="tabpanel"
                 aria-labelledby="horizontal-alignment-item-3">
-                <div class="flex items-center space-x-1 mb-5">
-                    <div>
-                        <h3 class="text-zinc-700 font-bold text-lg md:text-2xl">
-                            276 <span class="font-medium">Stocks</span>
-                        </h3>
+                <div class="lg:flex lg:items-center lg:mb-5">
+                    <div class="flex-1 flex items-center space-x-1 mb-5 lg:mb-0">
+                        <div>
+                            <h3 class="text-zinc-700 font-bold text-lg md:text-2xl">
+                                276 <span class="font-medium">Stocks</span>
+                            </h3>
+                        </div>
+                        <div>
+                            <i class="fas fa-angle-right text-lg inline-block mt-1 text-accent"></i>
+                        </div>
                     </div>
-                    <div>
-                        <i class="fas fa-angle-right text-lg inline-block mt-1 text-accent"></i>
-                    </div>
-                </div>
 
-                <div class="flex items-center justify-between space-x-2 mb-5 md:mb-8">
-                    <div class="flex-none w-36">
-                        <p class="text-zinc-700 font-bold text-xl">$100</p>
-                        <p class="text-zinc-700 text-xs font-medium">Min deposit</p>
-                    </div>
-                    <div class="flex-1">
-                        <p class="text-zinc-700 font-bold text-xl">$10</p>
-                        <p class="text-zinc-700 text-xs font-medium">Minimum investment</p>
+                    <div class="flex-1 flex items-center justify-between space-x-2 mb-5 lg:mb-0 md:mb-8">
+                        <div class="flex-none w-36">
+                            <p class="text-zinc-700 font-bold text-xl">$100</p>
+                            <p class="text-zinc-700 text-xs font-medium">Min deposit</p>
+                        </div>
+                        <div class="flex-1">
+                            <p class="text-zinc-700 font-bold text-xl">$10</p>
+                            <p class="text-zinc-700 text-xs font-medium">Minimum investment</p>
+                        </div>
                     </div>
                 </div>
 
@@ -245,7 +250,7 @@
                                     <p class="text-sm font-medium">+1.45%</p>
                                 </div>
                                 <div class="flex-none">
-                                    <a href="#"
+                                    <a href="{{ route('register') }}"
                                         class="rounded-xs border border-accent w-24 px-1 pt-1 pb-0 text-center inline-block text-accent hover:bg-accent-hover hover:text-white active:bg-accent-hover active:text-white">
                                         <span class="block font-medium text-sm">{{ $data['price'] }}</span>
                                         <span class="block md:hidden font-medium text-[11px]">Trade</span>
@@ -253,7 +258,7 @@
                                     </a>
                                 </div>
                                 <div class="hidden md:block flex-none">
-                                    <a href="#"
+                                    <a href="{{ route('register') }}"
                                         class="inline-block rounded-xs border border-buy-green w-24 px-1 pt-1 pb-0 text-center text-buy-green hover:bg-buy-green hover:text-white active:bg-buy-green active:text-white">
                                         <span class="block font-medium text-sm">{{ $data['price'] }}</span>
                                         <span class="block font-medium text-[11px]">Buy</span>
@@ -274,6 +279,35 @@
         </div>
     </div>
     <!-- Assets tab end -->
+
+    <!-- Featured in start -->
+    <div class="mb-28 lg:mb-24 px-4 lg:px-32">
+        <div class="mt-12 mb-6 text-center">
+            <h2 class="text-zinc-700 font-bold text-md mb-2">FEATURED IN</h2>
+        </div>
+        <div
+            class="grid justify-center grid-cols-2 gap-x-6 gap-y-3 md:grid-cols-3 md:gap-y-4 lg:grid-cols-6 lg:gap-x-0">
+            <div class="text-center">
+                <img class="inline" src="{{ asset('assets/icons/yahoo.svg') }}">
+            </div>
+            <div class="text-center">
+                <img class="inline" src="{{ asset('assets/icons/beincrypto.svg') }}">
+            </div>
+            <div class="text-center">
+                <img class="inline" src="{{ asset('assets/icons/cryptopotato.svg') }}">
+            </div>
+            <div class="text-center">
+                <img class="inline" src="{{ asset('assets/icons/blockonomi.svg') }}">
+            </div>
+            <div class="text-center">
+                <img class="inline" src="{{ asset('assets/icons/benzinga.svg') }}">
+            </div>
+            <div class="text-center">
+                <img class="inline" src="{{ asset('assets/icons/newsbtc.svg') }}">
+            </div>
+        </div>
+    </div>
+    <!-- Featured in end -->
 
     <!-- Payment methods slider start -->
     <div class="mb-28 lg:mb-24">
@@ -312,20 +346,17 @@
                             </div>
                             <div class="hs-carousel-slide px-1">
                                 <div class="flex justify-center h-full bg-gray-100 p-4">
-                                    <img src="{{ asset('assets/icons/usdt.svg') }}" alt=""
-                                        srcset="">
+                                    <img src="{{ asset('assets/icons/usdt.svg') }}" alt="" srcset="">
                                 </div>
                             </div>
                             <div class="hs-carousel-slide px-1">
                                 <div class="flex justify-center h-full bg-gray-100 p-4">
-                                    <img src="{{ asset('assets/icons/sol.svg') }}" alt=""
-                                        srcset="">
+                                    <img src="{{ asset('assets/icons/sol.svg') }}" alt="" srcset="">
                                 </div>
                             </div>
                             <div class="hs-carousel-slide px-1">
                                 <div class="flex justify-center h-full bg-gray-100 p-4">
-                                    <img src="{{ asset('assets/icons/trx.svg') }}" alt=""
-                                        srcset="">
+                                    <img src="{{ asset('assets/icons/trx.svg') }}" alt="" srcset="">
                                 </div>
                             </div>
                             <div class="hs-carousel-slide px-1">
@@ -335,8 +366,7 @@
                             </div>
                             <div class="hs-carousel-slide px-1">
                                 <div class="flex justify-center h-full bg-gray-100 p-4">
-                                    <img src="{{ asset('assets/icons/ltc.svg') }}" alt=""
-                                        srcset="">
+                                    <img src="{{ asset('assets/icons/ltc.svg') }}" alt="" srcset="">
                                 </div>
                             </div>
                         </div>
@@ -348,7 +378,7 @@
         </div>
 
         <div class="mt-12 text-center">
-            <a href="#"
+            <a href="{{ route('register') }}"
                 class="rounded-xs bg-accent px-6 py-3.5 text-sm inline-block font-medium text-white shadow-xs hover:bg-accent-hover">Open
                 account</a>
         </div>
@@ -379,7 +409,8 @@
                     <p class="text-zinc-700 text-sm font-medium mb-2 tracking-wide lg:w-44">Refillable free Practice
                         Account of
                         $10,000</p>
-                    <a href="#" class="text-accent text-sm font-medium">Try Practice Account</a>
+                    <a href="{{ route('register') }}" class="text-accent text-sm font-medium">Try Practice
+                        Account</a>
                 </div>
             </div>
             <div class="flex items-start space-x-3 lg:flex-col lg:mb-6">
@@ -454,48 +485,51 @@
                     </div>
                 </div>
 
-                <div
-                    class="flex md:inline-flex md:ml-1.5 group items-center space-x-3 mx-auto rounded-sm bg-white border border-accent p-1.5 w-48 text-sm font-medium shadow-xs hover:bg-accent active:bg-accent">
-                    <div>
-                        <svg width="40" height="40" viewBox="0 0 24 25" fill="none"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path class="group-hover:fill-white group-active:fill-white"
-                                d="M8.75 12.2141C8.75 11.1741 8.79402 10.1195 8.88791 9.10256C9.90434 9.0088 10.9583 8.96484 11.9976 8.96484C13.0381 8.96484 14.0933 9.0089 15.1107 9.10287C15.2046 10.1197 15.2486 11.1742 15.2486 12.2141C15.2486 13.2539 15.2046 14.3084 15.1107 15.3254C14.0933 15.4193 13.0381 15.4634 11.9977 15.4634C10.9583 15.4634 9.90434 15.4194 8.88789 15.3257C8.79402 14.3086 8.75 13.254 8.75 12.2141Z"
-                                fill="#25258E" />
-                            <path class="group-hover:fill-white group-active:fill-white"
-                                d="M7.25 12.2132C7.25 11.2485 7.2864 10.2586 7.36623 9.28516C6.4869 9.41842 5.66091 9.59554 4.92779 9.82096C3.95114 10.1212 3.19335 10.4911 2.69303 10.9133C2.23786 11.2974 2.02439 11.6957 2.00035 12.1295C2.00012 12.1575 2 12.1856 2 12.2138C2 12.2415 2.00011 12.2691 2.00034 12.2967C2.02432 12.7306 2.23779 13.129 2.69303 13.5131C3.19335 13.9353 3.95114 14.3052 4.92779 14.6055C5.66091 14.8309 6.4869 15.008 7.36623 15.1413C7.28639 14.1678 7.25 13.1779 7.25 12.2132Z"
-                                fill="#25258E" />
-                            <path class="group-hover:fill-white group-active:fill-white"
-                                d="M2.44531 9.26306C3.04284 8.90611 3.7414 8.62034 4.48872 8.39056C5.41068 8.10708 6.44691 7.89694 7.53413 7.74938C7.6817 6.66291 7.89177 5.6274 8.1751 4.70603C8.40521 3.95767 8.69148 3.25823 9.04915 2.66016C5.90137 3.63147 3.4172 6.1155 2.44531 9.26306Z"
-                                fill="#25258E" />
-                            <path class="group-hover:fill-white group-active:fill-white"
-                                d="M14.9531 2.66016C15.3107 3.25818 15.5969 3.95753 15.8269 4.70578C16.1102 5.62728 16.3203 6.66294 16.4678 7.74957C17.5538 7.89711 18.5888 8.10711 19.5099 8.39029C20.2586 8.62051 20.9584 8.90693 21.5567 9.26484C20.5853 6.1166 18.1012 3.63187 14.9531 2.66016Z"
-                                fill="#25258E" />
-                            <path class="group-hover:fill-white group-active:fill-white"
-                                d="M21.5573 15.168C20.9589 15.5261 20.259 15.8126 19.5101 16.0428C18.5891 16.326 17.554 16.536 16.4681 16.6836C16.3205 17.7704 16.1105 18.8062 15.8271 19.7279C15.597 20.4764 15.3108 21.176 14.9531 21.7742C18.1017 20.8024 20.5863 18.317 21.5573 15.168Z"
-                                fill="#25258E" />
-                            <path class="group-hover:fill-white group-active:fill-white"
-                                d="M12.001 22.2153C12.4663 22.2144 12.8902 22.0036 13.2981 21.5202C13.7202 21.0198 14.0902 20.2619 14.3905 19.2851C14.6157 18.5523 14.7928 17.7267 14.926 16.8477C13.952 16.9277 12.9617 16.9641 11.9965 16.9641C11.0324 16.9641 10.0432 16.9277 9.07031 16.848C9.20356 17.7268 9.38062 18.5523 9.60591 19.2851C9.90622 20.2619 10.2762 21.0198 10.6984 21.5202C11.107 22.0046 11.5318 22.2153 11.9983 22.2153"
-                                fill="#25258E" />
-                            <path class="group-hover:fill-white group-active:fill-white"
-                                d="M9.0459 21.7723C5.89755 20.8009 3.41303 18.3163 2.44141 15.168C3.03904 15.5251 3.73776 15.8109 4.48526 16.0407C5.40722 16.3242 6.44344 16.5344 7.53064 16.6819C7.67821 17.7686 7.88829 18.8043 8.17163 19.7258C8.40179 20.4744 8.68813 21.1741 9.0459 21.7723Z"
-                                fill="#25258E" />
-                            <path class="group-hover:fill-white group-active:fill-white"
-                                d="M11.9964 7.46487C11.0324 7.46487 10.0432 7.50121 9.07031 7.58093C9.20355 6.70233 9.3806 5.87702 9.60586 5.14445C9.90617 4.16785 10.2761 3.41009 10.6983 2.9098C11.107 2.42551 11.5318 2.21484 11.9983 2.21484C12.4647 2.21484 12.8895 2.4255 13.2981 2.90978C13.7203 3.41007 14.0902 4.16782 14.3905 5.14442C14.6157 5.87708 14.7928 6.70249 14.926 7.58121C13.952 7.5013 12.9617 7.46487 11.9964 7.46487Z"
-                                fill="#25258E" />
-                            <path class="group-hover:fill-white group-active:fill-white"
-                                d="M16.749 12.2166C16.749 11.252 16.7126 10.2623 16.6328 9.28906C17.5109 9.42226 18.3357 9.59922 19.0679 9.82435C20.0446 10.1246 20.8024 10.4945 21.3027 10.9167C21.787 11.3254 21.9977 11.7501 21.9977 12.2166C21.9977 12.6831 21.787 13.1078 21.3027 13.5165C20.8024 13.9387 20.0446 14.3086 19.0679 14.6089C18.3357 14.834 17.5109 15.011 16.6328 15.1442C16.7126 14.1708 16.749 13.1811 16.749 12.2166Z"
-                                fill="#25258E" />
-                        </svg>
+                <a href="{{ route('login') }}">
+                    <div
+                        class="flex md:inline-flex md:ml-1.5 group items-center space-x-3 mx-auto rounded-sm bg-white border border-accent p-1.5 w-48 text-sm font-medium shadow-xs hover:bg-accent active:bg-accent">
+                        <div>
+                            <svg width="40" height="40" viewBox="0 0 24 25" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path class="group-hover:fill-white group-active:fill-white"
+                                    d="M8.75 12.2141C8.75 11.1741 8.79402 10.1195 8.88791 9.10256C9.90434 9.0088 10.9583 8.96484 11.9976 8.96484C13.0381 8.96484 14.0933 9.0089 15.1107 9.10287C15.2046 10.1197 15.2486 11.1742 15.2486 12.2141C15.2486 13.2539 15.2046 14.3084 15.1107 15.3254C14.0933 15.4193 13.0381 15.4634 11.9977 15.4634C10.9583 15.4634 9.90434 15.4194 8.88789 15.3257C8.79402 14.3086 8.75 13.254 8.75 12.2141Z"
+                                    fill="#25258E" />
+                                <path class="group-hover:fill-white group-active:fill-white"
+                                    d="M7.25 12.2132C7.25 11.2485 7.2864 10.2586 7.36623 9.28516C6.4869 9.41842 5.66091 9.59554 4.92779 9.82096C3.95114 10.1212 3.19335 10.4911 2.69303 10.9133C2.23786 11.2974 2.02439 11.6957 2.00035 12.1295C2.00012 12.1575 2 12.1856 2 12.2138C2 12.2415 2.00011 12.2691 2.00034 12.2967C2.02432 12.7306 2.23779 13.129 2.69303 13.5131C3.19335 13.9353 3.95114 14.3052 4.92779 14.6055C5.66091 14.8309 6.4869 15.008 7.36623 15.1413C7.28639 14.1678 7.25 13.1779 7.25 12.2132Z"
+                                    fill="#25258E" />
+                                <path class="group-hover:fill-white group-active:fill-white"
+                                    d="M2.44531 9.26306C3.04284 8.90611 3.7414 8.62034 4.48872 8.39056C5.41068 8.10708 6.44691 7.89694 7.53413 7.74938C7.6817 6.66291 7.89177 5.6274 8.1751 4.70603C8.40521 3.95767 8.69148 3.25823 9.04915 2.66016C5.90137 3.63147 3.4172 6.1155 2.44531 9.26306Z"
+                                    fill="#25258E" />
+                                <path class="group-hover:fill-white group-active:fill-white"
+                                    d="M14.9531 2.66016C15.3107 3.25818 15.5969 3.95753 15.8269 4.70578C16.1102 5.62728 16.3203 6.66294 16.4678 7.74957C17.5538 7.89711 18.5888 8.10711 19.5099 8.39029C20.2586 8.62051 20.9584 8.90693 21.5567 9.26484C20.5853 6.1166 18.1012 3.63187 14.9531 2.66016Z"
+                                    fill="#25258E" />
+                                <path class="group-hover:fill-white group-active:fill-white"
+                                    d="M21.5573 15.168C20.9589 15.5261 20.259 15.8126 19.5101 16.0428C18.5891 16.326 17.554 16.536 16.4681 16.6836C16.3205 17.7704 16.1105 18.8062 15.8271 19.7279C15.597 20.4764 15.3108 21.176 14.9531 21.7742C18.1017 20.8024 20.5863 18.317 21.5573 15.168Z"
+                                    fill="#25258E" />
+                                <path class="group-hover:fill-white group-active:fill-white"
+                                    d="M12.001 22.2153C12.4663 22.2144 12.8902 22.0036 13.2981 21.5202C13.7202 21.0198 14.0902 20.2619 14.3905 19.2851C14.6157 18.5523 14.7928 17.7267 14.926 16.8477C13.952 16.9277 12.9617 16.9641 11.9965 16.9641C11.0324 16.9641 10.0432 16.9277 9.07031 16.848C9.20356 17.7268 9.38062 18.5523 9.60591 19.2851C9.90622 20.2619 10.2762 21.0198 10.6984 21.5202C11.107 22.0046 11.5318 22.2153 11.9983 22.2153"
+                                    fill="#25258E" />
+                                <path class="group-hover:fill-white group-active:fill-white"
+                                    d="M9.0459 21.7723C5.89755 20.8009 3.41303 18.3163 2.44141 15.168C3.03904 15.5251 3.73776 15.8109 4.48526 16.0407C5.40722 16.3242 6.44344 16.5344 7.53064 16.6819C7.67821 17.7686 7.88829 18.8043 8.17163 19.7258C8.40179 20.4744 8.68813 21.1741 9.0459 21.7723Z"
+                                    fill="#25258E" />
+                                <path class="group-hover:fill-white group-active:fill-white"
+                                    d="M11.9964 7.46487C11.0324 7.46487 10.0432 7.50121 9.07031 7.58093C9.20355 6.70233 9.3806 5.87702 9.60586 5.14445C9.90617 4.16785 10.2761 3.41009 10.6983 2.9098C11.107 2.42551 11.5318 2.21484 11.9983 2.21484C12.4647 2.21484 12.8895 2.4255 13.2981 2.90978C13.7203 3.41007 14.0902 4.16782 14.3905 5.14442C14.6157 5.87708 14.7928 6.70249 14.926 7.58121C13.952 7.5013 12.9617 7.46487 11.9964 7.46487Z"
+                                    fill="#25258E" />
+                                <path class="group-hover:fill-white group-active:fill-white"
+                                    d="M16.749 12.2166C16.749 11.252 16.7126 10.2623 16.6328 9.28906C17.5109 9.42226 18.3357 9.59922 19.0679 9.82435C20.0446 10.1246 20.8024 10.4945 21.3027 10.9167C21.787 11.3254 21.9977 11.7501 21.9977 12.2166C21.9977 12.6831 21.787 13.1078 21.3027 13.5165C20.8024 13.9387 20.0446 14.3086 19.0679 14.6089C18.3357 14.834 17.5109 15.011 16.6328 15.1442C16.7126 14.1708 16.749 13.1811 16.749 12.2166Z"
+                                    fill="#25258E" />
+                            </svg>
+                        </div>
+                        <div>
+                            <p class="text-zinc-700 font-semibold group-hover:text-white group-active:text-white">Open
+                                in
+                                Browser</p>
+                            <p class="text-gray-400 text-[11px] group-hover:text-white group-active:text-white">Web
+                                Platform
+                            </p>
+                        </div>
                     </div>
-                    <div>
-                        <p class="text-zinc-700 font-semibold group-hover:text-white group-active:text-white">Open in
-                            Browser</p>
-                        <p class="text-gray-400 text-[11px] group-hover:text-white group-active:text-white">Web
-                            Platform
-                        </p>
-                    </div>
-                </div>
+                </a>
             </div>
         </div>
     </div>
@@ -507,7 +541,8 @@
             <h2 class="text-accent font-normal text-xl md:text-3xl lg:text-4xl mb-8">Features</h2>
             <div class="mb-8 lg:mb-16 lg:flex lg:items-center">
                 <div class="lg:flex-1">
-                    <h3 class="text-accent font-normal text-md md:text-2xl lg:text-3xl lg:text-left mb-4">Analysis & Alerts</h3>
+                    <h3 class="text-accent font-normal text-md md:text-2xl lg:text-3xl lg:text-left mb-4">Analysis &
+                        Alerts</h3>
                     <p class="text-sm md:text-base font-medium text-gray-600 leading-6 tracking-wide text-left">Get the
                         most out of
                         fundamental and
@@ -527,22 +562,27 @@
                     <img src="#" alt="">
                 </div>
                 <div class="lg:flex-1">
-                    <h3 class="text-accent font-normal text-md md:text-2xl lg:text-3xl lg:text-left mb-4">Risk Management</h3>
+                    <h3 class="text-accent font-normal text-md md:text-2xl lg:text-3xl lg:text-left mb-4">Risk
+                        Management</h3>
                     <p class="text-sm md:text-base font-medium text-gray-600 leading-6 tracking-wide text-left">With
                         features such as
                         Stop Loss/Take
-                        Profit, Negative Balance Protection and Trailing Stop, you can manage your losses and profits at the
+                        Profit, Negative Balance Protection and Trailing Stop, you can manage your losses and profits at
+                        the
                         levels you set.</p>
                 </div>
             </div>
 
             <div class="mb-8 lg:mb-16 lg:flex lg:items-center">
                 <div class="lg:flex-1">
-                    <h3 class="text-accent font-normal text-md md:text-2xl lg:text-3xl lg:text-left mb-4">Trading Community</h3>
-                    <p class="text-sm md:text-base font-medium text-gray-600 leading-6 tracking-wide text-left">Join the
+                    <h3 class="text-accent font-normal text-md md:text-2xl lg:text-3xl lg:text-left mb-4">Trading
+                        Community</h3>
+                    <p class="text-sm md:text-base font-medium text-gray-600 leading-6 tracking-wide text-left">Join
+                        the
                         massive IQ
                         Option community,
-                        discuss trading ideas and opportunities, or simply follow other traders with features like Trader
+                        discuss trading ideas and opportunities, or simply follow other traders with features like
+                        Trader
                         Sentiment and Community Live Trades.</p>
                 </div>
                 <div class="lg:flex-1">
@@ -561,33 +601,39 @@
         <div class="lg:flex lg:items-center lg:justify-around lg:mx-auto lg:px-36">
             <div class="flex items-start space-x-3 mb-6 lg:flex-col">
                 <div class="flex-none w-20 lg:mb-6 lg:flex-1 lg:w-full lg:text-center">
-                    <img class="lg:inline" src="{{ asset('assets/icons/clipboard.svg') }}" alt="" srcset="">
+                    <img class="lg:inline" src="{{ asset('assets/icons/clipboard.svg') }}" alt=""
+                        srcset="">
                 </div>
                 <div class="flex-1 lg:text-center">
                     <h3 class="text-accent font-semibold text-md mb-2">1. Registration</h3>
-                    <p class="text-zinc-700 text-sm font-medium mb-2 leading-6 lg:w-72 lg:mx-auto">Open an account for free in just a few
+                    <p class="text-zinc-700 text-sm font-medium mb-2 leading-6 lg:w-72 lg:mx-auto">Open an account for
+                        free in just a few
                         minutes</p>
                 </div>
             </div>
 
             <div class="flex items-start space-x-3 mb-6 lg:flex-col">
                 <div class="flex-none w-20 lg:mb-6 lg:flex-1 lg:w-full lg:text-center">
-                    <img class="lg:inline" src="{{ asset('assets/icons/graduation-cap.svg') }}" alt="" srcset="">
+                    <img class="lg:inline" src="{{ asset('assets/icons/graduation-cap.svg') }}" alt=""
+                        srcset="">
                 </div>
                 <div class="flex-1 lg:text-center">
                     <h3 class="text-accent font-semibold text-md mb-2">Practice</h3>
-                    <p class="text-zinc-700 text-sm font-medium mb-2 leading-6 lg:w-72 lg:mx-auto">Master your skills with a practice
+                    <p class="text-zinc-700 text-sm font-medium mb-2 leading-6 lg:w-72 lg:mx-auto">Master your skills
+                        with a practice
                         account and educational content</p>
                 </div>
             </div>
 
             <div class="flex items-start space-x-3 lg:flex-col lg:mb-6">
                 <div class="flex-none w-20 lg:mb-6 lg:flex-1 lg:w-full lg:text-center">
-                    <img class="lg:inline" src="{{ asset('assets/icons/candlesticks.svg') }}" alt="" srcset="">
+                    <img class="lg:inline" src="{{ asset('assets/icons/candlesticks.svg') }}" alt=""
+                        srcset="">
                 </div>
                 <div class="flex-1 lg:text-center">
                     <h3 class="text-accent font-semibold text-md mb-2">Deposit & Trade</h3>
-                    <p class="text-zinc-700 text-sm font-medium mb-2 leading-6 lg:w-72 lg:mx-auto">More than 250 instruments and a minimum
+                    <p class="text-zinc-700 text-sm font-medium mb-2 leading-6 lg:w-72 lg:mx-auto">More than 250
+                        instruments and a minimum
                         deposit of $100 for optimal trading</p>
                 </div>
             </div>
@@ -605,7 +651,8 @@
         <div class="mt-12 mb-6">
             <h2 class="text-accent font-normal text-xl md:text-3xl mb-2 text-center">Online Trading Platform</h2>
             <div class="mb-10 lg:mb-16">
-                <h3 class="text-gray-600 font-medium text-md mb-5 lg:mb-14 text-center">CFDs on Stocks, ETFs, Commodities,
+                <h3 class="text-gray-600 font-medium text-md mb-5 lg:mb-14 text-center">CFDs on Stocks, ETFs,
+                    Commodities,
                     Indices,
                     Cryptocurrencies and Forex</h3>
                 <p class="text-sm font-medium text-gray-600 leading-6 text-left mb-4">
@@ -635,7 +682,7 @@
                         <h3 class="text-accent font-semibold text-md mb-2">Forex</h3>
                         <p class="text-zinc-700 text-sm font-medium tracking-wide leading-6">Explore and trade major,
                             minor and exotic currency pairs with efficient spreads.</p>
-                        <a href="#" class="text-accent text-sm font-medium">Learn More</a>
+                        <a href="{{ route('register') }}" class="text-accent text-sm font-medium">Learn More</a>
                     </div>
                 </div>
                 <div class="lg:flex-1 flex items-start space-x-3 mb-6">
@@ -646,7 +693,7 @@
                         <h3 class="text-accent font-semibold text-md mb-2">Cryptocurrencies</h3>
                         <p class="text-zinc-700 text-sm font-medium tracking-wide leading-6">Trade CFDs on popular
                             digital currencies with leverage.</p>
-                        <a href="#" class="text-accent text-sm font-medium">Learn More</a>
+                        <a href="{{ route('register') }}" class="text-accent text-sm font-medium">Learn More</a>
                     </div>
                 </div>
                 <div class="lg:flex-1 flex items-start space-x-3">
@@ -657,7 +704,7 @@
                         <h3 class="text-accent font-semibold text-md mb-2">Stocks</h3>
                         <p class="text-zinc-700 text-sm font-medium tracking-wide leading-6">Trade CFDs on stocks of
                             leading companies and industry giants without actually owning them.</p>
-                        <a href="#" class="text-accent text-sm font-medium">Learn More</a>
+                        <a href="{{ route('register') }}" class="text-accent text-sm font-medium">Learn More</a>
                     </div>
                 </div>
             </div>

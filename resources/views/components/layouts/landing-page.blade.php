@@ -50,7 +50,7 @@
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
                                 </svg>
                             </button>
-                            <a href="{{ route('home') }}">
+                            <a href="{{ route('home') }}" wire:navigate>
                                 <img class="size-8"
                                 src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=500"
                                 alt="Your Company">
@@ -59,28 +59,28 @@
                         <div class="hidden lg:block">
                             <div class="ml-10 flex items-baseline space-x-4">
                                 <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-                                <a href="{{ route('about') }}"
+                                <a href="{{ route('about') }}" wire:navigate
                                     class="rounded-md px-3 py-2 text-md font-medium text-zinc-700"
                                     aria-current="page">About Us</a>
-                                <a href="{{ route('terms') }}"
+                                <a href="{{ route('terms') }}" wire:navigate
                                     class="rounded-md px-3 py-2 text-md font-medium text-zinc-700">Terms</a>
-                                <a href="{{ route('privacy') }}"
+                                <a href="{{ route('privacy') }}" wire:navigate
                                     class="rounded-md px-3 py-2 text-md font-medium text-zinc-700">Privacy</a>
                             </div>
                         </div>
                     </div>
                     <div class="hidden lg:block">
                         <div class="ml-4 flex space-x-2 items-center md:ml-6">
-                            <a href="{{ route('login') }}"
+                            <a href="{{ route('login') }}" wire:navigate
                                 class="rounded-xs border border-accent px-3.5 py-2.5 text-sm font-medium text-accent shadow-xs hover:bg-accent hover:text-white">Log
                                 In</a>
-                            <a href="{{ route('register') }}"
+                            <a href="{{ route('register') }}" wire:navigate
                                 class="rounded-xs bg-accent px-3.5 py-2.5 text-sm font-medium text-white shadow-xs hover:bg-accent-hover">Sign
                                 Up</a>
                         </div>
                     </div>
                     <div class="flex space-x-3 lg:hidden">
-                        <a href="{{ route('login') }}">
+                        <a href="{{ route('login') }}" wire:navigate>
                             <div class="border border-accent rounded-full p-2">
                                 <!--  Auth button -->
                                 <div>
