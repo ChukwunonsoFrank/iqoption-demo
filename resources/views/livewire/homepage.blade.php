@@ -281,7 +281,7 @@
     <!-- Assets tab end -->
 
     <!-- Featured in start -->
-    <div class="mb-28 lg:mb-24 px-4 lg:px-32">
+    <div class="mb-28 px-4 lg:px-32">
         <div class="mt-12 mb-6 text-center">
             <h2 class="text-zinc-700 font-bold text-md mb-2">FEATURED IN</h2>
         </div>
