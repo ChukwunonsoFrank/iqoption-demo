@@ -7,12 +7,13 @@
                 Trade
                 Stocks, Crypto and
                 Forex</h1>
-                <p class="text-white text-xs font-medium mb-6 mx-auto md:w-[28rem] md:text-[14px] lg:mx-0">Save hours of manual trading with our advanced trading bots across 150+ most popular asset exchanges.</p>
+            <p class="text-white text-xs font-medium mb-6 mx-auto md:w-[28rem] md:text-[14px] lg:mx-0">Save hours of
+                manual trading with our advanced trading bots across 150+ most popular asset exchanges.</p>
             <div class="flex justify-center items-center lg:justify-start space-x-4">
-                <a href="{{ route('register') }}"
+                <a href="{{ route('register') }}" wire:navigate
                     class="rounded-sm bg-accent px-18 py-3.5 text-sm inline-block font-medium text-white shadow-xs hover:bg-accent-hover">Trade
                     Now</a>
-                <a href="{{ route('register') }}"
+                <a href="{{ route('register') }}" wire:navigate
                     class="hidden md:inline-block rounded-sm border border-white px-4 py-3.5 text-sm font-medium text-white shadow-xs hover:bg-white hover:text-zinc-700">Free
                     Practice Account</a>
             </div>
@@ -100,7 +101,7 @@
                                     <p class="text-sm font-medium">+1.45%</p>
                                 </div>
                                 <div class="flex-none">
-                                    <a href="{{ route('register') }}"
+                                    <a href="{{ route('register') }}" wire:navigate
                                         class="rounded-xs border border-accent w-24 px-1 pt-1 pb-0 text-center inline-block text-accent hover:bg-accent-hover hover:text-white active:bg-accent-hover active:text-white">
                                         <span class="block font-medium text-sm">{{ $data['priceUsd'] }}</span>
                                         <span class="block md:hidden font-medium text-[11px]">Trade</span>
@@ -108,7 +109,7 @@
                                     </a>
                                 </div>
                                 <div class="hidden md:block flex-none">
-                                    <a href="{{ route('register') }}"
+                                    <a href="{{ route('register') }}" wire:navigate
                                         class="inline-block rounded-xs border border-buy-green w-24 px-1 pt-1 pb-0 text-center text-buy-green hover:bg-buy-green hover:text-white active:bg-buy-green active:text-white">
                                         <span class="block font-medium text-sm">{{ $data['priceUsd'] }}</span>
                                         <span class="block font-medium text-[11px]">Buy</span>
@@ -175,7 +176,7 @@
                                     <p class="text-sm font-medium">+1.45%</p>
                                 </div>
                                 <div class="flex-none">
-                                    <a href="{{ route('register') }}"
+                                    <a href="{{ route('register') }}" wire:navigate
                                         class="rounded-xs border border-accent w-24 px-1 pt-1 pb-0 text-center inline-block text-accent hover:bg-accent-hover hover:text-white active:bg-accent-hover active:text-white">
                                         <span class="block font-medium text-sm">{{ $data['price'] }}</span>
                                         <span class="block md:hidden font-medium text-[11px]">Trade</span>
@@ -183,7 +184,7 @@
                                     </a>
                                 </div>
                                 <div class="hidden md:block flex-none">
-                                    <a href="{{ route('register') }}"
+                                    <a href="{{ route('register') }}" wire:navigate
                                         class="inline-block rounded-xs border border-buy-green w-24 px-1 pt-1 pb-0 text-center text-buy-green hover:bg-buy-green hover:text-white active:bg-buy-green active:text-white">
                                         <span class="block font-medium text-sm">{{ $data['price'] }}</span>
                                         <span class="block font-medium text-[11px]">Buy</span>
@@ -250,7 +251,7 @@
                                     <p class="text-sm font-medium">+1.45%</p>
                                 </div>
                                 <div class="flex-none">
-                                    <a href="{{ route('register') }}"
+                                    <a href="{{ route('register') }}" wire:navigate
                                         class="rounded-xs border border-accent w-24 px-1 pt-1 pb-0 text-center inline-block text-accent hover:bg-accent-hover hover:text-white active:bg-accent-hover active:text-white">
                                         <span class="block font-medium text-sm">{{ $data['price'] }}</span>
                                         <span class="block md:hidden font-medium text-[11px]">Trade</span>
@@ -258,7 +259,7 @@
                                     </a>
                                 </div>
                                 <div class="hidden md:block flex-none">
-                                    <a href="{{ route('register') }}"
+                                    <a href="{{ route('register') }}" wire:navigate
                                         class="inline-block rounded-xs border border-buy-green w-24 px-1 pt-1 pb-0 text-center text-buy-green hover:bg-buy-green hover:text-white active:bg-buy-green active:text-white">
                                         <span class="block font-medium text-sm">{{ $data['price'] }}</span>
                                         <span class="block font-medium text-[11px]">Buy</span>
@@ -378,7 +379,7 @@
         </div>
 
         <div class="mt-12 text-center">
-            <a href="{{ route('register') }}"
+            <a href="{{ route('register') }}" wire:navigate
                 class="rounded-xs bg-accent px-6 py-3.5 text-sm inline-block font-medium text-white shadow-xs hover:bg-accent-hover">Open
                 account</a>
         </div>
@@ -409,7 +410,7 @@
                     <p class="text-zinc-700 text-sm font-medium mb-2 tracking-wide lg:w-44">Refillable free Practice
                         Account of
                         $10,000</p>
-                    <a href="{{ route('register') }}" class="text-accent text-sm font-medium">Try Practice
+                    <a href="{{ route('register') }}" wire:navigate class="text-accent text-sm font-medium">Try Practice
                         Account</a>
                 </div>
             </div>
@@ -593,6 +594,96 @@
     </div>
     <!-- Features end -->
 
+    <!-- Notice banner start -->
+    <div class="mx-auto px-4 py-16 bg-accent md:px-12 lg:mb-16">
+        <div>
+            <h2
+                class="text-white font-medium text-center text-xl md:text-3xl md:w-[38rem] md:mx-auto lg:w-full lg:text-4xl mb-4">
+                Start risk-free with a
+                Practice Trading Account</h2>
+            <p
+                class="text-sm mb-12 md:text-base font-normal text-white text-center md:text-start lg:text-center lg:mx-auto leading-6 lg:w-[46rem]">
+                Why risk your money when you’re learning the ropes? Use your practice trading account to test your
+                strategies and fine-tune your skills—no money lost, only experience gained!</p>
+            <div class="text-center">
+                <a href="{{ route('register') }}" wire:navigate
+                    class="rounded-xs bg-accent-hover px-6 py-3.5 text-sm inline-block font-medium text-white shadow-xs hover:bg-accent-hover">Start
+                    free trial <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </div>
+    <!-- Notice banner end -->
+
+    <!-- Smart trading start -->
+    <div class="mx-auto px-4 py-16 md:px-12 lg:px-64 lg:mb-16">
+        <div>
+            <h2
+                class="text-accent font-medium text-center text-xl md:text-3xl md:w-[38rem] md:text-left lg:w-full lg:text-4xl mb-4">
+                Smart trading, simplified</h2>
+            <p
+                class="text-sm mb-12 md:text-base font-normal text-zinc-700 text-center md:text-start leading-6 lg:w-[42rem]">
+                Leverage powerful trading tools like multi-entry orders, trailing stops, and automated strategies.</p>
+
+            <div class="rounded-lg border px-6 py-6 md:px-10 md:py-10 mb-4 grid grid-cols-1 lg:grid-cols-2 lg:gap-x-8">
+                <div class="pb-12">
+                    <h3 class="font-medium text-accent text-center md:text-left md:text-lg mb-2">Place multiple orders in one go</h3>
+                    <p class="text-sm text-zinc-700 md:text-base">Create up to 10 entry orders and up to 10 take profits with a
+                        couple of clicks, saving your valuable time.</p>
+                </div>
+                <div class="rounded-lg border p-4 px-6 h-48">
+
+                </div>
+            </div>
+
+            <div class="rounded-lg border px-6 py-6 md:px-10 md:py-10 mb-4 grid grid-cols-1 lg:grid-cols-2 lg:gap-x-8">
+                <div class="pb-12">
+                    <h3 class="font-medium text-accent text-center md:text-left md:text-lg mb-2">No more spreadsheets or trading blind</h3>
+                    <p class="text-sm text-zinc-700 md:text-base">Save time. Every time you trade, your PnL is automatically updated. Know exactly when you are in profit and when to sell.</p>
+                </div>
+                <div class="rounded-lg border p-4 px-6 h-48">
+
+                </div>
+            </div>
+
+            <div class="rounded-lg border px-6 py-6 md:px-10 md:py-10 mb-4 grid grid-cols-1 lg:grid-cols-2 lg:gap-x-8">
+                <div class="pb-12">
+                    <h3 class="font-medium text-accent text-center md:text-left md:text-lg mb-2">Take emotion out of trading</h3>
+                    <p class="text-sm text-zinc-700 md:text-base">Setup complete positions with entry, exits and stop losses in advance and avoid getting emotionally attached to the position and enjoy your day.</p>
+                </div>
+                <div class="rounded-lg border p-4 px-6 h-48">
+
+                </div>
+            </div>
+
+            <div class="rounded-lg border px-6 py-6 md:px-10 md:py-10 mb-4 grid grid-cols-1 lg:grid-cols-2 lg:gap-x-8">
+                <div class="pb-12">
+                    <h3 class="font-medium text-accent text-center md:text-left md:text-lg mb-2">Never lose on a winning trade</h3>
+                    <p class="text-sm text-zinc-700 md:text-base">Protect your profits by automatically moving stop loss to break even price.</p>
+                </div>
+                <div class="rounded-lg border p-4 px-6 h-48">
+
+                </div>
+            </div>
+
+            <div class="rounded-lg border px-6 py-6 md:px-10 md:py-10 mb-12 grid grid-cols-1 lg:grid-cols-2 lg:gap-x-8">
+                <div class="pb-12">
+                    <h3 class="font-medium text-accent text-center md:text-left md:text-lg mb-2">Manage risks easily</h3>
+                    <p class="text-sm text-zinc-700 md:text-base">Risk to reward ratio is in your trading form. Risk-based position size is there as well. No more excuses to not follow your risk management rules.</p>
+                </div>
+                <div class="rounded-lg border p-4 px-6 h-48">
+
+                </div>
+            </div>
+
+            <div class="text-center">
+                <a href="{{ route('register') }}" wire:navigate
+                    class="rounded-xs bg-accent-hover px-6 py-3.5 text-sm inline-block font-medium text-white shadow-xs hover:bg-accent-hover">Start
+                    Free Trial Now <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </div>
+    <!-- Smart trading end -->
+
     <!-- Steps start -->
     <div class="mx-auto px-4 md:px-12 md:mb-24">
         <div class="mt-12 mb-6 md:mb-12 text-center">
@@ -639,7 +730,7 @@
             </div>
         </div>
         <div class="mt-6 text-center lg:hidden">
-            <a href="#"
+            <a href="{{ route('register') }}" wire:navigate
                 class="rounded-xs bg-accent px-6 py-3.5 text-sm inline-block font-medium text-white shadow-xs hover:bg-accent-hover">Open
                 account</a>
         </div>
@@ -682,7 +773,7 @@
                         <h3 class="text-accent font-semibold text-md mb-2">Forex</h3>
                         <p class="text-zinc-700 text-sm font-medium tracking-wide leading-6">Explore and trade major,
                             minor and exotic currency pairs with efficient spreads.</p>
-                        <a href="{{ route('register') }}" class="text-accent text-sm font-medium">Learn More</a>
+                        <a href="{{ route('register') }}" wire:navigate class="text-accent text-sm font-medium">Learn More</a>
                     </div>
                 </div>
                 <div class="lg:flex-1 flex items-start space-x-3 mb-6">
@@ -693,7 +784,7 @@
                         <h3 class="text-accent font-semibold text-md mb-2">Cryptocurrencies</h3>
                         <p class="text-zinc-700 text-sm font-medium tracking-wide leading-6">Trade CFDs on popular
                             digital currencies with leverage.</p>
-                        <a href="{{ route('register') }}" class="text-accent text-sm font-medium">Learn More</a>
+                        <a href="{{ route('register') }}" wire:navigate class="text-accent text-sm font-medium">Learn More</a>
                     </div>
                 </div>
                 <div class="lg:flex-1 flex items-start space-x-3">
@@ -704,7 +795,7 @@
                         <h3 class="text-accent font-semibold text-md mb-2">Stocks</h3>
                         <p class="text-zinc-700 text-sm font-medium tracking-wide leading-6">Trade CFDs on stocks of
                             leading companies and industry giants without actually owning them.</p>
-                        <a href="{{ route('register') }}" class="text-accent text-sm font-medium">Learn More</a>
+                        <a href="{{ route('register') }}" wire:navigate class="text-accent text-sm font-medium">Learn More</a>
                     </div>
                 </div>
             </div>
