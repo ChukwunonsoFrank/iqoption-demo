@@ -1,6 +1,7 @@
 <?php
 
 use App\Livewire\About;
+use App\Livewire\Dashboard\Index;
 use App\Livewire\Homepage;
 use App\Livewire\Privacy;
 use App\Livewire\Settings\Appearance;
@@ -14,9 +15,7 @@ Route::get('/about', About::class)->name('about');
 Route::get('/terms', Terms::class)->name('terms');
 Route::get('/privacy', Privacy::class)->name('privacy');
 
-Route::view('dashboard', 'dashboard')
-    ->middleware(['auth', 'verified'])
-    ->name('dashboard');
+Route::get('/dashboard', Index::class)->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware(['auth'])->group(function () {
     Route::redirect('settings', 'settings/profile');
