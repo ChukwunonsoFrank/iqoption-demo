@@ -22,7 +22,7 @@
 </head>
 
 <body class="bg-dashboard font-dashboard">
-    <main class="flex flex-col h-screen space-y-4">
+    <main class="flex flex-col h-svh space-y-4">
         <header class="pt-2 mb-4 px-2 flex-none lg:pb-2 lg:mb-0">
             <div class="md:flex md:items-center md:justify-between md:gap-x-20 lg:gap-x-[48rem]">
                 <div class="flex items-center justify-between space-x-8 mb-4 md:mb-0 md:order-2 md:flex-1">
@@ -37,14 +37,7 @@
                     <div class="flex-1 text-end">
                         <button type="button"
                             class="py-2 px-4 md:px-6 md:py-3 inline-flex items-center gap-x-2 text-sm md:text-base font-semibold rounded-sm bg-accent text-white focus:outline-hidden">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none" stroke="#FFFFFF" stroke-width="1" stroke-linecap="round"
-                                stroke-linejoin="round"
-                                class="lucide lucide-circle-dollar-sign-icon lucide-circle-dollar-sign">
-                                <circle cx="12" cy="12" r="10" />
-                                <path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8" />
-                                <path d="M12 18V6" />
-                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-credit-card-icon lucide-credit-card"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" x2="22" y1="10" y2="10"/></svg>
                             Deposit
                         </button>
                     </div>
