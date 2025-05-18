@@ -1,6 +1,7 @@
 <?php
 
 use App\Livewire\About;
+use App\Livewire\Dashboard\History;
 use App\Livewire\Dashboard\Index;
 use App\Livewire\Homepage;
 use App\Livewire\Privacy;
@@ -16,6 +17,7 @@ Route::get('/terms', Terms::class)->name('terms');
 Route::get('/privacy', Privacy::class)->name('privacy');
 
 Route::get('/dashboard', Index::class)->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard/history', History::class)->middleware(['auth', 'verified'])->name('dashboard.history');
 
 Route::middleware(['auth'])->group(function () {
     Route::redirect('settings', 'settings/profile');

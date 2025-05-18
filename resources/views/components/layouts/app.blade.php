@@ -37,7 +37,7 @@
                     <div class="flex-1 text-end">
                         <button type="button"
                             class="py-2 px-4 md:px-6 md:py-3 inline-flex items-center gap-x-2 text-sm md:text-base font-semibold rounded-sm bg-accent text-white focus:outline-hidden">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-credit-card-icon lucide-credit-card"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" x2="22" y1="10" y2="10"/></svg>
+                            <i class="fas fa-credit-card"></i>
                             Deposit
                         </button>
                     </div>
@@ -54,7 +54,7 @@
             </div>
         </header>
 
-        <div class="grow lg:mb-0">
+        <div class="grow lg:mb-0 overflow-scroll lg:overflow-hidden">
             {{ $slot }}
         </div>
 
