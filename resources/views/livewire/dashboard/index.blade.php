@@ -48,7 +48,7 @@
     <div class="hidden lg:flex h-full">
         <livewire:dashboard.partials.desktop-navbar />
 
-        <div class="h-full flex-1">
+        <div class="h-full flex-1 lg:pr-2">
             <div class="tradingview-widget-container mb-2">
                 <div class="tradingview-widget-container__widget" style="height:100%;width:100%"></div>
                 <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>

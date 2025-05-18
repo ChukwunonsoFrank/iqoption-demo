@@ -57,35 +57,38 @@
         <div class="grow lg:mb-0 overflow-scroll lg:overflow-hidden">
             {{ $slot }}
         </div>
-
         <nav id="mobile__navbar" class="flex-none lg:hidden px-4 w-full pb-4">
             <div class="flex justify-between items-center md:justify-around">
-                <div>
+                <a class="block" href="{{ route('dashboard') }}" wire:navigate>
                     <div>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                            fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"
-                            stroke-linejoin="round"
-                            class="lucide lucide-chart-candlestick-icon lucide-chart-candlestick">
-                            <path d="M9 5v4" />
-                            <rect width="4" height="6" x="7" y="9" rx="1" />
-                            <path d="M9 15v2" />
-                            <path d="M17 3v2" />
-                            <rect width="4" height="8" x="15" y="5" rx="1" />
-                            <path d="M17 13v3" />
-                            <path d="M3 3v16a2 2 0 0 0 2 2h16" />
-                        </svg>
+                        <div>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="#FFFFFF" stroke-width="{{ request()->is('dashboard') ? 2 : 1 }}" stroke-linecap="round"
+                                stroke-linejoin="round"
+                                class="lucide lucide-chart-candlestick-icon lucide-chart-candlestick">
+                                <path d="M9 5v4" />
+                                <rect width="4" height="6" x="7" y="9" rx="1" />
+                                <path d="M9 15v2" />
+                                <path d="M17 3v2" />
+                                <rect width="4" height="8" x="15" y="5" rx="1" />
+                                <path d="M17 13v3" />
+                                <path d="M3 3v16a2 2 0 0 0 2 2h16" />
+                            </svg>
+                        </div>
                     </div>
-                </div>
-                <div>
+                </a>
+                <a class="block" href="{{ route('dashboard.history') }}" wire:navigate>
                     <div>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                            fill="none" stroke="#D4D4D4" stroke-width="1" stroke-linecap="round"
-                            stroke-linejoin="round" class="lucide lucide-briefcase-icon lucide-briefcase">
-                            <path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
-                            <rect width="20" height="14" x="2" y="6" rx="2" />
-                        </svg>
+                        <div>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="#D4D4D4" stroke-width="{{ request()->is('dashboard/history') ? 2 : 1 }}" stroke-linecap="round"
+                                stroke-linejoin="round" class="lucide lucide-briefcase-icon lucide-briefcase">
+                                <path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+                                <rect width="20" height="14" x="2" y="6" rx="2" />
+                            </svg>
+                        </div>
                     </div>
-                </div>
+                </a>
                 <div>
                     <div>
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"

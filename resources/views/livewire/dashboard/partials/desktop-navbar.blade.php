@@ -3,7 +3,7 @@
         <a class="block" href="{{ route('dashboard') }}" wire:navigate>
             <div class="mb-1">
                 <svg class="block mx-auto" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                    fill="none" stroke="#FFFFFF" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+                    fill="none" stroke="#FFFFFF" stroke-width="{{ request()->is('dashboard') ? 2 : 1 }}" stroke-linecap="round" stroke-linejoin="round"
                     class="lucide lucide-chart-candlestick-icon lucide-chart-candlestick">
                     <path d="M9 5v4" />
                     <rect width="4" height="6" x="7" y="9" rx="1" />
@@ -15,7 +15,7 @@
                 </svg>
             </div>
             <div class="text-center">
-                <p class="text-[10px] text-zinc-300 font-medium">Chart</p>
+                <p @class(['font-bold' => request()->is('dashboard'), 'text-[10px]' => true, 'text-zinc-300' => true]) class="font-normal">Chart</p>
             </div>
         </a>
     </div>
@@ -24,14 +24,14 @@
         <a class="block" href="{{ route('dashboard.history') }}" wire:navigate>
             <div class="mb-1">
                 <svg class="block mx-auto" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                    fill="none" stroke="#D4D4D4" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+                    fill="none" stroke="#D4D4D4" stroke-width="{{ request()->is('dashboard/history') ? 2 : 1 }}" stroke-linecap="round" stroke-linejoin="round"
                     class="lucide lucide-briefcase-icon lucide-briefcase">
                     <path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
                     <rect width="20" height="14" x="2" y="6" rx="2" />
                 </svg>
             </div>
             <div class="text-center">
-                <p class="text-[10px] text-zinc-300 font-medium">History</p>
+                <p @class(['font-bold' => request()->is('dashboard/history'), 'text-[10px]' => true, 'text-zinc-300' => true]) class="font-normal">History</p>
             </div>
         </a>
     </div>
