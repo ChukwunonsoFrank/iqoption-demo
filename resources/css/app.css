@@ -16,7 +16,7 @@
 @theme {
     --font-sans: 'Montserrat', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
     --font-condensed: "Bebas Neue", sans-serif;
-    --font-dashboard: "Roboto", sans-serif;
+    --font-dashboard: "Inter", sans-serif;
 
     --color-zinc-50: #fafafa;
     --color-zinc-100: #f5f5f5;
