@@ -23,7 +23,7 @@
 
 <body class="bg-dashboard font-dashboard">
     <main class="flex flex-col h-svh space-y-4">
-        <header class="pt-2 mb-4 px-2 flex-none lg:pb-2 lg:mb-0">
+        <header class="pt-2 mb-4 px-2 flex-none lg:pb-2 lg:mb-0 lg:border-b-[0.1px] lg:border-gray-700">
             <div class="md:flex md:items-center md:justify-between md:gap-x-20 lg:gap-x-[48rem]">
                 <div class="flex items-center justify-between space-x-8 mb-4 md:mb-0 md:order-2 md:flex-1">
                     <div class="flex-1">
@@ -57,13 +57,14 @@
         <div class="grow lg:mb-0 overflow-scroll lg:overflow-hidden">
             {{ $slot }}
         </div>
+
         <nav id="mobile__navbar" class="flex-none lg:hidden px-4 w-full pb-4">
             <div class="flex justify-between items-center md:justify-around">
                 <a class="block" href="{{ route('dashboard') }}" wire:navigate>
                     <div>
                         <div>
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none" stroke="#FFFFFF" stroke-width="{{ request()->is('dashboard') ? 2 : 1 }}" stroke-linecap="round"
+                                fill="none" stroke="#D4D4D4" stroke-width="{{ request()->is('dashboard') ? 2 : 1 }}" stroke-linecap="round"
                                 stroke-linejoin="round"
                                 class="lucide lucide-chart-candlestick-icon lucide-chart-candlestick">
                                 <path d="M9 5v4" />
@@ -112,16 +113,18 @@
                         </svg>
                     </div>
                 </div>
-                <div>
+                <a class="block" href="{{ route('dashboard.account') }}" wire:navigate>
                     <div>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                            fill="none" stroke="#D4D4D4" stroke-width="1" stroke-linecap="round"
-                            stroke-linejoin="round" class="lucide lucide-user-icon lucide-user">
-                            <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
-                            <circle cx="12" cy="7" r="4" />
-                        </svg>
+                        <div>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="#D4D4D4" stroke-width="{{ request()->is('dashboard/account') ? 2 : 1 }}" stroke-linecap="round"
+                                stroke-linejoin="round" class="lucide lucide-user-icon lucide-user">
+                                <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+                                <circle cx="12" cy="7" r="4" />
+                            </svg>
+                        </div>
                     </div>
-                </div>
+                </a>
             </div>
         </nav>
     </main>
