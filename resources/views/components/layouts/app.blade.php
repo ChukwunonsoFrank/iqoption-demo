@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
         rel="stylesheet">
     <script src="https://kit.fontawesome.com/7016607b5a.js" crossorigin="anonymous"></script>
     @vite('resources/css/app.css')
@@ -42,7 +42,8 @@
                         </button>
                     </div>
                 </div>
-                <div class="bg-asset-indicator rounded-sm flex space-x-2 p-2 items-center md:order-1 md:flex-none md:w-1/3 lg:w-1/6">
+                <div
+                    class="bg-asset-indicator rounded-sm flex space-x-2 p-2 items-center md:order-1 md:flex-none md:w-1/3 lg:w-1/6">
                     <div>
                         <img src="https://olympmatix.com/icons/assets/BITCOIN.svg" alt="">
                     </div>
@@ -64,8 +65,8 @@
                     <div>
                         <div>
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none" stroke="#D4D4D4" stroke-width="{{ request()->is('dashboard') ? 2 : 1 }}" stroke-linecap="round"
-                                stroke-linejoin="round"
+                                fill="none" stroke="#D4D4D4" stroke-width="{{ request()->is('dashboard') ? 2 : 1 }}"
+                                stroke-linecap="round" stroke-linejoin="round"
                                 class="lucide lucide-chart-candlestick-icon lucide-chart-candlestick">
                                 <path d="M9 5v4" />
                                 <rect width="4" height="6" x="7" y="9" rx="1" />
@@ -82,7 +83,8 @@
                     <div>
                         <div>
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none" stroke="#D4D4D4" stroke-width="{{ request()->is('dashboard/history') ? 2 : 1 }}" stroke-linecap="round"
+                                fill="none" stroke="#D4D4D4"
+                                stroke-width="{{ request()->is('dashboard/history') ? 2 : 1 }}" stroke-linecap="round"
                                 stroke-linejoin="round" class="lucide lucide-briefcase-icon lucide-briefcase">
                                 <path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
                                 <rect width="20" height="14" x="2" y="6" rx="2" />
@@ -117,7 +119,8 @@
                     <div>
                         <div>
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none" stroke="#D4D4D4" stroke-width="{{ request()->is('dashboard/account') ? 2 : 1 }}" stroke-linecap="round"
+                                fill="none" stroke="#D4D4D4"
+                                stroke-width="{{ request()->is('dashboard/account') ? 2 : 1 }}" stroke-linecap="round"
                                 stroke-linejoin="round" class="lucide lucide-user-icon lucide-user">
                                 <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
                                 <circle cx="12" cy="7" r="4" />

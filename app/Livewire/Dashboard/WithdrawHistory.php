@@ -7,10 +7,10 @@ use Livewire\Component;
 
 #[Layout('components.layouts.app')] 
 
-class Account extends Component
+class WithdrawHistory extends Component
 {
     public function render()
     {
-        return view('livewire.dashboard.account');
+        return view('livewire.dashboard.withdraw-history');
     }
 }

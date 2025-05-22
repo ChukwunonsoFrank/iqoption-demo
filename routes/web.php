@@ -2,9 +2,11 @@
 
 use App\Livewire\About;
 use App\Livewire\Dashboard\Account;
+use App\Livewire\Dashboard\DepositHistory;
 use App\Livewire\Dashboard\History;
 use App\Livewire\Dashboard\Index;
 use App\Livewire\Dashboard\Robot;
+use App\Livewire\Dashboard\WithdrawHistory;
 use App\Livewire\Homepage;
 use App\Livewire\Privacy;
 use App\Livewire\Settings\Appearance;
@@ -22,6 +24,8 @@ Route::get('/dashboard', Index::class)->middleware(['auth', 'verified'])->name('
 Route::get('/dashboard/history', History::class)->middleware(['auth', 'verified'])->name('dashboard.history');
 Route::get('/dashboard/robot', Robot::class)->middleware(['auth', 'verified'])->name('dashboard.robot');
 Route::get('/dashboard/account', Account::class)->middleware(['auth', 'verified'])->name('dashboard.account');
+Route::get('/dashboard/deposithistory', DepositHistory::class)->middleware(['auth', 'verified'])->name('dashboard.deposithistory');
+Route::get('/dashboard/withdrawhistory', WithdrawHistory::class)->middleware(['auth', 'verified'])->name('dashboard.withdrawhistory');
 
 Route::middleware(['auth'])->group(function () {
     Route::redirect('settings', 'settings/profile');
