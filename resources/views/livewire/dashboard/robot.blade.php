@@ -1,7 +1,7 @@
-<div x-data="robotPageComponent" class="px-2 lg:px-0 h-full">
+<div x-data="robotPageComponent" class="px-4 lg:px-0 h-full">
     <div class="lg:flex lg:h-full">
         <livewire:dashboard.partials.desktop-navbar />
-        <div class="lg:h-full lg:flex-1 lg:pl-6 lg:pr-[48rem]">
+        <div class="lg:h-full lg:flex-1 lg:px-80 lg:pt-6">
             <div class="mb-3 sticky top-0 bg-dashboard pb-2 lg:pt-4">
                 <h1 class="text-white text-lg md:text-xl lg:text-2xl font-semibold">Robot Settings</h1>
             </div>
@@ -93,10 +93,12 @@
                 </div>
 
                 <div>
-                    <button type="button"
-                        class="py-3 px-4 w-full md:px-6 md:py-3 text-center gap-x-2 text-sm md:text-base font-semibold rounded-sm bg-accent text-white focus:outline-hidden">
-                        Start robot
-                    </button>
+                    <a href="{{ route('dashboard.robot.traderoom') }}" wire:navigate>
+                        <button type="button"
+                            class="py-3 cursor-pointer px-4 w-full md:px-6 md:py-3 text-center gap-x-2 text-sm md:text-base font-semibold rounded-sm bg-accent text-white focus:outline-hidden">
+                            Start robot
+                        </button>
+                    </a>
                 </div>
 
                 <div x-cloak x-show="isStrategyListOverlayOpen"

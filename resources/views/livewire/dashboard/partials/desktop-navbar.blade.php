@@ -46,22 +46,28 @@
         </a>
     </div>
 
-    <div class="w-full py-3 cursor-pointer hover:bg-navbar focus:bg-navbar">
-        <div class="mb-1">
-            <svg class="block mx-auto" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                viewBox="0 0 24 24" fill="none" stroke="#D4D4D4" stroke-width="1" stroke-linecap="round"
-                stroke-linejoin="round" class="lucide lucide-bot-icon lucide-bot">
-                <path d="M12 8V4H8" />
-                <rect width="16" height="12" x="4" y="8" rx="2" />
-                <path d="M2 14h2" />
-                <path d="M20 14h2" />
-                <path d="M15 13v2" />
-                <path d="M9 13v2" />
-            </svg>
-        </div>
-        <div class="text-center">
-            <p class="text-[10px] text-zinc-300 font-medium">Robot</p>
-        </div>
+    <div @class(['bg-navbar' => request()->is('dashboard/robot') || request()->is('dashboard/robot/traderoom'), 'w-full' => true, 'py-3' => true, 'cursor-pointer' => true, 'hover:bg-navbar' => true])>
+        <a class="block" href="{{ route('dashboard.robot') }}" wire:navigate>
+            <div class="mb-1">
+                <svg class="block mx-auto" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                    viewBox="0 0 24 24" fill="none" stroke="#D4D4D4" stroke-width="{{ request()->is('dashboard/robot') || request()->is('dashboard/robot/traderoom') ? 2 : 1 }}" stroke-linecap="round"
+                    stroke-linejoin="round" class="lucide lucide-bot-icon lucide-bot">
+                    <path d="M12 8V4H8" />
+                    <rect width="16" height="12" x="4" y="8" rx="2" />
+                    <path d="M2 14h2" />
+                    <path d="M20 14h2" />
+                    <path d="M15 13v2" />
+                    <path d="M9 13v2" />
+                </svg>
+            </div>
+            <div class="text-center">
+                <p @class([
+                'font-bold' => request()->is('dashboard/robot') || request()->is('dashboard/robot/traderoom'),
+                'text-[10px]' => true,
+                'text-zinc-300' => true,
+            ]) class="font-normal">Robot</p>
+            </div>
+        </a>
     </div>
 
     <div class="w-full py-3 cursor-pointer hover:bg-navbar focus:bg-navbar">

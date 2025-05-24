@@ -23,7 +23,7 @@
 
 <body class="bg-dashboard font-dashboard">
     <main class="flex flex-col h-svh space-y-4">
-        <header class="pt-2 mb-4 px-2 flex-none lg:pb-2 lg:mb-0 lg:border-b-[0.1px] lg:border-gray-700">
+        <header class="pt-4 mb-4 px-4 flex-none lg:pb-4 lg:mb-0 lg:border-b-[0.1px] lg:border-gray-700">
             <div class="md:flex md:items-center md:justify-between md:gap-x-20 lg:gap-x-[48rem]">
                 <div class="flex items-center justify-between space-x-8 mb-4 md:mb-0 md:order-2 md:flex-1">
                     <div class="flex-1">
@@ -92,20 +92,22 @@
                         </div>
                     </div>
                 </a>
-                <div>
+                <a class="block" href="{{ route('dashboard.robot') }}" wire:navigate>
                     <div>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                            fill="none" stroke="#D4D4D4" stroke-width="1" stroke-linecap="round"
-                            stroke-linejoin="round" class="lucide lucide-bot-icon lucide-bot">
-                            <path d="M12 8V4H8" />
-                            <rect width="16" height="12" x="4" y="8" rx="2" />
-                            <path d="M2 14h2" />
-                            <path d="M20 14h2" />
-                            <path d="M15 13v2" />
-                            <path d="M9 13v2" />
-                        </svg>
+                        <div>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="#D4D4D4" stroke-width="{{ request()->is('dashboard/robot') ? 2 : 1 }}" stroke-linecap="round"
+                                stroke-linejoin="round" class="lucide lucide-bot-icon lucide-bot">
+                                <path d="M12 8V4H8" />
+                                <rect width="16" height="12" x="4" y="8" rx="2" />
+                                <path d="M2 14h2" />
+                                <path d="M20 14h2" />
+                                <path d="M15 13v2" />
+                                <path d="M9 13v2" />
+                            </svg>
+                        </div>
                     </div>
-                </div>
+                </a>
                 <div>
                     <div>
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"

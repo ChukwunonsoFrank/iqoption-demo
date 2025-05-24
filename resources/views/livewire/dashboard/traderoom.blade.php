@@ -1,7 +1,7 @@
-<div class="px-2 lg:px-0 h-full">
+<div class="px-4 lg:px-0 h-full">
     <div class="lg:flex lg:h-full">
         <livewire:dashboard.partials.desktop-navbar />
-        <div class="lg:h-full lg:flex-1 lg:pl-6 lg:pr-[32rem]">
+        <div class="lg:h-full lg:flex-1 lg:px-80 lg:pt-6">
             <div class="mb-3 sticky top-0 bg-dashboard pb-2 lg:pt-4">
                 <h1 class="text-white text-lg md:text-xl lg:text-2xl font-semibold">Active Robot</h1>
             </div>
@@ -15,7 +15,7 @@
                     <div class="flex items-center space-x-3 border border-gray-700 rounded-lg p-4 mb-4">
                         <div class="flex-1">
                             <div class="flex items-center justify-center bg-navbar w-fit">
-                                <p class="text-white font-normal text-2xl">15:23</p>
+                                <p class="text-white font-normal text-2xl">00:00</p>
                             </div>
                         </div>
                         <div class="flex-none w-fit flex flex-col">

@@ -1,7 +1,7 @@
-<div class="px-2 lg:px-0 h-full">
+<div class="px-4 lg:px-0 h-full">
     <div class="lg:flex lg:h-full">
         <livewire:dashboard.partials.desktop-navbar />
-        <div class="lg:h-full lg:flex-1 md:px-16 lg:pl-6 lg:pr-96">
+        <div class="lg:h-full lg:flex-1 lg:px-80 lg:pt-6">
             <div class="mb-3 sticky top-0 bg-dashboard pb-2 lg:pt-4">
                 <h1 class="text-white text-lg md:text-xl lg:text-2xl font-semibold">Account</h1>
             </div>
