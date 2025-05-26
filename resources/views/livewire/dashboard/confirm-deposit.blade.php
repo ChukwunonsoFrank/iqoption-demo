@@ -2,7 +2,7 @@
     <div class="lg:flex lg:h-full">
         <livewire:dashboard.partials.desktop-navbar />
         <div class="lg:h-full lg:flex-1 lg:px-80 lg:pt-6">
-            <div class="mb-3 sticky top-0 bg-dashboard pb-2 lg:pt-4">
+            <div class="mb-3 sticky top-0 bg-dashboard z-10 pb-2 lg:pt-4">
                 <h1 class="text-white text-lg md:text-xl lg:text-2xl font-semibold">Make a deposit</h1>
             </div>
             <div class="text-sm text-white bg-navbar rounded-lg p-4 border-[0.1px] border-gray-700 mb-5"
