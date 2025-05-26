@@ -2,6 +2,8 @@
 
 use App\Livewire\About;
 use App\Livewire\Dashboard\Account;
+use App\Livewire\Dashboard\ConfirmDeposit;
+use App\Livewire\Dashboard\Deposit;
 use App\Livewire\Dashboard\DepositHistory;
 use App\Livewire\Dashboard\History;
 use App\Livewire\Dashboard\Index;
@@ -24,6 +26,8 @@ Route::get('/privacy', Privacy::class)->name('privacy');
 Route::get('/dashboard', Index::class)->middleware(['auth', 'verified'])->name('dashboard');
 Route::get('/dashboard/history', History::class)->middleware(['auth', 'verified'])->name('dashboard.history');
 Route::get('/dashboard/robot', Robot::class)->middleware(['auth', 'verified'])->name('dashboard.robot');
+Route::get('/dashboard/deposit', Deposit::class)->middleware(['auth', 'verified'])->name('dashboard.deposit');
+Route::get('/dashboard/deposit/confirm', ConfirmDeposit::class)->middleware(['auth', 'verified'])->name('dashboard.deposit.confirm');
 Route::get('/dashboard/robot/traderoom', Traderoom::class)->middleware(['auth', 'verified'])->name('dashboard.robot.traderoom');
 Route::get('/dashboard/account', Account::class)->middleware(['auth', 'verified'])->name('dashboard.account');
 Route::get('/dashboard/deposithistory', DepositHistory::class)->middleware(['auth', 'verified'])->name('dashboard.deposithistory');

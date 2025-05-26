@@ -11,12 +11,25 @@
     <link
         href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
         rel="stylesheet">
+
     <script src="https://kit.fontawesome.com/7016607b5a.js" crossorigin="anonymous"></script>
+    <script src="{{ asset('assets/js/qrcode.min.js') }}"></script>
+    <script src="{{ asset('assets/js/clipboard.min.js') }}"></script>
+
     @vite('resources/css/app.css')
     @vite('resources/js/app.js')
+
     <style>
         [x-cloak] {
             display: none !important;
+        }
+
+        #qrcode canvas {
+            width: 100% !important;
+        }
+
+        #qrcode img {
+            width: 100% !important;
         }
     </style>
 </head>
@@ -35,11 +48,13 @@
                         <p class="text-white font-semibold text-xs md:text-sm">$2,309.98</p>
                     </div>
                     <div class="flex-1 text-end">
-                        <button type="button"
-                            class="py-2 px-4 md:px-6 md:py-3 inline-flex items-center gap-x-2 text-sm md:text-base font-semibold rounded-sm bg-accent text-white focus:outline-hidden">
-                            <i class="fas fa-credit-card"></i>
-                            Deposit
-                        </button>
+                        <a href="{{ route('dashboard.deposit') }}" wire:navigate>
+                            <button type="button"
+                                class="py-2 px-4 md:px-6 md:py-3 inline-flex items-center gap-x-2 text-sm md:text-base font-semibold rounded-sm bg-accent text-white focus:outline-hidden">
+                                <i class="fas fa-credit-card"></i>
+                                Deposit
+                            </button>
+                        </a>
                     </div>
                 </div>
                 <div
@@ -96,7 +111,8 @@
                     <div>
                         <div>
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none" stroke="#D4D4D4" stroke-width="{{ request()->is('dashboard/robot') ? 2 : 1 }}" stroke-linecap="round"
+                                fill="none" stroke="#D4D4D4"
+                                stroke-width="{{ request()->is('dashboard/robot') ? 2 : 1 }}" stroke-linecap="round"
                                 stroke-linejoin="round" class="lucide lucide-bot-icon lucide-bot">
                                 <path d="M12 8V4H8" />
                                 <rect width="16" height="12" x="4" y="8" rx="2" />
@@ -122,8 +138,9 @@
                         <div>
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 fill="none" stroke="#D4D4D4"
-                                stroke-width="{{ request()->is('dashboard/account') ? 2 : 1 }}" stroke-linecap="round"
-                                stroke-linejoin="round" class="lucide lucide-user-icon lucide-user">
+                                stroke-width="{{ request()->is('dashboard/account') ? 2 : 1 }}"
+                                stroke-linecap="round" stroke-linejoin="round"
+                                class="lucide lucide-user-icon lucide-user">
                                 <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
                                 <circle cx="12" cy="7" r="4" />
                             </svg>
@@ -133,13 +150,7 @@
             </div>
         </nav>
     </main>
+
 </body>
 
 </html>
-
-
-{{-- <x-layouts.app.sidebar :title="$title ?? null">
-    <flux:main>
-        {{ $slot }}
-    </flux:main>
-</x-layouts.app.sidebar> --}}

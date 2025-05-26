@@ -47,15 +47,15 @@
                     <div class="relative">
                         <div x-cloak x-show="isTradingAccountSelectOpen"
                             @click.outside="isTradingAccountSelectOpen = false"
-                            class="border-gray-700 bg-navbar absolute border rounded-lg w-full h-24 overflow-scroll z-10 p-2 mt-1">
+                            class="border-gray-700 bg-navbar absolute border rounded-lg w-full overflow-scroll z-10 p-2 mt-1">
                             <div x-on:click="isTradingAccountSelectOpen = false"
-                                class="hover:bg-[#38394f] cursor-pointer flex items-center space-x-3 px-4 py-2 rounded-md text-[#FFFFFF]">
+                                class="hover:bg-gray-600 cursor-pointer flex items-center space-x-3 px-4 py-2 rounded-md text-[#FFFFFF]">
                                 <div class="flex-1">
                                     <p class="text-sm">Demo Account - $400</p>
                                 </div>
                             </div>
                             <div x-on:click="isTradingAccountSelectOpen = false"
-                                class="hover:bg-[#38394f] cursor-pointer flex items-center space-x-3 px-4 py-2 rounded-md text-[#FFFFFF]">
+                                class="hover:bg-gray-600 cursor-pointer flex items-center space-x-3 px-4 py-2 rounded-md text-[#FFFFFF]">
                                 <div class="flex-1">
                                     <p class="text-sm">Live Account - $400</p>
                                 </div>

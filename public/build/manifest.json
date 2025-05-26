@@ -1,0 +1,25 @@
+{
+  "public/assets/images/about-us-hero-background.jpg": {
+    "file": "assets/about-us-hero-background-t0ZnfXMR.jpg",
+    "src": "public/assets/images/about-us-hero-background.jpg"
+  },
+  "public/assets/images/about-us-trades-per-day-background.jpg": {
+    "file": "assets/about-us-trades-per-day-background--BWyLZDa.jpg",
+    "src": "public/assets/images/about-us-trades-per-day-background.jpg"
+  },
+  "public/assets/images/banner-background.jpg": {
+    "file": "assets/banner-background-9-2Xs4XT.jpg",
+    "src": "public/assets/images/banner-background.jpg"
+  },
+  "resources/css/app.css": {
+    "file": "assets/app-DNVXxuL_.css",
+    "src": "resources/css/app.css",
+    "isEntry": true
+  },
+  "resources/js/app.js": {
+    "file": "assets/app-DVRx0oem.js",
+    "name": "app",
+    "src": "resources/js/app.js",
+    "isEntry": true
+  }
+}
