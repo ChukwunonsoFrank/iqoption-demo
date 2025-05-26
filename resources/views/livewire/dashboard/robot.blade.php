@@ -141,7 +141,7 @@
                     </div>
                 </div>
 
-                <div class="text-sm text-white bg-navbar rounded-lg p-4 border-[0.1px] border-gray-700 mb-5"
+                {{-- <div class="text-sm text-white bg-navbar rounded-lg p-4 border-[0.1px] border-gray-700 mb-5"
                     role="alert" tabindex="-1" aria-labelledby="hs-with-description-label">
                     <div class="flex">
                         <div class="shrink-0">
@@ -156,7 +156,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
 
                 <div>
                     <a href="{{ route('dashboard.robot.traderoom') }}">
