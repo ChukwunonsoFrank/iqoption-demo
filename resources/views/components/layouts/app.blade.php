@@ -48,7 +48,7 @@
                         <p class="text-white font-semibold text-xs md:text-sm">$2,309.98</p>
                     </div>
                     <div class="flex-1 text-end">
-                        <a href="{{ route('dashboard.deposit') }}" wire:navigate>
+                        <a href="{{ route('dashboard.deposit') }}">
                             <button type="button"
                                 class="py-2 px-4 md:px-6 md:py-3 inline-flex items-center gap-x-2 text-sm md:text-base font-semibold rounded-sm bg-accent text-white focus:outline-hidden">
                                 <i class="fas fa-credit-card"></i>
@@ -76,7 +76,7 @@
 
         <nav id="mobile__navbar" class="flex-none lg:hidden px-4 w-full pb-4">
             <div class="flex justify-between items-center md:justify-around">
-                <a class="block" href="{{ route('dashboard') }}" wire:navigate>
+                <a class="block" href="{{ route('dashboard') }}">
                     <div>
                         <div>
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -94,7 +94,7 @@
                         </div>
                     </div>
                 </a>
-                <a class="block" href="{{ route('dashboard.history') }}" wire:navigate>
+                <a class="block" href="{{ route('dashboard.history') }}">
                     <div>
                         <div>
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -107,7 +107,7 @@
                         </div>
                     </div>
                 </a>
-                <a class="block" href="{{ route('dashboard.robot') }}" wire:navigate>
+                <a class="block" href="{{ route('dashboard.robot') }}">
                     <div>
                         <div>
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -133,7 +133,7 @@
                         </svg>
                     </div>
                 </div>
-                <a class="block" href="{{ route('dashboard.account') }}" wire:navigate>
+                <a class="block" href="{{ route('dashboard.account') }}">
                     <div>
                         <div>
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"

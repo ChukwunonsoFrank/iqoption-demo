@@ -1,4 +1,4 @@
-<div x-data="depositPageComponent" class="px-4 lg:px-0 h-full">
+<div x-data class="px-4 lg:px-0 h-full">
     <div class="lg:flex lg:h-full">
         <livewire:dashboard.partials.desktop-navbar />
         <div class="lg:h-full lg:flex-1 lg:px-80 lg:pt-6">
@@ -22,7 +22,7 @@
                 <div class="mb-5">
                     <label for="input-label" class="block text-xs font-medium mb-2 text-zinc-300">Payment method</label>
                     <div class="flex-1 md:flex-none relative">
-                        <div x-on:click="toggleTradingAccountSelect()"
+                        <div x-on:click="$store.depositPage.togglePaymentMethodSelect()"
                             class="flex items-center space-x-3 py-2.5 sm:py-3 px-4 border border-gray-700 bg-navbar rounded-lg text-[#FFFFFF]">
                             <div class="flex-1">
                                 <p class="text-sm">Bitcoin</p>
@@ -45,16 +45,16 @@
                     </div>
 
                     <div class="relative">
-                        <div x-cloak x-show="isTradingAccountSelectOpen"
-                            @click.outside="isTradingAccountSelectOpen = false"
+                        <div x-cloak x-show="$store.depositPage.isPaymentMethodSelectOpen"
+                            @click.outside="$store.depositPage.isPaymentMethodSelectOpen = false"
                             class="border-gray-700 bg-navbar absolute border rounded-lg w-full overflow-scroll z-10 p-2 mt-1">
-                            <div x-on:click="isTradingAccountSelectOpen = false"
+                            <div x-on:click="$store.depositPage.isPaymentMethodSelectOpen = false"
                                 class="hover:bg-gray-600 cursor-pointer flex items-center space-x-3 px-4 py-2 rounded-md text-[#FFFFFF]">
                                 <div class="flex-1">
                                     <p class="text-sm">Bitcoin</p>
                                 </div>
                             </div>
-                            <div x-on:click="isTradingAccountSelectOpen = false"
+                            <div x-on:click="$store.depositPage.isPaymentMethodSelectOpen = false"
                                 class="hover:bg-gray-600 cursor-pointer flex items-center space-x-3 px-4 py-2 rounded-md text-[#FFFFFF]">
                                 <div class="flex-1">
                                     <p class="text-sm">Ethereum</p>
@@ -65,7 +65,7 @@
                 </div>
 
                 <div>
-                    <a href="{{ route('dashboard.deposit.confirm') }}" wire:navigate>
+                    <a href="{{ route('dashboard.deposit.confirm') }}">
                         <button type="button"
                             class="py-3 cursor-pointer px-4 w-full md:px-6 md:py-3 text-center gap-x-2 text-sm md:text-base font-semibold rounded-lg bg-accent text-white focus:outline-hidden">
                             Proceed
@@ -79,16 +79,12 @@
 
 <script>
     document.addEventListener('alpine:init', () => {
-        Alpine.data('depositPageComponent', () => ({
-            isStrategyListOverlayOpen: false,
+        Alpine.store('depositPage', {
+            isPaymentMethodSelectOpen: false,
 
-            toggleStrategyListOverlay() {
-                this.isStrategyListOverlayOpen = !this.isStrategyListOverlayOpen
-            },
-
-            toggleTradingAccountSelect() {
-                this.isTradingAccountSelectOpen = !this.isTradingAccountSelectOpen
+            togglePaymentMethodSelect() {
+                this.isPaymentMethodSelectOpen = !this.isPaymentMethodSelectOpen
             }
-        }))
+        })
     })
 </script>

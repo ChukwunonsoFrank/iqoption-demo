@@ -1,4 +1,4 @@
-<div x-data="robotPageComponent" class="px-4 lg:px-0 h-full">
+<div x-data class="px-4 lg:px-0 h-full">
     <div class="lg:flex lg:h-full">
         <livewire:dashboard.partials.desktop-navbar />
         <div class="lg:h-full lg:flex-1 lg:px-80 lg:pt-6">
@@ -22,7 +22,7 @@
                 <div class="mb-4">
                     <label for="input-label" class="block text-xs font-medium mb-2 text-zinc-300">Account</label>
                     <div class="flex-1 md:flex-none relative">
-                        <div x-on:click="toggleTradingAccountSelect()"
+                        <div x-on:click="$store.robotPage.toggleTradingAccountSelect()"
                             class="flex items-center space-x-3 py-2.5 sm:py-3 px-4 border border-gray-700 bg-navbar rounded-lg text-[#FFFFFF]">
                             <div class="flex-1">
                                 <p class="text-sm">Demo Account</p>
@@ -45,16 +45,16 @@
                     </div>
 
                     <div class="relative">
-                        <div x-cloak x-show="isTradingAccountSelectOpen"
-                            @click.outside="isTradingAccountSelectOpen = false"
+                        <div x-cloak x-show="$store.robotPage.isTradingAccountSelectOpen"
+                            @click.outside="$store.robotPage.isTradingAccountSelectOpen = false"
                             class="border-gray-700 bg-navbar absolute border rounded-lg w-full overflow-scroll z-10 p-2 mt-1">
-                            <div x-on:click="isTradingAccountSelectOpen = false"
+                            <div x-on:click="$store.robotPage.isTradingAccountSelectOpen = false"
                                 class="hover:bg-gray-600 cursor-pointer flex items-center space-x-3 px-4 py-2 rounded-md text-[#FFFFFF]">
                                 <div class="flex-1">
                                     <p class="text-sm">Demo Account - $400</p>
                                 </div>
                             </div>
-                            <div x-on:click="isTradingAccountSelectOpen = false"
+                            <div x-on:click="$store.robotPage.isTradingAccountSelectOpen = false"
                                 class="hover:bg-gray-600 cursor-pointer flex items-center space-x-3 px-4 py-2 rounded-md text-[#FFFFFF]">
                                 <div class="flex-1">
                                     <p class="text-sm">Live Account - $400</p>
@@ -90,7 +90,7 @@
                 <div class="mb-5">
                     <label for="input-label" class="block text-xs font-medium mb-2 text-zinc-300">Strategy</label>
                     <div class="flex-1 md:flex-none relative">
-                        <div x-on:click="toggleStrategyListOverlay()"
+                        <div x-on:click="$store.robotPage.toggleStrategyListOverlay()"
                             class="flex items-start space-x-2 border border-gray-700 px-4 py-4 bg-navbar rounded-md text-[#FFFFFF] cursor-pointer">
                             <div class="flex-none w-12">
                                 <img class="w-24" src="https://olympmatix.com/icons/assets/BITCOIN.svg"
@@ -159,7 +159,7 @@
                 </div>
 
                 <div>
-                    <a href="{{ route('dashboard.robot.traderoom') }}" wire:navigate>
+                    <a href="{{ route('dashboard.robot.traderoom') }}">
                         <button type="button"
                             class="py-3 cursor-pointer px-4 w-full md:px-6 md:py-3 text-center gap-x-2 text-sm md:text-base font-semibold rounded-sm bg-accent text-white focus:outline-hidden">
                             Start robot
@@ -167,14 +167,14 @@
                     </a>
                 </div>
 
-                <div x-cloak x-show="isStrategyListOverlayOpen"
+                <div x-cloak x-show="$store.robotPage.isStrategyListOverlayOpen"
                     class="fixed top-0 left-0 h-svh w-full px-4 lg:px-96 pt-6 bg-dashboard">
                     <div class="flex items-center mb-6">
                         <div class="flex-1">
                             <h2 class="text-white font-semibold md:text-xl lg:text-2xl">Strategy</h2>
                         </div>
                         <div class="flex-1 text-end">
-                            <svg x-on:click="toggleStrategyListOverlay()" class="inline cursor-pointer"
+                            <svg x-on:click="$store.robotPage.toggleStrategyListOverlay()" class="inline cursor-pointer"
                                 xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"
                                 stroke-linejoin="round" class="lucide lucide-x-icon lucide-x">
@@ -357,8 +357,10 @@
 
 <script>
     document.addEventListener('alpine:init', () => {
-        Alpine.data('robotPageComponent', () => ({
+        Alpine.store('robotPage', {
             isStrategyListOverlayOpen: false,
+
+            isTradingAccountSelectOpen: false,
 
             toggleStrategyListOverlay() {
                 this.isStrategyListOverlayOpen = !this.isStrategyListOverlayOpen
@@ -367,6 +369,6 @@
             toggleTradingAccountSelect() {
                 this.isTradingAccountSelectOpen = !this.isTradingAccountSelectOpen
             }
-        }))
+        })
     })
 </script>

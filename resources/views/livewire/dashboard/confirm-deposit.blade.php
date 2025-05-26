@@ -1,4 +1,4 @@
-<div x-data="confirmDepositPageComponent" x-init="generateQRCode()" class="px-4 lg:px-0 h-full">
+<div x-data class="px-4 lg:px-0 h-full">
     <div class="lg:flex lg:h-full">
         <livewire:dashboard.partials.desktop-navbar />
         <div class="lg:h-full lg:flex-1 lg:px-80 lg:pt-6">
@@ -57,7 +57,7 @@
                 </div>
 
                 <div class="md:px-52">
-                    <a href="{{ route('dashboard.deposit.confirm') }}" wire:navigate>
+                    <a href="{{ route('dashboard.deposit.confirm') }}">
                         <button type="button"
                             class="py-3 cursor-pointer px-4 w-full md:px-6 md:py-3 text-center gap-x-2 text-sm md:text-base font-semibold rounded-lg bg-accent text-white focus:outline-hidden">
                             Confirm payment
@@ -71,11 +71,14 @@
 
 <script>
     document.addEventListener('alpine:init', () => {
-        Alpine.data('confirmDepositPageComponent', () => ({
+        Alpine.store('confirmDepositPage', {
+            init() {
+                this.generateQRCode()
+            },
             generateQRCode() {
                 var qrcode = new QRCode("qrcode");
                 qrcode.makeCode('test-wallet-address');
             }
-        }))
+        })
     })
 </script>

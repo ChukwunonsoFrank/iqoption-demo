@@ -40,7 +40,7 @@
                     </div>
                 </div>
                 <div class="lg:grid lg:grid-cols-2 lg:gap-4">
-                    <a href="{{ route('dashboard.deposithistory') }}" wire:navigate>
+                    <a href="{{ route('dashboard.deposithistory') }}">
                         <div class="bg-trade w-full rounded-sm flex flex-col space-y-2 p-3 mb-3 lg:mb-0">
                             <div class="flex items-center space-x-2">
                                 <div class="flex-none">
@@ -70,7 +70,7 @@
                             </div>
                         </div>
                     </a>
-                    <a href="{{ route('dashboard.withdrawhistory') }}" wire:navigate>
+                    <a href="{{ route('dashboard.withdrawhistory') }}">
                         <div class="bg-trade w-full rounded-sm flex flex-col space-y-2 p-3 mb-3 lg:mb-0">
                             <div class="flex items-center space-x-2">
                                 <div class="flex-none">
@@ -100,7 +100,7 @@
                             </div>
                         </div>
                     </a>
-                    <a href="{{ route('settings.profile') }}" wire:navigate>
+                    <a href="{{ route('settings.profile') }}">
                         <div class="bg-trade w-full rounded-sm flex flex-col space-y-2 p-3 mb-3 lg:mb-0">
                             <div class="flex items-center space-x-2">
                                 <div class="flex-none">

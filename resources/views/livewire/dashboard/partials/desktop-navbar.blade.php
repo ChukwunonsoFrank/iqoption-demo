@@ -1,6 +1,6 @@
 <div class="hidden lg:flex flex-none flex-col items-center space-y-4 w-18 lg:border-r-[0.1px] lg:border-gray-700">
     <div @class(['bg-navbar' => request()->is('dashboard'), 'w-full' => true, 'py-3' => true, 'cursor-pointer' => true, 'hover:bg-navbar' => true])>
-        <a class="block" href="{{ route('dashboard') }}" wire:navigate>
+        <a class="block" href="{{ route('dashboard') }}">
             <div class="mb-1">
                 <svg class="block mx-auto" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                     viewBox="0 0 24 24" fill="none" stroke="#D4D4D4"
@@ -26,7 +26,7 @@
     </div>
 
     <div @class(['bg-navbar' => request()->is('dashboard/history'), 'w-full' => true, 'py-3' => true, 'cursor-pointer' => true, 'hover:bg-navbar' => true])>
-        <a class="block" href="{{ route('dashboard.history') }}" wire:navigate>
+        <a class="block" href="{{ route('dashboard.history') }}">
             <div class="mb-1">
                 <svg class="block mx-auto" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                     viewBox="0 0 24 24" fill="none" stroke="#D4D4D4"
@@ -47,7 +47,7 @@
     </div>
 
     <div @class(['bg-navbar' => request()->is('dashboard/robot') || request()->is('dashboard/robot/traderoom'), 'w-full' => true, 'py-3' => true, 'cursor-pointer' => true, 'hover:bg-navbar' => true])>
-        <a class="block" href="{{ route('dashboard.robot') }}" wire:navigate>
+        <a class="block" href="{{ route('dashboard.robot') }}">
             <div class="mb-1">
                 <svg class="block mx-auto" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                     viewBox="0 0 24 24" fill="none" stroke="#D4D4D4" stroke-width="{{ request()->is('dashboard/robot') || request()->is('dashboard/robot/traderoom') ? 2 : 1 }}" stroke-linecap="round"
@@ -84,7 +84,7 @@
     </div>
 
     <div @class(['bg-navbar' => request()->is('dashboard/account'), 'w-full' => true, 'py-3' => true, 'cursor-pointer' => true, 'hover:bg-navbar' => true])>
-        <a class="block" href="{{ route('dashboard.account') }}" wire:navigate>
+        <a class="block" href="{{ route('dashboard.account') }}">
             <div class="mb-1">
                 <svg class="block mx-auto" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                     viewBox="0 0 24 24" fill="none" stroke="#D4D4D4" stroke-width="{{ request()->is('dashboard/account') ? 2 : 1 }}" stroke-linecap="round"
