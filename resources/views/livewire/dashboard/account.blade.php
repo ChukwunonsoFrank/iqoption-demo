@@ -31,11 +31,13 @@
                         <h1 class="text-white text-base font-semibold">John Doe</h1>
                         <span class="text-xs text-white">User ID #12345678</span>
                         <div class="mt-3">
-                            <button type="button"
-                                class="py-2 px-4 md:px-6 md:py-3 inline-flex items-center gap-x-2 text-sm md:text-base font-semibold rounded-sm bg-accent text-white focus:outline-hidden">
-                                <i class="fa-solid fa-money-bill-transfer"></i>
-                                Withdraw
-                            </button>
+                            <a href="{{ route('dashboard.withdraw') }}">
+                                <button type="button"
+                                    class="py-2 px-4 md:px-6 md:py-3 inline-flex items-center gap-x-2 text-sm md:text-base font-semibold rounded-sm bg-accent text-white focus:outline-hidden">
+                                    <i class="fa-solid fa-money-bill-transfer"></i>
+                                    Withdraw
+                                </button>
+                            </a>
                         </div>
                     </div>
                 </div>

@@ -9,6 +9,8 @@ use App\Livewire\Dashboard\History;
 use App\Livewire\Dashboard\Index;
 use App\Livewire\Dashboard\Robot;
 use App\Livewire\Dashboard\Traderoom;
+use App\Livewire\Dashboard\VerifyOtp;
+use App\Livewire\Dashboard\Withdraw;
 use App\Livewire\Dashboard\WithdrawHistory;
 use App\Livewire\Homepage;
 use App\Livewire\Privacy;
@@ -28,6 +30,8 @@ Route::get('/dashboard/history', History::class)->middleware(['auth', 'verified'
 Route::get('/dashboard/robot', Robot::class)->middleware(['auth', 'verified'])->name('dashboard.robot');
 Route::get('/dashboard/deposit', Deposit::class)->middleware(['auth', 'verified'])->name('dashboard.deposit');
 Route::get('/dashboard/deposit/confirm', ConfirmDeposit::class)->middleware(['auth', 'verified'])->name('dashboard.deposit.confirm');
+Route::get('/dashboard/withdraw', Withdraw::class)->middleware(['auth', 'verified'])->name('dashboard.withdraw');
+Route::get('/dashboard/withdraw/verifyotp', VerifyOtp::class)->middleware(['auth', 'verified'])->name('dashboard.withdraw.verifyotp');
 Route::get('/dashboard/robot/traderoom', Traderoom::class)->middleware(['auth', 'verified'])->name('dashboard.robot.traderoom');
 Route::get('/dashboard/account', Account::class)->middleware(['auth', 'verified'])->name('dashboard.account');
 Route::get('/dashboard/deposithistory', DepositHistory::class)->middleware(['auth', 'verified'])->name('dashboard.deposithistory');
