@@ -4,6 +4,8 @@ namespace App\Livewire\Dashboard;
 
 use App\Models\Bot;
 use App\Models\Strategy;
+use App\Models\User;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
@@ -31,7 +33,7 @@ class Traderoom extends Component
     public string $asset = '';
 
     public string $sentiment = '';
-    
+
     public function mount()
     {
         if (session()->has('message')) {
@@ -54,7 +56,7 @@ class Traderoom extends Component
         $timeLeft = $this->calculateTimeLeftTillNextCheckpoint($this->activeBot['timer_checkpoint']);
         $formatted = $this->formatTimeLeft($timeLeft['minutes'], $timeLeft['seconds']);
         $this->timer = $formatted;
-        
+
         $this->sentiment = $this->activeBot['sentiment'];
     }
 
@@ -88,7 +90,8 @@ class Traderoom extends Component
         ];
     }
 
-    public function formatTimeLeft(int $minutes, int $seconds): string {
+    public function formatTimeLeft(int $minutes, int $seconds): string
+    {
         $minuteString = 0;
         $secondString = 0;
 
@@ -107,7 +110,7 @@ class Traderoom extends Component
         return $minuteString . ':' . $secondString;
     }
 
-    public function refreshTimer()
+    public function refreshTimer(): void
     {
         $checkpoint = intval($this->activeBot['timer_checkpoint']);
         $now = now()->getTimestampMs();
@@ -128,20 +131,59 @@ class Traderoom extends Component
 
     public function toggleSearchingForSignals(int $minutes, int $seconds): void
     {
-        if($minutes === 5 && $seconds > 0) {
+        if ($minutes === 5 && $seconds > 0) {
             $this->isBotSearchingForSignal = true;
         }
 
-        if($minutes === 5 && $seconds === 0) {
+        if ($minutes === 5 && $seconds === 0) {
             $this->isBotSearchingForSignal = false;
         }
 
-        if($minutes <= 4) {
+        if ($minutes <= 4) {
             $this->isBotSearchingForSignal = false;
         }
 
-        if($minutes === 0 && $seconds === 0) {
+        if ($minutes === 0 && $seconds === 0) {
             $this->isBotSearchingForSignal = true;
+        }
+    }
+
+    public function stopRobot(): void
+    {
+        try {
+            $accountType = $this->activeBot['account_type'];
+
+            if ($accountType === "demo") {
+                $amount = $this->normalizeAmount($this->activeBot['amount']);
+                $currentBalance = $this->normalizeAmount(auth()->user()->demo_balance);
+                $profit = $this->normalizeAmount($this->activeBot['profit']);
+                $newBalance = $currentBalance + $amount + $profit;
+                $serialized = $this->serializeAmount($newBalance);
+
+                DB::transaction(function () use ($serialized) {
+                    Bot::where('id', $this->activeBot['id'])->update(['status' => 'stopped']);
+                    User::where('id', auth()->user()->id)->update(['demo_balance' => $serialized]);
+                });
+            }
+
+            if ($accountType === "live") {
+                $amount = $this->normalizeAmount($this->activeBot['amount']);
+                $currentBalance = $this->normalizeAmount(auth()->user()->live_balance);
+                $profit = $this->normalizeAmount($this->activeBot['profit']);
+                $newBalance = $currentBalance + $amount + $profit;
+                $serialized = $this->serializeAmount($newBalance);
+
+                DB::transaction(function () use ($serialized) {
+                    Bot::where('id', $this->activeBot['id'])->update(['status' => 'stopped']);
+                    User::where('id', auth()->user()->id)->update(['live_balance' => $serialized]);
+                });
+            }
+
+            session()->flash('message', 'Robot has stopped trading');
+
+            $this->redirectRoute('dashboard.robot');
+        } catch (\Exception $e) {
+            $this->dispatch('stop-robot-error', message: $e->getMessage())->self();
         }
     }
 

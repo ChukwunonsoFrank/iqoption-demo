@@ -4,6 +4,8 @@ namespace App\Livewire\Dashboard;
 
 use App\Models\Bot;
 use App\Models\Strategy;
+use App\Models\User;
+use Illuminate\Support\Facades\DB;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
 
@@ -25,6 +27,11 @@ class Robot extends Component
 
     public function mount()
     {
+        if (session()->has('message')) {
+            $message = session()->get('message');
+            $this->dispatch('robot-stopped', message: $message)->self();
+        }
+
         $this->strategies = Strategy::all();
         $this->strategy = $this->strategies[0];
     }
@@ -742,25 +749,33 @@ class Robot extends Component
                 return;
             }
 
+            $amount = floatval($this->amount);
             $assetToTrade = $this->generateAssetToTrade();
-            $profitLimit = (intval($this->strategy['max_roi']) / 100) * floatval($this->amount);
+            $profitLimit = (intval($this->strategy['max_roi']) / 100) * $amount;
+            $balanceToDebit = $this->accountTypeSlug === 'demo' ? 'demo_balance' : 'live_balance';
+            $currentBalance = $this->normalizeAmount(auth()->user()->{$balanceToDebit});
+            $newBalance = $currentBalance - $amount;
+            $serialized = $this->serializeAmount($newBalance);
 
-            Bot::create([
-                'user_id' => auth()->user()->id,
-                'amount' => $this->serializeAmount(intval($this->amount)),
-                'duration' => $this->duration,
-                'strategy' => $this->strategy['id'],
-                'account_type' => $this->accountTypeSlug,
-                'profit' => 0,
-                'profit_values' => json_encode($this->generateProfit(288, $profitLimit)),
-                'profit_position' => 0,
-                'asset' => $assetToTrade['display_name'],
-                'sentiment' => $assetToTrade['sentiment'],
-                'status' => 'active',
-                'timer_checkpoint' => strval(now()->addMinutes(5)->addSeconds(12)->getTimestampMs()),
-                'start' => strval(now()->getTimestampMs()),
-                'end' => strval(now()->addHours(24)->getTimestampMs())
-            ]);
+            DB::transaction(function () use ($amount, $serialized, $profitLimit, $assetToTrade, $balanceToDebit) {
+                Bot::create([
+                    'user_id' => auth()->user()->id,
+                    'amount' => $this->serializeAmount($amount),
+                    'duration' => $this->duration,
+                    'strategy' => $this->strategy['id'],
+                    'account_type' => $this->accountTypeSlug,
+                    'profit' => 0,
+                    'profit_values' => json_encode($this->generateProfit(288, $profitLimit)),
+                    'profit_position' => 0,
+                    'asset' => $assetToTrade['display_name'],
+                    'sentiment' => $assetToTrade['sentiment'],
+                    'status' => 'active',
+                    'timer_checkpoint' => strval(now()->addMinutes(5)->addSeconds(12)->getTimestampMs()),
+                    'start' => strval(now()->getTimestampMs()),
+                    'end' => strval(now()->addHours(24)->getTimestampMs())
+                ]);
+                User::where('id', auth()->user()->id)->update([$balanceToDebit => $serialized]);
+            });
 
             session()->flash('message', 'Robot has started trading');
 
