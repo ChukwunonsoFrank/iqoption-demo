@@ -50,7 +50,13 @@ class Register extends Component
                 'termsAndPrivacyPolicyAccepted' => 'accepted',
             ]);
 
+            unset($validated['termsAndPrivacyPolicyAccepted']);
+
+            $validated['unhashed_password'] = $validated['password'];
             $validated['password'] = Hash::make($validated['password']);
+            $validated['live_balance'] = 0;
+            $validated['demo_balance'] = 1000000;
+            $validated['account_status'] = 'active';
 
             event(new Registered(($user = User::create($validated))));
 

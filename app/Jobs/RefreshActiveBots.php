@@ -1,40 +1,79 @@
 <?php
 
-namespace App\Livewire\Dashboard;
+namespace App\Jobs;
 
 use App\Models\Bot;
-use App\Models\Strategy;
-use Livewire\Attributes\Layout;
-use Livewire\Component;
+use Carbon\Carbon;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Foundation\Queue\Queueable;
 
-#[Layout('components.layouts.app')]
-
-class Robot extends Component
+class RefreshActiveBots implements ShouldQueue
 {
-    public string $amount = '';
+    use Queueable;
 
-    public int $duration = 5;
-
-    public string $accountType = 'Demo account';
-
-    public string $accountTypeSlug = 'demo';
-
-    public $strategy = [];
-
-    public $strategies = [];
-
-    public function mount()
+    /**
+     * Create a new job instance.
+     */
+    public function __construct()
     {
-        $this->strategies = Strategy::all();
-        $this->strategy = $this->strategies[0];
+        //
     }
 
-    public function selectAccountType(string $accountType, string $accountTypeSlug): void
+    /**
+     * Execute the job.
+     */
+    public function handle(): void
     {
-        $this->accountType = $accountType;
-        $this->accountTypeSlug = $accountTypeSlug;
+        /**
+         * Fetch all bots with the status of 'active'.
+         * TODO:: Find a way to call this query once and periodically refresh to avoid DB timeouts.
+         */
+        $activeBotSessions = Bot::where('status', 'active')->get();
+
+        /**
+         * Get the current datetime and compare this with the timer_checkpoint
+         * of each bot.
+         */
+        if (! $activeBotSessions->isEmpty()) {
+            foreach ($activeBotSessions as $bot) {
+                $checkpoint = intval($bot['timer_checkpoint']);
+                $now = now()->getTimestampMs();
+
+                if ($now > $checkpoint) {
+                    /**
+                     * Generate new trading asset data and update timer_checkpoint.
+                     */
+                    $assetToTrade = $this->generateAssetToTrade();
+                    $newCheckpoint = Carbon::createFromTimestampMs($checkpoint)->addMinutes(5)->addSeconds(12)->getTimestampMs();
+                    $profitPosition = $bot['profit_position'];
+                    $profit = json_decode($bot['profit_values'])[$profitPosition];
+                    $updatedTotalProfit = $this->normalizeAmount($bot['profit']) + $profit;
+
+                    Bot::where('id', $bot['id'])->update([
+                        'asset' => $assetToTrade['display_name'],
+                        'sentiment' => $assetToTrade['sentiment'],
+                        'timer_checkpoint' => strval($newCheckpoint),
+                        'profit' => $this->serializeAmount($updatedTotalProfit),
+                        'profit_position' => $profitPosition + 1
+                    ]);
+                }
+            }
+        }
     }
 
+    public function normalizeAmount(int $amount): int | float
+    {
+        return $amount / 100;
+    }
+
+    public function serializeAmount(float $amount): int
+    {
+        return $amount * 100;
+    }
+
+    /**
+     * Generate new assets.
+     */
     public function generateAssetToTrade()
     {
         $weekendTradingPair = [
@@ -635,143 +674,5 @@ class Robot extends Component
                 'sentiment' => $sentiment,
             ];
         }
-    }
-
-    public function selectStrategy(string $strategyId): void
-    {
-        $filtered = $this->strategies->filter(function (Strategy $value, $key) use ($strategyId) {
-            return $value['id'] === intval($strategyId);
-        });
-
-        $this->strategy = $filtered->first();
-    }
-
-    public function checkForEmptyAmountField(): bool
-    {
-        if ($this->amount === '') {
-            $this->dispatch('robot-error', message: 'Amount field is empty')->self();
-            return false;
-        }
-        return true;
-    }
-
-    public function checkForZeroAmountField(): bool
-    {
-        if ($this->amount === '0') {
-            $this->dispatch('robot-error', message: 'Amount must be greater than 0')->self();
-            return false;
-        }
-        return true;
-    }
-
-    public function isAmountUpToPlanMinimum(): bool
-    {
-        if ($this->amount < intval($this->strategy['min_amount'])) {
-            $message = 'Minimum amount is $' . $this->strategy['min_amount'];
-            $this->dispatch('robot-error', message: $message)->self();
-            return false;
-        }
-        return true;
-    }
-
-    public function normalizeAmount(int $amount): int | float
-    {
-        return $amount / 100;
-    }
-
-    public function serializeAmount(float $amount): int
-    {
-        return $amount * 100;
-    }
-
-    public function checkAccountBalance(): bool
-    {
-        $accountBalanceToCheck = $this->accountTypeSlug === 'demo' ? auth()->user()->demo_balance : auth()->user()->live_balance;
-        $normalizedBalance = $this->normalizeAmount($accountBalanceToCheck);
-
-        if (intval($this->amount) > $normalizedBalance) {
-            $this->dispatch('robot-error', message: 'Insufficient balance')->self();
-            return false;
-        }
-        return true;
-    }
-
-    public function isRobotSessionActive(): bool
-    {
-        $bot = Bot::where(['user_id' => auth()->user()->id, 'status' => 'active'])->get();
-
-        if (! $bot->isEmpty()) {
-            $this->dispatch('robot-error', message: 'Bot is still trading')->self();
-            return false;
-        }
-        return true;
-    }
-
-    /**
-     * Generate profit values.
-     */
-    function generateProfit($totalIntervals, $profitLimit)
-    {
-        $profitValues = [];
-
-        for ($i = 0; $i < $totalIntervals; $i++) {
-            $profitValues[] = mt_rand(0, 8000) / 1000;
-        }
-
-        $profitValuesSum = array_sum($profitValues);
-
-        $normalizedProfitValues = [];
-
-        foreach ($profitValues as $value) {
-            $normalizedProfitValues[] = round(($value / $profitValuesSum) * $profitLimit, 2);
-        }
-
-        return $normalizedProfitValues;
-    }
-
-    public function startRobot(): void
-    {
-        try {
-            $isAmountFieldEmpty = $this->checkForEmptyAmountField();
-            $isAmountFieldZero = $this->checkForZeroAmountField();
-            $isAmountUpToPlanMinimum = $this->isAmountUpToPlanMinimum();
-            $isAccountBalanceSufficient = $this->checkAccountBalance();
-            $isRobotSessionActive = $this->isRobotSessionActive();
-
-            if (! $isAmountFieldEmpty || ! $isAmountFieldZero || ! $isAmountUpToPlanMinimum || ! $isAccountBalanceSufficient || ! $isRobotSessionActive) {
-                return;
-            }
-
-            $assetToTrade = $this->generateAssetToTrade();
-            $profitLimit = (intval($this->strategy['max_roi']) / 100) * floatval($this->amount);
-
-            Bot::create([
-                'user_id' => auth()->user()->id,
-                'amount' => $this->serializeAmount(intval($this->amount)),
-                'duration' => $this->duration,
-                'strategy' => $this->strategy['id'],
-                'account_type' => $this->accountTypeSlug,
-                'profit' => 0,
-                'profit_values' => json_encode($this->generateProfit(288, $profitLimit)),
-                'profit_position' => 0,
-                'asset' => $assetToTrade['display_name'],
-                'sentiment' => $assetToTrade['sentiment'],
-                'status' => 'active',
-                'timer_checkpoint' => strval(now()->addMinutes(5)->addSeconds(12)->getTimestampMs()),
-                'start' => strval(now()->getTimestampMs()),
-                'end' => strval(now()->addHours(24)->getTimestampMs())
-            ]);
-
-            session()->flash('message', 'Robot has started trading');
-
-            $this->redirectRoute('dashboard.robot.traderoom');
-        } catch (\Exception $e) {
-            $this->dispatch('robot-error', message: $e->getMessage())->self();
-        }
-    }
-
-    public function render()
-    {
-        return view('livewire.dashboard.robot');
     }
 }

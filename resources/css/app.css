@@ -95,6 +95,16 @@ select:focus[data-flux-control] {
     background-size: cover;
 }
 
+@keyframes pulse-bg {
+    0% { background-color: #3D4351; }
+    50% { background-color: #4F5669; }
+    100% { background-color: #606980; }
+}
+
+.animate-pulse-bg {
+    animation: pulse-bg 2s infinite;
+}
+
 /* \[:where(&)\]:size-4 {
     @apply size-4;
 } */

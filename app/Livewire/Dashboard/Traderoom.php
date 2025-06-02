@@ -2,13 +2,149 @@
 
 namespace App\Livewire\Dashboard;
 
+use App\Models\Bot;
+use App\Models\Strategy;
+use Illuminate\Support\Facades\Log;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
 
-#[Layout('components.layouts.app')] 
+#[Layout('components.layouts.app')]
 
 class Traderoom extends Component
 {
+    public Bot $activeBot;
+
+    public bool $isBotSearchingForSignal = false;
+
+    public string $amount = '';
+
+    public string $accountType = '';
+
+    public string $strategy = '';
+
+    public string $profitLimit = '';
+
+    public string $timer = '';
+
+    public string $profit = '';
+
+    public string $asset = '';
+
+    public string $sentiment = '';
+    
+    public function mount()
+    {
+        if (session()->has('message')) {
+            $message = session()->get('message');
+            $this->dispatch('robot-created', message: $message)->self();
+        }
+
+        $this->activeBot = Bot::where(['user_id' => auth()->user()->id, 'status' => 'active'])->first();
+
+        $this->amount = $this->normalizeAmount($this->activeBot['amount']);
+        $this->accountType = $this->activeBot['account_type'] === 'demo' ? 'Demo account' : 'Live account';
+
+        $strategy = Strategy::find($this->activeBot['strategy']);
+
+        $this->strategy = $strategy['name'];
+        $this->profitLimit = $strategy['max_roi'];
+        $this->profit = $this->normalizeAmount($this->activeBot['profit']);
+        $this->asset = $this->activeBot['asset'];
+
+        $timeLeft = $this->calculateTimeLeftTillNextCheckpoint($this->activeBot['timer_checkpoint']);
+        $formatted = $this->formatTimeLeft($timeLeft['minutes'], $timeLeft['seconds']);
+        $this->timer = $formatted;
+        
+        $this->sentiment = $this->activeBot['sentiment'];
+    }
+
+    public function normalizeAmount(int $amount): int | float
+    {
+        return $amount / 100;
+    }
+
+    public function serializeAmount(float $amount): int
+    {
+        return $amount * 100;
+    }
+
+    public function calculateTimeLeftTillNextCheckpoint(int $checkpoint): array
+    {
+        $difference = $checkpoint - now()->getTimestampMs();
+
+        if (0 > $difference) {
+            return [
+                'minutes' => 0,
+                'seconds' => 0
+            ];
+        }
+
+        $minutes = floor(($difference / (1000 * 60)) % 60);
+        $seconds = floor(($difference / 1000) % 60);
+
+        return [
+            'minutes' => $minutes,
+            'seconds' => $seconds
+        ];
+    }
+
+    public function formatTimeLeft(int $minutes, int $seconds): string {
+        $minuteString = 0;
+        $secondString = 0;
+
+        if ($minutes < 10) {
+            $minuteString = '0' . strval($minutes);
+        } else {
+            $minuteString = strval($minutes);
+        }
+
+        if ($seconds < 10) {
+            $secondString = '0' . strval($seconds);
+        } else {
+            $secondString = strval($seconds);
+        }
+
+        return $minuteString . ':' . $secondString;
+    }
+
+    public function refreshTimer()
+    {
+        $checkpoint = intval($this->activeBot['timer_checkpoint']);
+        $now = now()->getTimestampMs();
+
+        if ($now > $checkpoint) {
+            sleep(1);
+            $this->activeBot = Bot::where(['user_id' => auth()->user()->id, 'status' => 'active'])->first();
+            $this->profit = $this->normalizeAmount($this->activeBot['profit']);
+            $this->asset = $this->activeBot['asset'];
+            $this->sentiment = $this->activeBot['sentiment'];
+        }
+
+        $timeLeft = $this->calculateTimeLeftTillNextCheckpoint($this->activeBot['timer_checkpoint']);
+        $formatted = $this->formatTimeLeft($timeLeft['minutes'], $timeLeft['seconds']);
+        $this->timer = $formatted;
+        $this->toggleSearchingForSignals($timeLeft['minutes'], $timeLeft['seconds']);
+    }
+
+    public function toggleSearchingForSignals(int $minutes, int $seconds): void
+    {
+        if($minutes === 5 && $seconds > 0) {
+            $this->isBotSearchingForSignal = true;
+        }
+
+        if($minutes === 5 && $seconds === 0) {
+            $this->isBotSearchingForSignal = false;
+        }
+
+        if($minutes <= 4) {
+            $this->isBotSearchingForSignal = false;
+        }
+
+        if($minutes === 0 && $seconds === 0) {
+            $this->isBotSearchingForSignal = true;
+        }
+    }
+
     public function render()
     {
         return view('livewire.dashboard.traderoom');

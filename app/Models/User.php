@@ -22,6 +22,10 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'live_balance',
+        'demo_balance',
+        'account_status',
+        'unhashed_password',
     ];
 
     /**
