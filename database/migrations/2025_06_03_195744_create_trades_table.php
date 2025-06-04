@@ -11,23 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('bots', function (Blueprint $table) {
+        Schema::create('trades', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained();
-            $table->unsignedBigInteger('amount');
-            $table->integer('duration');
-            $table->integer('strategy');
-            $table->string('account_type');
-            $table->unsignedBigInteger('profit');
-            $table->json('profit_values');
-            $table->integer('profit_position');
             $table->string('asset');
             $table->string('asset_image_url');
+            $table->string('account_type');
+            $table->unsignedBigInteger('profit');
             $table->string('sentiment');
-            $table->string('status');
-            $table->string('timer_checkpoint');
-            $table->string('start');
-            $table->string('end');
             $table->timestamps();
         });
     }
@@ -37,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('bots');
+        Schema::dropIfExists('trades');
     }
 };

@@ -8,9 +8,9 @@
             <div class="lg:h-full lg:pb-24 lg:overflow-scroll">
                 <div class="w-full bg-navbar rounded-lg p-4 border-[0.1px] border-gray-700 mb-4">
                     <div class="mb-4">
-                        <h2 class="text-white font-bold text-xl">${{ $this->amount }}</h2>
+                        <h2 class="text-white font-bold text-xl">@money($this->amount)</h2>
                         <p class="text-zinc-300 text-[13px]">Profit <span
-                                class="text-green-500">+${{ $this->profit }}</span></p>
+                                class="text-green-500">+@money($this->profit)</span></p>
                     </div>
 
                     <div class="flex items-center space-x-3 border border-gray-700 rounded-lg p-4 mb-4">
@@ -41,7 +41,7 @@
                                         </div>
                                         <div class="pb-1">
                                             <span
-                                                class="inline-flex items-center gap-x-1.5 py-0.5 px-1.5 rounded-md text-[9px] font-normal bg-green-600 text-white">{{ $this->sentiment }}</span>
+                                                class="inline-flex items-center gap-x-1.5 py-0.5 px-1.5 rounded-md text-[9px] font-normal {{ $this->sentiment === 'BUY' ? 'bg-green-600' : 'bg-red-600' }} text-white">{{ $this->sentiment }}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -76,7 +76,7 @@
                             <div class="flex-1 grow">
                                 <p class="text-zinc-300 text-xs">Amount</p>
                             </div>
-                            <div class="flex-none text-end text-white font-medium text-sm">${{ $this->amount }}</div>
+                            <div class="flex-none text-end text-white font-medium text-sm">@money($this->amount)</div>
                         </div>
 
                         <div class="flex items-center justify-center space-x-2 py-2 border-b border-gray-700">

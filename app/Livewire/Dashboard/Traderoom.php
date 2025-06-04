@@ -18,7 +18,7 @@ class Traderoom extends Component
 
     public bool $isBotSearchingForSignal = false;
 
-    public string $amount = '';
+    public $amount;
 
     public string $accountType = '';
 

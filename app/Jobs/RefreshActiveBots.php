@@ -3,9 +3,11 @@
 namespace App\Jobs;
 
 use App\Models\Bot;
+use App\Models\Trade;
 use Carbon\Carbon;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Queue\Queueable;
+use Illuminate\Support\Facades\DB;
 
 class RefreshActiveBots implements ShouldQueue
 {
@@ -49,13 +51,25 @@ class RefreshActiveBots implements ShouldQueue
                     $profit = json_decode($bot['profit_values'])[$profitPosition];
                     $updatedTotalProfit = $this->normalizeAmount($bot['profit']) + $profit;
 
-                    Bot::where('id', $bot['id'])->update([
-                        'asset' => $assetToTrade['display_name'],
-                        'sentiment' => $assetToTrade['sentiment'],
-                        'timer_checkpoint' => strval($newCheckpoint),
-                        'profit' => $this->serializeAmount($updatedTotalProfit),
-                        'profit_position' => $profitPosition + 1
-                    ]);
+                    DB::transaction(function () use ($bot, $assetToTrade, $newCheckpoint, $updatedTotalProfit, $profitPosition, $profit) {
+                        Bot::where('id', $bot['id'])->update([
+                            'asset' => $assetToTrade['display_name'],
+                            'asset_image_url' => $assetToTrade['image_url'],
+                            'sentiment' => $assetToTrade['sentiment'],
+                            'timer_checkpoint' => strval($newCheckpoint),
+                            'profit' => $this->serializeAmount($updatedTotalProfit),
+                            'profit_position' => $profitPosition + 1
+                        ]);
+
+                        Trade::create([
+                            'user_id' => $bot['user_id'],
+                            'asset' => $bot['asset'],
+                            'asset_image_url' => $bot['asset_image_url'],
+                            'account_type' => $bot['account_type'],
+                            'profit' => $this->serializeAmount($profit),
+                            'sentiment' => $bot['sentiment']
+                        ]);
+                    });
                 }
             }
         }
@@ -659,7 +673,7 @@ class RefreshActiveBots implements ShouldQueue
                 'ticker_symbol' => $weekdayTradingPair[$asset]['symbol'],
                 'display_name' => $weekdayTradingPair[$asset]['name'],
                 'percentage' => $weekdayTradingPair[$asset]['percentage'],
-                'image_url' => "/images/coins/" . $weekdayTradingPair[$asset]['image'],
+                'image_url' => "assets/icons/" . $weekdayTradingPair[$asset]['image'],
                 'type' => 'coin',
                 'sentiment' => $sentiment,
             ];
@@ -669,7 +683,7 @@ class RefreshActiveBots implements ShouldQueue
                 'ticker_symbol' => $weekendTradingPair[$asset]['symbol'],
                 'display_name' => $weekendTradingPair[$asset]['name'],
                 'percentage' => $weekendTradingPair[$asset]['percentage'],
-                'image_url' => "/images/coins/" . $weekendTradingPair[$asset]['image'],
+                'image_url' => "assets/icons/" . $weekendTradingPair[$asset]['image'],
                 'type' => 'coin',
                 'sentiment' => $sentiment,
             ];

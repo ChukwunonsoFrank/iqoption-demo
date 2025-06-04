@@ -41,11 +41,11 @@
                 <div class="flex items-center justify-between space-x-8 mb-4 md:mb-0 md:order-2 md:flex-1">
                     <div class="flex-1">
                         <p class="text-zinc-300 text-[10px] mb-1 md:uppercase">Demo account</p>
-                        <p class="text-white font-semibold text-xs md:text-sm">$1,002.90</p>
+                        <p class="text-white font-semibold text-xs md:text-sm">@money(auth()->user()->demo_balance / 100)</p>
                     </div>
                     <div class="flex-1">
-                        <p class="text-zinc-300 text-[10px] mb-1 md:uppercase">Real account</p>
-                        <p class="text-white font-semibold text-xs md:text-sm">$2,309.98</p>
+                        <p class="text-zinc-300 text-[10px] mb-1 md:uppercase">Live account</p>
+                        <p class="text-white font-semibold text-xs md:text-sm">@money(auth()->user()->live_balance / 100)</p>
                     </div>
                     <div class="flex-1 text-end">
                         <a href="{{ route('dashboard.deposit') }}">

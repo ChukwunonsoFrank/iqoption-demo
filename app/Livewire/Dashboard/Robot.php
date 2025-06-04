@@ -627,7 +627,7 @@ class Robot extends Component
                 'ticker_symbol' => $weekdayTradingPair[$asset]['symbol'],
                 'display_name' => $weekdayTradingPair[$asset]['name'],
                 'percentage' => $weekdayTradingPair[$asset]['percentage'],
-                'image_url' => "/images/coins/" . $weekdayTradingPair[$asset]['image'],
+                'image_url' => "assets/icons/" . $weekdayTradingPair[$asset]['image'],
                 'type' => 'coin',
                 'sentiment' => $sentiment,
             ];
@@ -637,7 +637,7 @@ class Robot extends Component
                 'ticker_symbol' => $weekendTradingPair[$asset]['symbol'],
                 'display_name' => $weekendTradingPair[$asset]['name'],
                 'percentage' => $weekendTradingPair[$asset]['percentage'],
-                'image_url' => "/images/coins/" . $weekendTradingPair[$asset]['image'],
+                'image_url' => "assets/icons/" . $weekendTradingPair[$asset]['image'],
                 'type' => 'coin',
                 'sentiment' => $sentiment,
             ];
@@ -768,6 +768,7 @@ class Robot extends Component
                     'profit_values' => json_encode($this->generateProfit(288, $profitLimit)),
                     'profit_position' => 0,
                     'asset' => $assetToTrade['display_name'],
+                    'asset_image_url' => $assetToTrade['image_url'],
                     'sentiment' => $assetToTrade['sentiment'],
                     'status' => 'active',
                     'timer_checkpoint' => strval(now()->addMinutes(5)->addSeconds(12)->getTimestampMs()),
