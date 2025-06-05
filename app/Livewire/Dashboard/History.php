@@ -29,7 +29,7 @@ class History extends Component
 
     public function render()
     {
-        $trades = Trade::where('user_id', auth()->user()->id)->take($this->visibleCount)->get();
+        $trades = Trade::where('user_id', auth()->user()->id)->latest()->take($this->visibleCount)->get();
 
         $showLoadMoreButton = $this->visibleCount < $this->totalTrades;
 

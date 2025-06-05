@@ -6,58 +6,50 @@
                 <h1 class="text-white text-lg md:text-xl lg:text-2xl font-semibold">Deposits</h1>
             </div>
             <div class="lg:h-full lg:pb-24 lg:overflow-scroll">
-
-                <div class="bg-trade w-full rounded-sm flex flex-col space-y-2 p-3 mb-3">
-                    <div class="flex items-center">
-                        <div class="flex-1">
-                            <span class="inline-flex items-center gap-x-1.5 py-1 px-2 rounded-full text-[10px] font-semibold border border-gray-500 text-white"><span class="size-1 inline-block rounded-full bg-red-600"></span> Pending</span>
+                @forelse ($deposits as $deposit)
+                    <div class="bg-trade w-full rounded-sm flex flex-col space-y-2 p-3 mb-3">
+                        <div class="flex items-center">
+                            <div class="flex-1">
+                                <span
+                                    class="inline-flex items-center gap-x-1.5 py-1 px-2 rounded-full text-[10px] font-semibold border border-gray-500 text-white"><span
+                                        class="size-1 inline-block rounded-full {{ $deposit['status'] === 'pending' ? 'bg-red-600' : 'bg-green-600' }}"></span> {{ ucfirst($deposit['status']) }}</span>
+                            </div>
+                            <div class="flex-1 text-end">
+                                <p class="text-gray-400 text-xs">{{ $deposit['updated_at_formatted'] }}</p>
+                            </div>
                         </div>
-                        <div class="flex-1 text-end">
-                            <p class="text-white text-xs">9:38</p>
-                            <p class="text-gray-400 text-[10px]">12 Apr</p>
-                        </div>
-                    </div>
-                    <div class="flex items-center space-x-2">
-                        <div class="flex-none">
-                            <img class="md:w-7" src="https://olympmatix.com/icons/assets/BITCOIN.svg" alt="">
-                        </div>
-                        <div class="flex-1">
-                            <p class="font-semibold text-xs text-white md:text-sm">Bitcoin</p>
-                        </div>
-                        <div class="flex-none text-end">
-                            <p class="font-semibold text-sm md:text-base text-white">+$100.90</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bg-trade w-full rounded-sm flex flex-col space-y-2 p-3 mb-3">
-                    <div class="flex items-center">
-                        <div class="flex-1">
-                            <span class="inline-flex items-center gap-x-1.5 py-1 px-2 rounded-full text-[10px] font-semibold border border-gray-500 text-white"><span class="size-1 inline-block rounded-full bg-teal-600"></span> Confirmed</span>
-                        </div>
-                        <div class="flex-1 text-end">
-                            <p class="text-white text-xs">12:13</p>
-                            <p class="text-gray-400 text-[10px]">12 Apr</p>
+                        <div class="flex items-center space-x-2">
+                            <div class="flex-none">
+                                <img class="md:w-7" src="https://olympmatix.com/icons/assets/BITCOIN.svg"
+                                    alt="">
+                            </div>
+                            <div class="flex-1">
+                                <p class="font-semibold text-xs text-white md:text-sm">{{ $deposit['payment_method'] }}</p>
+                            </div>
+                            <div class="flex-none text-end">
+                                <p class="font-semibold text-sm md:text-base text-white">+@money($deposit['amount'] / 100)</p>
+                            </div>
                         </div>
                     </div>
-                    <div class="flex items-center space-x-2">
-                        <div class="flex-none">
-                            <img class="md:w-7" src="https://olympmatix.com/icons/assets/BITCOIN.svg" alt="">
-                        </div>
-                        <div class="flex-1">
-                            <p class="font-semibold text-xs text-white md:text-sm">Bitcoin</p>
-                        </div>
-                        <div class="flex-none text-end">
-                            <p class="font-semibold text-sm md:text-base text-white">+$189.90</p>
+                @empty
+                    <div class="flex justify-center items-center">
+                        <div class="bg-trade w-full rounded-sm flex flex-col space-y-2 p-3 mb-3">
+                            <div class="text-center">
+                                <p class="text-xs text-zinc-300">Make deposits to see your activity here.</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-
-                <div class="flex justify-center">
-                    <button type="button" class="py-2 px-3 inline-flex items-center gap-x-2 text-xs font-normal rounded-full border border-gray-400 text-white shadow-2xs disabled:opacity-50 disabled:pointer-events-none">
-                        Load more <i class="fas fa-rotate"></i>
-                      </button>
-                </div>
+                @endforelse
+                @if ($showLoadMoreButton)
+                    <div class="flex justify-center">
+                        <button wire:click="loadMore" wire:loading.attr="disabled" type="button"
+                            class="py-2 px-3 inline-flex items-center gap-x-2 text-xs font-normal rounded-full border border-gray-400 text-white shadow-2xs cursor-pointer disabled:opacity-50 disabled:pointer-events-none">
+                            <span wire:loading.remove wire:target="loadMore">Load more</span>
+                            <i wire:loading.remove wire:target="loadMore" class="fas fa-rotate"></i>
+                            <i wire:loading class="fas fa-rotate fa-spin"></i>
+                        </button>
+                    </div>
+                @endif
             </div>
         </div>
     </div>
@@ -89,6 +81,3 @@
         });
     </script>
 @endscript
-
-
-

@@ -26,7 +26,7 @@ class ConfirmDeposit extends Component
             Deposit::create([
                 'user_id' => auth()->user()->id,
                 'payment_method' => $this->method,
-                'amount' => $this->serializeAmount($this->amount),
+                'amount' => $this->amount,
                 'status' => 'pending'
             ]);
 
@@ -36,11 +36,6 @@ class ConfirmDeposit extends Component
         } catch (\Exception $e) {
             $this->dispatch('deposit-error', message: $e->getMessage())->self();
         }
-    }
-
-    public function serializeAmount(float $amount): int
-    {
-        return $amount * 100;
     }
 
     public function render()

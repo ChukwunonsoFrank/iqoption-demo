@@ -30,7 +30,7 @@
             </div>
             <div class="lg:h-full lg:pb-24 lg:overflow-scroll">
                 <div class="mb-8 text-center">
-                    <p class="block text-sm font-medium mb-2 text-white">Pay the exact amount of ${{ $this->amount }} in
+                    <p class="block text-sm font-medium mb-2 text-white">Pay the exact amount of @money($this->amount / 100) in
                         {{ $this->method }} to the address below</p>
                 </div>
 

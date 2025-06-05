@@ -61,6 +61,11 @@ class Deposit extends Component
         return true;
     }
 
+    public function serializeAmount(float $amount): int
+    {
+        return $amount * 100;
+    }
+
     public function confirmDeposit()
     {
         $isAmountFieldEmpty = $this->checkForEmptyAmountField();
@@ -72,7 +77,7 @@ class Deposit extends Component
         }
 
         $this->redirectRoute('dashboard.deposit.confirm', [
-            'amount' => $this->amount,
+            'amount' => $this->serializeAmount($this->amount),
             'method' => $this->paymentMethod['name'],
             'address' => $this->paymentMethod['address']
         ]);
