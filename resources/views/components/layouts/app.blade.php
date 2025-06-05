@@ -14,7 +14,6 @@
 
     <script src="https://kit.fontawesome.com/7016607b5a.js" crossorigin="anonymous"></script>
     <script src="{{ asset('assets/js/qrcode.min.js') }}"></script>
-    <script src="{{ asset('assets/js/clipboard.min.js') }}"></script>
 
     @vite('resources/css/app.css')
     @vite('resources/js/app.js')
@@ -152,6 +151,8 @@
     </main>
 
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="{{ asset('assets/js/clipboard.min.js') }}"></script>
+    <script src="{{ asset('assets/js/helper-clipboard.js') }}"></script>
 </body>
 
 </html>

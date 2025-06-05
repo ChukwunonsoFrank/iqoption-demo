@@ -5,8 +5,9 @@
             <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
                 {
                     "autosize": true,
-                    "symbol": "AAPL",
-                    "interval": "1",
+                    "symbol": "BTCUSDT",
+                    "interval": "1S",
+                    "enabled_features": ["seconds_resolution"],
                     "timezone": "Etc/UTC",
                     "theme": "dark",
                     "style": "3",
