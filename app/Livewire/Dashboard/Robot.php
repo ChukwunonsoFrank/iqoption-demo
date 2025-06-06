@@ -696,7 +696,7 @@ class Robot extends Component
         $accountBalanceToCheck = $this->accountTypeSlug === 'demo' ? auth()->user()->demo_balance : auth()->user()->live_balance;
         $normalizedBalance = $this->normalizeAmount($accountBalanceToCheck);
 
-        if (intval($this->amount) > $normalizedBalance) {
+        if (floatval($this->amount) > $normalizedBalance) {
             $this->dispatch('robot-error', message: 'Insufficient balance')->self();
             return false;
         }

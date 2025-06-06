@@ -152,7 +152,6 @@
 
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <script src="{{ asset('assets/js/clipboard.min.js') }}"></script>
-    <script src="{{ asset('assets/js/helper-clipboard.js') }}"></script>
 </body>
 
 </html>
