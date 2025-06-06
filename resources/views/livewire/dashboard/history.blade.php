@@ -15,7 +15,7 @@
                                     class="inline-flex items-center gap-x-1.5 py-1 px-2 rounded-full text-xs bg-trade-badge text-white">{{ ucfirst($trade['account_type']) }}</span>
                             </div>
                             <div class="flex-1 text-end">
-                                <p class="text-gray-400 text-xs">{{ $trade['updated_at_formatted'] }}</p>
+                                <p class="text-gray-400 text-xs">{{ $trade['created_at_formatted'] }}</p>
                             </div>
                         </div>
                         <div class="flex items-center space-x-1">

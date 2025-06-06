@@ -9,10 +9,10 @@ class Trade extends Model
 {
     protected $fillable = ['user_id', 'asset', 'asset_image_url', 'account_type', 'profit', 'sentiment'];
 
-    protected $appends = ['updated_at_formatted'];
+    protected $appends = ['created_at_formatted'];
 
-    public function getUpdatedAtFormattedAttribute()
+    public function getCreatedAtFormattedAttribute()
     {
-        return Carbon::parse($this->updated_at)->format('d.m.y');
+        return Carbon::parse($this->created_at)->format('d.m.y');
     }
 }

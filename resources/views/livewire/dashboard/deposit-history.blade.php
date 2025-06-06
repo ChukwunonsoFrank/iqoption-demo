@@ -15,7 +15,7 @@
                                         class="size-1 inline-block rounded-full {{ $deposit['status'] === 'pending' ? 'bg-red-600' : 'bg-green-600' }}"></span> {{ ucfirst($deposit['status']) }}</span>
                             </div>
                             <div class="flex-1 text-end">
-                                <p class="text-gray-400 text-xs">{{ $deposit['updated_at_formatted'] }}</p>
+                                <p class="text-gray-400 text-xs">{{ $deposit['created_at_formatted'] }}</p>
                             </div>
                         </div>
                         <div class="flex items-center space-x-2">
