@@ -149,7 +149,7 @@
                     </div>
                     <div>
                         <button type="button"
-                            class="py-2 px-4 md:px-6 md:py-3 inline-flex items-center gap-x-1 text-xs font-semibold rounded-sm bg-accent text-white focus:outline-hidden">
+                            class="py-2 px-4 md:px-6 md:py-3 inline-flex items-center gap-x-1 text-xs font-bold rounded-sm bg-accent text-white focus:outline-hidden">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                 viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2"
                                 stroke-linecap="round" stroke-linejoin="round"

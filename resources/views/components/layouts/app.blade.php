@@ -56,16 +56,7 @@
                         </a>
                     </div>
                 </div>
-                <div
-                    class="bg-asset-indicator rounded-sm flex space-x-2 p-2 items-center md:order-1 md:flex-none md:w-1/3 lg:w-1/6">
-                    <div>
-                        <img src="https://olympmatix.com/icons/assets/BITCOIN.svg" alt="">
-                    </div>
-                    <div>
-                        <p class="text-white text-[12px] font-semibold">Bitcoin</p>
-                        <p class="text-zinc-300 text-[9px] md:text-[10px]">Crypto</p>
-                    </div>
-                </div>
+                <livewire:dashboard.partials.asset-indicator />
             </div>
         </header>
 

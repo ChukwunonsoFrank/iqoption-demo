@@ -240,175 +240,175 @@ class Robot extends Component
             [
                 "name" => "EUR/USD",
                 "percentage" => "99%",
-                "assetType" => "currency",
+                "assetType" => "forex",
                 "symbol" => "EURUSD",
                 "image" => "EURUSD_OTC.svg"
             ],
             [
                 "name" => "AUD/CAD",
                 "percentage" => "96%",
-                "assetType" => "currency",
+                "assetType" => "forex",
                 "symbol" => "AUDCAD",
                 "image" => "AUDCAD.svg"
             ],
             [
                 "name" => "GBP/USD",
                 "percentage" => "85%",
-                "assetType" => "currency",
+                "assetType" => "forex",
                 "symbol" => "GBPUSD",
                 "image" => "GBPUSD_OTC.svg"
             ],
             [
                 "name" => "GBP/NZD",
                 "percentage" => "89%",
-                "assetType" => "currency",
+                "assetType" => "forex",
                 "symbol" => "GBPNZD",
                 "image" => "GBPNZD.svg"
             ],
             [
                 "name" => "USD/JPY",
                 "percentage" => "97%",
-                "assetType" => "currency",
+                "assetType" => "forex",
                 "symbol" => "USDJPY",
                 "image" => "USDJPY_OTC.svg"
             ],
             [
                 "name" => "EUR/GBP",
                 "percentage" => "95%",
-                "assetType" => "currency",
+                "assetType" => "forex",
                 "symbol" => "EURGBP",
                 "image" => "EURGBP.svg"
             ],
             [
                 "name" => "GBP/CHF",
                 "percentage" => "90%",
-                "assetType" => "currency",
+                "assetType" => "forex",
                 "symbol" => "GBPCHF",
                 "image" => "GBPCHF.svg"
             ],
             [
                 "name" => "GBP/CAD",
                 "percentage" => "88%",
-                "assetType" => "currency",
+                "assetType" => "forex",
                 "symbol" => "GBPCAD",
                 "image" => "GBPCAD.svg"
             ],
             [
                 "name" => "NASDAQ",
                 "percentage" => "92%",
-                "assetType" => "currency",
+                "assetType" => "forex",
                 "symbol" => "NQ",
                 "image" => "NQ.svg"
             ],
             [
                 "name" => "AUD/JPY",
                 "percentage" => "93%",
-                "assetType" => "currency",
+                "assetType" => "forex",
                 "symbol" => "AUDJPY",
                 "image" => "AUDJPY.svg"
             ],
             [
                 "name" => "CAD/CHF",
                 "percentage" => "77%",
-                "assetType" => "currency",
+                "assetType" => "forex",
                 "symbol" => "CADCHF",
                 "image" => "CADCHF.svg"
             ],
             [
                 "name" => "CAD/JPY",
                 "percentage" => "85%",
-                "assetType" => "currency",
+                "assetType" => "forex",
                 "symbol" => "CADJPY",
                 "image" => "CADJPY.svg"
             ],
             [
                 "name" => "EUR/AUD",
                 "percentage" => "97%",
-                "assetType" => "currency",
+                "assetType" => "forex",
                 "symbol" => "EURAUD",
                 "image" => "EURAUD.svg"
             ],
             [
                 "name" => "EUR/JPY",
                 "percentage" => "91%",
-                "assetType" => "currency",
+                "assetType" => "forex",
                 "symbol" => "EURJPY",
                 "image" => "EURJPY.svg"
             ],
             [
                 "name" => "EUR/CAD",
                 "percentage" => "99%",
-                "assetType" => "currency",
+                "assetType" => "forex",
                 "symbol" => "EURCAD",
                 "image" => "EURCAD.svg"
             ],
             [
                 "name" => "GPB/JPY",
                 "percentage" => "83%",
-                "assetType" => "currency",
+                "assetType" => "forex",
                 "symbol" => "GBPJPY",
                 "image" => "GBPJPY.svg"
             ],
             [
                 "name" => "NZD/CAD",
                 "percentage" => "90%",
-                "assetType" => "currency",
+                "assetType" => "forex",
                 "symbol" => "NZDCAD",
                 "image" => "NZDCAD.svg"
             ],
             [
                 "name" => "NZD/CHF",
                 "percentage" => "98%",
-                "assetType" => "currency",
+                "assetType" => "forex",
                 "symbol" => "NZDCHF",
                 "image" => "NZDCHF.svg"
             ],
             [
                 "name" => "NZD/JPY",
                 "percentage" => "95%",
-                "assetType" => "currency",
+                "assetType" => "forex",
                 "symbol" => "NZDJPY",
                 "image" => "NZDJPY.svg"
             ],
             [
                 "name" => "USD/MXN",
                 "percentage" => "95%",
-                "assetType" => "currency",
+                "assetType" => "forex",
                 "symbol" => "USDMXN",
                 "image" => "USDMXN.svg"
             ],
             [
                 "name" => "USD/SGD",
                 "percentage" => "98%",
-                "assetType" => "currency",
+                "assetType" => "forex",
                 "symbol" => "USDSGD",
                 "image" => "USDSGD.svg"
             ],
             [
                 "name" => "NZD/USD",
                 "percentage" => "96%",
-                "assetType" => "currency",
+                "assetType" => "forex",
                 "symbol" => "NZDUSD",
                 "image" => "NZDUSD_OTC.svg"
             ],
             [
                 "name" => "USD/CHF",
                 "percentage" => "91%",
-                "assetType" => "currency",
+                "assetType" => "forex",
                 "symbol" => "USDCHF",
                 "image" => "USDCHF_OTC.svg"
             ],
             [
                 "name" => "AUD/CHF",
                 "percentage" => "96%",
-                "assetType" => "currency",
+                "assetType" => "forex",
                 "symbol" => "AUDCHF",
                 "image" => "AUDCHF.svg"
             ],
             [
                 "name" => "CHF/JPY",
                 "percentage" => "99%",
-                "assetType" => "currency",
+                "assetType" => "forex",
                 "symbol" => "CHFJPY",
                 "image" => "CHFJPY.svg"
             ],
@@ -612,9 +612,8 @@ class Robot extends Component
             return [
                 'ticker_symbol' => $weekdayTradingPair[$asset]['symbol'],
                 'display_name' => $weekdayTradingPair[$asset]['name'],
-                'percentage' => $weekdayTradingPair[$asset]['percentage'],
+                'asset_class' => $weekdayTradingPair[$asset]['assetType'],
                 'image_url' => "assets/icons/dashboard/" . $weekdayTradingPair[$asset]['image'],
-                'type' => 'coin',
                 'sentiment' => $sentiment,
             ];
         } else {
@@ -622,9 +621,8 @@ class Robot extends Component
             return [
                 'ticker_symbol' => $weekendTradingPair[$asset]['symbol'],
                 'display_name' => $weekendTradingPair[$asset]['name'],
-                'percentage' => $weekendTradingPair[$asset]['percentage'],
+                'asset_class' => $weekendTradingPair[$asset]['assetType'],
                 'image_url' => "assets/icons/dashboard/" . $weekendTradingPair[$asset]['image'],
-                'type' => 'coin',
                 'sentiment' => $sentiment,
             ];
         }
@@ -722,6 +720,7 @@ class Robot extends Component
                     'profit_values' => json_encode($this->generateProfit(288, $profitLimit)),
                     'profit_position' => 0,
                     'asset' => $assetToTrade['display_name'],
+                    'asset_class' => $assetToTrade['asset_class'],
                     'asset_image_url' => $assetToTrade['image_url'],
                     'sentiment' => $assetToTrade['sentiment'],
                     'status' => 'active',
