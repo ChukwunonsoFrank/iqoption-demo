@@ -46,44 +46,28 @@ class Withdraw extends Component
         return $amount * 100;
     }
 
-    public function checkForEmptyAmountField(): bool
-    {
-        if ($this->amount === '') {
-            $this->dispatch('withdraw-error', message: 'Amount field is empty')->self();
-            return false;
-        }
-        return true;
-    }
-
-    public function checkForZeroAmountField(): bool
-    {
-        if ($this->amount === '0') {
-            $this->dispatch('withdraw-error', message: 'Amount must be greater than 0')->self();
-            return false;
-        }
-        return true;
-    }
-
-    public function checkAccountBalance(): bool
-    {
-        $balance = $this->normalizeAmount(auth()->user()->live_balance);
-
-        if (floatval($this->amount) > $balance) {
-            $this->dispatch('withdraw-error', message: 'Insufficient balance')->self();
-            return false;
-        }
-        return true;
-    }
-
     public function generateOTP()
     {
         try {
-            $isAmountFieldEmpty = $this->checkForEmptyAmountField();
-            $isAmountFieldZero = $this->checkForZeroAmountField();
-            $isAccountBalanceSufficient = $this->checkAccountBalance();
-
-            if (! $isAmountFieldEmpty || ! $isAmountFieldZero || ! $isAccountBalanceSufficient) {
+            if ($this->amount === '') {
+                $this->dispatch('withdraw-error', message: 'Amount field is empty')->self();
                 return;
+            }
+
+            if (intval($this->amount) === 0) {
+                $this->dispatch('withdraw-error', message: 'Amount must be greater than 0')->self();
+                return;
+            }
+
+            if ($this->address === '') {
+                $this->dispatch('withdraw-error', message: 'Wallet address field is empty')->self();
+                return;
+            }
+
+            $balance = $this->normalizeAmount(auth()->user()->live_balance);
+            if (floatval($this->amount) > $balance) {
+                $this->dispatch('withdraw-error', message: 'Insufficient balance')->self();
+                return false;
             }
 
             $user = User::find(auth()->user()->id);

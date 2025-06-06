@@ -34,7 +34,7 @@
                                     </div>
                                     <div class="flex items-center space-x-1 rounded-lg">
                                         <div>
-                                            <img src="https://olympmatix.com/icons/assets/BITCOIN.svg" alt="">
+                                            <img src="{{ asset($this->assetIcon) }}" alt="">
                                         </div>
                                         <div>
                                             <p class="font-semibold text-white text-[15px]">{{ $this->asset }}</p>

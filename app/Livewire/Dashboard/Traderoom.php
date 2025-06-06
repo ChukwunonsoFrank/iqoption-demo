@@ -32,6 +32,8 @@ class Traderoom extends Component
 
     public string $asset = '';
 
+    public string $assetIcon = '';
+
     public string $sentiment = '';
 
     public function mount()
@@ -52,6 +54,7 @@ class Traderoom extends Component
         $this->profitLimit = $strategy['max_roi'];
         $this->profit = $this->normalizeAmount($this->activeBot['profit']);
         $this->asset = $this->activeBot['asset'];
+        $this->assetIcon = $this->activeBot['asset_image_url'];
 
         $timeLeft = $this->calculateTimeLeftTillNextCheckpoint($this->activeBot['timer_checkpoint']);
         $formatted = $this->formatTimeLeft($timeLeft['minutes'], $timeLeft['seconds']);
@@ -120,6 +123,7 @@ class Traderoom extends Component
             $this->activeBot = Bot::where(['user_id' => auth()->user()->id, 'status' => 'active'])->first();
             $this->profit = $this->normalizeAmount($this->activeBot['profit']);
             $this->asset = $this->activeBot['asset'];
+            $this->assetIcon = $this->activeBot['asset_image_url'];
             $this->sentiment = $this->activeBot['sentiment'];
         }
 

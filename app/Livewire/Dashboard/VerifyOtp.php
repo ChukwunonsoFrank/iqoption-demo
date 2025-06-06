@@ -23,7 +23,7 @@ class VerifyOtp extends Component
     #[Url]
     public $address;
 
-    public $token;
+    public $token = '';
 
     public $generatedToken;
 
@@ -32,41 +32,25 @@ class VerifyOtp extends Component
         $this->generatedToken = OtpToken::where('user_id', auth()->user()->id)->first();
     }
 
-    public function verifyOTP(): bool
-    {
-        if ($this->token !== $this->generatedToken['token']) {
-            $message = 'Invalid OTP token';
-            $this->dispatch('withdraw-error', message: $message)->self();
-            return false;
-        }
-        return true;
-    }
-
-    public function hasTokenNotExpired(): bool
-    {
-        $expiresAt = $this->generatedToken['expires_at'];
-        $now = now()->getTimestampMs();
-
-        if ($now > $expiresAt) {
-            $message = 'Expired OTP token. Click on "Resend code" to generate a new token.';
-            $this->dispatch('withdraw-error', message: $message)->self();
-            return false;
-        }
-        return true;
-    }
-
     public function createWithdrawal()
     {
         try {
-            $isOTPVerified = $this->verifyOTP();
-
-            if (! $isOTPVerified) {
+            if ($this->token === '') {
+                $this->dispatch('withdraw-error', message: 'OTP token field is empty')->self();
                 return;
             }
 
-            $hasTokenNotExpired = $this->hasTokenNotExpired();
+            if ($this->token !== $this->generatedToken['token']) {
+                $message = 'Invalid OTP token';
+                $this->dispatch('withdraw-error', message: $message)->self();
+                return;
+            }
 
-            if (! $hasTokenNotExpired) {
+            $expiresAt = $this->generatedToken['expires_at'];
+            $now = now()->getTimestampMs();
+            if ($now > $expiresAt) {
+                $message = 'Expired OTP token. Click on "Resend code" to generate a new token.';
+                $this->dispatch('withdraw-error', message: $message)->self();
                 return;
             }
 

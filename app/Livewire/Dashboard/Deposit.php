@@ -33,34 +33,6 @@ class Deposit extends Component
         $this->paymentMethod = $filtered->first();
     }
 
-    public function checkForEmptyAmountField(): bool
-    {
-        if ($this->amount === '') {
-            $this->dispatch('deposit-error', message: 'Amount field is empty')->self();
-            return false;
-        }
-        return true;
-    }
-
-    public function checkForZeroAmountField(): bool
-    {
-        if ($this->amount === '0') {
-            $this->dispatch('deposit-error', message: 'Amount must be greater than 0')->self();
-            return false;
-        }
-        return true;
-    }
-
-    public function isAmountUpToPlanMinimum(): bool
-    {
-        if ($this->amount < $this->minimumDepositAmount) {
-            $message = 'Minimum deposit is $' . strval($this->minimumDepositAmount);
-            $this->dispatch('deposit-error', message: $message)->self();
-            return false;
-        }
-        return true;
-    }
-
     public function serializeAmount(float $amount): int
     {
         return $amount * 100;
@@ -68,11 +40,19 @@ class Deposit extends Component
 
     public function confirmDeposit()
     {
-        $isAmountFieldEmpty = $this->checkForEmptyAmountField();
-        $isAmountFieldZero = $this->checkForZeroAmountField();
-        $isAmountUpToPlanMinimum = $this->isAmountUpToPlanMinimum();
+        if ($this->amount === '') {
+            $this->dispatch('deposit-error', message: 'Amount field is empty')->self();
+            return;
+        }
 
-        if (! $isAmountFieldEmpty || ! $isAmountFieldZero || ! $isAmountUpToPlanMinimum) {
+        if (intval($this->amount) === 0) {
+            $this->dispatch('deposit-error', message: 'Amount must be greater than 0')->self();
+            return;
+        }
+
+        if (floatval($this->amount) < $this->minimumDepositAmount) {
+            $message = 'Minimum deposit is $' . strval($this->minimumDepositAmount);
+            $this->dispatch('deposit-error', message: $message)->self();
             return;
         }
 

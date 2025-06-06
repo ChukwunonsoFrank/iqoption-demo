@@ -46,14 +46,14 @@
                                 x-on:click="$store.robotPage.isTradingAccountSelectOpen = false"
                                 class="hover:bg-gray-600 cursor-pointer flex items-center space-x-3 px-4 py-2 rounded-md text-[#FFFFFF]">
                                 <div class="flex-1">
-                                    <p class="text-sm">Demo Account - @money(auth()->user()->demo_balance / 100)</p>
+                                    <p class="text-sm">Demo Account - <span class="font-bold text-xs">@money(auth()->user()->demo_balance / 100)</span></p>
                                 </div>
                             </div>
                             <div wire:click="selectAccountType('Live account', 'live')"
                                 x-on:click="$store.robotPage.isTradingAccountSelectOpen = false"
                                 class="hover:bg-gray-600 cursor-pointer flex items-center space-x-3 px-4 py-2 rounded-md text-[#FFFFFF]">
                                 <div class="flex-1">
-                                    <p class="text-sm">Live Account - @money(auth()->user()->live_balance / 100)</p>
+                                    <p class="text-sm">Live Account - <span class="font-bold text-xs">@money(auth()->user()->live_balance / 100)</span></p>
                                 </div>
                             </div>
                         </div>
