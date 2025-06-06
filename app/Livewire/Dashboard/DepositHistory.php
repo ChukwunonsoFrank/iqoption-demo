@@ -3,6 +3,7 @@
 namespace App\Livewire\Dashboard;
 
 use App\Models\Deposit;
+use App\Models\PaymentMethod;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
 
@@ -16,6 +17,8 @@ class DepositHistory extends Component
 
     public $totalDeposits;
 
+    public $paymentMethods;
+
     public function mount()
     {
         if (session()->has('message')) {
@@ -23,6 +26,7 @@ class DepositHistory extends Component
             $this->dispatch('deposit-created', message: $message)->self();
         }
 
+        $this->paymentMethods = PaymentMethod::all();
         $this->totalDeposits = Deposit::where('user_id', auth()->user()->id)->count();
         $this->visibleCount = min($this->perPage, $this->totalDeposits);
     }
@@ -30,6 +34,15 @@ class DepositHistory extends Component
     public function loadMore(): void
     {
         $this->visibleCount = min($this->visibleCount + $this->perPage, $this->totalDeposits);
+    }
+
+    public function getPaymentMethodIconUrl(string $paymentMethod): string
+    {
+        $filtered = $this->paymentMethods->filter(function (PaymentMethod $value, $key) use ($paymentMethod) {
+            return $value['name'] === $paymentMethod;
+        });
+
+         return $filtered->first()['icon_url'];
     }
 
     public function render()

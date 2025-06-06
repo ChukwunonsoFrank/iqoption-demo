@@ -96,189 +96,189 @@ class RefreshActiveBots implements ShouldQueue
                 "percentage" => "91%",
                 "assetType" => "coin",
                 "symbol" => "BTCUSDT",
-                "image" => "btc.png"
+                "image" => "btc.svg"
             ],
             [
                 "name" => "ETH/USDT",
                 "percentage" => "95%",
                 "assetType" => "coin",
                 "symbol" => "ETHUSDT",
-                "image" => "eth.png"
+                "image" => "eth.svg"
             ],
             [
                 "name" => "LTC/USDT",
                 "percentage" => "95%",
                 "assetType" => "coin",
                 "symbol" => "LTCUSDT",
-                "image" => "ltc.png"
+                "image" => "ltc.svg"
             ],
             [
                 "name" => "SOL/USDT",
                 "percentage" => "98%",
                 "assetType" => "coin",
                 "symbol" => "SOLUSDT",
-                "image" => "sol.png"
+                "image" => "sol.svg"
             ],
             [
                 "name" => "XRP/USDT",
                 "percentage" => "93%",
                 "assetType" => "coin",
                 "symbol" => "XRPUSDT",
-                "image" => "xrp.png"
+                "image" => "xrp.svg"
             ],
             [
                 "name" => "DOGE/USDT",
                 "percentage" => "83%",
                 "assetType" => "coin",
                 "symbol" => "DOGEUSDT",
-                "image" => "doge.png"
+                "image" => "doge.svg"
             ],
             [
                 "name" => "BCH/USDT",
                 "percentage" => "89%",
                 "assetType" => "coin",
                 "symbol" => "BCHUSDT",
-                "image" => "bch.png"
+                "image" => "bch.svg"
             ],
             [
                 "name" => "DAI/USDT",
                 "percentage" => "97%",
                 "assetType" => "coin",
                 "symbol" => "DAIUSDT",
-                "image" => "dai.png"
+                "image" => "dai.svg"
             ],
             [
                 "name" => "BNB/USDT",
                 "percentage" => "87%",
                 "assetType" => "coin",
                 "symbol" => "BNBUSDT",
-                "image" => "bnb.png"
+                "image" => "bnb.svg"
             ],
             [
                 "name" => "ADA/USDT",
                 "percentage" => "93%",
                 "assetType" => "coin",
                 "symbol" => "ADAUSDT",
-                "image" => "ada.png"
+                "image" => "ada.svg"
             ],
             [
                 "name" => "AVAX/USDT",
                 "percentage" => "99%",
                 "assetType" => "coin",
                 "symbol" => "AVAXUSDT",
-                "image" => "avax.png"
+                "image" => "avax.svg"
             ],
             [
                 "name" => "TRX/USDT",
                 "percentage" => "90%",
                 "assetType" => "coin",
                 "symbol" => "TRXUSDT",
-                "image" => "trx.png"
+                "image" => "trx.svg"
             ],
             [
                 "name" => "MATIC/USDT",
                 "percentage" => "91%",
                 "assetType" => "coin",
                 "symbol" => "MATICUSDT",
-                "image" => "matic.png"
+                "image" => "matic.svg"
             ],
             [
                 "name" => "ATOM/USDT",
                 "percentage" => "96%",
                 "assetType" => "coin",
                 "symbol" => "ATOMUSDT",
-                "image" => "atom.png"
+                "image" => "atom.svg"
             ],
             [
                 "name" => "LINK/USDT",
                 "percentage" => "87%",
                 "assetType" => "coin",
                 "symbol" => "LINKUSDT",
-                "image" => "link.png"
+                "image" => "link.svg"
             ],
             [
                 "name" => "DASH/USDT",
                 "percentage" => "87%",
                 "assetType" => "coin",
                 "symbol" => "DASHUSDT",
-                "image" => "dash.png"
+                "image" => "dash.svg"
             ],
             [
                 "name" => "XLM/USDT",
                 "percentage" => "93%",
                 "assetType" => "coin",
                 "symbol" => "XLMUSDT",
-                "image" => "xlm.png"
+                "image" => "xlm.svg"
             ],
             [
                 "name" => "NEO/USDT",
                 "percentage" => "93%",
                 "assetType" => "coin",
                 "symbol" => "NEOUSDT",
-                "image" => "neo.png"
+                "image" => "neo.svg"
             ],
             [
                 "name" => "BAT/USDT",
                 "percentage" => "83%",
                 "assetType" => "coin",
                 "symbol" => "BATUSDT",
-                "image" => "bat.png"
+                "image" => "bat.svg"
             ],
             [
                 "name" => "ETC/USDT",
                 "percentage" => "86%",
                 "assetType" => "coin",
                 "symbol" => "ETCUSDT",
-                "image" => "etc.png"
+                "image" => "etc.svg"
             ],
             [
                 "name" => "ZEC/USDT",
                 "percentage" => "94%",
                 "assetType" => "coin",
                 "symbol" => "ZECUSDT",
-                "image" => "zec.png"
+                "image" => "zec.svg"
             ],
             [
                 "name" => "ONT/USDT",
                 "percentage" => "96%",
                 "assetType" => "coin",
                 "symbol" => "ONTUSDT",
-                "image" => "ont.png"
+                "image" => "ont.svg"
             ],
             [
                 "name" => "STX/USDT",
                 "percentage" => "96%",
                 "assetType" => "coin",
                 "symbol" => "STXUSDT",
-                "image" => "stx.png"
+                "image" => "stx.svg"
             ],
             [
                 "name" => "MKR/USDT",
                 "percentage" => "95%",
                 "assetType" => "coin",
                 "symbol" => "MKRUSDT",
-                "image" => "mkr.png"
+                "image" => "mkr.svg"
             ],
             [
                 "name" => "AAVE/USDT",
                 "percentage" => "90%",
                 "assetType" => "coin",
                 "symbol" => "AAVEUSDT",
-                "image" => "aave.png"
+                "image" => "aave.svg"
             ],
             [
                 "name" => "XMR/USDT",
                 "percentage" => "99%",
                 "assetType" => "coin",
                 "symbol" => "XMRUSDT",
-                "image" => "xmr.png"
+                "image" => "xmr.svg"
             ],
             [
                 "name" => "YFI/USDT",
                 "percentage" => "95%",
                 "assetType" => "coin",
                 "symbol" => "YFIUSDT",
-                "image" => "yfi.png"
+                "image" => "yfi.svg"
             ]
         ];
 
@@ -345,20 +345,6 @@ class RefreshActiveBots implements ShouldQueue
                 "assetType" => "currency",
                 "symbol" => "NQ",
                 "image" => "NQ.svg"
-            ],
-            [
-                "name" => "CAC 40",
-                "percentage" => "94%",
-                "assetType" => "currency",
-                "symbol" => "CAC40",
-                "image" => "FCE.svg"
-            ],
-            [
-                "name" => "FTSE 100",
-                "percentage" => "96%",
-                "assetType" => "currency",
-                "symbol" => "FTSE",
-                "image" => "Z.svg"
             ],
             [
                 "name" => "AUD/JPY",
@@ -477,189 +463,189 @@ class RefreshActiveBots implements ShouldQueue
                 "percentage" => "91%",
                 "assetType" => "coin",
                 "symbol" => "BTCUSDT",
-                "image" => "btc.png"
+                "image" => "btc.svg"
             ],
             [
                 "name" => "ETH/USDT",
                 "percentage" => "95%",
                 "assetType" => "coin",
                 "symbol" => "ETHUSDT",
-                "image" => "eth.png"
+                "image" => "eth.svg"
             ],
             [
                 "name" => "LTC/USDT",
                 "percentage" => "95%",
                 "assetType" => "coin",
                 "symbol" => "LTCUSDT",
-                "image" => "ltc.png"
+                "image" => "ltc.svg"
             ],
             [
                 "name" => "SOL/USDT",
                 "percentage" => "98%",
                 "assetType" => "coin",
                 "symbol" => "SOLUSDT",
-                "image" => "sol.png"
+                "image" => "sol.svg"
             ],
             [
                 "name" => "XRP/USDT",
                 "percentage" => "93%",
                 "assetType" => "coin",
                 "symbol" => "XRPUSDT",
-                "image" => "xrp.png"
+                "image" => "xrp.svg"
             ],
             [
                 "name" => "DOGE/USDT",
                 "percentage" => "83%",
                 "assetType" => "coin",
                 "symbol" => "DOGEUSDT",
-                "image" => "doge.png"
+                "image" => "doge.svg"
             ],
             [
                 "name" => "BCH/USDT",
                 "percentage" => "89%",
                 "assetType" => "coin",
                 "symbol" => "BCHUSDT",
-                "image" => "bch.png"
+                "image" => "bch.svg"
             ],
             [
                 "name" => "DAI/USDT",
                 "percentage" => "97%",
                 "assetType" => "coin",
                 "symbol" => "DAIUSDT",
-                "image" => "dai.png"
+                "image" => "dai.svg"
             ],
             [
                 "name" => "BNB/USDT",
                 "percentage" => "87%",
                 "assetType" => "coin",
                 "symbol" => "BNBUSDT",
-                "image" => "bnb.png"
+                "image" => "bnb.svg"
             ],
             [
                 "name" => "ADA/USDT",
                 "percentage" => "93%",
                 "assetType" => "coin",
                 "symbol" => "ADAUSDT",
-                "image" => "ada.png"
+                "image" => "ada.svg"
             ],
             [
                 "name" => "AVAX/USDT",
                 "percentage" => "99%",
                 "assetType" => "coin",
                 "symbol" => "AVAXUSDT",
-                "image" => "avax.png"
+                "image" => "avax.svg"
             ],
             [
                 "name" => "TRX/USDT",
                 "percentage" => "90%",
                 "assetType" => "coin",
                 "symbol" => "TRXUSDT",
-                "image" => "trx.png"
+                "image" => "trx.svg"
             ],
             [
                 "name" => "MATIC/USDT",
                 "percentage" => "91%",
                 "assetType" => "coin",
                 "symbol" => "MATICUSDT",
-                "image" => "matic.png"
+                "image" => "matic.svg"
             ],
             [
                 "name" => "ATOM/USDT",
                 "percentage" => "96%",
                 "assetType" => "coin",
                 "symbol" => "ATOMUSDT",
-                "image" => "atom.png"
+                "image" => "atom.svg"
             ],
             [
                 "name" => "LINK/USDT",
                 "percentage" => "87%",
                 "assetType" => "coin",
                 "symbol" => "LINKUSDT",
-                "image" => "link.png"
+                "image" => "link.svg"
             ],
             [
                 "name" => "DASH/USDT",
                 "percentage" => "87%",
                 "assetType" => "coin",
                 "symbol" => "DASHUSDT",
-                "image" => "dash.png"
+                "image" => "dash.svg"
             ],
             [
                 "name" => "XLM/USDT",
                 "percentage" => "93%",
                 "assetType" => "coin",
                 "symbol" => "XLMUSDT",
-                "image" => "xlm.png"
+                "image" => "xlm.svg"
             ],
             [
                 "name" => "NEO/USDT",
                 "percentage" => "93%",
                 "assetType" => "coin",
                 "symbol" => "NEOUSDT",
-                "image" => "neo.png"
+                "image" => "neo.svg"
             ],
             [
                 "name" => "BAT/USDT",
                 "percentage" => "83%",
                 "assetType" => "coin",
                 "symbol" => "BATUSDT",
-                "image" => "bat.png"
+                "image" => "bat.svg"
             ],
             [
                 "name" => "ETC/USDT",
                 "percentage" => "86%",
                 "assetType" => "coin",
                 "symbol" => "ETCUSDT",
-                "image" => "etc.png"
+                "image" => "etc.svg"
             ],
             [
                 "name" => "ZEC/USDT",
                 "percentage" => "94%",
                 "assetType" => "coin",
                 "symbol" => "ZECUSDT",
-                "image" => "zec.png"
+                "image" => "zec.svg"
             ],
             [
                 "name" => "ONT/USDT",
                 "percentage" => "96%",
                 "assetType" => "coin",
                 "symbol" => "ONTUSDT",
-                "image" => "ont.png"
+                "image" => "ont.svg"
             ],
             [
                 "name" => "STX/USDT",
                 "percentage" => "96%",
                 "assetType" => "coin",
                 "symbol" => "STXUSDT",
-                "image" => "stx.png"
+                "image" => "stx.svg"
             ],
             [
                 "name" => "MKR/USDT",
                 "percentage" => "95%",
                 "assetType" => "coin",
                 "symbol" => "MKRUSDT",
-                "image" => "mkr.png"
+                "image" => "mkr.svg"
             ],
             [
                 "name" => "AAVE/USDT",
                 "percentage" => "90%",
                 "assetType" => "coin",
                 "symbol" => "AAVEUSDT",
-                "image" => "aave.png"
+                "image" => "aave.svg"
             ],
             [
                 "name" => "XMR/USDT",
                 "percentage" => "99%",
                 "assetType" => "coin",
                 "symbol" => "XMRUSDT",
-                "image" => "xmr.png"
+                "image" => "xmr.svg"
             ],
             [
                 "name" => "YFI/USDT",
                 "percentage" => "95%",
                 "assetType" => "coin",
                 "symbol" => "YFIUSDT",
-                "image" => "yfi.png"
+                "image" => "yfi.svg"
             ]
         ];
 
@@ -673,7 +659,7 @@ class RefreshActiveBots implements ShouldQueue
                 'ticker_symbol' => $weekdayTradingPair[$asset]['symbol'],
                 'display_name' => $weekdayTradingPair[$asset]['name'],
                 'percentage' => $weekdayTradingPair[$asset]['percentage'],
-                'image_url' => "assets/icons/" . $weekdayTradingPair[$asset]['image'],
+                'image_url' => "assets/icons/dashboard/" . $weekdayTradingPair[$asset]['image'],
                 'type' => 'coin',
                 'sentiment' => $sentiment,
             ];
@@ -683,7 +669,7 @@ class RefreshActiveBots implements ShouldQueue
                 'ticker_symbol' => $weekendTradingPair[$asset]['symbol'],
                 'display_name' => $weekendTradingPair[$asset]['name'],
                 'percentage' => $weekendTradingPair[$asset]['percentage'],
-                'image_url' => "assets/icons/" . $weekendTradingPair[$asset]['image'],
+                'image_url' => "assets/icons/dashboard/" . $weekendTradingPair[$asset]['image'],
                 'type' => 'coin',
                 'sentiment' => $sentiment,
             ];

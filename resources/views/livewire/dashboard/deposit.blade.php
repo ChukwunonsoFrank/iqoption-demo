@@ -24,6 +24,9 @@
                     <div class="flex-1 md:flex-none relative">
                         <div x-on:click="$store.depositPage.togglePaymentMethodSelect()"
                             class="flex items-center space-x-3 py-2.5 sm:py-3 px-4 border border-gray-700 bg-navbar rounded-lg text-[#FFFFFF]">
+                            <div class="flex-none">
+                                <img src="{{ asset($this->paymentMethod['icon_url']) }}">
+                            </div>
                             <div class="flex-1">
                                 <p class="text-sm">{{ $this->paymentMethod['name'] }}</p>
                             </div>
@@ -46,6 +49,9 @@
                                 <div wire:key="payment-method-{{ $method['id'] }}" wire:click="selectPaymentMethod({{ $method['id'] }})"
                                     x-on:click="$store.depositPage.isPaymentMethodSelectOpen = false"
                                     class="hover:bg-gray-600 cursor-pointer flex items-center space-x-3 px-4 py-2 rounded-md text-[#FFFFFF]">
+                                    <div class="flex-none">
+                                        <img src="{{ asset($method['icon_url']) }}">
+                                    </div>
                                     <div class="flex-1">
                                         <p class="text-sm">{{ $method['name'] }}</p>
                                     </div>

@@ -8,7 +8,7 @@
             <div class="lg:h-full lg:pb-24 lg:overflow-scroll">
 
                 @forelse ($withdrawals as $withdrawal)
-                    <div class="bg-trade w-full rounded-sm flex flex-col space-y-2 p-3 mb-3">
+                    <div wire:key="withdrawal-{{ $withdrawal['id'] }}" class="bg-trade w-full rounded-sm flex flex-col space-y-2 p-3 mb-3">
                         <div class="flex items-center">
                             <div class="flex-1">
                                 <span
@@ -21,8 +21,7 @@
                         </div>
                         <div class="flex items-center space-x-2">
                             <div class="flex-none">
-                                <img class="md:w-7" src="https://olympmatix.com/icons/assets/BITCOIN.svg"
-                                    alt="">
+                                <img class="md:w-7" src="{{ asset($this->getPaymentMethodIconUrl($withdrawal['payment_method'])) }}" alt="">
                             </div>
                             <div class="flex-1">
                                 <p class="font-semibold text-xs text-white md:text-sm">{{ $withdrawal['payment_method'] }}</p>
@@ -36,7 +35,7 @@
                     <div class="flex justify-center items-center">
                         <div class="bg-trade w-full rounded-sm flex flex-col space-y-2 p-3 mb-3">
                             <div class="text-center">
-                                <p class="text-xs text-zinc-300">Make deposits to see your activity here.</p>
+                                <p class="text-xs text-zinc-300">Make withdrawals to see your activity here.</p>
                             </div>
                         </div>
                     </div>

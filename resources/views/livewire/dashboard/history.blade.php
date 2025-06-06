@@ -20,7 +20,7 @@
                         </div>
                         <div class="flex items-center space-x-1">
                             <div class="flex-none">
-                                <img class="md:w-7" src="https://olympmatix.com/icons/assets/BITCOIN.svg"
+                                <img class="md:w-7" src="{{ asset($trade['asset_image_url']) }}"
                                     alt="">
                             </div>
                             <div class="flex-none">

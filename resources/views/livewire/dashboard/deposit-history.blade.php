@@ -7,7 +7,7 @@
             </div>
             <div class="lg:h-full lg:pb-24 lg:overflow-scroll">
                 @forelse ($deposits as $deposit)
-                    <div class="bg-trade w-full rounded-sm flex flex-col space-y-2 p-3 mb-3">
+                    <div wire:key="deposit-{{ $deposit['id'] }}" class="bg-trade w-full rounded-sm flex flex-col space-y-2 p-3 mb-3">
                         <div class="flex items-center">
                             <div class="flex-1">
                                 <span
@@ -20,8 +20,7 @@
                         </div>
                         <div class="flex items-center space-x-2">
                             <div class="flex-none">
-                                <img class="md:w-7" src="https://olympmatix.com/icons/assets/BITCOIN.svg"
-                                    alt="">
+                                <img class="md:w-7" src="{{ asset($this->getPaymentMethodIconUrl($deposit['payment_method'])) }}" alt="">
                             </div>
                             <div class="flex-1">
                                 <p class="font-semibold text-xs text-white md:text-sm">{{ $deposit['payment_method'] }}</p>

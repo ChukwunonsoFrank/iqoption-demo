@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Dashboard;
 
+use App\Models\PaymentMethod;
 use App\Models\Withdrawal;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
@@ -16,6 +17,8 @@ class WithdrawHistory extends Component
 
     public $totalWithdrawals;
 
+    public $paymentMethods;
+
     public function mount()
     {
         if (session()->has('message')) {
@@ -23,6 +26,7 @@ class WithdrawHistory extends Component
             $this->dispatch('withdrawal-created', message: $message)->self();
         }
 
+        $this->paymentMethods = PaymentMethod::all();
         $this->totalWithdrawals = Withdrawal::where('user_id', auth()->user()->id)->count();
         $this->visibleCount = min($this->perPage, $this->totalWithdrawals);
     }
@@ -30,6 +34,15 @@ class WithdrawHistory extends Component
     public function loadMore(): void
     {
         $this->visibleCount = min($this->visibleCount + $this->perPage, $this->totalWithdrawals);
+    }
+
+    public function getPaymentMethodIconUrl(string $paymentMethod): string
+    {
+        $filtered = $this->paymentMethods->filter(function (PaymentMethod $value, $key) use ($paymentMethod) {
+            return $value['name'] === $paymentMethod;
+        });
+
+         return $filtered->first()['icon_url'];
     }
 
     public function render()
