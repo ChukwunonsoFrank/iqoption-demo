@@ -148,7 +148,8 @@
                         <p class="text-zinc-300 text-[11px]">Monitor the movement of the asset as it trades</p>
                     </div>
                     <div>
-                        <button type="button"
+                        <a href="{{ route('dashboard') }}">
+                            <button type="button"
                             class="py-2 px-4 md:px-6 md:py-3 inline-flex items-center gap-x-1 text-xs font-bold rounded-sm bg-accent text-white focus:outline-hidden">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                 viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2"
@@ -159,6 +160,7 @@
                             </svg>
                             Track
                         </button>
+                        </a>
                     </div>
                 </div>
             </div>
