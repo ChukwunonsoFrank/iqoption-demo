@@ -19,7 +19,11 @@ class Index extends Component
 
         $activeBot = Bot::where(['user_id' => auth()->user()->id, 'status' => 'active'])->first();
 
-        $this->activeBotTickerSymbol = $activeBot['asset_ticker'];
+        if ($activeBot) {
+            $this->activeBotTickerSymbol = $activeBot['asset_ticker'];
+        } else {
+            $this->activeBotTickerSymbol = 'BTCUSDT';
+        }
 
         if ($justLoggedIn && $activeBot) {
             $this->redirectRoute('dashboard.robot.traderoom');
