@@ -13,7 +13,7 @@
                             <div class="flex-1">
                                 <span
                                     class="inline-flex items-center gap-x-1.5 py-1 px-2 rounded-full text-[10px] font-semibold border border-gray-500 text-white"><span
-                                        class="size-1 inline-block rounded-full {{ $withdrawal['status'] === 'pending' ? 'bg-red-600' : 'bg-green-600' }}"></span> {{ ucfirst($withdrawal['status']) }}</span>
+                                        class="size-1 inline-block rounded-full {{ $this->getStatusIndicatorColor($withdrawal['status']) }}"></span> {{ ucfirst($withdrawal['status']) }}</span>
                             </div>
                             <div class="flex-1 text-end">
                                 <p class="text-gray-400 text-xs">{{ $withdrawal['created_at_formatted'] }}</p>

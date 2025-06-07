@@ -5,7 +5,7 @@ namespace App\Livewire\Dashboard\Partials;
 use App\Models\Bot;
 use Livewire\Component;
 
-class DesktopNavbar extends Component
+class MobileNavbar extends Component
 {
     public function robot()
     {
@@ -20,6 +20,6 @@ class DesktopNavbar extends Component
 
     public function render()
     {
-        return view('livewire.dashboard.partials.desktop-navbar');
+        return view('livewire.dashboard.partials.mobile-navbar');
     }
 }

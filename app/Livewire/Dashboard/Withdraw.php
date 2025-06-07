@@ -5,7 +5,7 @@ namespace App\Livewire\Dashboard;
 use App\Models\OtpToken;
 use App\Models\PaymentMethod;
 use App\Models\User;
-use App\Notifications\WithdrawalRequested;
+use App\Notifications\TokenRequested;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
 
@@ -70,8 +70,6 @@ class Withdraw extends Component
                 return false;
             }
 
-            $user = User::find(auth()->user()->id);
-
             $token = OtpToken::updateOrCreate(
                 [
                     'user_id' => auth()->user()->id
@@ -82,7 +80,9 @@ class Withdraw extends Component
                 ]
             );
 
-            $user->notify(new WithdrawalRequested($token['token']));
+            $user = User::find(auth()->user()->id);
+
+            $user->notify(new TokenRequested(auth()->user()->name, $token['token']));
 
             $this->redirectRoute('dashboard.withdraw.verifyotp', [
                 'amount' => $this->serializeAmount($this->amount),

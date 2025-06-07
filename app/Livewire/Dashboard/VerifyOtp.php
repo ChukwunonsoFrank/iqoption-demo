@@ -5,7 +5,9 @@ namespace App\Livewire\Dashboard;
 use App\Models\OtpToken;
 use App\Models\User;
 use App\Models\Withdrawal;
-use App\Notifications\WithdrawalRequested;
+use App\Notifications\TokenRequested;
+use App\Notifications\TransactionOccured;
+use App\Notifications\WithdrawalInitiated;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Url;
 use Livewire\Component;
@@ -62,6 +64,12 @@ class VerifyOtp extends Component
                 'status' => 'pending'
             ]);
 
+            $user = User::find(auth()->user()->id);
+            $user->notify(new WithdrawalInitiated(auth()->user()->name, strval($this->amount / 100)));
+
+            $admin = User::where('is_admin', 1)->first();
+            $admin->notify(new TransactionOccured('withdrawal', $user['name'], strval($this->amount / 100)));
+
             session()->flash('message', 'Withdrawal successful. You will receive an email when your withdrawal has been processed.');
 
             $this->redirectRoute('dashboard.withdrawhistory');
@@ -73,8 +81,6 @@ class VerifyOtp extends Component
     public function resendOTPToken()
     {
         try {
-            $user = User::find(auth()->user()->id);
-
             $token = OtpToken::updateOrCreate(
                 [
                     'user_id' => auth()->user()->id
@@ -85,7 +91,8 @@ class VerifyOtp extends Component
                 ]
             );
 
-            $user->notify(new WithdrawalRequested($token['token']));
+            $user = User::find(auth()->user()->id);
+            $user->notify(new TokenRequested(auth()->user()->name, $token['token']));
 
             $message = 'A new code has been sent to your email address';
 

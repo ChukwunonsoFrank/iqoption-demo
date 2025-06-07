@@ -3,6 +3,9 @@
 namespace App\Livewire\Dashboard;
 
 use App\Models\Deposit;
+use App\Models\User;
+use App\Notifications\DepositInitiated;
+use App\Notifications\TransactionOccured;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Url;
 use Livewire\Component;
@@ -29,6 +32,15 @@ class ConfirmDeposit extends Component
                 'amount' => $this->amount,
                 'status' => 'pending'
             ]);
+
+            /**
+             * Send notifications to respective correspondents.
+             */
+            $user = User::find(auth()->user()->id);
+            $user->notify(new DepositInitiated(auth()->user()->name, strval($this->amount / 100)));
+
+            $admin = User::where('is_admin', 1)->first();
+            $admin->notify(new TransactionOccured('deposit', $user['name'], strval($this->amount / 100)));
 
             session()->flash('message', 'Deposit successful. You will receive an email when deposit has been confirmed.');
 

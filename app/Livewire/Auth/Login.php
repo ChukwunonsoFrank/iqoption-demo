@@ -48,6 +48,8 @@ class Login extends Component
             RateLimiter::clear($this->throttleKey());
             Session::regenerate();
 
+            session()->flash('just_logged_in', true);
+
             $this->redirectIntended(default: route('dashboard', absolute: false), navigate: true);
         } catch (\Exception $e) {
             $this->dispatch('login-error', message: $e->getMessage())->self();

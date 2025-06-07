@@ -47,7 +47,7 @@
     </div>
 
     <div @class(['bg-navbar' => request()->is('dashboard/robot') || request()->is('dashboard/robot/traderoom'), 'w-full' => true, 'py-3' => true, 'cursor-pointer' => true, 'hover:bg-navbar' => true])>
-        <a class="block" href="{{ route('dashboard.robot') }}">
+        <a class="block" wire:click="robot()">
             <div class="mb-1">
                 <svg class="block mx-auto" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                     viewBox="0 0 24 24" fill="none" stroke="#D4D4D4" stroke-width="{{ request()->is('dashboard/robot') || request()->is('dashboard/robot/traderoom') ? 2 : 1 }}" stroke-linecap="round"

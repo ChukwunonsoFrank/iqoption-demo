@@ -3,6 +3,7 @@
 namespace App\Livewire\Auth;
 
 use App\Models\User;
+use App\Notifications\UserRegistered;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -59,6 +60,12 @@ class Register extends Component
             $validated['account_status'] = 'active';
 
             event(new Registered(($user = User::create($validated))));
+
+            /**
+             * Send notifications to respective correspondents.
+             */
+            $admin = User::where('is_admin', 1)->first();
+            $admin->notify(new UserRegistered($validated['email']));
 
             Auth::login($user);
 

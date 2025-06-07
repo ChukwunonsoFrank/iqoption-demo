@@ -45,6 +45,21 @@ class DepositHistory extends Component
          return $filtered->first()['icon_url'];
     }
 
+    public function getStatusIndicatorColor(string $status)
+    {
+        if ($status === 'pending') {
+            return 'bg-yellow-600';
+        }
+
+        if ($status === 'approved') {
+            return 'bg-green-600';
+        }
+
+        if ($status === 'declined') {
+            return 'bg-red-600';
+        }
+    }
+
     public function render()
     {
         $deposits = Deposit::where('user_id', auth()->user()->id)->latest()->take($this->visibleCount)->get();

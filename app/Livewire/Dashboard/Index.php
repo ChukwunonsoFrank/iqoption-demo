@@ -2,6 +2,8 @@
 
 namespace App\Livewire\Dashboard;
 
+use App\Models\Bot;
+use Illuminate\Support\Facades\Session;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
 
@@ -9,6 +11,17 @@ use Livewire\Component;
 
 class Index extends Component
 {
+    public function mount()
+    {
+        $justLoggedIn = Session::pull('just_logged_in', false);
+
+        $activeBot = Bot::where(['user_id' => auth()->user()->id, 'status' => 'active'])->first();
+
+        if ($justLoggedIn && $activeBot) {
+            $this->redirectRoute('dashboard.robot.traderoom');
+        }
+    }
+
     public function render()
     {
         return view('livewire.dashboard.index');
