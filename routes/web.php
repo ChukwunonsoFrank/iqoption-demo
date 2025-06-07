@@ -18,7 +18,18 @@ use App\Livewire\Settings\Appearance;
 use App\Livewire\Settings\Password;
 use App\Livewire\Settings\Profile;
 use App\Livewire\Terms;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
+
+Route::get('/clear-cache', function () {
+    Artisan::call('optimize:clear');
+    dd('optimize ran');
+});
+
+Route::get('/cache', function () {
+    Artisan::call('optimize');
+    dd('cached');
+});
 
 Route::get('/', Homepage::class)->name('home');
 Route::get('/about', About::class)->name('about');
