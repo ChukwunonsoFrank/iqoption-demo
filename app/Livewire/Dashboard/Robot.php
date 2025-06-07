@@ -721,6 +721,7 @@ class Robot extends Component
                     'profit_position' => 0,
                     'asset' => $assetToTrade['display_name'],
                     'asset_class' => $assetToTrade['asset_class'],
+                    'asset_ticker' => $assetToTrade['ticker_symbol'],
                     'asset_image_url' => $assetToTrade['image_url'],
                     'sentiment' => $assetToTrade['sentiment'],
                     'status' => 'active',

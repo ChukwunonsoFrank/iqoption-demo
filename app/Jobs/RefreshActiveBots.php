@@ -55,6 +55,7 @@ class RefreshActiveBots implements ShouldQueue
                         Bot::where('id', $bot['id'])->update([
                             'asset' => $assetToTrade['display_name'],
                             'asset_class' => $assetToTrade['asset_class'],
+                            'asset_ticker' => $assetToTrade['ticker_symbol'],
                             'asset_image_url' => $assetToTrade['image_url'],
                             'sentiment' => $assetToTrade['sentiment'],
                             'timer_checkpoint' => strval($newCheckpoint),
