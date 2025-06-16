@@ -13,6 +13,8 @@ class Index extends Component
 {
     public string $activeBotTickerSymbol = '';
 
+    public string $chartDuration = '';
+
     public function mount()
     {
         $justLoggedIn = Session::pull('just_logged_in', false);
@@ -21,8 +23,10 @@ class Index extends Component
 
         if ($activeBot) {
             $this->activeBotTickerSymbol = $activeBot['asset_ticker'];
+            $this->chartDuration = '1';
         } else {
-            $this->activeBotTickerSymbol = 'BTCUSDT';
+            $this->activeBotTickerSymbol = 'UNKNOWN:UNKNOWN';
+            $this->chartDuration = '1';
         }
 
         if ($justLoggedIn && $activeBot) {

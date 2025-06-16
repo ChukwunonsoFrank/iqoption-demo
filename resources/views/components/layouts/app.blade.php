@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Dashboard</title>
+    <title>Bullfex - AI Trading Robot</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -15,8 +15,8 @@
     <script src="https://kit.fontawesome.com/7016607b5a.js" crossorigin="anonymous"></script>
     <script src="{{ asset('assets/js/qrcode.min.js') }}"></script>
 
+    @livewireStyles
     @vite('resources/css/app.css')
-    @vite('resources/js/app.js')
 
     <style>
         [x-cloak] {
@@ -69,6 +69,7 @@
 
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <script src="{{ asset('assets/js/clipboard.min.js') }}"></script>
+    @livewireScripts
 </body>
 
 </html>

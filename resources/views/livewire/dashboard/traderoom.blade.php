@@ -5,7 +5,7 @@
             <div class="mb-3 sticky top-0 bg-dashboard z-10 pb-2 lg:pt-4">
                 <h1 class="text-white text-lg md:text-xl lg:text-2xl font-semibold">Active Robot</h1>
             </div>
-            <div class="lg:h-full lg:pb-24 lg:overflow-scroll">
+            <div class="lg:h-full lg:pb-24 lg:overflow-scroll scrollbar-hide">
                 <div class="w-full bg-navbar rounded-lg p-4 border-[0.1px] border-gray-700 mb-4">
                     <div class="mb-4">
                         <h2 class="text-white font-bold text-xl">@money($this->amount)</h2>
@@ -150,16 +150,16 @@
                     <div>
                         <a href="{{ route('dashboard') }}">
                             <button type="button"
-                            class="py-2 px-4 md:px-6 md:py-3 inline-flex items-center gap-x-1 text-xs font-bold rounded-sm bg-accent text-white focus:outline-hidden">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2"
-                                stroke-linecap="round" stroke-linejoin="round"
-                                class="lucide lucide-square-activity-icon lucide-square-activity">
-                                <rect width="18" height="18" x="3" y="3" rx="2" />
-                                <path d="M17 12h-2l-2 5-2-10-2 5H7" />
-                            </svg>
-                            Track
-                        </button>
+                                class="py-2 px-4 md:px-6 md:py-3 inline-flex items-center gap-x-1 text-xs font-bold rounded-sm bg-accent text-white focus:outline-hidden">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                    viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round"
+                                    class="lucide lucide-square-activity-icon lucide-square-activity">
+                                    <rect width="18" height="18" x="3" y="3" rx="2" />
+                                    <path d="M17 12h-2l-2 5-2-10-2 5H7" />
+                                </svg>
+                                Track
+                            </button>
                         </a>
                     </div>
                 </div>
@@ -194,6 +194,29 @@
         });
 
         $wire.on('stop-robot-error', (event) => {
+            const toastMarkup = `
+                <div class="flex items-center p-4">
+                    <div class="shrink-0">
+                        <svg class="shrink-0 size-4 text-teal-500 mt-0.5" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"></path>
+                        </svg>
+                    </div>
+                    <div class="ms-3 flex-1">
+                        <p class="text-xs font-semibold text-white">${event.message}</p>
+                    </div>
+                </div>
+            `;
+
+            Toastify({
+                text: toastMarkup,
+                className: "hs-toastify-on:opacity-100 opacity-0 border border-gray-700 absolute top-0 start-1/2 -translate-x-1/2 z-90 w-4/5 md:w-1/2 lg:w-1/4 transition-all duration-300 bg-navbar text-sm text-white rounded-xl shadow-lg [&>.toast-close]:hidden",
+                duration: 4000,
+                close: true,
+                escapeMarkup: false
+            }).showToast();
+        });
+
+        $wire.on('profit-incremented', (event) => {
             const toastMarkup = `
                 <div class="flex items-center p-4">
                     <div class="shrink-0">

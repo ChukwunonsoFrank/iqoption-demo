@@ -5,7 +5,7 @@
             <div class="mb-3 sticky top-0 bg-dashboard z-10 pb-2 lg:pt-4">
                 <h1 class="text-white text-lg md:text-xl lg:text-2xl font-semibold">Robot Settings</h1>
             </div>
-            <div class="lg:h-full lg:pb-24 lg:overflow-scroll">
+            <div class="lg:h-full lg:pb-24 lg:overflow-scroll scrollbar-hide">
                 <div class="mb-4">
                     <label for="input-label" class="block text-xs font-medium mb-2 text-zinc-300">Amount</label>
                     <div class="relative">
@@ -41,7 +41,7 @@
                     <div class="relative">
                         <div x-cloak x-show="$store.robotPage.isTradingAccountSelectOpen"
                             @click.outside="$store.robotPage.isTradingAccountSelectOpen = false"
-                            class="border-gray-700 bg-navbar absolute border rounded-lg w-full overflow-scroll z-10 p-2 mt-1">
+                            class="border-gray-700 bg-navbar absolute border rounded-lg w-full overflow-scroll scrollbar-hide z-10 p-2 mt-1">
                             <div wire:click="selectAccountType('Demo account', 'demo')"
                                 x-on:click="$store.robotPage.isTradingAccountSelectOpen = false"
                                 class="hover:bg-gray-600 cursor-pointer flex items-center space-x-3 px-4 py-2 rounded-md text-[#FFFFFF]">
@@ -71,14 +71,14 @@
                         <label for="input-label" class="block text-xs font-medium mb-2 text-zinc-300">Exchange</label>
                         <div
                             class="w-full text-sm self-center text-center border border-gray-700 py-2.5 sm:py-3 px-4 bg-navbar rounded-md text-[#FFFFFF] focus:outline-0">
-                            <img class="inline" src="{{ asset('assets/icons/binance-logo.svg') }}" alt="binance-logo">
+                            <img class="inline" src="{{ asset('assets/icons/cryptodotcom.svg') }}" alt="cryptodotcom-logo">
                         </div>
                     </div>
                     <div class="flex-1">
                         <label for="input-label" class="block text-xs font-medium mb-2 text-zinc-300">Broker</label>
                         <div
                             class="w-full text-sm self-center text-center border border-gray-700 py-2.5 sm:py-3 px-4 bg-navbar rounded-md text-[#FFFFFF] focus:outline-0">
-                            <img class="inline" src="{{ asset('assets/icons/fxpro.svg') }}" alt="fxpro-logo">
+                            <img class="inline" src="{{ asset('assets/icons/oanda.svg') }}" alt="oanda-logo">
                         </div>
                     </div>
                 </div>
@@ -89,7 +89,7 @@
                         <div x-on:click="$store.robotPage.toggleStrategyListOverlay()"
                             class="flex items-start space-x-2 border border-gray-700 px-4 py-4 bg-navbar rounded-md text-[#FFFFFF] cursor-pointer">
                             <div class="flex-none w-12">
-                                <img class="w-24" src="{{ $this->strategy['image_url'] }}" alt="">
+                                <img class="w-24" src="{{ asset('storage/' . $this->strategy['image_url']) }}" alt="">
                             </div>
                             <div class="flex-1">
                                 <h2 class="font-bold mb-1">
@@ -158,7 +158,7 @@
                             <div wire:key="strategy-{{ $strategy['id'] }}" wire:click="selectStrategy({{ $strategy['id'] }})" x-on:click="$store.robotPage.isStrategyListOverlayOpen = false"
                                 class="flex items-start space-x-2 border border-gray-700 mb-3 px-4 py-4 bg-navbar rounded-md text-[#FFFFFF] cursor-pointer">
                                 <div class="flex-none w-12">
-                                    <img class="w-24" src="{{ $strategy['image_url'] }}"
+                                    <img class="w-24" src="{{ asset('storage/' . $this->strategy['image_url']) }}"
                                         alt="">
                                 </div>
                                 <div class="flex-1">

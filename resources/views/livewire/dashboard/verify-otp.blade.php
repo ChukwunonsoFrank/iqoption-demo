@@ -6,7 +6,7 @@
                 <h1 class="text-white mb-2 text-lg md:text-xl lg:text-2xl font-semibold">Check your email</h1>
                 <p class="text-zinc-300 text-xs">Enter the verification code sent to jdoe@gmail.com</p>
             </div>
-            <div class="lg:h-full lg:pb-24 lg:overflow-scroll">
+            <div class="lg:h-full lg:pb-24 lg:overflow-scroll scrollbar-hide">
                 <div class="mb-5">
                     <input wire:model="token" type="text"
                         class="bg-navbar text-white border border-gray-700 text-sm py-2.5 sm:py-3 px-2 ps-4 block w-full rounded-lg sm:text-sm focus:outline-0"

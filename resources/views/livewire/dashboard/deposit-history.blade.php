@@ -5,7 +5,7 @@
             <div class="mb-3 sticky top-0 bg-dashboard pb-2 lg:pt-4">
                 <h1 class="text-white text-lg md:text-xl lg:text-2xl font-semibold">Deposits</h1>
             </div>
-            <div class="lg:h-full lg:pb-24 lg:overflow-scroll">
+            <div class="lg:h-full lg:pb-24 lg:overflow-scroll scrollbar-hide">
                 @forelse ($deposits as $deposit)
                     <div wire:key="deposit-{{ $deposit['id'] }}" class="bg-trade w-full rounded-sm flex flex-col space-y-2 p-3 mb-3">
                         <div class="flex items-center">
@@ -20,7 +20,7 @@
                         </div>
                         <div class="flex items-center space-x-2">
                             <div class="flex-none">
-                                <img class="md:w-7" src="{{ asset($this->getPaymentMethodIconUrl($deposit['payment_method'])) }}" alt="">
+                                <img class="md:w-7" src="{{ asset('storage/' . $this->getPaymentMethodIconUrl($deposit['payment_method'])) }}" alt="">
                             </div>
                             <div class="flex-1">
                                 <p class="font-semibold text-xs text-white md:text-sm">{{ $deposit['payment_method'] }}</p>

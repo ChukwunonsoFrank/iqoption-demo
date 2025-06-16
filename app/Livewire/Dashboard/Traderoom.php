@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Dashboard;
 
+use App\Livewire\Dashboard\Partials\AssetIndicator;
 use App\Models\Bot;
 use App\Models\Strategy;
 use App\Models\User;
@@ -16,7 +17,7 @@ class Traderoom extends Component
 {
     public Bot $activeBot;
 
-    public bool $isBotSearchingForSignal = false;
+    public bool $isBotSearchingForSignal;
 
     public $amount;
 
@@ -125,6 +126,13 @@ class Traderoom extends Component
             $this->asset = $this->activeBot['asset'];
             $this->assetIcon = $this->activeBot['asset_image_url'];
             $this->sentiment = $this->activeBot['sentiment'];
+            $data = [
+                'asset' => $this->asset,
+                'assetImageUrl' => $this->assetIcon,
+                'assetClass' => $this->activeBot['asset_class'],
+                'isBotActive' => true
+            ];
+            $this->dispatch('asset-updated', data: $data)->to(AssetIndicator::class);
         }
 
         $timeLeft = $this->calculateTimeLeftTillNextCheckpoint($this->activeBot['timer_checkpoint']);

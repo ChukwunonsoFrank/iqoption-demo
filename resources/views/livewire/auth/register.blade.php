@@ -30,6 +30,10 @@
             </div>
         </div>
 
+        <div class="mt-2">
+            <div wire:ignore class="g-recaptcha" data-sitekey="{{ config('services.recaptcha.key') }}"></div>
+        </div>
+
         <div class="flex items-center justify-end">
             <flux:button type="submit" variant="primary" class="w-full rounded-xs">
                 {{ __('Create Account') }}

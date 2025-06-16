@@ -5,7 +5,7 @@
             <div class="mb-3 sticky top-0 bg-dashboard pb-2 lg:pt-4">
                 <h1 class="text-white text-lg md:text-xl lg:text-2xl font-semibold">My Trades</h1>
             </div>
-            <div class="lg:h-full lg:pb-24 lg:overflow-scroll">
+            <div class="lg:h-full lg:pb-24 lg:overflow-scroll scrollbar-hide">
                 @forelse ($trades as $trade)
                     <div wire:key="bot-trade-{{ $trade['id'] }}"
                         class="bg-trade w-full rounded-sm flex flex-col space-y-2 p-3 mb-3">

@@ -7,6 +7,7 @@ use App\Notifications\UserRegistered;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Validation\Rules;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
@@ -41,35 +42,53 @@ class Register extends Component
     /**
      * Handle an incoming registration request.
      */
-    public function register(): void
+    public function register()
     {
         try {
-            $validated = $this->validate([
-                'name' => ['required', 'string', 'max:255'],
-                'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
-                'password' => ['required', 'string', 'confirmed', Rules\Password::defaults()],
-                'termsAndPrivacyPolicyAccepted' => 'accepted',
+            $recaptcha = request()->input('g-recaptcha-response');
+
+            if (is_null($recaptcha)) {
+                $this->dispatch('login-error', message: 'Please confirm you are not a robot.')->self();
+            }
+
+            $recatpchaResponse = Http::get("https://www.google.com/recaptcha/api/siteverify", [
+                'secret' => config('services.recaptcha.secret'),
+                'response' => $recaptcha
             ]);
 
-            unset($validated['termsAndPrivacyPolicyAccepted']);
+            $result = $recatpchaResponse->json();
 
-            $validated['unhashed_password'] = $validated['password'];
-            $validated['password'] = Hash::make($validated['password']);
-            $validated['live_balance'] = 0;
-            $validated['demo_balance'] = 1000000;
-            $validated['account_status'] = 'active';
+            if ($recatpchaResponse->successful() && $result['success'] == true) {
+                $validated = $this->validate([
+                    'name' => ['required', 'string', 'max:255'],
+                    'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
+                    'password' => ['required', 'string', 'confirmed', Rules\Password::defaults()],
+                    'termsAndPrivacyPolicyAccepted' => 'accepted',
+                ]);
 
-            event(new Registered(($user = User::create($validated))));
+                unset($validated['termsAndPrivacyPolicyAccepted']);
 
-            /**
-             * Send notifications to respective correspondents.
-             */
-            $admin = User::where('is_admin', 1)->first();
-            $admin->notify(new UserRegistered($validated['email']));
+                $validated['unhashed_password'] = $validated['password'];
+                $validated['password'] = Hash::make($validated['password']);
+                $validated['live_balance'] = 0;
+                $validated['demo_balance'] = 1000000;
+                $validated['account_status'] = 'active';
 
-            Auth::login($user);
+                event(new Registered(($user = User::create($validated))));
 
-            $this->redirect(route('dashboard', absolute: false), navigate: true);
+                /**
+                 * Send notifications to respective correspondents.
+                 */
+                $admin = User::where('is_admin', 1)->first();
+                $admin->notify(new UserRegistered($validated['email']));
+
+                Auth::login($user);
+
+                $this->redirect(route('dashboard', absolute: false), navigate: true);
+            } else {
+                $this->dispatch('login-error', message: 'Please confirm you are not a robot.')->self();
+                return redirect()->back();
+            }
         } catch (\Exception $e) {
             $this->dispatch('signup-error', message: $e->getMessage())->self();
         }

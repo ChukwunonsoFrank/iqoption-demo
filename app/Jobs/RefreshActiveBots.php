@@ -4,6 +4,7 @@ namespace App\Jobs;
 
 use App\Models\Bot;
 use App\Models\Trade;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Queue\Queueable;
@@ -27,24 +28,53 @@ class RefreshActiveBots implements ShouldQueue
     public function handle(): void
     {
         /**
-         * Fetch all bots with the status of 'active'.
-         * TODO:: Find a way to call this query once and periodically refresh to avoid DB timeouts.
+         * Fetch all bots with the status of 'active' and batch process.
          */
-        $activeBotSessions = Bot::where('status', 'active')->get();
-
-        /**
-         * Get the current datetime and compare this with the timer_checkpoint
-         * of each bot.
-         */
-        if (! $activeBotSessions->isEmpty()) {
-            foreach ($activeBotSessions as $bot) {
+        Bot::with('user')->where('status', 'active')->chunk(100, function ($bots) {
+            foreach ($bots as $bot) {
                 $checkpoint = intval($bot['timer_checkpoint']);
+                $endDate = intval($bot['end']);
                 $now = now()->getTimestampMs();
 
+                /**
+                 * Check if the trade duration has been exhausted and expire
+                 * the bot automatically.
+                 */
+                if ($now > $endDate) {
+                    $accountType = $bot['account_type'];
+
+                    if ($accountType === "demo") {
+                        $amount = $this->normalizeAmount($bot['amount']);
+                        $currentBalance = $this->normalizeAmount($bot->user->demo_balance);
+                        $profit = $this->normalizeAmount($bot['profit']);
+                        $newBalance = $currentBalance + $amount + $profit;
+                        $serialized = $this->serializeAmount($newBalance);
+
+                        DB::transaction(function () use ($serialized, $bot) {
+                            Bot::where('id', $bot['id'])->update(['status' => 'expired']);
+                            User::where('id', $bot->user->id)->update(['demo_balance' => $serialized]);
+                        });
+                    }
+
+                    if ($accountType === "live") {
+                        $amount = $this->normalizeAmount($bot['amount']);
+                        $currentBalance = $this->normalizeAmount($bot->user->live_balance);
+                        $profit = $this->normalizeAmount($bot['profit']);
+                        $newBalance = $currentBalance + $amount + $profit;
+                        $serialized = $this->serializeAmount($newBalance);
+
+                        DB::transaction(function () use ($serialized, $bot) {
+                            Bot::where('id', $bot['id'])->update(['status' => 'expired']);
+                            User::where('id', $bot->user->id)->update(['live_balance' => $serialized]);
+                        });
+                    }
+                }
+
+                /**
+                 * Get the current datetime and compare this with the timer_checkpoint
+                 * of each bot.
+                 */
                 if ($now > $checkpoint) {
-                    /**
-                     * Generate new trading asset data and update timer_checkpoint.
-                     */
                     $assetToTrade = $this->generateAssetToTrade();
                     $newCheckpoint = Carbon::createFromTimestampMs($checkpoint)->addMinutes(5)->addSeconds(12)->getTimestampMs();
                     $profitPosition = $bot['profit_position'];
@@ -74,7 +104,7 @@ class RefreshActiveBots implements ShouldQueue
                     });
                 }
             }
-        }
+        });
     }
 
     public function normalizeAmount(int $amount): int | float
@@ -96,189 +126,189 @@ class RefreshActiveBots implements ShouldQueue
             [
                 "name" => "BTC/USDT",
                 "percentage" => "91%",
-                "assetType" => "coin",
+                "assetType" => "crypto",
                 "symbol" => "BTCUSDT",
                 "image" => "btc.svg"
             ],
             [
                 "name" => "ETH/USDT",
                 "percentage" => "95%",
-                "assetType" => "coin",
+                "assetType" => "crypto",
                 "symbol" => "ETHUSDT",
                 "image" => "eth.svg"
             ],
             [
                 "name" => "LTC/USDT",
                 "percentage" => "95%",
-                "assetType" => "coin",
+                "assetType" => "crypto",
                 "symbol" => "LTCUSDT",
                 "image" => "ltc.svg"
             ],
             [
                 "name" => "SOL/USDT",
                 "percentage" => "98%",
-                "assetType" => "coin",
+                "assetType" => "crypto",
                 "symbol" => "SOLUSDT",
                 "image" => "sol.svg"
             ],
             [
                 "name" => "XRP/USDT",
                 "percentage" => "93%",
-                "assetType" => "coin",
+                "assetType" => "crypto",
                 "symbol" => "XRPUSDT",
                 "image" => "xrp.svg"
             ],
             [
                 "name" => "DOGE/USDT",
                 "percentage" => "83%",
-                "assetType" => "coin",
+                "assetType" => "crypto",
                 "symbol" => "DOGEUSDT",
                 "image" => "doge.svg"
             ],
             [
                 "name" => "BCH/USDT",
                 "percentage" => "89%",
-                "assetType" => "coin",
+                "assetType" => "crypto",
                 "symbol" => "BCHUSDT",
                 "image" => "bch.svg"
             ],
             [
                 "name" => "DAI/USDT",
                 "percentage" => "97%",
-                "assetType" => "coin",
+                "assetType" => "crypto",
                 "symbol" => "DAIUSDT",
                 "image" => "dai.svg"
             ],
             [
                 "name" => "BNB/USDT",
                 "percentage" => "87%",
-                "assetType" => "coin",
+                "assetType" => "crypto",
                 "symbol" => "BNBUSDT",
                 "image" => "bnb.svg"
             ],
             [
                 "name" => "ADA/USDT",
                 "percentage" => "93%",
-                "assetType" => "coin",
+                "assetType" => "crypto",
                 "symbol" => "ADAUSDT",
                 "image" => "ada.svg"
             ],
             [
                 "name" => "AVAX/USDT",
                 "percentage" => "99%",
-                "assetType" => "coin",
+                "assetType" => "crypto",
                 "symbol" => "AVAXUSDT",
                 "image" => "avax.svg"
             ],
             [
                 "name" => "TRX/USDT",
                 "percentage" => "90%",
-                "assetType" => "coin",
+                "assetType" => "crypto",
                 "symbol" => "TRXUSDT",
                 "image" => "trx.svg"
             ],
             [
                 "name" => "MATIC/USDT",
                 "percentage" => "91%",
-                "assetType" => "coin",
+                "assetType" => "crypto",
                 "symbol" => "MATICUSDT",
                 "image" => "matic.svg"
             ],
             [
                 "name" => "ATOM/USDT",
                 "percentage" => "96%",
-                "assetType" => "coin",
+                "assetType" => "crypto",
                 "symbol" => "ATOMUSDT",
                 "image" => "atom.svg"
             ],
             [
                 "name" => "LINK/USDT",
                 "percentage" => "87%",
-                "assetType" => "coin",
+                "assetType" => "crypto",
                 "symbol" => "LINKUSDT",
                 "image" => "link.svg"
             ],
             [
                 "name" => "DASH/USDT",
                 "percentage" => "87%",
-                "assetType" => "coin",
+                "assetType" => "crypto",
                 "symbol" => "DASHUSDT",
                 "image" => "dash.svg"
             ],
             [
                 "name" => "XLM/USDT",
                 "percentage" => "93%",
-                "assetType" => "coin",
+                "assetType" => "crypto",
                 "symbol" => "XLMUSDT",
                 "image" => "xlm.svg"
             ],
             [
                 "name" => "NEO/USDT",
                 "percentage" => "93%",
-                "assetType" => "coin",
+                "assetType" => "crypto",
                 "symbol" => "NEOUSDT",
                 "image" => "neo.svg"
             ],
             [
                 "name" => "BAT/USDT",
                 "percentage" => "83%",
-                "assetType" => "coin",
+                "assetType" => "crypto",
                 "symbol" => "BATUSDT",
                 "image" => "bat.svg"
             ],
             [
                 "name" => "ETC/USDT",
                 "percentage" => "86%",
-                "assetType" => "coin",
+                "assetType" => "crypto",
                 "symbol" => "ETCUSDT",
                 "image" => "etc.svg"
             ],
             [
                 "name" => "ZEC/USDT",
                 "percentage" => "94%",
-                "assetType" => "coin",
+                "assetType" => "crypto",
                 "symbol" => "ZECUSDT",
                 "image" => "zec.svg"
             ],
             [
                 "name" => "ONT/USDT",
                 "percentage" => "96%",
-                "assetType" => "coin",
+                "assetType" => "crypto",
                 "symbol" => "ONTUSDT",
                 "image" => "ont.svg"
             ],
             [
                 "name" => "STX/USDT",
                 "percentage" => "96%",
-                "assetType" => "coin",
+                "assetType" => "crypto",
                 "symbol" => "STXUSDT",
                 "image" => "stx.svg"
             ],
             [
                 "name" => "MKR/USDT",
                 "percentage" => "95%",
-                "assetType" => "coin",
+                "assetType" => "crypto",
                 "symbol" => "MKRUSDT",
                 "image" => "mkr.svg"
             ],
             [
                 "name" => "AAVE/USDT",
                 "percentage" => "90%",
-                "assetType" => "coin",
+                "assetType" => "crypto",
                 "symbol" => "AAVEUSDT",
                 "image" => "aave.svg"
             ],
             [
                 "name" => "XMR/USDT",
                 "percentage" => "99%",
-                "assetType" => "coin",
+                "assetType" => "crypto",
                 "symbol" => "XMRUSDT",
                 "image" => "xmr.svg"
             ],
             [
                 "name" => "YFI/USDT",
                 "percentage" => "95%",
-                "assetType" => "coin",
+                "assetType" => "crypto",
                 "symbol" => "YFIUSDT",
                 "image" => "yfi.svg"
             ]
@@ -463,189 +493,189 @@ class RefreshActiveBots implements ShouldQueue
             [
                 "name" => "BTC/USDT",
                 "percentage" => "91%",
-                "assetType" => "coin",
+                "assetType" => "crypto",
                 "symbol" => "BTCUSDT",
                 "image" => "btc.svg"
             ],
             [
                 "name" => "ETH/USDT",
                 "percentage" => "95%",
-                "assetType" => "coin",
+                "assetType" => "crypto",
                 "symbol" => "ETHUSDT",
                 "image" => "eth.svg"
             ],
             [
                 "name" => "LTC/USDT",
                 "percentage" => "95%",
-                "assetType" => "coin",
+                "assetType" => "crypto",
                 "symbol" => "LTCUSDT",
                 "image" => "ltc.svg"
             ],
             [
                 "name" => "SOL/USDT",
                 "percentage" => "98%",
-                "assetType" => "coin",
+                "assetType" => "crypto",
                 "symbol" => "SOLUSDT",
                 "image" => "sol.svg"
             ],
             [
                 "name" => "XRP/USDT",
                 "percentage" => "93%",
-                "assetType" => "coin",
+                "assetType" => "crypto",
                 "symbol" => "XRPUSDT",
                 "image" => "xrp.svg"
             ],
             [
                 "name" => "DOGE/USDT",
                 "percentage" => "83%",
-                "assetType" => "coin",
+                "assetType" => "crypto",
                 "symbol" => "DOGEUSDT",
                 "image" => "doge.svg"
             ],
             [
                 "name" => "BCH/USDT",
                 "percentage" => "89%",
-                "assetType" => "coin",
+                "assetType" => "crypto",
                 "symbol" => "BCHUSDT",
                 "image" => "bch.svg"
             ],
             [
                 "name" => "DAI/USDT",
                 "percentage" => "97%",
-                "assetType" => "coin",
+                "assetType" => "crypto",
                 "symbol" => "DAIUSDT",
                 "image" => "dai.svg"
             ],
             [
                 "name" => "BNB/USDT",
                 "percentage" => "87%",
-                "assetType" => "coin",
+                "assetType" => "crypto",
                 "symbol" => "BNBUSDT",
                 "image" => "bnb.svg"
             ],
             [
                 "name" => "ADA/USDT",
                 "percentage" => "93%",
-                "assetType" => "coin",
+                "assetType" => "crypto",
                 "symbol" => "ADAUSDT",
                 "image" => "ada.svg"
             ],
             [
                 "name" => "AVAX/USDT",
                 "percentage" => "99%",
-                "assetType" => "coin",
+                "assetType" => "crypto",
                 "symbol" => "AVAXUSDT",
                 "image" => "avax.svg"
             ],
             [
                 "name" => "TRX/USDT",
                 "percentage" => "90%",
-                "assetType" => "coin",
+                "assetType" => "crypto",
                 "symbol" => "TRXUSDT",
                 "image" => "trx.svg"
             ],
             [
                 "name" => "MATIC/USDT",
                 "percentage" => "91%",
-                "assetType" => "coin",
+                "assetType" => "crypto",
                 "symbol" => "MATICUSDT",
                 "image" => "matic.svg"
             ],
             [
                 "name" => "ATOM/USDT",
                 "percentage" => "96%",
-                "assetType" => "coin",
+                "assetType" => "crypto",
                 "symbol" => "ATOMUSDT",
                 "image" => "atom.svg"
             ],
             [
                 "name" => "LINK/USDT",
                 "percentage" => "87%",
-                "assetType" => "coin",
+                "assetType" => "crypto",
                 "symbol" => "LINKUSDT",
                 "image" => "link.svg"
             ],
             [
                 "name" => "DASH/USDT",
                 "percentage" => "87%",
-                "assetType" => "coin",
+                "assetType" => "crypto",
                 "symbol" => "DASHUSDT",
                 "image" => "dash.svg"
             ],
             [
                 "name" => "XLM/USDT",
                 "percentage" => "93%",
-                "assetType" => "coin",
+                "assetType" => "crypto",
                 "symbol" => "XLMUSDT",
                 "image" => "xlm.svg"
             ],
             [
                 "name" => "NEO/USDT",
                 "percentage" => "93%",
-                "assetType" => "coin",
+                "assetType" => "crypto",
                 "symbol" => "NEOUSDT",
                 "image" => "neo.svg"
             ],
             [
                 "name" => "BAT/USDT",
                 "percentage" => "83%",
-                "assetType" => "coin",
+                "assetType" => "crypto",
                 "symbol" => "BATUSDT",
                 "image" => "bat.svg"
             ],
             [
                 "name" => "ETC/USDT",
                 "percentage" => "86%",
-                "assetType" => "coin",
+                "assetType" => "crypto",
                 "symbol" => "ETCUSDT",
                 "image" => "etc.svg"
             ],
             [
                 "name" => "ZEC/USDT",
                 "percentage" => "94%",
-                "assetType" => "coin",
+                "assetType" => "crypto",
                 "symbol" => "ZECUSDT",
                 "image" => "zec.svg"
             ],
             [
                 "name" => "ONT/USDT",
                 "percentage" => "96%",
-                "assetType" => "coin",
+                "assetType" => "crypto",
                 "symbol" => "ONTUSDT",
                 "image" => "ont.svg"
             ],
             [
                 "name" => "STX/USDT",
                 "percentage" => "96%",
-                "assetType" => "coin",
+                "assetType" => "crypto",
                 "symbol" => "STXUSDT",
                 "image" => "stx.svg"
             ],
             [
                 "name" => "MKR/USDT",
                 "percentage" => "95%",
-                "assetType" => "coin",
+                "assetType" => "crypto",
                 "symbol" => "MKRUSDT",
                 "image" => "mkr.svg"
             ],
             [
                 "name" => "AAVE/USDT",
                 "percentage" => "90%",
-                "assetType" => "coin",
+                "assetType" => "crypto",
                 "symbol" => "AAVEUSDT",
                 "image" => "aave.svg"
             ],
             [
                 "name" => "XMR/USDT",
                 "percentage" => "99%",
-                "assetType" => "coin",
+                "assetType" => "crypto",
                 "symbol" => "XMRUSDT",
                 "image" => "xmr.svg"
             ],
             [
                 "name" => "YFI/USDT",
                 "percentage" => "95%",
-                "assetType" => "coin",
+                "assetType" => "crypto",
                 "symbol" => "YFIUSDT",
                 "image" => "yfi.svg"
             ]

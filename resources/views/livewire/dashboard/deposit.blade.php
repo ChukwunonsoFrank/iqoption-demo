@@ -5,7 +5,7 @@
             <div class="mb-3 sticky top-0 bg-dashboard z-10 pb-2 lg:pt-4">
                 <h1 class="text-white text-lg md:text-xl lg:text-2xl font-semibold">Make a deposit</h1>
             </div>
-            <div class="lg:h-full lg:pb-24 lg:overflow-scroll">
+            <div class="lg:h-full lg:pb-24 lg:overflow-scroll scrollbar-hide">
                 <div class="mb-4">
                     <label for="input-label" class="block text-xs font-medium mb-2 text-zinc-300">Amount</label>
                     <div class="relative">
@@ -25,7 +25,7 @@
                         <div x-on:click="$store.depositPage.togglePaymentMethodSelect()"
                             class="flex items-center space-x-3 py-2.5 sm:py-3 px-4 border border-gray-700 bg-navbar rounded-lg text-[#FFFFFF]">
                             <div class="flex-none">
-                                <img src="{{ asset($this->paymentMethod['icon_url']) }}">
+                                <img src="{{ asset('storage/' . $this->paymentMethod['icon_url']) }}">
                             </div>
                             <div class="flex-1">
                                 <p class="text-sm">{{ $this->paymentMethod['name'] }}</p>
@@ -44,13 +44,13 @@
                     <div class="relative">
                         <div x-cloak x-show="$store.depositPage.isPaymentMethodSelectOpen"
                             @click.outside="$store.depositPage.isPaymentMethodSelectOpen = false"
-                            class="border-gray-700 bg-navbar absolute border rounded-lg w-full overflow-scroll z-10 p-2 mt-1">
+                            class="border-gray-700 bg-navbar absolute border rounded-lg w-full overflow-scroll scrollbar-hide z-10 p-2 mt-1">
                             @foreach ($this->paymentMethods as $method)
                                 <div wire:key="payment-method-{{ $method['id'] }}" wire:click="selectPaymentMethod({{ $method['id'] }})"
                                     x-on:click="$store.depositPage.isPaymentMethodSelectOpen = false"
                                     class="hover:bg-gray-600 cursor-pointer flex items-center space-x-3 px-4 py-2 rounded-md text-[#FFFFFF]">
                                     <div class="flex-none">
-                                        <img src="{{ asset($method['icon_url']) }}">
+                                        <img src="{{ asset('storage/' . $method['icon_url']) }}">
                                     </div>
                                     <div class="flex-1">
                                         <p class="text-sm">{{ $method['name'] }}</p>

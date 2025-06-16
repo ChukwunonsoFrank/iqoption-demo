@@ -10,6 +10,8 @@ use Livewire\Attributes\Layout;
 
 class Deposit extends Component
 {
+    public string $accountStatus = '';
+
     public string $amount = '';
 
     public int $minimumDepositAmount = 100;
@@ -22,6 +24,7 @@ class Deposit extends Component
     {
         $this->paymentMethods = PaymentMethod::all();
         $this->paymentMethod = $this->paymentMethods[0];
+        $this->accountStatus = auth()->user()->account_status;
     }
 
     public function selectPaymentMethod(string $methodId): void
@@ -40,6 +43,11 @@ class Deposit extends Component
 
     public function confirmDeposit()
     {
+        if ($this->accountStatus === 'inactive') {
+            $this->dispatch('deposit-error', message: 'This account has been disabled and unable to perform any transactions. Kindly contact support for more details.')->self();
+            return;
+        }
+
         if ($this->amount === '') {
             $this->dispatch('deposit-error', message: 'Amount field is empty')->self();
             return;

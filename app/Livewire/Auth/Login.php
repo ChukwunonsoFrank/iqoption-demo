@@ -4,6 +4,7 @@ namespace App\Livewire\Auth;
 
 use Illuminate\Auth\Events\Lockout;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
@@ -30,27 +31,48 @@ class Login extends Component
     /**
      * Handle an incoming authentication request.
      */
-    public function login(): void
+    public function login()
     {
         try {
-            $this->validate();
+            // $recaptcha = request()->input('g-recaptcha-response');
 
-            $this->ensureIsNotRateLimited();
+            // if (is_null($recaptcha)) {
+            //     $this->dispatch('login-error', message: 'Please confirm you are not a robot.')->self();
+            // }
 
-            if (! Auth::attempt(['email' => $this->email, 'password' => $this->password], $this->remember)) {
-                RateLimiter::hit($this->throttleKey());
+            // $recatpchaResponse = Http::get("https://www.google.com/recaptcha/api/siteverify", [
+            //     'secret' => config('services.recaptcha.secret'),
+            //     'response' => $recaptcha
+            // ]);
 
-                throw ValidationException::withMessages([
-                    'email' => __('auth.failed'),
-                ]);
-            }
+            // $result = $recatpchaResponse->json();
 
-            RateLimiter::clear($this->throttleKey());
-            Session::regenerate();
+            // if ($recatpchaResponse->successful() && $result['success'] == true) {
+                $this->validate();
 
-            session()->flash('just_logged_in', true);
+                $this->ensureIsNotRateLimited();
 
-            $this->redirectIntended(default: route('dashboard', absolute: false), navigate: true);
+                if (! Auth::attempt(['email' => $this->email, 'password' => $this->password], $this->remember)) {
+                    RateLimiter::hit($this->throttleKey());
+
+                    throw ValidationException::withMessages([
+                        'email' => __('auth.failed'),
+                    ]);
+                }
+
+                RateLimiter::clear($this->throttleKey());
+                Session::regenerate();
+
+                session()->flash('just_logged_in', true);
+
+                if (Auth::user()->is_admin === 1) {
+                    return redirect('/admin/dashboard');
+                }
+
+                $this->redirectIntended(default: route('dashboard.robot', absolute: false));
+            // } else {
+            //     $this->dispatch('login-error', message: 'Please confirm you are not a robot.')->self();
+            // }
         } catch (\Exception $e) {
             $this->dispatch('login-error', message: $e->getMessage())->self();
         }

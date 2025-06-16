@@ -6,8 +6,7 @@
                 {
                     "autosize": true,
                     "symbol": "{{ $this->activeBotTickerSymbol }}",
-                    "interval": "1S",
-                    "enabled_features": ["seconds_resolution"],
+                    "interval": "{{ $this->chartDuration }}",
                     "timezone": "Etc/UTC",
                     "theme": "dark",
                     "style": "3",
@@ -30,7 +29,7 @@
                 {
                     "autosize": true,
                     "symbol": "{{ $this->activeBotTickerSymbol }}",
-                    "interval": "1",
+                    "interval": "{{ $this->chartDuration }}",
                     "timezone": "Etc/UTC",
                     "theme": "dark",
                     "style": "3",
@@ -56,7 +55,7 @@
                     {
                         "autosize": true,
                         "symbol": "{{ $this->activeBotTickerSymbol }}",
-                        "interval": "1",
+                        "interval": "{{ $this->chartDuration }}",
                         "timezone": "Etc/UTC",
                         "theme": "dark",
                         "style": "3",

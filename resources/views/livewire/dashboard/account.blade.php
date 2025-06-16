@@ -5,7 +5,7 @@
             <div class="mb-3 sticky top-0 bg-dashboard pb-2 lg:pt-4">
                 <h1 class="text-white text-lg md:text-xl lg:text-2xl font-semibold">Account</h1>
             </div>
-            <div class="lg:h-full lg:pb-24 lg:overflow-scroll">
+            <div class="lg:h-full lg:pb-24 lg:overflow-scroll scrollbar-hide">
                 <div class="lg:flex lg:items-start lg:space-x-4">
                     <div class="flex justify-center mb-3 lg:justify-start">
                         <div class="bg-trade size-16 rounded-full flex items-center justify-center lg:size-20">

@@ -105,6 +105,17 @@ select:focus[data-flux-control] {
     animation: pulse-bg 2s infinite;
 }
 
+@layer utilities {
+  .scrollbar-hide {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;  /* Chrome, Safari and Opera */
+  }
+}
+
 /* \[:where(&)\]:size-4 {
     @apply size-4;
 } */

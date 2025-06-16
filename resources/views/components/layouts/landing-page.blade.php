@@ -5,15 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Bullfex - AI Trading Robot</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
     <script src="https://kit.fontawesome.com/7016607b5a.js" crossorigin="anonymous"></script>
+    <script async src="https://www.google.com/recaptcha/api.js"></script>
+    @livewireStyles
     @vite('resources/css/app.css')
-    @vite('resources/js/app.js')
 
     <style>
         [x-cloak] { display: none !important; }
@@ -71,16 +72,16 @@
                     </div>
                     <div class="hidden lg:block">
                         <div class="ml-4 flex space-x-2 items-center md:ml-6">
-                            <a href="{{ route('login') }}" wire:navigate
+                            <a href="{{ route('login') }}"
                                 class="rounded-xs border border-accent px-3.5 py-2.5 text-sm font-medium text-accent shadow-xs hover:bg-accent hover:text-white">Log
                                 In</a>
-                            <a href="{{ route('register') }}" wire:navigate
+                            <a href="{{ route('register') }}"
                                 class="rounded-xs bg-accent px-3.5 py-2.5 text-sm font-medium text-white shadow-xs hover:bg-accent-hover">Sign
                                 Up</a>
                         </div>
                     </div>
                     <div class="flex space-x-3 lg:hidden">
-                        <a href="{{ route('login') }}" wire:navigate>
+                        <a href="{{ route('login') }}">
                             <div class="border border-accent rounded-full p-2">
                                 <!--  Auth button -->
                                 <div>
@@ -216,6 +217,7 @@
     </div>
 
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    @livewireScripts
 </body>
 
 </html>

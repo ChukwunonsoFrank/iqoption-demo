@@ -4,6 +4,8 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Str;
@@ -59,12 +61,51 @@ class User extends Authenticatable
     {
         return Str::of($this->name)
             ->explode(' ')
-            ->map(fn (string $name) => Str::of($name)->substr(0, 1))
+            ->map(fn(string $name) => Str::of($name)->substr(0, 1))
             ->implode('');
     }
 
     public function isAdmin(): bool
     {
         return true;
+    }
+
+    public function bots(): HasMany
+    {
+        return $this->hasMany(Bot::class);
+    }
+
+    public function deposits(): HasMany
+    {
+        return $this->hasMany(Deposit::class);
+    }
+
+    public function withdrawals(): HasMany
+    {
+        return $this->hasMany(Withdrawal::class);
+    }
+
+    public function scopeSearch(Builder $query, string $term): Builder
+    {
+        $preparedTerm = $this->prepareSearchTerm($term);
+
+        return $query->whereRaw(
+            'MATCH(name, email) AGAINST(? IN BOOLEAN MODE)',
+            [$preparedTerm]
+        );
+    }
+
+    protected function prepareSearchTerm(string $term): string
+    {
+        $words = explode(' ', trim($term));
+
+        $preparedWords = array_map(function ($word) {
+            if (strlen($word) > 2 && !preg_match('/[+\-><*~"()@]/', $word)) {
+                return '+' . $word . '*'; // Add '+' for required, '*' for wildcard
+            }
+            return $word . '*'; // Add wildcard for partial matching
+        }, $words);
+
+        return implode(' ', $preparedWords);
     }
 }

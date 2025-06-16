@@ -13,6 +13,8 @@ use Livewire\Component;
 
 class Withdraw extends Component
 {
+    public string $accountStatus = '';
+
     public string $amount = '';
 
     public string $address = '';
@@ -25,6 +27,7 @@ class Withdraw extends Component
     {
         $this->paymentMethods = PaymentMethod::all();
         $this->paymentMethod = $this->paymentMethods[0];
+        $this->accountStatus = auth()->user()->account_status;
     }
 
     public function selectPaymentMethod(string $methodId): void
@@ -49,6 +52,11 @@ class Withdraw extends Component
     public function generateOTP()
     {
         try {
+            if ($this->accountStatus === 'inactive') {
+                $this->dispatch('withdraw-error', message: 'This account has been disabled and unable to perform any transactions. Kindly contact support for more details.')->self();
+                return;
+            }
+
             if ($this->amount === '') {
                 $this->dispatch('withdraw-error', message: 'Amount field is empty')->self();
                 return;

@@ -15,6 +15,10 @@
             class="py-3 px-4 block w-full border font-medium text-gray-600 border-gray-200 rounded-sm text-sm disabled:opacity-50 disabled:pointer-events-none"
             autocomplete="current-password" required placeholder="Password">
 
+        <div class="mt-2">
+            <div wire:ignore class="g-recaptcha" data-sitekey="{{ config('services.recaptcha.key') }}"></div>
+        </div>
+
         <div class="flex items-center justify-end">
             <flux:button variant="primary" type="submit" class="w-full rounded-xs">{{ __('Log In') }}</flux:button>
         </div>
