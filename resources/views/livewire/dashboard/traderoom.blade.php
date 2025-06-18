@@ -134,7 +134,7 @@
                     </div>
 
                     <div>
-                        <button wire:click="stopRobot()" type="button" wire:loading.attr="disabled"
+                        <button wire:click="toggleStopRobotConfirmationModal()" type="button"
                             class="py-3 cursor-pointer px-4 w-full md:px-6 md:py-3 text-center gap-x-2 text-sm md:text-base font-semibold rounded-lg bg-accent text-white focus:outline-hidden disabled:opacity-50 disabled:pointer-events-none">
                             Stop the robot
                         </button>
@@ -161,6 +161,48 @@
                                 Track
                             </button>
                         </a>
+                    </div>
+                </div>
+            </div>
+
+            <div wire:show="isStopRobotConfirmationModalOpen" class="fixed top-0 left-0 h-svh w-full px-4 lg:px-96 pt-6 z-20 bg-dashboard">
+                <div class="w-full h-full flex items-center justify-center">
+                    <div class="max-w-sm mx-auto flex flex-col bg-navbar rounded-xl pointer-events-auto">
+                        <div class="flex justify-between items-center py-3 px-4 dark:border-neutral-700">
+                            <h3 class="font-bold text-gray-800 dark:text-white">
+                            </h3>
+                            <button wire:click="toggleStopRobotConfirmationModal()" type="button"
+                                class="size-8 inline-flex justify-center items-center gap-x-2 rounded-full border border-transparent bg-gray-100 text-gray-800 hover:bg-gray-200 focus:outline-hidden focus:bg-gray-200 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-700 dark:hover:bg-neutral-600 dark:text-neutral-400 dark:focus:bg-neutral-600"
+                                aria-label="Close">
+                                <span class="sr-only">Close</span>
+                                <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24"
+                                    height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M18 6 6 18"></path>
+                                    <path d="m6 6 12 12"></path>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="p-4 overflow-y-auto text-center">
+                            <p class="text-white font-semibold text-xl">
+                                Are you sure you want to stop the robot?
+                            </p>
+                        </div>
+                        <div class="py-3 px-4">
+                            <div>
+                                <button type="button" wire:click="stopRobot()" type="button" wire:loading.attr="disabled"
+                                    class="p-3 w-full text-center text-sm font-semibold rounded-lg border border-transparent bg-accent text-white cursor-pointer hover:bg-accent-hover focus:outline-hidden focus:bg-accent disabled:opacity-50 disabled:pointer-events-none">
+                                    Confirm
+                                </button>
+                            </div>
+                            <div class="mt-3">
+                                <button wire:click="toggleStopRobotConfirmationModal()" type="button"
+                                    class="p-3 w-full text-center text-sm font-semibold rounded-lg border border-gray-200 bg-white text-gray-800 shadow-2xs cursor-pointer hover:bg-gray-50 focus:outline-hidden focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:text-white dark:hover:bg-neutral-700 dark:focus:bg-neutral-700"
+                                    data-hs-overlay="#hs-vertically-centered-modal">
+                                    Cancel
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -540,54 +540,51 @@
     <div class="mx-auto px-4 md:px-12 lg:px-72 mb-24 md:mb-54">
         <div class="mt-12 mb-6 text-center">
             <h2 class="text-accent font-normal text-xl md:text-3xl lg:text-4xl mb-8">Features</h2>
-            <div class="mb-8 lg:mb-16 lg:flex lg:items-center">
+            <div class="mb-12 lg:mb-16 lg:flex lg:items-center">
                 <div class="lg:flex-1">
-                    <h3 class="text-accent font-normal text-md md:text-2xl lg:text-3xl lg:text-left mb-4">Analysis &
-                        Alerts</h3>
-                    <p class="text-sm md:text-base font-medium text-gray-600 leading-6 tracking-wide text-left">Get the
-                        most out of
-                        fundamental and
-                        technical
-                        analysis with our News Feed and Economic Calendars. More than 100 most widely used technical
-                        indicators and widgets. Always stay up-to-date on what is happening in the financial markets
-                        with
-                        our customizable price alerts.</p>
+                    <h3 class="text-accent font-normal text-md md:text-2xl lg:text-3xl lg:text-left mb-4">Bot Trading</h3>
+                    <p class="text-sm md:text-base font-medium text-gray-600 leading-6 tracking-wide text-left">
+                        Automate your trades and grow your portfolio with our advanced Bot Trading feature. Let intelligent algorithms work around the clock to identify opportunities, execute trades, and accumulate profits—even while you sleep. Enjoy hands-free trading with precision strategies, risk controls, and real-time performance tracking. Take the emotion out of trading and let smart automation do the heavy lifting for you.
+                    </p>
                 </div>
-                <div class="lg:flex-1">
-                    <img src="#" alt="">
+                <div class="mt-6 text-center lg:flex-1 lg:text-end">
+                    <img class="w-64 inline" src="{{ asset('assets/images/features-auto-trading.jpg') }}" alt="">
                 </div>
             </div>
 
-            <div class="mb-8 lg:mb-16 lg:flex lg:items-center">
-                <div class="lg:flex-1">
-                    <img src="#" alt="">
+            <div class="mb-12 lg:mb-16 lg:flex lg:items-center">
+                <div class="lg:flex-1 lg:order-2">
+                    <h3 class="text-accent font-normal text-md md:text-2xl lg:text-3xl lg:text-left mb-4">Lightning-fast deposits</h3>
+                    <p class="text-sm md:text-base font-medium text-gray-600 leading-6 tracking-wide text-left">
+                        Experience lightning-fast deposits with our streamlined funding system. Top up your account instantly and never miss a trading opportunity again. Our secure and efficient process gets your funds where they need to be—right when you need them. Trade without delay and stay ahead of the market with uninterrupted funding.
+                    </p>
                 </div>
-                <div class="lg:flex-1">
-                    <h3 class="text-accent font-normal text-md md:text-2xl lg:text-3xl lg:text-left mb-4">Risk
-                        Management</h3>
-                    <p class="text-sm md:text-base font-medium text-gray-600 leading-6 tracking-wide text-left">With
-                        features such as
-                        Stop Loss/Take
-                        Profit, Negative Balance Protection and Trailing Stop, you can manage your losses and profits at
-                        the
-                        levels you set.</p>
+                <div class="mt-6 text-center lg:flex-1 lg:order-1 lg:text-start">
+                    <img class="w-64 inline" src="{{ asset('assets/images/features-deposit.jpg') }}" alt="">
                 </div>
             </div>
 
-            <div class="mb-8 lg:mb-16 lg:flex lg:items-center">
+            <div class="mb-12 lg:mb-16 lg:flex lg:items-center">
                 <div class="lg:flex-1">
-                    <h3 class="text-accent font-normal text-md md:text-2xl lg:text-3xl lg:text-left mb-4">Trading
-                        Community</h3>
-                    <p class="text-sm md:text-base font-medium text-gray-600 leading-6 tracking-wide text-left">Join
-                        the
-                        massive IQ
-                        Option community,
-                        discuss trading ideas and opportunities, or simply follow other traders with features like
-                        Trader
-                        Sentiment and Community Live Trades.</p>
+                    <h3 class="text-accent font-normal text-md md:text-2xl lg:text-3xl lg:text-left mb-4">Quick withdrawals</h3>
+                    <p class="text-sm md:text-base font-medium text-gray-600 leading-6 tracking-wide text-left">
+                        Enjoy quick and hassle-free withdrawals with our efficient payout system. Access your profits in record time with secure processing and multiple withdrawal options. No delays, no hidden steps—just fast, reliable access to your funds whenever you need them. Your money, your control, delivered swiftly.
+                    </p>
                 </div>
-                <div class="lg:flex-1">
-                    <img src="#" alt="">
+                <div class="mt-6 lg:flex-1 text-center lg:text-end">
+                    <img class="w-64 inline" src="{{ asset('assets/images/features-withdrawal.jpg') }}" alt="">
+                </div>
+            </div>
+
+            <div class="mb-12 lg:mb-16 lg:flex lg:items-center">
+                <div class="lg:flex-1 lg:order-2">
+                    <h3 class="text-accent font-normal text-md md:text-2xl lg:text-3xl lg:text-left mb-4">Track trades</h3>
+                    <p class="text-sm md:text-base font-medium text-gray-600 leading-6 tracking-wide text-left">
+                        Monitor your running trades directly on the chart with real-time precision. Instantly see entry points, stop-losses, and take-profits as they unfold in the market. Stay informed and in control with visual trade tracking that updates live as price moves. No guesswork—just clear, interactive insights right where you need them.
+                    </p>
+                </div>
+                <div class="mt-6 lg:flex-1 text-center lg:order-1 lg:text-start">
+                    <img class="w-64 inline" src="{{ asset('assets/images/features-chart-tracking.jpg') }}" alt="">
                 </div>
             </div>
         </div>

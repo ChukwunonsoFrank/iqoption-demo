@@ -19,6 +19,7 @@ use App\Livewire\Dashboard\DepositHistory;
 use App\Livewire\Dashboard\History;
 use App\Livewire\Dashboard\Index;
 use App\Livewire\Dashboard\Robot;
+use App\Livewire\Dashboard\Support;
 use App\Livewire\Dashboard\Traderoom;
 use App\Livewire\Dashboard\VerifyOtp;
 use App\Livewire\Dashboard\Withdraw;
@@ -51,6 +52,7 @@ Route::middleware(['auth', 'user'])->group(function () {
     Route::get('/dashboard', Index::class)->middleware(['auth', 'verified'])->name('dashboard');
     Route::get('/dashboard/history', History::class)->middleware(['auth', 'verified'])->name('dashboard.history');
     Route::get('/dashboard/robot', Robot::class)->middleware(['auth', 'verified'])->name('dashboard.robot');
+    Route::get('/dashboard/support', Support::class)->middleware(['auth', 'verified'])->name('dashboard.support');
     Route::get('/dashboard/deposit', Deposit::class)->middleware(['auth', 'verified'])->name('dashboard.deposit');
     Route::get('/dashboard/deposit/confirm', ConfirmDeposit::class)->middleware(['auth', 'verified'])->name('dashboard.deposit.confirm');
     Route::get('/dashboard/withdraw', Withdraw::class)->middleware(['auth', 'verified'])->name('dashboard.withdraw');

@@ -19,6 +19,8 @@ class Traderoom extends Component
 
     public bool $isBotSearchingForSignal;
 
+    public bool $isStopRobotConfirmationModalOpen = false;
+
     public $amount;
 
     public string $accountType = '';
@@ -62,6 +64,11 @@ class Traderoom extends Component
         $this->timer = $formatted;
 
         $this->sentiment = $this->activeBot['sentiment'];
+    }
+
+    public function toggleStopRobotConfirmationModal()
+    {
+        $this->isStopRobotConfirmationModalOpen = !$this->isStopRobotConfirmationModalOpen;
     }
 
     public function normalizeAmount(int $amount): int | float

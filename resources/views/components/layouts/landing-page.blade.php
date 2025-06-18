@@ -17,7 +17,9 @@
     @vite('resources/css/app.css')
 
     <style>
-        [x-cloak] { display: none !important; }
+        [x-cloak] {
+            display: none !important;
+        }
     </style>
 </head>
 
@@ -53,8 +55,8 @@
                             </button>
                             <a href="{{ route('home') }}" wire:navigate>
                                 <img class="size-8"
-                                src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=500"
-                                alt="Your Company">
+                                    src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=500"
+                                    alt="Your Company">
                             </a>
                         </div>
                         <div class="hidden lg:block">
@@ -105,7 +107,8 @@
                         US</a>
                     <a href="{{ route('terms') }}" class="block py-4 text-xs font-bold border-b-1 text-zinc-700"
                         aria-current="page">TERMS</a>
-                    <a href="{{ route('privacy') }}" class="block py-4 text-xs font-bold border-b-1 text-zinc-700">PRIVACY</a>
+                    <a href="{{ route('privacy') }}"
+                        class="block py-4 text-xs font-bold border-b-1 text-zinc-700">PRIVACY</a>
                 </div>
             </div>
         </nav>
@@ -118,10 +121,14 @@
         <div class="mx-auto px-4 md:px-12 lg:px-72 pb-3 mb-6 border-b border-gray-100">
             <div class="flex items-center">
                 <div class="flex-1">
-                    <p class="text-xs text-gray-400 font-medium">Home @if ($title !== 'Home') <i class="fas fa-caret-right text-accent fa-xs"></i> {{ $title }} @endif</p>
+                    <p class="text-xs text-gray-400 font-medium">Home @if ($title !== 'Home')
+                            <i class="fas fa-caret-right text-accent fa-xs"></i> {{ $title }}
+                        @endif
+                    </p>
                 </div>
                 <div class="flex-none">
-                    <div class="flex space-x-3 items-center hover:cursor-pointer" onclick="window.scrollTo({ top: 0, behavior: 'smooth' });">
+                    <div class="flex space-x-3 items-center hover:cursor-pointer"
+                        onclick="window.scrollTo({ top: 0, behavior: 'smooth' });">
                         <div>
                             <span class="text-sm font-medium text-accent hidden md:block">Scroll to Top</span>
                         </div>
@@ -129,8 +136,8 @@
                             <div>
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M5 15L12 8L19 15" stroke="#25258E" stroke-width="1" stroke-linecap="round"
-                                        stroke-linejoin="round" />
+                                    <path d="M5 15L12 8L19 15" stroke="#25258E" stroke-width="1"
+                                        stroke-linecap="round" stroke-linejoin="round" />
                                 </svg>
                             </div>
                         </div>
@@ -145,9 +152,15 @@
             <div
                 class="mx-auto px-4 md:px-12 border-b border-gray-100 md:border-b-0 pb-6 mb-8 md:mb-0 lg:flex-1 lg:flex lg:items-start lg:px-0">
                 <div class="text-center mb-12 lg:flex-none lg:text-start lg:w-40">
-                    <a href="{{ route('about') }}"><p class="font-medium text-gray-400 text-sm mb-3">About</p></a>
-                    <a href="{{ route('terms') }}"><p class="font-medium text-gray-400 text-sm mb-3">Terms & Conditions</p></a>
-                    <a href="{{ route('privacy') }}"><p class="font-medium text-gray-400 text-sm">Privacy Policy</p></a>
+                    <a href="{{ route('about') }}">
+                        <p class="font-medium text-gray-400 text-sm mb-3">About</p>
+                    </a>
+                    <a href="{{ route('terms') }}">
+                        <p class="font-medium text-gray-400 text-sm mb-3">Terms & Conditions</p>
+                    </a>
+                    <a href="{{ route('privacy') }}">
+                        <p class="font-medium text-gray-400 text-sm">Privacy Policy</p>
+                    </a>
                 </div>
                 <div class="lg:flex-1">
                     <div class="relative border border-gray-400 p-4 rounded-xs mb-4">
@@ -197,7 +210,8 @@
                             <div>
                                 <div class="flex items-center justify-center rounded-sm bg-black p-1.5 w-full">
                                     <div>
-                                        <img class="w-28" src="{{ asset('assets/icons/get-it-on-playstore.svg') }}">
+                                        <img class="w-28"
+                                            src="{{ asset('assets/icons/get-it-on-playstore.svg') }}">
                                     </div>
                                 </div>
                             </div>
@@ -218,6 +232,7 @@
 
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     @livewireScripts
+    @vite('resources/js/app.js')
 </body>
 
 </html>
