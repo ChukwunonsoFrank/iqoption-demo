@@ -19,6 +19,8 @@ class AdminStrategyDetails extends Component
 
     public string $name = '';
 
+    public string $duration = '';
+
     public string $minimumAmount = '';
 
     public string $maximumAmount = '';
@@ -41,6 +43,7 @@ class AdminStrategyDetails extends Component
                 'min_roi' => $this->minimumROI,
                 'max_roi' => $this->maximumROI,
                 'image_url' => $this->image ? 'strategy-image/' . $this->image->getClientOriginalName() : $this->previousImageUrl,
+                'duration' => $this->duration
             ]);
 
             if ($this->image) {
@@ -62,6 +65,7 @@ class AdminStrategyDetails extends Component
         $this->maximumAmount = $strategy['max_amount'];
         $this->minimumROI = $strategy['min_roi'];
         $this->maximumROI = $strategy['max_roi'];
+        $this->duration = $strategy['duration'];
         $this->previousImageUrl = $strategy['image_url'];
 
         return view('livewire.admin.admin-strategy-details');

@@ -80,6 +80,29 @@
                                     class="dark:bg-dark-900 h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800" />
                             </div>
 
+                            <div class="relative w-full px-2.5 xl:w-1/2">
+                                <select wire:model="duration"
+                                    class="shadow-theme-xs focus:border-brand-300 focus:ring-brand-500/10 dark:focus:border-brand-800 h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent bg-none px-4 py-2.5 pr-11 text-sm text-gray-800 focus:ring-3 focus:outline-hidden">
+                                    <option value="" disabled selected class="text-gray-400">
+                                        Duration
+                                    </option>
+                                    <option value="24" class="text-gray-700">
+                                        24 hours
+                                    </option>
+                                    <option value="48" class="text-gray-700">
+                                        48 hours
+                                    </option>
+                                </select>
+                                <span
+                                    class="pointer-events-none absolute top-1/2 right-4 z-30 -translate-y-1/2 text-gray-500">
+                                    <svg class="stroke-current" width="20" height="20" viewBox="0 0 20 20"
+                                        fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M4.79175 7.396L10.0001 12.6043L15.2084 7.396" stroke=""
+                                            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                </span>
+                            </div>
+
                             <div class="w-full px-2.5 xl:w-1/2">
                                 <input wire:model="minimumAmount" type="text" placeholder="Minimum Amount"
                                     class="dark:bg-dark-900 h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800" />
@@ -128,8 +151,6 @@
                                     Strategies
                                 </h3>
                             </div>
-
-
                         </div>
 
                         <div class="custom-scrollbar max-w-full overflow-x-auto overflow-y-visible px-5 sm:px-6">
@@ -138,6 +159,11 @@
                                     <th class="py-3 pr-5 font-normal whitespace-nowrap sm:pr-6">
                                         <div class="flex items-center">
                                             <p class="text-theme-sm text-gray-500 dark:text-gray-400">Name</p>
+                                        </div>
+                                    </th>
+                                    <th class="py-3 pr-5 font-normal whitespace-nowrap sm:pr-6">
+                                        <div class="flex items-center">
+                                            <p class="text-theme-sm text-gray-500 dark:text-gray-400">Duration</p>
                                         </div>
                                     </th>
                                     <th class="px-5 py-3 font-normal whitespace-nowrap sm:px-6">
@@ -173,6 +199,13 @@
                                                     <p
                                                         class="text-theme-sm block font-medium text-gray-700 dark:text-gray-400">
                                                         {{ $strategy['name'] }}
+                                                    </p>
+                                                </div>
+                                            </td>
+                                            <td class="px-5 py-3 whitespace-nowrap sm:px-6">
+                                                <div class="flex items-center">
+                                                    <p class="text-theme-sm text-gray-700 dark:text-gray-400">
+                                                        {{ $strategy['duration'] }} hours
                                                     </p>
                                                 </div>
                                             </td>
@@ -220,7 +253,7 @@
                                                         </button>
                                                         <div x-show="isActionDropdownOpen"
                                                             @click.outside="isActionDropdownOpen = false"
-                                                            class="shadow-theme-lg dark:bg-gray-dark fixed z-10 w-fit-content space-y-1 rounded-2xl border border-gray-200 bg-white p-2 pr-4 dark:border-gray-800">
+                                                            class="shadow-theme-lg absolute z-20 w-fit-content space-y-1 rounded-2xl border border-gray-200 bg-white p-2 pr-4">
                                                             <a
                                                                 href="{{ route('admin.dashboard.strategy.details', ['id' => $strategy['id']]) }}">
                                                                 <button x-on:click="isActionDropdownOpen = false"
@@ -228,7 +261,8 @@
                                                                     Edit
                                                                 </button>
                                                             </a>
-                                                            <form wire:submit.prevent="destroyStrategy({{ $strategy['id'] }})">
+                                                            <form
+                                                                wire:submit.prevent="destroyStrategy({{ $strategy['id'] }})">
                                                                 <button type="submit"
                                                                     x-on:click="isActionDropdownOpen = false"
                                                                     class="text-theme-xs flex w-full rounded-lg px-3 py-2 text-left font-medium text-error-600">

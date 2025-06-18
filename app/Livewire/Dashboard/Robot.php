@@ -23,9 +23,9 @@ class Robot extends Component
 
     public string $accountTypeSlug = 'demo';
 
-    public $strategy = [];
+    public $strategy;
 
-    public $strategies = [];
+    public $strategies;
 
     public function mount()
     {
@@ -653,11 +653,13 @@ class Robot extends Component
     /**
      * Generate profit values.
      */
-    function generateProfit($totalIntervals, $profitLimit)
+    function generateProfitValues($duration, $profitLimit)
     {
         $profitValues = [];
 
-        for ($i = 0; $i < $totalIntervals; $i++) {
+        $totalMinutesInDuration = (($duration * 60) / 5);
+
+        for ($i = 0; $i < $totalMinutesInDuration; $i++) {
             $profitValues[] = mt_rand(0, 8000) / 1000;
         }
 
@@ -668,6 +670,8 @@ class Robot extends Component
         foreach ($profitValues as $value) {
             $normalizedProfitValues[] = round(($value / $profitValuesSum) * $profitLimit, 2);
         }
+
+        dd(array_sum($normalizedProfitValues));
 
         return $normalizedProfitValues;
     }
@@ -725,7 +729,7 @@ class Robot extends Component
                     'strategy' => $this->strategy['id'],
                     'account_type' => $this->accountTypeSlug,
                     'profit' => 0,
-                    'profit_values' => json_encode($this->generateProfit(288, $profitLimit)),
+                    'profit_values' => json_encode($this->generateProfitValues(intval($this->strategy['duration']), $profitLimit)),
                     'profit_position' => 0,
                     'asset' => $assetToTrade['display_name'],
                     'asset_class' => $assetToTrade['asset_class'],
@@ -735,7 +739,7 @@ class Robot extends Component
                     'status' => 'active',
                     'timer_checkpoint' => strval(now()->addMinutes(5)->addSeconds(12)->getTimestampMs()),
                     'start' => strval(now()->getTimestampMs()),
-                    'end' => strval(now()->addHours(24)->getTimestampMs())
+                    'end' => strval(now()->addHours(intval($this->strategy['duration']))->getTimestampMs())
                 ]);
                 User::where('id', auth()->user()->id)->update([$balanceToDebit => $serialized]);
             });

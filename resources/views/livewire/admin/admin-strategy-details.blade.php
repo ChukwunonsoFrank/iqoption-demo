@@ -85,6 +85,31 @@
 
                             <div class="w-full px-2.5 xl:w-1/2">
                                 <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
+                                    Duration
+                                </label>
+                                <div class="relative">
+                                    <select wire:model="duration"
+                                        class="shadow-theme-xs focus:border-brand-300 focus:ring-brand-500/10 dark:focus:border-brand-800 h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent bg-none px-4 py-2.5 pr-11 text-sm text-gray-800 focus:ring-3 focus:outline-hidden">
+                                        <option {{ $this->duration === "24" ? 'selected' : '' }} value="24" class="text-gray-700">
+                                            24 hours
+                                        </option>
+                                        <option {{ $this->duration === "48" ? 'selected' : '' }} value="48" class="text-gray-700">
+                                            48 hours
+                                        </option>
+                                    </select>
+                                    <span
+                                        class="pointer-events-none absolute top-1/2 right-4 z-30 -translate-y-1/2 text-gray-500">
+                                        <svg class="stroke-current" width="20" height="20" viewBox="0 0 20 20"
+                                            fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M4.79175 7.396L10.0001 12.6043L15.2084 7.396" stroke=""
+                                                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="w-full px-2.5 xl:w-1/2">
+                                <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
                                     Minimum Amount
                                 </label>
                                 <input wire:model="minimumAmount" type="text"

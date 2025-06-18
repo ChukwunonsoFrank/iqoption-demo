@@ -15,6 +15,8 @@ class AdminStrategy extends Component
 
     public string $name = '';
 
+    public string $duration = '';
+
     public string $minimumAmount = '';
 
     public string $maximumAmount = '';
@@ -36,7 +38,7 @@ class AdminStrategy extends Component
                 'max_roi' => $this->maximumROI,
                 'image_url' => 'strategy-image/' . $this->image->getClientOriginalName(),
                 'status' => 'active',
-                'duration' => '24'
+                'duration' => $this->duration
             ]);
 
             $this->image->storeAs(path: 'strategy-image', name: $this->image->getClientOriginalName());

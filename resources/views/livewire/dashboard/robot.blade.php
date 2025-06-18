@@ -63,7 +63,7 @@
                 <div class="mb-4 flex items-center space-x-2">
                     <div class="flex-1">
                         <label for="input-label" class="block text-xs font-medium mb-2 text-zinc-300">Duration</label>
-                        <input type="email" value="24 hours"
+                        <input type="text" value="{{ $this->strategy['duration'] }} hours"
                             class="bg-navbar text-white text-start border border-gray-700 text-sm py-2.5 sm:py-3 px-4 block w-full rounded-lg sm:text-sm focus:outline-0"
                             placeholder="" readonly>
                     </div>
