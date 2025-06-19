@@ -19,6 +19,7 @@ use App\Livewire\Dashboard\DepositHistory;
 use App\Livewire\Dashboard\History;
 use App\Livewire\Dashboard\Index;
 use App\Livewire\Dashboard\Robot;
+use App\Livewire\Dashboard\ShowReferrals;
 use App\Livewire\Dashboard\Support;
 use App\Livewire\Dashboard\Traderoom;
 use App\Livewire\Dashboard\VerifyOtp;
@@ -61,6 +62,7 @@ Route::middleware(['auth', 'user'])->group(function () {
     Route::get('/dashboard/account', Account::class)->middleware(['auth', 'verified'])->name('dashboard.account');
     Route::get('/dashboard/deposithistory', DepositHistory::class)->middleware(['auth', 'verified'])->name('dashboard.deposithistory');
     Route::get('/dashboard/withdrawhistory', WithdrawHistory::class)->middleware(['auth', 'verified'])->name('dashboard.withdrawhistory');
+    Route::get('/dashboard/referrals', ShowReferrals::class)->middleware(['auth', 'verified'])->name('dashboard.referrals');
 
     Route::redirect('settings', 'settings/profile');
     Route::get('settings/profile', Profile::class)->name('settings.profile');

@@ -14,7 +14,7 @@ use Livewire\Attributes\Title;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
 
-#[Layout('components.layouts.landing-page')]
+#[Layout('components.layouts.auth.layout')]
 
 #[Title('Login')]
 

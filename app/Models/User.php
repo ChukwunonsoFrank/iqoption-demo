@@ -25,6 +25,8 @@ class User extends Authenticatable
         'email',
         'password',
         'is_admin',
+        'referral_code',
+        'referred_by',
         'live_balance',
         'demo_balance',
         'account_status',

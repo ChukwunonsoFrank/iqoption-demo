@@ -11,14 +11,18 @@ use Illuminate\Support\Facades\Http;
 use Illuminate\Validation\Rules;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
+use Livewire\Attributes\Url;
 use Livewire\Component;
 
-#[Layout('components.layouts.landing-page')]
+#[Layout('components.layouts.auth.layout')]
 
 #[Title('Register')]
 
 class Register extends Component
 {
+    #[Url]
+    public $ref;
+
     public string $name = '';
 
     public string $email = '';
@@ -39,26 +43,37 @@ class Register extends Component
         ];
     }
 
+    public function generateReferralCode(): string
+    {
+        $length = 9;
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $randomString = '';
+        for ($i = 0; $i < $length; $i++) {
+            $randomString .= $characters[rand(0, strlen($characters) - 1)];
+        }
+        return strtoupper($randomString);
+    }
+
     /**
      * Handle an incoming registration request.
      */
     public function register()
     {
         try {
-            $recaptcha = request()->input('g-recaptcha-response');
+            // $recaptcha = request()->input('g-recaptcha-response');
 
-            if (is_null($recaptcha)) {
-                $this->dispatch('login-error', message: 'Please confirm you are not a robot.')->self();
-            }
+            // if (is_null($recaptcha)) {
+            //     $this->dispatch('login-error', message: 'Please confirm you are not a robot.')->self();
+            // }
 
-            $recatpchaResponse = Http::get("https://www.google.com/recaptcha/api/siteverify", [
-                'secret' => config('services.recaptcha.secret'),
-                'response' => $recaptcha
-            ]);
+            // $recatpchaResponse = Http::get("https://www.google.com/recaptcha/api/siteverify", [
+            //     'secret' => config('services.recaptcha.secret'),
+            //     'response' => $recaptcha
+            // ]);
 
-            $result = $recatpchaResponse->json();
+            // $result = $recatpchaResponse->json();
 
-            if ($recatpchaResponse->successful() && $result['success'] == true) {
+            // if ($recatpchaResponse->successful() && $result['success'] == true) {
                 $validated = $this->validate([
                     'name' => ['required', 'string', 'max:255'],
                     'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
@@ -73,6 +88,11 @@ class Register extends Component
                 $validated['live_balance'] = 0;
                 $validated['demo_balance'] = 1000000;
                 $validated['account_status'] = 'active';
+                $validated['referral_code'] = $this->generateReferralCode();
+                
+                if ($this->ref) {
+                    $validated['referred_by'] = $this->ref;
+                }
 
                 event(new Registered(($user = User::create($validated))));
 
@@ -85,10 +105,10 @@ class Register extends Component
                 Auth::login($user);
 
                 $this->redirect(route('dashboard', absolute: false), navigate: true);
-            } else {
-                $this->dispatch('login-error', message: 'Please confirm you are not a robot.')->self();
-                return redirect()->back();
-            }
+            // } else {
+            //     $this->dispatch('login-error', message: 'Please confirm you are not a robot.')->self();
+            //     return redirect()->back();
+            // }
         } catch (\Exception $e) {
             $this->dispatch('signup-error', message: $e->getMessage())->self();
         }
