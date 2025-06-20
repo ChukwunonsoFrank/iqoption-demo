@@ -27,14 +27,14 @@
 
     @if (Route::has('password.request'))
         <div class="space-x-1 rtl:space-x-reverse text-center text-xs font-medium">
-            <flux:link class="text-accent" :href="route('password.request')" wire:navigate>{{ __('Forgot your password?') }}</flux:link>
+            <flux:link class="text-accent" :href="route('password.request')">{{ __('Forgot your password?') }}</flux:link>
         </div>
     @endif
 
     @if (Route::has('register'))
         <div class="space-x-1 rtl:space-x-reverse text-center text-xs text-zinc-700 font-medium mb-3">
             {{ __('Don\'t have an account?') }}
-            <flux:link class="text-accent" :href="route('register')" wire:navigate>{{ __('Sign Up') }}</flux:link>
+            <flux:link class="text-accent" :href="route('register')">{{ __('Sign Up') }}</flux:link>
         </div>
     @endif
 

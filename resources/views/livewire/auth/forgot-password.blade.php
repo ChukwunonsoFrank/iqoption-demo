@@ -16,6 +16,6 @@
 
      <div class="space-x-1 rtl:space-x-reverse text-center text-xs text-zinc-700 font-medium">
          {{ __('Or, return to') }}
-         <flux:link class="text-accent" :href="route('login')" wire:navigate>{{ __('log in') }}</flux:link>
+         <flux:link class="text-accent" :href="route('login')">{{ __('log in') }}</flux:link>
      </div>
  </div>

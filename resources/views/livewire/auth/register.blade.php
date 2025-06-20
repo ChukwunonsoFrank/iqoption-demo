@@ -43,7 +43,7 @@
 
     <div class="space-x-1 rtl:space-x-reverse text-center text-xs text-zinc-700 font-medium mb-3">
         {{ __('Already have an account?') }}
-        <flux:link :href="route('login')" class="text-accent" wire:navigate>{{ __('Log in') }}</flux:link>
+        <flux:link :href="route('login')" class="text-accent">{{ __('Log in') }}</flux:link>
         {{ __('now') }}
     </div>
 
