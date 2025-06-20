@@ -4,7 +4,7 @@
         <div class="lg:h-full lg:flex-1 lg:px-80 lg:pt-6">
             <div class="mb-3 sticky top-0 bg-dashboard z-10 pb-2 lg:pt-4">
                 <h1 class="text-white mb-2 text-lg md:text-xl lg:text-2xl font-semibold">Check your email</h1>
-                <p class="text-zinc-300 text-xs">Enter the verification code sent to jdoe@gmail.com</p>
+                <p class="text-zinc-300 text-xs">Enter the verification code sent to {{ auth()->user()->email }}</p>
             </div>
             <div class="lg:h-full lg:pb-24 lg:overflow-scroll scrollbar-hide">
                 <div class="mb-5">
