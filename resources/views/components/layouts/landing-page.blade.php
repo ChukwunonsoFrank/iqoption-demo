@@ -53,7 +53,7 @@
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
                                 </svg>
                             </button>
-                            <a href="{{ route('home') }}" wire:navigate>
+                            <a href="{{ route('home') }}">
                                 <img class="size-8"
                                     src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=500"
                                     alt="Your Company">
@@ -62,12 +62,12 @@
                         <div class="hidden lg:block">
                             <div class="ml-10 flex items-baseline space-x-4">
                                 <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-                                <a href="{{ route('about') }}" wire:navigate
+                                <a href="{{ route('about') }}"
                                     class="rounded-md px-3 py-2 text-md font-medium text-zinc-700"
                                     aria-current="page">About Us</a>
-                                <a href="{{ route('terms') }}" wire:navigate
+                                <a href="{{ route('terms') }}"
                                     class="rounded-md px-3 py-2 text-md font-medium text-zinc-700">Terms</a>
-                                <a href="{{ route('privacy') }}" wire:navigate
+                                <a href="{{ route('privacy') }}"
                                     class="rounded-md px-3 py-2 text-md font-medium text-zinc-700">Privacy</a>
                             </div>
                         </div>

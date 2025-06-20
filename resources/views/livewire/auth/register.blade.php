@@ -31,7 +31,7 @@
         </div>
 
         <div class="mt-2">
-            <div wire:ignore class="g-recaptcha" data-sitekey="{{ config('services.recaptcha.key') }}"></div>
+            <div wire:ignore class="g-recaptcha" data-sitekey="{{ config('services.recaptcha.key') }}" data-callback="onRecaptchaSuccess"></div>
         </div>
 
         <div class="flex items-center justify-end">
@@ -40,6 +40,15 @@
             </flux:button>
         </div>
     </form>
+
+    @push('scripts')
+        <script>
+            function onRecaptchaSuccess(token) {
+                // When reCAPTCHA is successfully completed, send the token to Livewire
+                Livewire.find(document.querySelector('[wire\\:id]').getAttribute('wire:id')).set('gRecaptchaResponse', token);
+            }
+        </script>
+    @endpush
 
     <div class="space-x-1 rtl:space-x-reverse text-center text-xs text-zinc-700 font-medium mb-3">
         {{ __('Already have an account?') }}

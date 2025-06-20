@@ -33,6 +33,8 @@ class Register extends Component
 
     public bool $termsAndPrivacyPolicyAccepted = false;
 
+    public $gRecaptchaResponse;
+
     /**
      * Custom validation error messages.
      */
@@ -60,15 +62,13 @@ class Register extends Component
     public function register()
     {
         try {
-            $recaptcha = request()->input('g-recaptcha-response');
-
-            if (is_null($recaptcha)) {
+            if (is_null($this->gRecaptchaResponse)) {
                 $this->dispatch('login-error', message: 'Please confirm you are not a robot.')->self();
             }
 
             $recatpchaResponse = Http::get("https://www.google.com/recaptcha/api/siteverify", [
                 'secret' => config('services.recaptcha.secret'),
-                'response' => $recaptcha
+                'response' => $this->gRecaptchaResponse
             ]);
 
             $result = $recatpchaResponse->json();
@@ -89,7 +89,7 @@ class Register extends Component
                 $validated['demo_balance'] = 1000000;
                 $validated['account_status'] = 'active';
                 $validated['referral_code'] = $this->generateReferralCode();
-                
+
                 if ($this->ref) {
                     $validated['referred_by'] = $this->ref;
                 }

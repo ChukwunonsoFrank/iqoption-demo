@@ -28,26 +28,26 @@ class Login extends Component
 
     public bool $remember = false;
 
+    public $gRecaptchaResponse;
+
     /**
      * Handle an incoming authentication request.
      */
     public function login()
     {
         try {
-            // $recaptcha = request()->input('g-recaptcha-response');
+            if (is_null($this->gRecaptchaResponse)) {
+                $this->dispatch('login-error', message: 'Please confirm you are not a robot.')->self();
+            }
 
-            // if (is_null($recaptcha)) {
-            //     $this->dispatch('login-error', message: 'Please confirm you are not a robot.')->self();
-            // }
+            $recatpchaResponse = Http::get("https://www.google.com/recaptcha/api/siteverify", [
+                'secret' => config('services.recaptcha.secret'),
+                'response' => $this->gRecaptchaResponse
+            ]);
 
-            // $recatpchaResponse = Http::get("https://www.google.com/recaptcha/api/siteverify", [
-            //     'secret' => config('services.recaptcha.secret'),
-            //     'response' => $recaptcha
-            // ]);
+            $result = $recatpchaResponse->json();
 
-            // $result = $recatpchaResponse->json();
-
-            // if ($recatpchaResponse->successful() && $result['success'] == true) {
+            if ($recatpchaResponse->successful() && $result['success'] == true) {
                 $this->validate();
 
                 $this->ensureIsNotRateLimited();
@@ -70,9 +70,9 @@ class Login extends Component
                 }
 
                 $this->redirectIntended(default: route('dashboard.robot', absolute: false));
-            // } else {
-            //     $this->dispatch('login-error', message: 'Please confirm you are not a robot.')->self();
-            // }
+            } else {
+                $this->dispatch('login-error', message: 'Please confirm you are not a robot.')->self();
+            }
         } catch (\Exception $e) {
             $this->dispatch('login-error', message: $e->getMessage())->self();
         }
