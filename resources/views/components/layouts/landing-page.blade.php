@@ -202,7 +202,7 @@
                                 <img class="size-5 inline"
                                     src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=500"
                                     alt="Your Company">
-                                <span class="inline text-black font-semibold text-xs"> Company Name</span>
+                                <span class="inline text-black font-semibold text-xs"> Bullfex</span>
                             </div>
                             <div class="mb-1">
                                 <span class="text-[10px] text-zinc-700">Full version, 21.5MB</span>
@@ -224,7 +224,7 @@
         <div class="mx-auto px-4 md:px-12 mb-4 text-center">
             <div></div>
             <div>
-                <p class="text-zinc-700 text-xs font-medium">Company Name, © 2013-2025</p>
+                <p class="text-zinc-700 text-xs font-medium">Bullfex, © 2013-{{ now()->year }}</p>
             </div>
         </div>
         <!-- Footer end -->

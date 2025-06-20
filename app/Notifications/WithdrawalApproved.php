@@ -22,6 +22,18 @@ class WithdrawalApproved extends Notification implements ShouldQueue
     }
 
     /**
+     * Determine which queues should be used for each notification channel.
+     *
+     * @return array<string, string>
+     */
+    public function viaQueues(): array
+    {
+        return [
+            'mail' => 'notifications',
+        ];
+    }
+
+    /**
      * Get the notification's delivery channels.
      *
      * @return array<int, string>

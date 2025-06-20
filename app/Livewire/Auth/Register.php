@@ -60,20 +60,20 @@ class Register extends Component
     public function register()
     {
         try {
-            // $recaptcha = request()->input('g-recaptcha-response');
+            $recaptcha = request()->input('g-recaptcha-response');
 
-            // if (is_null($recaptcha)) {
-            //     $this->dispatch('login-error', message: 'Please confirm you are not a robot.')->self();
-            // }
+            if (is_null($recaptcha)) {
+                $this->dispatch('login-error', message: 'Please confirm you are not a robot.')->self();
+            }
 
-            // $recatpchaResponse = Http::get("https://www.google.com/recaptcha/api/siteverify", [
-            //     'secret' => config('services.recaptcha.secret'),
-            //     'response' => $recaptcha
-            // ]);
+            $recatpchaResponse = Http::get("https://www.google.com/recaptcha/api/siteverify", [
+                'secret' => config('services.recaptcha.secret'),
+                'response' => $recaptcha
+            ]);
 
-            // $result = $recatpchaResponse->json();
+            $result = $recatpchaResponse->json();
 
-            // if ($recatpchaResponse->successful() && $result['success'] == true) {
+            if ($recatpchaResponse->successful() && $result['success'] == true) {
                 $validated = $this->validate([
                     'name' => ['required', 'string', 'max:255'],
                     'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
@@ -105,10 +105,10 @@ class Register extends Component
                 Auth::login($user);
 
                 $this->redirect(route('dashboard', absolute: false), navigate: true);
-            // } else {
-            //     $this->dispatch('login-error', message: 'Please confirm you are not a robot.')->self();
-            //     return redirect()->back();
-            // }
+            } else {
+                $this->dispatch('login-error', message: 'Please confirm you are not a robot.')->self();
+                return redirect()->back();
+            }
         } catch (\Exception $e) {
             $this->dispatch('signup-error', message: $e->getMessage())->self();
         }

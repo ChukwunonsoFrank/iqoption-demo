@@ -158,7 +158,7 @@
                             <div wire:key="strategy-{{ $strategy['id'] }}" wire:click="selectStrategy({{ $strategy['id'] }})" x-on:click="$store.robotPage.isStrategyListOverlayOpen = false"
                                 class="flex items-start space-x-2 border border-gray-700 mb-3 px-4 py-4 bg-navbar rounded-md text-[#FFFFFF] cursor-pointer">
                                 <div class="flex-none w-12">
-                                    <img class="w-24" src="{{ asset('storage/' . $this->strategy['image_url']) }}"
+                                    <img class="w-24" src="{{ asset('storage/' . $strategy['image_url']) }}"
                                         alt="">
                                 </div>
                                 <div class="flex-1">

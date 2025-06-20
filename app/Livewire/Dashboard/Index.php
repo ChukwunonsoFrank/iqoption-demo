@@ -27,6 +27,7 @@ class Index extends Component
         } else {
             $this->activeBotTickerSymbol = 'UNKNOWN:UNKNOWN';
             $this->chartDuration = '1';
+            $this->dispatch('message', message: 'No trade data to display. Start the robot to track your trades on the chart.')->self();
         }
 
         if ($justLoggedIn && $activeBot) {

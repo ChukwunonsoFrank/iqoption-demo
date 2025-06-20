@@ -671,8 +671,6 @@ class Robot extends Component
             $normalizedProfitValues[] = round(($value / $profitValuesSum) * $profitLimit, 2);
         }
 
-        dd(array_sum($normalizedProfitValues));
-
         return $normalizedProfitValues;
     }
 

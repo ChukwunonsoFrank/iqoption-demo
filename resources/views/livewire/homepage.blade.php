@@ -10,10 +10,10 @@
             <p class="text-white text-xs font-medium mb-6 mx-auto md:w-[28rem] md:text-[14px] lg:mx-0">Save hours of
                 manual trading with our advanced trading bots across 150+ most popular asset exchanges.</p>
             <div class="flex justify-center items-center lg:justify-start space-x-4">
-                <a href="{{ route('register') }}" wire:navigate
+                <a href="{{ route('register') }}"
                     class="rounded-sm bg-accent px-18 py-3.5 text-sm inline-block font-medium text-white shadow-xs hover:bg-accent-hover">Trade
                     Now</a>
-                <a href="{{ route('register') }}" wire:navigate
+                <a href="{{ route('register') }}"
                     class="hidden md:inline-block rounded-sm border border-white px-4 py-3.5 text-sm font-medium text-white shadow-xs hover:bg-white hover:text-zinc-700">Free
                     Practice Account</a>
             </div>
@@ -24,8 +24,8 @@
     <!-- Assets tab start -->
     <div class="-mt-14 lg:-mt-48 mx-auto px-4 lg:px-64 lg:mb-40 md:px-12 md:mb-28">
         <div>
-            <nav wire:ignore class="-mb-0.5 flex justify-center gap-x-6" aria-label="Tabs" role="tablist"
-                aria-orientation="horizontal">
+            <nav wire:ignore class="-mb-0.5 flex gap-x-6 overflow-x-scroll scrollbar-hide" aria-label="Tabs"
+                role="tablist" aria-orientation="horizontal">
                 <button type="button"
                     class="hs-tab-active:font-semibold hs-tab-active:border-white font-semibold py-1 px-1 inline-flex items-center gap-x-2 border-b-2 border-transparent text-lg whitespace-nowrap text-white hover:text-blue-600 focus:outline-hidden disabled:opacity-50 disabled:pointer-events-none dark:text-neutral-400 dark:hover:text-blue-500 active"
                     id="horizontal-alignment-item-1" aria-selected="true" data-hs-tab="#horizontal-alignment-1"
@@ -44,6 +44,18 @@
                     aria-controls="horizontal-alignment-3" role="tab">
                     Stocks
                 </button>
+                <button type="button"
+                    class="hs-tab-active:font-semibold hs-tab-active:border-white font-semibold py-1 px-1 inline-flex items-center gap-x-2 border-b-2 border-transparent text-lg whitespace-nowrap text-white hover:text-blue-600 focus:outline-hidden disabled:opacity-50 disabled:pointer-events-none dark:text-neutral-400 dark:hover:text-blue-500"
+                    id="horizontal-alignment-item-4" aria-selected="true" data-hs-tab="#horizontal-alignment-4"
+                    aria-controls="horizontal-alignment-4" role="tab">
+                    Commodities
+                </button>
+                <button type="button"
+                    class="hs-tab-active:font-semibold hs-tab-active:border-white font-semibold py-1 px-1 inline-flex items-center gap-x-2 border-b-2 border-transparent text-lg whitespace-nowrap text-white hover:text-blue-600 focus:outline-hidden disabled:opacity-50 disabled:pointer-events-none dark:text-neutral-400 dark:hover:text-blue-500"
+                    id="horizontal-alignment-item-5" aria-selected="false" data-hs-tab="#horizontal-alignment-5"
+                    aria-controls="horizontal-alignment-5" role="tab">
+                    ETFs
+                </button>
             </nav>
         </div>
 
@@ -52,23 +64,9 @@
                 <div class="lg:flex lg:items-center lg:mb-5">
                     <div class="flex-1 flex items-center space-x-1 mb-5 lg:mb-0">
                         <div>
-                            <h3 class="text-zinc-700 font-bold text-lg md:text-2xl">
-                                73 <span class="font-medium">Cryptocurrencies</span>
+                            <h3 class="text-zinc-700 font-semibold text-lg md:text-2xl">
+                                Cryptocurrencies
                             </h3>
-                        </div>
-                        <div>
-                            <i class="fas fa-angle-right text-lg inline-block mt-1 text-accent"></i>
-                        </div>
-                    </div>
-
-                    <div class="flex-1 flex items-center justify-between space-x-2 mb-5 lg:mb-0 md:mb-8">
-                        <div class="flex-none w-36">
-                            <p class="text-zinc-700 font-bold text-xl">$100</p>
-                            <p class="text-zinc-700 text-xs font-medium">Min deposit</p>
-                        </div>
-                        <div class="flex-1">
-                            <p class="text-zinc-700 font-bold text-xl">$10</p>
-                            <p class="text-zinc-700 text-xs font-medium">Minimum investment</p>
                         </div>
                     </div>
                 </div>
@@ -101,7 +99,7 @@
                                     <p class="text-sm font-medium">+1.45%</p>
                                 </div>
                                 <div class="flex-none">
-                                    <a href="{{ route('register') }}" wire:navigate
+                                    <a href="{{ route('register') }}"
                                         class="rounded-xs border border-accent w-24 px-1 pt-1 pb-0 text-center inline-block text-accent hover:bg-accent-hover hover:text-white active:bg-accent-hover active:text-white">
                                         <span class="block font-medium text-sm">{{ $data['priceUsd'] }}</span>
                                         <span class="block md:hidden font-medium text-[11px]">Trade</span>
@@ -109,7 +107,7 @@
                                     </a>
                                 </div>
                                 <div class="hidden md:block flex-none">
-                                    <a href="{{ route('register') }}" wire:navigate
+                                    <a href="{{ route('register') }}"
                                         class="inline-block rounded-xs border border-buy-green w-24 px-1 pt-1 pb-0 text-center text-buy-green hover:bg-buy-green hover:text-white active:bg-buy-green active:text-white">
                                         <span class="block font-medium text-sm">{{ $data['priceUsd'] }}</span>
                                         <span class="block font-medium text-[11px]">Buy</span>
@@ -126,23 +124,9 @@
                 <div class="lg:flex lg:items-center lg:mb-5">
                     <div class="flex-1 flex items-center space-x-1 mb-5 lg:mb-0">
                         <div>
-                            <h3 class="text-zinc-700 font-bold text-lg md:text-2xl">
-                                43 <span class="font-medium">Forex pairs</span>
+                            <h3 class="text-zinc-700 font-semibold text-lg md:text-2xl">
+                                Forex pairs
                             </h3>
-                        </div>
-                        <div>
-                            <i class="fas fa-angle-right text-lg inline-block mt-1 text-accent"></i>
-                        </div>
-                    </div>
-
-                    <div class="flex-1 flex items-center justify-between space-x-2 mb-5 lg:mb-0 md:mb-8">
-                        <div class="flex-none w-36">
-                            <p class="text-zinc-700 font-bold text-xl">$100</p>
-                            <p class="text-zinc-700 text-xs font-medium">Min deposit</p>
-                        </div>
-                        <div class="flex-1">
-                            <p class="text-zinc-700 font-bold text-xl">$10</p>
-                            <p class="text-zinc-700 text-xs font-medium">Minimum investment</p>
                         </div>
                     </div>
                 </div>
@@ -176,7 +160,7 @@
                                     <p class="text-sm font-medium">+1.45%</p>
                                 </div>
                                 <div class="flex-none">
-                                    <a href="{{ route('register') }}" wire:navigate
+                                    <a href="{{ route('register') }}"
                                         class="rounded-xs border border-accent w-24 px-1 pt-1 pb-0 text-center inline-block text-accent hover:bg-accent-hover hover:text-white active:bg-accent-hover active:text-white">
                                         <span class="block font-medium text-sm">{{ $data['price'] }}</span>
                                         <span class="block md:hidden font-medium text-[11px]">Trade</span>
@@ -184,7 +168,7 @@
                                     </a>
                                 </div>
                                 <div class="hidden md:block flex-none">
-                                    <a href="{{ route('register') }}" wire:navigate
+                                    <a href="{{ route('register') }}"
                                         class="inline-block rounded-xs border border-buy-green w-24 px-1 pt-1 pb-0 text-center text-buy-green hover:bg-buy-green hover:text-white active:bg-buy-green active:text-white">
                                         <span class="block font-medium text-sm">{{ $data['price'] }}</span>
                                         <span class="block font-medium text-[11px]">Buy</span>
@@ -201,23 +185,9 @@
                 <div class="lg:flex lg:items-center lg:mb-5">
                     <div class="flex-1 flex items-center space-x-1 mb-5 lg:mb-0">
                         <div>
-                            <h3 class="text-zinc-700 font-bold text-lg md:text-2xl">
-                                276 <span class="font-medium">Stocks</span>
+                            <h3 class="text-zinc-700 font-semibold text-lg md:text-2xl">
+                                Stocks
                             </h3>
-                        </div>
-                        <div>
-                            <i class="fas fa-angle-right text-lg inline-block mt-1 text-accent"></i>
-                        </div>
-                    </div>
-
-                    <div class="flex-1 flex items-center justify-between space-x-2 mb-5 lg:mb-0 md:mb-8">
-                        <div class="flex-none w-36">
-                            <p class="text-zinc-700 font-bold text-xl">$100</p>
-                            <p class="text-zinc-700 text-xs font-medium">Min deposit</p>
-                        </div>
-                        <div class="flex-1">
-                            <p class="text-zinc-700 font-bold text-xl">$10</p>
-                            <p class="text-zinc-700 text-xs font-medium">Minimum investment</p>
                         </div>
                     </div>
                 </div>
@@ -251,7 +221,7 @@
                                     <p class="text-sm font-medium">+1.45%</p>
                                 </div>
                                 <div class="flex-none">
-                                    <a href="{{ route('register') }}" wire:navigate
+                                    <a href="{{ route('register') }}"
                                         class="rounded-xs border border-accent w-24 px-1 pt-1 pb-0 text-center inline-block text-accent hover:bg-accent-hover hover:text-white active:bg-accent-hover active:text-white">
                                         <span class="block font-medium text-sm">{{ $data['price'] }}</span>
                                         <span class="block md:hidden font-medium text-[11px]">Trade</span>
@@ -259,7 +229,129 @@
                                     </a>
                                 </div>
                                 <div class="hidden md:block flex-none">
-                                    <a href="{{ route('register') }}" wire:navigate
+                                    <a href="{{ route('register') }}"
+                                        class="inline-block rounded-xs border border-buy-green w-24 px-1 pt-1 pb-0 text-center text-buy-green hover:bg-buy-green hover:text-white active:bg-buy-green active:text-white">
+                                        <span class="block font-medium text-sm">{{ $data['price'] }}</span>
+                                        <span class="block font-medium text-[11px]">Buy</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+
+            <div id="horizontal-alignment-4" class="hidden" role="tabpanel"
+                aria-labelledby="horizontal-alignment-item-3">
+                <div class="lg:flex lg:items-center lg:mb-5">
+                    <div class="flex-1 flex items-center space-x-1 mb-5 lg:mb-0">
+                        <div>
+                            <h3 class="text-zinc-700 font-semibold text-lg md:text-2xl">
+                                Commodities
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="hidden md:flex items-center border-b border-gray-200 py-3.5">
+                        <div class="flex-1">
+                            <p class="text-xs font-medium text-gray-400">Name</p>
+                        </div>
+                        <div class="flex-1">
+                            <p class="text-xs font-medium text-gray-400">1D Change</p>
+                        </div>
+                    </div>
+                    @foreach ($commoditiesMarketData as $data)
+                        <div wire:key="market-data-commodities-{{ $data['symbol'] }}"
+                            class="flex items-center border-b border-gray-100 py-3.5">
+                            <div class="flex-1 flex items-center">
+                                <div class="flex-none w-12">
+                                    <img src="{{ asset($data['iconUrlPath']) }}" width="30" alt=""
+                                        srcset="">
+                                </div>
+                                <div class="shrink">
+                                    <p class="text-xs md:text-sm text-zinc-700 font-semibold mb-0.5">
+                                        {{ $data['name'] }}
+                                    </p>
+                                    <p class="text-xs font-medium text-gray-400">{{ $data['symbol'] }}</p>
+                                </div>
+                            </div>
+                            <div class="flex-1 text-end md:flex md:items-center md:space-x-3">
+                                <div class="hidden md:block flex-1 text-start">
+                                    <p class="text-sm font-medium">+1.45%</p>
+                                </div>
+                                <div class="flex-none">
+                                    <a href="{{ route('register') }}"
+                                        class="rounded-xs border border-accent w-24 px-1 pt-1 pb-0 text-center inline-block text-accent hover:bg-accent-hover hover:text-white active:bg-accent-hover active:text-white">
+                                        <span class="block font-medium text-sm">{{ round($data['price'], 2) }}</span>
+                                        <span class="block md:hidden font-medium text-[11px]">Trade</span>
+                                        <span class="hidden md:block font-medium text-[11px]">Sell</span>
+                                    </a>
+                                </div>
+                                <div class="hidden md:block flex-none">
+                                    <a href="{{ route('register') }}"
+                                        class="inline-block rounded-xs border border-buy-green w-24 px-1 pt-1 pb-0 text-center text-buy-green hover:bg-buy-green hover:text-white active:bg-buy-green active:text-white">
+                                        <span class="block font-medium text-sm">{{ round($data['price'], 2) }}</span>
+                                        <span class="block font-medium text-[11px]">Buy</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+
+            <div id="horizontal-alignment-5" class="hidden" role="tabpanel"
+                aria-labelledby="horizontal-alignment-item-3">
+                <div class="lg:flex lg:items-center lg:mb-5">
+                    <div class="flex-1 flex items-center space-x-1 mb-5 lg:mb-0">
+                        <div>
+                            <h3 class="text-zinc-700 font-semibold text-lg md:text-2xl">
+                                ETFs
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="hidden md:flex items-center border-b border-gray-200 py-3.5">
+                        <div class="flex-1">
+                            <p class="text-xs font-medium text-gray-400">Name</p>
+                        </div>
+                        <div class="flex-1">
+                            <p class="text-xs font-medium text-gray-400">1D Change</p>
+                        </div>
+                    </div>
+                    @foreach ($etfMarketData as $data)
+                        <div wire:key="market-data-etf-{{ $data['symbol'] }}"
+                            class="flex items-center border-b border-gray-100 py-3.5">
+                            <div class="flex-1 flex items-center">
+                                <div class="flex-none w-12">
+                                    <img src="{{ asset($data['iconUrlPath']) }}" width="30" alt=""
+                                        srcset="">
+                                </div>
+                                <div class="shrink">
+                                    <p class="text-xs md:text-sm text-zinc-700 font-semibold mb-0.5">
+                                        {{ $data['name'] }}
+                                    </p>
+                                    <p class="text-xs font-medium text-gray-400">{{ $data['symbol'] }}</p>
+                                </div>
+                            </div>
+                            <div class="flex-1 text-end md:flex md:items-center md:space-x-3">
+                                <div class="hidden md:block flex-1 text-start">
+                                    <p class="text-sm font-medium">+1.45%</p>
+                                </div>
+                                <div class="flex-none">
+                                    <a href="{{ route('register') }}"
+                                        class="rounded-xs border border-accent w-24 px-1 pt-1 pb-0 text-center inline-block text-accent hover:bg-accent-hover hover:text-white active:bg-accent-hover active:text-white">
+                                        <span class="block font-medium text-sm">{{ $data['price'] }}</span>
+                                        <span class="block md:hidden font-medium text-[11px]">Trade</span>
+                                        <span class="hidden md:block font-medium text-[11px]">Sell</span>
+                                    </a>
+                                </div>
+                                <div class="hidden md:block flex-none">
+                                    <a href="{{ route('register') }}"
                                         class="inline-block rounded-xs border border-buy-green w-24 px-1 pt-1 pb-0 text-center text-buy-green hover:bg-buy-green hover:text-white active:bg-buy-green active:text-white">
                                         <span class="block font-medium text-sm">{{ $data['price'] }}</span>
                                         <span class="block font-medium text-[11px]">Buy</span>
@@ -379,7 +471,7 @@
         </div>
 
         <div class="mt-12 text-center">
-            <a href="{{ route('register') }}" wire:navigate
+            <a href="{{ route('register') }}"
                 class="rounded-xs bg-accent px-6 py-3.5 text-sm inline-block font-medium text-white shadow-xs hover:bg-accent-hover">Open
                 account</a>
         </div>
@@ -410,7 +502,7 @@
                     <p class="text-zinc-700 text-sm font-medium mb-2 tracking-wide lg:w-44">Refillable free Practice
                         Account of
                         $10,000</p>
-                    <a href="{{ route('register') }}" wire:navigate class="text-accent text-sm font-medium">Try Practice
+                    <a href="{{ route('register') }}" class="text-accent text-sm font-medium">Try Practice
                         Account</a>
                 </div>
             </div>
@@ -542,21 +634,31 @@
             <h2 class="text-accent font-normal text-xl md:text-3xl lg:text-4xl mb-8">Features</h2>
             <div class="mb-12 lg:mb-16 lg:flex lg:items-center">
                 <div class="lg:flex-1">
-                    <h3 class="text-accent font-normal text-md md:text-2xl lg:text-3xl lg:text-left mb-4">Bot Trading</h3>
+                    <h3 class="text-accent font-normal text-md md:text-2xl lg:text-3xl lg:text-left mb-4">Bot Trading
+                    </h3>
                     <p class="text-sm md:text-base font-medium text-gray-600 leading-6 tracking-wide text-left">
-                        Automate your trades and grow your portfolio with our advanced Bot Trading feature. Let intelligent algorithms work around the clock to identify opportunities, execute trades, and accumulate profits—even while you sleep. Enjoy hands-free trading with precision strategies, risk controls, and real-time performance tracking. Take the emotion out of trading and let smart automation do the heavy lifting for you.
+                        Automate your trades and grow your portfolio with our advanced Bot Trading feature. Let
+                        intelligent algorithms work around the clock to identify opportunities, execute trades, and
+                        accumulate profits—even while you sleep. Enjoy hands-free trading with precision strategies,
+                        risk controls, and real-time performance tracking. Take the emotion out of trading and let smart
+                        automation do the heavy lifting for you.
                     </p>
                 </div>
                 <div class="mt-6 text-center lg:flex-1 lg:text-end">
-                    <img class="w-64 inline" src="{{ asset('assets/images/features-auto-trading.jpg') }}" alt="">
+                    <img class="w-64 inline" src="{{ asset('assets/images/features-auto-trading.jpg') }}"
+                        alt="">
                 </div>
             </div>
 
             <div class="mb-12 lg:mb-16 lg:flex lg:items-center">
                 <div class="lg:flex-1 lg:order-2">
-                    <h3 class="text-accent font-normal text-md md:text-2xl lg:text-3xl lg:text-left mb-4">Lightning-fast deposits</h3>
+                    <h3 class="text-accent font-normal text-md md:text-2xl lg:text-3xl lg:text-left mb-4">
+                        Lightning-fast deposits</h3>
                     <p class="text-sm md:text-base font-medium text-gray-600 leading-6 tracking-wide text-left">
-                        Experience lightning-fast deposits with our streamlined funding system. Top up your account instantly and never miss a trading opportunity again. Our secure and efficient process gets your funds where they need to be—right when you need them. Trade without delay and stay ahead of the market with uninterrupted funding.
+                        Experience lightning-fast deposits with our streamlined funding system. Top up your account
+                        instantly and never miss a trading opportunity again. Our secure and efficient process gets your
+                        funds where they need to be—right when you need them. Trade without delay and stay ahead of the
+                        market with uninterrupted funding.
                     </p>
                 </div>
                 <div class="mt-6 text-center lg:flex-1 lg:order-1 lg:text-start">
@@ -566,25 +668,35 @@
 
             <div class="mb-12 lg:mb-16 lg:flex lg:items-center">
                 <div class="lg:flex-1">
-                    <h3 class="text-accent font-normal text-md md:text-2xl lg:text-3xl lg:text-left mb-4">Quick withdrawals</h3>
+                    <h3 class="text-accent font-normal text-md md:text-2xl lg:text-3xl lg:text-left mb-4">Quick
+                        withdrawals</h3>
                     <p class="text-sm md:text-base font-medium text-gray-600 leading-6 tracking-wide text-left">
-                        Enjoy quick and hassle-free withdrawals with our efficient payout system. Access your profits in record time with secure processing and multiple withdrawal options. No delays, no hidden steps—just fast, reliable access to your funds whenever you need them. Your money, your control, delivered swiftly.
+                        Enjoy quick and hassle-free withdrawals with our efficient payout system. Access your profits in
+                        record time with secure processing and multiple withdrawal options. No delays, no hidden
+                        steps—just fast, reliable access to your funds whenever you need them. Your money, your control,
+                        delivered swiftly.
                     </p>
                 </div>
                 <div class="mt-6 lg:flex-1 text-center lg:text-end">
-                    <img class="w-64 inline" src="{{ asset('assets/images/features-withdrawal.jpg') }}" alt="">
+                    <img class="w-64 inline" src="{{ asset('assets/images/features-withdrawal.jpg') }}"
+                        alt="">
                 </div>
             </div>
 
             <div class="mb-12 lg:mb-16 lg:flex lg:items-center">
                 <div class="lg:flex-1 lg:order-2">
-                    <h3 class="text-accent font-normal text-md md:text-2xl lg:text-3xl lg:text-left mb-4">Track trades</h3>
+                    <h3 class="text-accent font-normal text-md md:text-2xl lg:text-3xl lg:text-left mb-4">Track trades
+                    </h3>
                     <p class="text-sm md:text-base font-medium text-gray-600 leading-6 tracking-wide text-left">
-                        Monitor your running trades directly on the chart with real-time precision. Instantly see entry points, stop-losses, and take-profits as they unfold in the market. Stay informed and in control with visual trade tracking that updates live as price moves. No guesswork—just clear, interactive insights right where you need them.
+                        Monitor your running trades directly on the chart with real-time precision. Instantly see entry
+                        points, stop-losses, and take-profits as they unfold in the market. Stay informed and in control
+                        with visual trade tracking that updates live as price moves. No guesswork—just clear,
+                        interactive insights right where you need them.
                     </p>
                 </div>
                 <div class="mt-6 lg:flex-1 text-center lg:order-1 lg:text-start">
-                    <img class="w-64 inline" src="{{ asset('assets/images/features-chart-tracking.jpg') }}" alt="">
+                    <img class="w-64 inline" src="{{ asset('assets/images/features-chart-tracking.jpg') }}"
+                        alt="">
                 </div>
             </div>
         </div>
@@ -603,7 +715,7 @@
                 Why risk your money when you’re learning the ropes? Use your practice trading account to test your
                 strategies and fine-tune your skills—no money lost, only experience gained!</p>
             <div class="text-center">
-                <a href="{{ route('register') }}" wire:navigate
+                <a href="{{ route('register') }}"
                     class="rounded-xs bg-accent-hover px-6 py-3.5 text-sm inline-block font-medium text-white shadow-xs hover:bg-accent-hover">Start
                     free trial <i class="fas fa-arrow-right"></i></a>
             </div>
@@ -623,8 +735,10 @@
 
             <div class="rounded-lg border px-6 py-6 md:px-10 md:py-10 mb-4 grid grid-cols-1 lg:grid-cols-2 lg:gap-x-8">
                 <div class="pb-12">
-                    <h3 class="font-medium text-accent text-center md:text-left md:text-lg mb-2">Place multiple orders in one go</h3>
-                    <p class="text-sm text-zinc-700 md:text-base">Create up to 10 entry orders and up to 10 take profits with a
+                    <h3 class="font-medium text-accent text-center md:text-left md:text-lg mb-2">Place multiple orders
+                        in one go</h3>
+                    <p class="text-sm text-zinc-700 md:text-base">Create up to 10 entry orders and up to 10 take
+                        profits with a
                         couple of clicks, saving your valuable time.</p>
                 </div>
                 <div class="rounded-lg border p-4 px-6 h-48">
@@ -634,8 +748,10 @@
 
             <div class="rounded-lg border px-6 py-6 md:px-10 md:py-10 mb-4 grid grid-cols-1 lg:grid-cols-2 lg:gap-x-8">
                 <div class="pb-12">
-                    <h3 class="font-medium text-accent text-center md:text-left md:text-lg mb-2">No more spreadsheets or trading blind</h3>
-                    <p class="text-sm text-zinc-700 md:text-base">Save time. Every time you trade, your PnL is automatically updated. Know exactly when you are in profit and when to sell.</p>
+                    <h3 class="font-medium text-accent text-center md:text-left md:text-lg mb-2">No more spreadsheets
+                        or trading blind</h3>
+                    <p class="text-sm text-zinc-700 md:text-base">Save time. Every time you trade, your PnL is
+                        automatically updated. Know exactly when you are in profit and when to sell.</p>
                 </div>
                 <div class="rounded-lg border p-4 px-6 h-48">
 
@@ -644,8 +760,10 @@
 
             <div class="rounded-lg border px-6 py-6 md:px-10 md:py-10 mb-4 grid grid-cols-1 lg:grid-cols-2 lg:gap-x-8">
                 <div class="pb-12">
-                    <h3 class="font-medium text-accent text-center md:text-left md:text-lg mb-2">Take emotion out of trading</h3>
-                    <p class="text-sm text-zinc-700 md:text-base">Setup complete positions with entry, exits and stop losses in advance and avoid getting emotionally attached to the position and enjoy your day.</p>
+                    <h3 class="font-medium text-accent text-center md:text-left md:text-lg mb-2">Take emotion out of
+                        trading</h3>
+                    <p class="text-sm text-zinc-700 md:text-base">Setup complete positions with entry, exits and stop
+                        losses in advance and avoid getting emotionally attached to the position and enjoy your day.</p>
                 </div>
                 <div class="rounded-lg border p-4 px-6 h-48">
 
@@ -654,18 +772,24 @@
 
             <div class="rounded-lg border px-6 py-6 md:px-10 md:py-10 mb-4 grid grid-cols-1 lg:grid-cols-2 lg:gap-x-8">
                 <div class="pb-12">
-                    <h3 class="font-medium text-accent text-center md:text-left md:text-lg mb-2">Never lose on a winning trade</h3>
-                    <p class="text-sm text-zinc-700 md:text-base">Protect your profits by automatically moving stop loss to break even price.</p>
+                    <h3 class="font-medium text-accent text-center md:text-left md:text-lg mb-2">Never lose on a
+                        winning trade</h3>
+                    <p class="text-sm text-zinc-700 md:text-base">Protect your profits by automatically moving stop
+                        loss to break even price.</p>
                 </div>
                 <div class="rounded-lg border p-4 px-6 h-48">
 
                 </div>
             </div>
 
-            <div class="rounded-lg border px-6 py-6 md:px-10 md:py-10 mb-12 grid grid-cols-1 lg:grid-cols-2 lg:gap-x-8">
+            <div
+                class="rounded-lg border px-6 py-6 md:px-10 md:py-10 mb-12 grid grid-cols-1 lg:grid-cols-2 lg:gap-x-8">
                 <div class="pb-12">
-                    <h3 class="font-medium text-accent text-center md:text-left md:text-lg mb-2">Manage risks easily</h3>
-                    <p class="text-sm text-zinc-700 md:text-base">Risk to reward ratio is in your trading form. Risk-based position size is there as well. No more excuses to not follow your risk management rules.</p>
+                    <h3 class="font-medium text-accent text-center md:text-left md:text-lg mb-2">Manage risks easily
+                    </h3>
+                    <p class="text-sm text-zinc-700 md:text-base">Risk to reward ratio is in your trading form.
+                        Risk-based position size is there as well. No more excuses to not follow your risk management
+                        rules.</p>
                 </div>
                 <div class="rounded-lg border p-4 px-6 h-48">
 
@@ -673,7 +797,7 @@
             </div>
 
             <div class="text-center">
-                <a href="{{ route('register') }}" wire:navigate
+                <a href="{{ route('register') }}"
                     class="rounded-xs bg-accent-hover px-6 py-3.5 text-sm inline-block font-medium text-white shadow-xs hover:bg-accent-hover">Start
                     Free Trial Now <i class="fas fa-arrow-right"></i></a>
             </div>
@@ -727,7 +851,7 @@
             </div>
         </div>
         <div class="mt-6 text-center lg:hidden">
-            <a href="{{ route('register') }}" wire:navigate
+            <a href="{{ route('register') }}"
                 class="rounded-xs bg-accent px-6 py-3.5 text-sm inline-block font-medium text-white shadow-xs hover:bg-accent-hover">Open
                 account</a>
         </div>
@@ -770,7 +894,7 @@
                         <h3 class="text-accent font-semibold text-md mb-2">Forex</h3>
                         <p class="text-zinc-700 text-sm font-medium tracking-wide leading-6">Explore and trade major,
                             minor and exotic currency pairs with efficient spreads.</p>
-                        <a href="{{ route('register') }}" wire:navigate class="text-accent text-sm font-medium">Learn More</a>
+                        <a href="{{ route('register') }}" class="text-accent text-sm font-medium">Learn More</a>
                     </div>
                 </div>
                 <div class="lg:flex-1 flex items-start space-x-3 mb-6">
@@ -781,7 +905,7 @@
                         <h3 class="text-accent font-semibold text-md mb-2">Cryptocurrencies</h3>
                         <p class="text-zinc-700 text-sm font-medium tracking-wide leading-6">Trade CFDs on popular
                             digital currencies with leverage.</p>
-                        <a href="{{ route('register') }}" wire:navigate class="text-accent text-sm font-medium">Learn More</a>
+                        <a href="{{ route('register') }}" class="text-accent text-sm font-medium">Learn More</a>
                     </div>
                 </div>
                 <div class="lg:flex-1 flex items-start space-x-3">
@@ -792,7 +916,7 @@
                         <h3 class="text-accent font-semibold text-md mb-2">Stocks</h3>
                         <p class="text-zinc-700 text-sm font-medium tracking-wide leading-6">Trade CFDs on stocks of
                             leading companies and industry giants without actually owning them.</p>
-                        <a href="{{ route('register') }}" wire:navigate class="text-accent text-sm font-medium">Learn More</a>
+                        <a href="{{ route('register') }}" class="text-accent text-sm font-medium">Learn More</a>
                     </div>
                 </div>
             </div>
@@ -821,7 +945,7 @@
 
             Toastify({
                 text: toastMarkup,
-                className: "hs-toastify-on:opacity-100 opacity-0 fixed -top-37.5 right-5 z-90 transition-all duration-300 w-80 bg-white text-sm text-gray-700 border border-gray-200 rounded-xl shadow-lg [&>.toast-close]:hidden dark:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-400",
+                className: "hs-toastify-on:opacity-100 opacity-0 absolute top-0 start-1/2 -translate-x-1/2 z-90 duration-300 w-full md:w-1/2 lg:w-1/4 bg-white text-sm text-gray-700 border border-gray-200 rounded-xl shadow-lg [&>.toast-close]:hidden dark:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-400",
                 duration: 4000,
                 close: true,
                 escapeMarkup: false

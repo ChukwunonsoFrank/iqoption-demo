@@ -121,27 +121,24 @@ class Traderoom extends Component
         return $minuteString . ':' . $secondString;
     }
 
+    public function refreshAssetData(): void
+    {
+        $this->activeBot = Bot::where(['user_id' => auth()->user()->id, 'status' => 'active'])->first();
+        $this->profit = $this->normalizeAmount($this->activeBot['profit']);
+        $this->asset = $this->activeBot['asset'];
+        $this->assetIcon = $this->activeBot['asset_image_url'];
+        $this->sentiment = $this->activeBot['sentiment'];
+        $data = [
+            'asset' => $this->asset,
+            'assetImageUrl' => $this->assetIcon,
+            'assetClass' => $this->activeBot['asset_class'],
+            'isBotActive' => true
+        ];
+        $this->dispatch('asset-updated', data: $data)->to(AssetIndicator::class);
+    }
+
     public function refreshTimer(): void
     {
-        $checkpoint = intval($this->activeBot['timer_checkpoint']);
-        $now = now()->getTimestampMs();
-
-        if ($now > $checkpoint) {
-            sleep(1);
-            $this->activeBot = Bot::where(['user_id' => auth()->user()->id, 'status' => 'active'])->first();
-            $this->profit = $this->normalizeAmount($this->activeBot['profit']);
-            $this->asset = $this->activeBot['asset'];
-            $this->assetIcon = $this->activeBot['asset_image_url'];
-            $this->sentiment = $this->activeBot['sentiment'];
-            $data = [
-                'asset' => $this->asset,
-                'assetImageUrl' => $this->assetIcon,
-                'assetClass' => $this->activeBot['asset_class'],
-                'isBotActive' => true
-            ];
-            $this->dispatch('asset-updated', data: $data)->to(AssetIndicator::class);
-        }
-
         $timeLeft = $this->calculateTimeLeftTillNextCheckpoint($this->activeBot['timer_checkpoint']);
         $formatted = $this->formatTimeLeft($timeLeft['minutes'], $timeLeft['seconds']);
         $this->timer = $formatted;
@@ -152,6 +149,7 @@ class Traderoom extends Component
     {
         if ($minutes === 5 && $seconds > 0) {
             $this->isBotSearchingForSignal = true;
+            $this->refreshAssetData();
         }
 
         if ($minutes === 5 && $seconds === 0) {
