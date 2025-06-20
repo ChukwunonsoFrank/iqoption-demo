@@ -12,7 +12,6 @@
         href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
     <script src="https://kit.fontawesome.com/7016607b5a.js" crossorigin="anonymous"></script>
-    <script async src="https://www.google.com/recaptcha/api.js"></script>
     @livewireStyles
     @vite('resources/css/app.css')
 
@@ -22,6 +21,7 @@
         }
     </style>
 
+    <script async src="https://www.google.com/recaptcha/api.js"></script>
     <script>
         function onRecaptchaSuccess(token) {
             // When reCAPTCHA is successfully completed, send the token to Livewire
