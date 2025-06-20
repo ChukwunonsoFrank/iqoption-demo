@@ -224,7 +224,7 @@
         <div class="mx-auto px-4 md:px-12 mb-4 text-center">
             <div></div>
             <div>
-                <p class="text-zinc-700 text-xs font-medium">Bullfex, © 2013-{{ now()->year }}</p>
+                <p class="text-zinc-700 text-xs font-medium">Bullfex © 2013-{{ now()->year }}</p>
             </div>
         </div>
         <!-- Footer end -->

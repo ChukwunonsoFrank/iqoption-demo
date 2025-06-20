@@ -21,6 +21,13 @@
             display: none !important;
         }
     </style>
+
+    <script>
+        function onRecaptchaSuccess(token) {
+            // When reCAPTCHA is successfully completed, send the token to Livewire
+            Livewire.find(document.querySelector('[wire\\:id]').getAttribute('wire:id')).set('gRecaptchaResponse', token);
+        }
+    </script>
 </head>
 
 <body>

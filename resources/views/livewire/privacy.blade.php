@@ -4,7 +4,7 @@
         <h1 class="text-zinc-700 text-2xl md:text-3xl my-6 font-medium tracking-tight">Privacy Policy</h1>
         <p class="font-medium text-md text-zinc-700">
             Hereby is described the practice of collecting and processing of personal data provided by persons (you)
-            accessing a website robotradx.com (the Site) or the App of the company robotradx Bot (the Company or we).
+            accessing a website bullfex.com (the Site) or the App of the company Bullfex Bot (the Company or we).
             <br><br>
             We inform you that the provisions of this Privacy Policy are subject to the up-to-date edition of the
             Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of
@@ -42,7 +42,7 @@
             the following categories of data:</p>
 
         <p class="font-medium text-md text-zinc-700 mb-4"><b>3.2.1</b> your email address and ID of the account at the
-            robotradx Trade platform. These are the only parameters that we send directly to our server;</p>
+            Bullfex Trade platform. These are the only parameters that we send directly to our server;</p>
 
         <p class="font-medium text-md text-zinc-700 mb-4"><b>3.2.2</b> data, which we may collect through automated
             means. Through your use of the Site, we may also monitor and collect tracking information related to usages
@@ -244,7 +244,7 @@
         <p class="font-medium text-md text-zinc-700  mb-4"><b>8.14.2</b> persistent cookies stay on your computer or mobile device until they expire or are deleted.
         </p>
 
-        <p class="font-medium text-md text-zinc-700  mb-4"><b>8.15</b> Some features of the App may require you to access third-party resources via the WebView or a similar built-in instrument for opening websites within the interface of the App. While you may be prompted to login to your account at the robotradx Trade platform and connect it to the App in order to use some features of the App, we do not collect your login credentials and are unable to use your account. The only relevant data that we may collect through automated means is the statistics on the App’s performance and automated actions performed by the Apps via your account at the robotradx Trade platform.
+        <p class="font-medium text-md text-zinc-700  mb-4"><b>8.15</b> Some features of the App may require you to access third-party resources via the WebView or a similar built-in instrument for opening websites within the interface of the App. While you may be prompted to login to your account at the Bullfex Trade platform and connect it to the App in order to use some features of the App, we do not collect your login credentials and are unable to use your account. The only relevant data that we may collect through automated means is the statistics on the App’s performance and automated actions performed by the Apps via your account at the Bullfex Trade platform.
         </p>
 
         <p class="font-medium text-md text-zinc-700"><b>8.16</b> In order to ensure the proper performance of the App and provide you with the better experience, we use the following third-party libraries that collect data:Branch: https://branch.io/Amplitude: https://amplitude.com/Firebase: https://firebase.google.com/OneSignal: https://onesignal.com/App Center: https://appcenter.ms/JHMS Core: https://developer.huawei.com/consumer/en/hms/
@@ -254,7 +254,7 @@
         <h1 class="text-zinc-700 text-2xl my-6 font-medium tracking-tight">9. Changes to this privacy policy</h1>
         <p class="font-medium text-md text-zinc-700 mb-4"><b>9.1</b> Please note that we may amend this Privacy Policy from time to time at our sole discretion. Therefore, please check this document from time to time to get updates. If any significant updates in regard to data processing terms are made here, we will notify you additionally within reasonable time via email provided by you for the case or as your contact email.</p>
 
-        <p class="font-medium text-md text-zinc-700"><b>9.2</b> If you require any additional information or have any further questions concerning this Privacy Policy, please contact us at support@robotradx.com.</p>
+        <p class="font-medium text-md text-zinc-700"><b>9.2</b> If you require any additional information or have any further questions concerning this Privacy Policy, please contact us at support@bullfex.com.</p>
 
     </div>
 </div>

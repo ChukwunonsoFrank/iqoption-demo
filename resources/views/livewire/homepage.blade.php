@@ -868,12 +868,12 @@
                     Indices,
                     Cryptocurrencies and Forex</h3>
                 <p class="text-sm font-medium text-gray-600 leading-6 text-left mb-4">
-                    IQ Option is one of the fastest growing online trading brands in the world. Voted the best mobile
+                    Bullfex is one of the fastest growing online trading brands in the world. Voted the best mobile
                     trading platform, we have now expanded our offerings to include CFDs on stocks, ETFs and Forex
                     trading.
                 </p>
                 <p class="text-sm font-medium text-gray-600 leading-6 text-left mb-4">
-                    First founded in 2013, IQ Option has grown massively and now has over 40 million members and
+                    First founded in 2013, Bullfex has grown massively and now has over 40 million members and
                     counting! The platform itself has also undergone some changes since 2013, and we are constantly
                     working to ensure it is fast, accurate, and easy to use.
                 </p>

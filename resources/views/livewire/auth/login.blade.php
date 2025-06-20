@@ -24,14 +24,6 @@
         </div>
     </form>
 
-    @push('scripts')
-        <script>
-            function onRecaptchaSuccess(token) {
-                // When reCAPTCHA is successfully completed, send the token to Livewire
-                Livewire.find(document.querySelector('[wire\\:id]').getAttribute('wire:id')).set('gRecaptchaResponse', token);
-            }
-        </script>
-    @endpush
 
     @if (Route::has('password.request'))
         <div class="space-x-1 rtl:space-x-reverse text-center text-xs font-medium">

@@ -41,15 +41,6 @@
         </div>
     </form>
 
-    @push('scripts')
-        <script>
-            function onRecaptchaSuccess(token) {
-                // When reCAPTCHA is successfully completed, send the token to Livewire
-                Livewire.find(document.querySelector('[wire\\:id]').getAttribute('wire:id')).set('gRecaptchaResponse', token);
-            }
-        </script>
-    @endpush
-
     <div class="space-x-1 rtl:space-x-reverse text-center text-xs text-zinc-700 font-medium mb-3">
         {{ __('Already have an account?') }}
         <flux:link :href="route('login')" class="text-accent" wire:navigate>{{ __('Log in') }}</flux:link>

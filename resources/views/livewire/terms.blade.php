@@ -2,19 +2,19 @@
     <div class="mx-auto px-4 lg:px-28">
         <p class="text-gray-400 text-xs">Updated: 18 January 2024</p>
         <h1 class="text-zinc-700 text-2xl md:text-3xl my-6 font-medium tracking-tight">Terms & Conditions</h1>
-        <p class="font-medium text-md text-zinc-700">Robotradx is a bot that was created for automated trading on the
-            Robotradx platform. To use the Site and the App, you must agree to the below terms, so please read them
+        <p class="font-medium text-md text-zinc-700">Bullfex is a bot that was created for automated trading on the
+            Bullfex platform. To use the Site and the App, you must agree to the below terms, so please read them
             carefully.</p>
 
         <!-- 1. Introduction -->
         <h1 class="text-zinc-700 text-2xl my-6 font-medium tracking-tight">1. Introduction</h1>
         <p class="font-medium text-md text-zinc-700 mb-4"><b>1.1</b> These Terms and Conditions (the Terms) govern the
-            use of certain services, including accessing the website Robotradx.com with all its subpages, related
+            use of certain services, including accessing the website bullfex.com with all its subpages, related
             subdomains and domains with URL redirection to that website (the Site), the Services), provided by
-            RobotradxRobot (the Company or we) to any individual who uses the Services (you).</p>
+            Bullfex Robot (the Company or we) to any individual who uses the Services (you).</p>
 
         <p class="font-medium text-md text-zinc-700"><b>1.2</b> If you have any questions regarding these Terms or about
-            the Company, please contact us by email at support@Robotradx.com.</p>
+            the Company, please contact us by email at support@bullfex.com.</p>
 
         <!-- 2. Acceptance -->
         <h1 class="text-zinc-700 text-2xl my-6 font-medium tracking-tight">2. Acceptance</h1>
@@ -109,7 +109,7 @@
             service. The data obtained by you from the use of our Services is of exclusively informatory nature.</p>
 
         <p class="font-medium text-md text-zinc-700 mb-4"><b>6.6</b> The App allows you to set upthe automated trading
-            via your account at Robotradx platform as described in our Service Agreement.</p>
+            via your account at Bullfex platform as described in our Service Agreement.</p>
 
         <p class="font-medium text-md text-zinc-700 mb-4"><b>6.7</b> All information provided to you through Services is
             the sole property of the Company and is provided to you for your sole individual use. No part of such
@@ -169,7 +169,7 @@
         <p class="font-medium text-md text-zinc-700 mb-4"><b>6.9</b> We respect the intellectual property rights of
             others. We will respond expeditiously to claims of copyright infringement. If you see any material within
             our Services that in your good faith belief may infringe someone’s copyright, you may notify us by emailing
-            us at support@Robotradx.com with “Copyright” in the subject line.</p>
+            us at support@bullfex.com with “Copyright” in the subject line.</p>
 
         <p class="font-medium text-md text-zinc-700"><b>7.0</b> The Minimal and Conservative strategy is limited on
             trades and withdrawals.</p>
