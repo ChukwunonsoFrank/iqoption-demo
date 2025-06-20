@@ -6,6 +6,10 @@
     <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Bullfex - AI Trading Robot</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -60,21 +64,19 @@
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
                                 </svg>
                             </button>
-                            <a href="{{ route('home') }}" wire:navigate>
-                                <img class="size-8"
-                                    src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=500"
-                                    alt="Your Company">
+                            <a href="{{ route('home') }}">
+                                <img class="w-32" src="{{ asset('assets/logo.png') }}" alt="Bullfex logo">
                             </a>
                         </div>
                         <div class="hidden lg:block">
                             <div class="ml-10 flex items-baseline space-x-4">
                                 <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-                                <a href="{{ route('about') }}" wire:navigate
+                                <a href="{{ route('about') }}"
                                     class="rounded-md px-3 py-2 text-md font-medium text-zinc-700"
                                     aria-current="page">About Us</a>
-                                <a href="{{ route('terms') }}" wire:navigate
+                                <a href="{{ route('terms') }}"
                                     class="rounded-md px-3 py-2 text-md font-medium text-zinc-700">Terms</a>
-                                <a href="{{ route('privacy') }}" wire:navigate
+                                <a href="{{ route('privacy') }}"
                                     class="rounded-md px-3 py-2 text-md font-medium text-zinc-700">Privacy</a>
                             </div>
                         </div>
@@ -206,10 +208,8 @@
                         </div>
                         <div>
                             <div>
-                                <img class="size-5 inline"
-                                    src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=500"
-                                    alt="Your Company">
-                                <span class="inline text-black font-semibold text-xs"> Company Name</span>
+                                <img class="w-8 inline" src="{{ asset('assets/logomark.png') }}" alt="Bullfex logo">
+                                <span class="inline text-black font-semibold text-xs"> Bullfex</span>
                             </div>
                             <div class="mb-1">
                                 <span class="text-[10px] text-zinc-700">Full version, 21.5MB</span>
@@ -231,7 +231,7 @@
         <div class="mx-auto px-4 md:px-12 mb-4 text-center">
             <div></div>
             <div>
-                <p class="text-zinc-700 text-xs font-medium">Company Name, © 2013-2025</p>
+                <p class="text-zinc-700 text-xs font-medium">Bullfex © 2013-2025</p>
             </div>
         </div>
         <!-- Footer end -->

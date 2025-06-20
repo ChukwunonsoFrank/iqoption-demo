@@ -9,7 +9,10 @@
     <title>
         Bullfex - Admin Dashboard
     </title>
-    <link rel="icon" href="{{ asset('assets/admin/favicon.ico') }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
     <link href="{{ asset('assets/admin/style.css') }}" rel="stylesheet">
     @livewireStyles
 </head>
@@ -36,14 +39,12 @@ $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(valu
                 class="sidebar-header flex items-center gap-2 pt-8 pb-7">
                 <a href="index.html">
                     <span class="logo" :class="sidebarToggle ? 'hidden' : ''">
-                        <img class="dark:hidden" src="{{ asset('assets/admin/src/images/logo/logo.svg') }}"
-                            alt="Logo" />
-                        <img class="hidden dark:block" src="{{ asset('assets/admin/src/images/logo/logo-dark.svg') }}"
-                            alt="Logo" />
+                        <img class="dark:hidden" src="{{ asset('assets/logomark.png') }}" alt="Logo" />
+                        <img class="hidden dark:block" src="{{ asset('assets/logomark.png') }}" alt="Logo" />
                     </span>
 
                     <img class="logo-icon" :class="sidebarToggle ? 'lg:block' : 'hidden'"
-                        src="{{ asset('assets/admin/src/images/logo/logo-icon.svg') }}" alt="Logo" />
+                        src="{{ asset('assets/logomark.png') }}" alt="Logo" />
                 </a>
             </div>
             <!-- SIDEBAR HEADER -->

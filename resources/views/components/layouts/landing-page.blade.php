@@ -6,6 +6,10 @@
     <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Bullfex - AI Trading Robot</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -54,9 +58,7 @@
                                 </svg>
                             </button>
                             <a href="{{ route('home') }}">
-                                <img class="size-8"
-                                    src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=500"
-                                    alt="Your Company">
+                                <img class="w-32" src="{{ asset('assets/logo.png') }}" alt="Bullfex logo">
                             </a>
                         </div>
                         <div class="hidden lg:block">
@@ -199,9 +201,7 @@
                         </div>
                         <div>
                             <div>
-                                <img class="size-5 inline"
-                                    src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=500"
-                                    alt="Your Company">
+                                <img class="w-8 inline" src="{{ asset('assets/logomark.png') }}" alt="Bullfex logo">
                                 <span class="inline text-black font-semibold text-xs"> Bullfex</span>
                             </div>
                             <div class="mb-1">
