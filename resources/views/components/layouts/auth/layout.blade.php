@@ -21,7 +21,7 @@
         }
     </style>
 
-    <script async src="https://www.google.com/recaptcha/api.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <script>
         function onRecaptchaSuccess(token) {
             // When reCAPTCHA is successfully completed, send the token to Livewire
