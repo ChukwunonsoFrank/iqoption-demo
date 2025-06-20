@@ -167,7 +167,7 @@
                                 <div class="flex items-center space-x-2">
                                     <div class="flex-none">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28"
-                                            viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1"
+                                            viewBox="0 0 24 24" fill="none" stroke="#FB2C36" stroke-width="1"
                                             stroke-linecap="round" stroke-linejoin="round"
                                             class="lucide lucide-log-out-icon lucide-log-out">
                                             <path d="m16 17 5-5-5-5" />
@@ -176,7 +176,7 @@
                                         </svg>
                                     </div>
                                     <div class="flex-1">
-                                        <p class="font-semibold text-sm text-white">Logout</p>
+                                        <p class="font-semibold text-sm text-red-500">Logout</p>
                                     </div>
                                     <div class="flex-none text-end">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
