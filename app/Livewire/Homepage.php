@@ -36,7 +36,7 @@ class Homepage extends Component
     public function fetchCryptoMarketData()
     {
         try {
-            $cryptoAPIMarketData = Cache::remember('coincap_crypto_market_data', now()->addHours(2), function () {
+            $cryptoAPIMarketData = Cache::remember('coincap_crypto_market_data', now()->addHours(12), function () {
                 $client = new Client();
                 $endpoint = 'https://rest.coincap.io/v3/assets?ids=bitcoin,ethereum,tether,solana,tron,binance,litecoin';
                 $response = $client->request('GET', $endpoint, [

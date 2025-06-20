@@ -19,6 +19,8 @@ class Index extends Component
     {
         $justLoggedIn = Session::pull('just_logged_in', false);
 
+        $justRegistered = Session::pull('just_registered', false);
+
         $activeBot = Bot::where(['user_id' => auth()->user()->id, 'status' => 'active'])->first();
 
         if ($activeBot) {
@@ -30,8 +32,12 @@ class Index extends Component
             $this->dispatch('message', message: 'No trade data to display. Start the robot to track your trades on the chart.')->self();
         }
 
-        if ($justLoggedIn && $activeBot) {
+        if ($activeBot && $justLoggedIn) {
             $this->redirectRoute('dashboard.robot.traderoom');
+        }
+
+        if ($justRegistered) {
+            $this->redirectRoute('dashboard.robot');
         }
     }
 

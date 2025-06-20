@@ -104,6 +104,8 @@ class Register extends Component
 
                 Auth::login($user);
 
+                session()->flash('just_registered', true);
+
                 $this->redirect(route('dashboard', absolute: false), navigate: true);
             } else {
                 $this->dispatch('login-error', message: 'Please confirm you are not a robot.')->self();
