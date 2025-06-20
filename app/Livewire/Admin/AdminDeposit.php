@@ -200,9 +200,10 @@ class AdminDeposit extends Component
 
             $user->notify(new DepositApproved($user->name, strval($amount / 100)));
 
-            $this->computeUpline($user->referred_by);
-
-            $this->processReferralPayouts($amount / 100, $user->referral_code, $user->name);
+            if ($user->referred_by) {
+                $this->computeUpline($user->referred_by);
+                $this->processReferralPayouts($amount / 100, $user->referral_code, $user->name);
+            }
 
             session()->flash('success-message', 'Deposit approved successfully');
         } catch (\Exception $e) {

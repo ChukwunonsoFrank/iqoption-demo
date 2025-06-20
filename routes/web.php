@@ -41,7 +41,7 @@ Route::get('/link-storage', function () {
 
 Route::get('/clear-cache', function () {
     Artisan::call('optimize:clear');
-    dd('optimize ran');
+    dd('cleared cache');
 });
 
 Route::get('/cache', function () {
