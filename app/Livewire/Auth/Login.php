@@ -69,7 +69,7 @@ class Login extends Component
                     return redirect('/admin/dashboard');
                 }
 
-                $this->redirectIntended(default: route('dashboard.robot', absolute: false));
+                $this->redirectIntended(default: route('dashboard', absolute: false));
             } else {
                 $this->dispatch('login-error', message: 'Please confirm you are not a robot.')->self();
             }
