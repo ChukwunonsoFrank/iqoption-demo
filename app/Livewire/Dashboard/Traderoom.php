@@ -7,7 +7,6 @@ use App\Models\Bot;
 use App\Models\Strategy;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Log;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
 
@@ -84,7 +83,6 @@ class Traderoom extends Component
     public function calculateTimeLeftTillNextCheckpoint(int $checkpoint): array
     {
         $difference = $checkpoint - now()->getTimestampMs();
-        Log::info($difference);
 
         if (0 > $difference) {
             return [
