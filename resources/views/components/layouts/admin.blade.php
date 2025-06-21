@@ -42,7 +42,7 @@ $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(valu
                         <img class="w-16" src="{{ asset('assets/logomark.png') }}" alt="Logo" />
                     </span>
 
-                    <img class="w-16" :class="sidebarToggle ? 'lg:block' : 'hidden'"
+                    <img class="w-12" :class="sidebarToggle ? 'lg:block' : 'hidden'"
                         src="{{ asset('assets/logomark.png') }}" alt="Logo" />
                 </a>
             </div>
