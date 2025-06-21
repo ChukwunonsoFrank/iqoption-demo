@@ -84,6 +84,7 @@ class Traderoom extends Component
     public function calculateTimeLeftTillNextCheckpoint(int $checkpoint): array
     {
         $difference = $checkpoint - now()->getTimestampMs();
+        Log::info($difference);
 
         if (0 > $difference) {
             return [
