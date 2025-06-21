@@ -38,9 +38,9 @@ $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(valu
             <div :class="sidebarToggle ? 'justify-center' : 'justify-between'"
                 class="sidebar-header flex items-center gap-2 pt-8 pb-7">
                 <a href="{{ route('admin.dashboard') }}">
-                    {{-- <span class="logo" :class="sidebarToggle ? 'hidden' : ''">
+                    <span class="logo" :class="sidebarToggle ? 'hidden' : ''">
                         <img class="w-16" src="{{ asset('assets/logomark.png') }}" alt="Logo" />
-                    </span> --}}
+                    </span>
 
                     <img class="w-12" :class="sidebarToggle ? 'lg:block' : 'hidden'"
                         src="{{ asset('assets/logomark.png') }}" alt="Logo" />

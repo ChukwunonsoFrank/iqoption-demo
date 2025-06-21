@@ -35,8 +35,8 @@
             <!-- Hamburger Toggle BTN -->
 
             <a href="index.html" class="lg:hidden">
-                <img class="dark:hidden" src="{{ asset('assets/admin/src/images/logo/logo.svg') }}" alt="Logo" />
-                <img class="hidden dark:block" src="{{ asset('assets/admin/src/images/logo/logo-dark.svg') }}"
+                <img class="dark:hidden" src="{{ asset('assets/logomark.png') }}" alt="Logo" />
+                <img class="hidden dark:block" src="{{ asset('assets/logomark.png') }}"
                     alt="Logo" />
             </a>
 
