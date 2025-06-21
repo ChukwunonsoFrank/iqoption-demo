@@ -147,8 +147,8 @@ class Traderoom extends Component
 
     public function toggleSearchingForSignals(int $minutes, int $seconds): void
     {
-        Log::info($minutes);
-        Log::info($seconds);
+        // Log::info($minutes);
+        // Log::info($seconds);
 
         if ($minutes === 5 && $seconds > 0) {
             $this->isBotSearchingForSignal = true;
