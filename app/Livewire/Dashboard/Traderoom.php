@@ -123,6 +123,7 @@ class Traderoom extends Component
 
     public function refreshAssetData(): void
     {
+        Log::info('refreshed');
         $this->activeBot = Bot::where(['user_id' => auth()->user()->id, 'status' => 'active'])->first();
         $this->profit = $this->normalizeAmount($this->activeBot['profit']);
         $this->asset = $this->activeBot['asset'];
