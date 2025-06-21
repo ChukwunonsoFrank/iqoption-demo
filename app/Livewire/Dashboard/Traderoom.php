@@ -123,7 +123,6 @@ class Traderoom extends Component
 
     public function refreshAssetData(): void
     {
-        Log::info('refreshed');
         $this->activeBot = Bot::where(['user_id' => auth()->user()->id, 'status' => 'active'])->first();
         $this->profit = $this->normalizeAmount($this->activeBot['profit']);
         $this->asset = $this->activeBot['asset'];
@@ -148,6 +147,9 @@ class Traderoom extends Component
 
     public function toggleSearchingForSignals(int $minutes, int $seconds): void
     {
+        Log::info($minutes);
+        Log::info($seconds);
+
         if ($minutes === 5 && $seconds > 0) {
             $this->isBotSearchingForSignal = true;
             $this->refreshAssetData();
