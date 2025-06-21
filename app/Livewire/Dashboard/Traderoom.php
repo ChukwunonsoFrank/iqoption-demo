@@ -122,7 +122,6 @@ class Traderoom extends Component
 
     public function refreshAssetData(): void
     {
-        $this->activeBot = Bot::where(['user_id' => auth()->user()->id, 'status' => 'active'])->first();
         $this->profit = $this->normalizeAmount($this->activeBot['profit']);
         $this->asset = $this->activeBot['asset'];
         $this->assetIcon = $this->activeBot['asset_image_url'];
@@ -138,10 +137,19 @@ class Traderoom extends Component
 
     public function refreshTimer(): void
     {
+        $checkpoint = $this->activeBot['timer_checkpoint'];
+        $now = now()->getTimestampMs();
+
+        if ($now > $checkpoint) {
+            $this->activeBot = Bot::where(['user_id' => auth()->user()->id, 'status' => 'active'])->first();
+        }
+
         $this->refreshAssetData();
-        $timeLeft = $this->calculateTimeLeftTillNextCheckpoint($this->activeBot['timer_checkpoint']);
+        $timeLeft = $this->calculateTimeLeftTillNextCheckpoint($checkpoint);
+
         $formatted = $this->formatTimeLeft($timeLeft['minutes'], $timeLeft['seconds']);
         $this->timer = $formatted;
+        
         $this->toggleSearchingForSignals($timeLeft['minutes'], $timeLeft['seconds']);
     }
 
