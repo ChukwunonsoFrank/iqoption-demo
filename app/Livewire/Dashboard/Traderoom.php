@@ -140,6 +140,7 @@ class Traderoom extends Component
 
     public function refreshTimer(): void
     {
+        $this->refreshAssetData();
         $timeLeft = $this->calculateTimeLeftTillNextCheckpoint($this->activeBot['timer_checkpoint']);
         $formatted = $this->formatTimeLeft($timeLeft['minutes'], $timeLeft['seconds']);
         $this->timer = $formatted;
@@ -148,12 +149,8 @@ class Traderoom extends Component
 
     public function toggleSearchingForSignals(int $minutes, int $seconds): void
     {
-        // Log::info($minutes);
-        // Log::info($seconds);
-
         if ($minutes === 5 && $seconds > 0) {
             $this->isBotSearchingForSignal = true;
-            $this->refreshAssetData();
         }
 
         if ($minutes === 5 && $seconds === 0) {
