@@ -9,7 +9,6 @@ use App\Livewire\Admin\Dashboard;
 use App\Livewire\Admin\EmailBroadcast;
 use App\Livewire\Admin\PaymentMethodDetails;
 use App\Livewire\Admin\PaymentMethods;
-use App\Livewire\Admin\Strategy;
 use App\Livewire\Admin\Users;
 use App\Livewire\Admin\UsersDetails;
 use App\Livewire\Dashboard\Account;

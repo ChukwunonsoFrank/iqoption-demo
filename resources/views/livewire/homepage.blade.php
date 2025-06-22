@@ -716,8 +716,7 @@
                 strategies and fine-tune your skills—no money lost, only experience gained!</p>
             <div class="text-center">
                 <a href="{{ route('register') }}"
-                    class="rounded-xs bg-accent-hover px-6 py-3.5 text-sm inline-block font-medium text-white shadow-xs hover:bg-accent-hover">Start
-                    free trial <i class="fas fa-arrow-right"></i></a>
+                    class="rounded-xs bg-accent-hover px-6 py-3.5 text-sm inline-block font-medium text-white shadow-xs hover:bg-accent-hover">Open Account <i class="fas fa-arrow-right"></i></a>
             </div>
         </div>
     </div>
@@ -733,73 +732,33 @@
                 class="text-sm mb-12 md:text-base font-normal text-zinc-700 text-center md:text-start leading-6 lg:w-[42rem]">
                 Leverage powerful trading tools like multi-entry orders, trailing stops, and automated strategies.</p>
 
-            <div class="rounded-lg border px-6 py-6 md:px-10 md:py-10 mb-4 grid grid-cols-1 lg:grid-cols-2 lg:gap-x-8">
-                <div class="pb-12">
-                    <h3 class="font-medium text-accent text-center md:text-left md:text-lg mb-2">Place multiple orders
-                        in one go</h3>
-                    <p class="text-sm text-zinc-700 md:text-base">Create up to 10 entry orders and up to 10 take
-                        profits with a
-                        couple of clicks, saving your valuable time.</p>
+            <div class="rounded-lg border px-6 py-6 md:px-10 md:py-10 mb-4">
+                <div>
+                    <img src="{{ asset('assets/icons/linked-nodes.svg') }}" />
                 </div>
-                <div class="rounded-lg border p-4 px-6 h-48">
-
-                </div>
-            </div>
-
-            <div class="rounded-lg border px-6 py-6 md:px-10 md:py-10 mb-4 grid grid-cols-1 lg:grid-cols-2 lg:gap-x-8">
-                <div class="pb-12">
-                    <h3 class="font-medium text-accent text-center md:text-left md:text-lg mb-2">No more spreadsheets
-                        or trading blind</h3>
-                    <p class="text-sm text-zinc-700 md:text-base">Save time. Every time you trade, your PnL is
-                        automatically updated. Know exactly when you are in profit and when to sell.</p>
-                </div>
-                <div class="rounded-lg border p-4 px-6 h-48">
-
-                </div>
-            </div>
-
-            <div class="rounded-lg border px-6 py-6 md:px-10 md:py-10 mb-4 grid grid-cols-1 lg:grid-cols-2 lg:gap-x-8">
-                <div class="pb-12">
-                    <h3 class="font-medium text-accent text-center md:text-left md:text-lg mb-2">Take emotion out of
-                        trading</h3>
-                    <p class="text-sm text-zinc-700 md:text-base">Setup complete positions with entry, exits and stop
-                        losses in advance and avoid getting emotionally attached to the position and enjoy your day.</p>
-                </div>
-                <div class="rounded-lg border p-4 px-6 h-48">
-
-                </div>
-            </div>
-
-            <div class="rounded-lg border px-6 py-6 md:px-10 md:py-10 mb-4 grid grid-cols-1 lg:grid-cols-2 lg:gap-x-8">
-                <div class="pb-12">
-                    <h3 class="font-medium text-accent text-center md:text-left md:text-lg mb-2">Never lose on a
+                <div class="mt-4">
+                    <h3 class="font-medium text-accent text-left md:text-lg mb-2">Never lose on a
                         winning trade</h3>
                     <p class="text-sm text-zinc-700 md:text-base">Protect your profits by automatically moving stop
                         loss to break even price.</p>
                 </div>
-                <div class="rounded-lg border p-4 px-6 h-48">
-
-                </div>
             </div>
 
-            <div
-                class="rounded-lg border px-6 py-6 md:px-10 md:py-10 mb-12 grid grid-cols-1 lg:grid-cols-2 lg:gap-x-8">
-                <div class="pb-12">
-                    <h3 class="font-medium text-accent text-center md:text-left md:text-lg mb-2">Manage risks easily
-                    </h3>
+            <div class="rounded-lg border px-6 py-6 md:px-10 md:py-10 mb-4">
+                <div>
+                    <img src="{{ asset('assets/icons/lightning.svg') }}" />
+                </div>
+                <div class="mt-4">
+                    <h3 class="font-medium text-accent text-left md:text-lg mb-2">Manage risks easily</h3>
                     <p class="text-sm text-zinc-700 md:text-base">Risk to reward ratio is in your trading form.
                         Risk-based position size is there as well. No more excuses to not follow your risk management
                         rules.</p>
-                </div>
-                <div class="rounded-lg border p-4 px-6 h-48">
-
                 </div>
             </div>
 
             <div class="text-center">
                 <a href="{{ route('register') }}"
-                    class="rounded-xs bg-accent-hover px-6 py-3.5 text-sm inline-block font-medium text-white shadow-xs hover:bg-accent-hover">Start
-                    Free Trial Now <i class="fas fa-arrow-right"></i></a>
+                    class="rounded-xs bg-accent-hover px-6 py-3.5 text-sm inline-block font-medium text-white shadow-xs hover:bg-accent-hover">Open Account<i class="fas fa-arrow-right"></i></a>
             </div>
         </div>
     </div>
