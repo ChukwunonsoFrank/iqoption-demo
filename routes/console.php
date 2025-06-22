@@ -3,4 +3,4 @@
 use App\Jobs\RefreshActiveBots;
 use Illuminate\Support\Facades\Schedule;
 
-Schedule::job(new RefreshActiveBots)->everyTenSeconds();
+Schedule::job(new RefreshActiveBots)->everyMinute();
