@@ -30,7 +30,7 @@ class RefreshActiveBots implements ShouldQueue
         /**
          * Fetch all bots with the status of 'active' and batch process.
          */
-        Bot::with('user')->where('status', 'active')->chunk(100, function ($bots) {
+        Bot::with(['user:id,demo_balance,live_balance'])->where('status', 'active')->chunk(100, function ($bots) {
             foreach ($bots as $bot) {
                 $checkpoint = intval($bot['timer_checkpoint']);
                 $endDate = intval($bot['end']);
@@ -64,7 +64,7 @@ class RefreshActiveBots implements ShouldQueue
                         $serialized = $this->serializeAmount($newBalance);
 
                         DB::transaction(function () use ($serialized, $bot) {
-                            Bot::where('id', $bot['id'])->update(['status' => 'expired']);
+                            $bot->update(['status' => 'expired']);
                             User::where('id', $bot->user->id)->update(['live_balance' => $serialized]);
                         });
                     }
@@ -82,7 +82,7 @@ class RefreshActiveBots implements ShouldQueue
                     $updatedTotalProfit = $this->normalizeAmount($bot['profit']) + $profit;
 
                     DB::transaction(function () use ($bot, $assetToTrade, $newCheckpoint, $updatedTotalProfit, $profitPosition, $profit) {
-                        Bot::where('id', $bot['id'])->update([
+                        $bot->update([
                             'asset' => $assetToTrade['display_name'],
                             'asset_class' => $assetToTrade['asset_class'],
                             'asset_ticker' => $assetToTrade['ticker_symbol'],
