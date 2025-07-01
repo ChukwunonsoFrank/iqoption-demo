@@ -36,18 +36,18 @@ class Login extends Component
     public function login()
     {
         try {
-            if (is_null($this->gRecaptchaResponse)) {
-                $this->dispatch('login-error', message: 'Please confirm you are not a robot.')->self();
-            }
+            // if (is_null($this->gRecaptchaResponse)) {
+            //     $this->dispatch('login-error', message: 'Please confirm you are not a robot.')->self();
+            // }
 
-            $recatpchaResponse = Http::get("https://www.google.com/recaptcha/api/siteverify", [
-                'secret' => config('services.recaptcha.secret'),
-                'response' => $this->gRecaptchaResponse
-            ]);
+            // $recatpchaResponse = Http::get("https://www.google.com/recaptcha/api/siteverify", [
+            //     'secret' => config('services.recaptcha.secret'),
+            //     'response' => $this->gRecaptchaResponse
+            // ]);
 
-            $result = $recatpchaResponse->json();
+            // $result = $recatpchaResponse->json();
 
-            if ($recatpchaResponse->successful() && $result['success'] == true) {
+            // if ($recatpchaResponse->successful() && $result['success'] == true) {
                 $this->validate();
 
                 $this->ensureIsNotRateLimited();
@@ -70,9 +70,9 @@ class Login extends Component
                 }
 
                 $this->redirectIntended(default: route('dashboard', absolute: false));
-            } else {
-                $this->dispatch('login-error', message: 'Please confirm you are not a robot.')->self();
-            }
+            // } else {
+            //     $this->dispatch('login-error', message: 'Please confirm you are not a robot.')->self();
+            // }
         } catch (\Exception $e) {
             $this->dispatch('login-error', message: $e->getMessage())->self();
         }

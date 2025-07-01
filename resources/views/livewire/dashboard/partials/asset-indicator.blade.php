@@ -1,6 +1,6 @@
 <div class="bg-asset-indicator rounded-sm flex space-x-2 p-2 items-center md:order-1 md:flex-none md:w-1/3 lg:w-1/6">
     <div class="flex-none">
-        <img src="{{ asset($this->assetImageUrl) }}" alt="">
+        <img class="w-8" src="{{ asset($this->assetImageUrl) }}" alt="">
     </div>
     <div class="flex-1">
         <p class="text-white text-[12px] font-semibold">

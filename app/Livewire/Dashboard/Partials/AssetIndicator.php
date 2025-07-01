@@ -28,9 +28,9 @@ class AssetIndicator extends Component
             $this->assetClass = $this->activeBot['asset_class'];
             $this->isBotActive = true;
         } else {
-            $this->assetImageUrl = 'assets/icons/dashboard/btc.svg';
-            $this->asset = 'Bitcoin';
-            $this->assetClass = 'Crypto';
+            $this->assetImageUrl = 'assets/logomark.png';
+            $this->asset = 'No data';
+            $this->assetClass = 'No data';
             $this->isBotActive = false;
         }
     }
