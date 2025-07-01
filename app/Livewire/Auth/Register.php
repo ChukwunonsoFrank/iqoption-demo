@@ -106,7 +106,7 @@ class Register extends Component
 
                 session()->flash('just_registered', true);
 
-                $this->redirect(route('dashboard', absolute: false), navigate: true);
+                $this->redirect(route('dashboard.robot', absolute: false), navigate: false);
             } else {
                 $this->dispatch('login-error', message: 'Please confirm you are not a robot.')->self();
                 return redirect()->back();

@@ -36,6 +36,10 @@ class Index extends Component
             $this->redirectRoute('dashboard.robot.traderoom');
         }
 
+        if (! $activeBot && $justLoggedIn) {
+            $this->redirectRoute('dashboard.robot');
+        }
+
         if ($justRegistered) {
             $this->redirectRoute('dashboard.robot');
         }
