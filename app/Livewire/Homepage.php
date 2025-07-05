@@ -14,6 +14,8 @@ use Livewire\Component;
 
 class Homepage extends Component
 {
+    public $popularMarketData = [];
+
     public $cryptoMarketData = [];
 
     public $forexMarketData = [];
@@ -215,6 +217,14 @@ class Homepage extends Component
             $dataArr['priceUsd'] = substr((string)$data->priceUsd, 0, 8);
             $dataArr['iconUrlPath'] = $this->generateAssetIconPath($dataArr['symbol']);
             $this->cryptoMarketData[] = $dataArr;
+
+            if ($data->name === 'Bitcoin') {
+                $this->popularMarketData[] = $dataArr;
+            }
+
+            if ($data->name === 'Ethereum') {
+                $this->popularMarketData[] = $dataArr;
+            }
         }
     }
 
@@ -262,9 +272,17 @@ class Homepage extends Component
         $dataArr = [];
         $dataArr['name'] = $name;
         $dataArr['symbol'] = $symbol;
-        $dataArr['price'] = substr((string)$assetClosePrice, 0, 8);
+        $dataArr['priceUsd'] = substr((string)$assetClosePrice, 0, 8);
         $dataArr['iconUrlPath'] = $this->generateAssetIconPath($dataArr['symbol']);
         $this->stocksMarketData[] = $dataArr;
+
+        if ($name === 'Nvidia Corporation') {
+            $this->popularMarketData[] = $dataArr;
+        }
+
+        if ($name === 'Tesla, Inc.') {
+            $this->popularMarketData[] = $dataArr;
+        }
     }
 
     public function transformCommoditiesMarketData($data, $name, $symbol)
@@ -286,9 +304,13 @@ class Homepage extends Component
         $dataArr = [];
         $dataArr['name'] = $name;
         $dataArr['symbol'] = $symbol;
-        $dataArr['price'] = $marketData['data'][0]['value'];
+        $dataArr['priceUsd'] = $marketData['data'][0]['value'];
         $dataArr['iconUrlPath'] = $this->generateAssetIconPath($dataArr['symbol']);
         $this->commoditiesMarketData[] = $dataArr;
+
+        if ($name === 'Brent Crude') {
+            $this->popularMarketData[] = $dataArr;
+        }
     }
 
     public function transformETFMarketData($data)
@@ -300,7 +322,7 @@ class Homepage extends Component
         }
 
         $dataArr = [];
-        
+
         $firstFiveETFs = array_slice($marketData['holdings'], 0, 5);
 
         foreach ($firstFiveETFs as $etf) {

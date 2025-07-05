@@ -30,30 +30,36 @@
                     class="hs-tab-active:font-semibold hs-tab-active:border-white font-semibold py-1 px-1 inline-flex items-center gap-x-2 border-b-2 border-transparent text-lg whitespace-nowrap text-white hover:text-blue-600 focus:outline-hidden disabled:opacity-50 disabled:pointer-events-none dark:text-neutral-400 dark:hover:text-blue-500 active"
                     id="horizontal-alignment-item-1" aria-selected="true" data-hs-tab="#horizontal-alignment-1"
                     aria-controls="horizontal-alignment-1" role="tab">
-                    Crypto
+                    Popular
                 </button>
                 <button type="button"
                     class="hs-tab-active:font-semibold hs-tab-active:border-white font-semibold py-1 px-1 inline-flex items-center gap-x-2 border-b-2 border-transparent text-lg whitespace-nowrap text-white hover:text-blue-600 focus:outline-hidden disabled:opacity-50 disabled:pointer-events-none dark:text-neutral-400 dark:hover:text-blue-500"
                     id="horizontal-alignment-item-2" aria-selected="false" data-hs-tab="#horizontal-alignment-2"
                     aria-controls="horizontal-alignment-2" role="tab">
-                    Forex
+                    Crypto
                 </button>
                 <button type="button"
                     class="hs-tab-active:font-semibold hs-tab-active:border-white font-semibold py-1 px-1 inline-flex items-center gap-x-2 border-b-2 border-transparent text-lg whitespace-nowrap text-white hover:text-blue-600 focus:outline-hidden disabled:opacity-50 disabled:pointer-events-none dark:text-neutral-400 dark:hover:text-blue-500"
                     id="horizontal-alignment-item-3" aria-selected="false" data-hs-tab="#horizontal-alignment-3"
                     aria-controls="horizontal-alignment-3" role="tab">
+                    Forex
+                </button>
+                <button type="button"
+                    class="hs-tab-active:font-semibold hs-tab-active:border-white font-semibold py-1 px-1 inline-flex items-center gap-x-2 border-b-2 border-transparent text-lg whitespace-nowrap text-white hover:text-blue-600 focus:outline-hidden disabled:opacity-50 disabled:pointer-events-none dark:text-neutral-400 dark:hover:text-blue-500"
+                    id="horizontal-alignment-item-4" aria-selected="false" data-hs-tab="#horizontal-alignment-4"
+                    aria-controls="horizontal-alignment-4" role="tab">
                     Stocks
                 </button>
                 <button type="button"
                     class="hs-tab-active:font-semibold hs-tab-active:border-white font-semibold py-1 px-1 inline-flex items-center gap-x-2 border-b-2 border-transparent text-lg whitespace-nowrap text-white hover:text-blue-600 focus:outline-hidden disabled:opacity-50 disabled:pointer-events-none dark:text-neutral-400 dark:hover:text-blue-500"
-                    id="horizontal-alignment-item-4" aria-selected="true" data-hs-tab="#horizontal-alignment-4"
-                    aria-controls="horizontal-alignment-4" role="tab">
+                    id="horizontal-alignment-item-5" aria-selected="true" data-hs-tab="#horizontal-alignment-5"
+                    aria-controls="horizontal-alignment-5" role="tab">
                     Commodities
                 </button>
                 <button type="button"
                     class="hs-tab-active:font-semibold hs-tab-active:border-white font-semibold py-1 px-1 inline-flex items-center gap-x-2 border-b-2 border-transparent text-lg whitespace-nowrap text-white hover:text-blue-600 focus:outline-hidden disabled:opacity-50 disabled:pointer-events-none dark:text-neutral-400 dark:hover:text-blue-500"
-                    id="horizontal-alignment-item-5" aria-selected="false" data-hs-tab="#horizontal-alignment-5"
-                    aria-controls="horizontal-alignment-5" role="tab">
+                    id="horizontal-alignment-item-6" aria-selected="false" data-hs-tab="#horizontal-alignment-6"
+                    aria-controls="horizontal-alignment-6" role="tab">
                     ETFs
                 </button>
             </nav>
@@ -65,7 +71,7 @@
                     <div class="flex-1 flex items-center space-x-1 mb-5 lg:mb-0">
                         <div>
                             <h3 class="text-zinc-700 font-semibold text-lg md:text-2xl">
-                                Cryptocurrencies
+                                Popular
                             </h3>
                         </div>
                     </div>
@@ -80,7 +86,73 @@
                             <p class="text-xs font-medium text-gray-400">1D Change</p>
                         </div>
                     </div>
-                    @foreach ($cryptoMarketData as $data)
+                    <div class="flex items-center border-b border-gray-100 py-3.5">
+                        <div class="flex-1 flex items-center">
+                            <div class="flex-none w-12">
+                                <img src="{{ asset('assets/icons/nasdaq.svg') }}" width="30" alt="" srcset="">
+                            </div>
+                            <div class="shrink">
+                                <p class="text-xs md:text-sm text-zinc-700 font-semibold mb-0.5">Nasdaq 100
+                                </p>
+                                <p class="text-xs font-medium text-gray-400">NDX</p>
+                            </div>
+                        </div>
+                        <div class="flex-1 text-end md:flex md:items-center md:space-x-3">
+                            <div class="hidden md:block flex-1 text-start">
+                                <p class="text-sm font-medium">+0.21%</p>
+                            </div>
+                            <div class="flex-none">
+                                <a href="{{ route('register') }}"
+                                    class="rounded-xs border border-accent w-24 px-1 pt-1 pb-0 text-center inline-block text-accent hover:bg-accent-hover hover:text-white active:bg-accent-hover active:text-white">
+                                    <span class="block font-medium text-sm">22832.34</span>
+                                    <span class="block md:hidden font-medium text-[11px]">Trade</span>
+                                    <span class="hidden md:block font-medium text-[11px]">Sell</span>
+                                </a>
+                            </div>
+                            <div class="hidden md:block flex-none">
+                                <a href="{{ route('register') }}"
+                                    class="inline-block rounded-xs border border-buy-green w-24 px-1 pt-1 pb-0 text-center text-buy-green hover:bg-buy-green hover:text-white active:bg-buy-green active:text-white">
+                                    <span class="block font-medium text-sm">22832.34</span>
+                                    <span class="block font-medium text-[11px]">Buy</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center border-b border-gray-100 py-3.5">
+                        <div class="flex-1 flex items-center">
+                            <div class="flex-none w-12">
+                                <img src="{{ asset('assets/icons/standard-and-poor.svg') }}" width="30" alt="" srcset="">
+                            </div>
+                            <div class="shrink">
+                                <p class="text-xs md:text-sm text-zinc-700 font-semibold mb-0.5">S&P 500
+                                </p>
+                                <p class="text-xs font-medium text-gray-400">SPX</p>
+                            </div>
+                        </div>
+                        <div class="flex-1 text-end md:flex md:items-center md:space-x-3">
+                            <div class="hidden md:block flex-1 text-start">
+                                <p class="text-sm font-medium">+0.15%</p>
+                            </div>
+                            <div class="flex-none">
+                                <a href="{{ route('register') }}"
+                                    class="rounded-xs border border-accent w-24 px-1 pt-1 pb-0 text-center inline-block text-accent hover:bg-accent-hover hover:text-white active:bg-accent-hover active:text-white">
+                                    <span class="block font-medium text-sm">6240.20</span>
+                                    <span class="block md:hidden font-medium text-[11px]">Trade</span>
+                                    <span class="hidden md:block font-medium text-[11px]">Sell</span>
+                                </a>
+                            </div>
+                            <div class="hidden md:block flex-none">
+                                <a href="{{ route('register') }}"
+                                    class="inline-block rounded-xs border border-buy-green w-24 px-1 pt-1 pb-0 text-center text-buy-green hover:bg-buy-green hover:text-white active:bg-buy-green active:text-white">
+                                    <span class="block font-medium text-sm">6240.20</span>
+                                    <span class="block font-medium text-[11px]">Buy</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    @foreach ($popularMarketData as $data)
                         <div wire:key="market-data-crypto-{{ $data['symbol'] }}"
                             class="flex items-center border-b border-gray-100 py-3.5">
                             <div class="flex-1 flex items-center">
@@ -116,11 +188,105 @@
                             </div>
                         </div>
                     @endforeach
+                    
+                    <div class="flex items-center border-b border-gray-100 py-3.5">
+                        <div class="flex-1 flex items-center">
+                            <div class="flex-none w-12">
+                                <img src="{{ asset('assets/icons/gold.svg') }}" width="30" alt="" srcset="">
+                            </div>
+                            <div class="shrink">
+                                <p class="text-xs md:text-sm text-zinc-700 font-semibold mb-0.5">Gold
+                                </p>
+                                <p class="text-xs font-medium text-gray-400">XAUUSD</p>
+                            </div>
+                        </div>
+                        <div class="flex-1 text-end md:flex md:items-center md:space-x-3">
+                            <div class="hidden md:block flex-1 text-start">
+                                <p class="text-sm font-medium">+1.05%</p>
+                            </div>
+                            <div class="flex-none">
+                                <a href="{{ route('register') }}"
+                                    class="rounded-xs border border-accent w-24 px-1 pt-1 pb-0 text-center inline-block text-accent hover:bg-accent-hover hover:text-white active:bg-accent-hover active:text-white">
+                                    <span class="block font-medium text-sm">3347.91</span>
+                                    <span class="block md:hidden font-medium text-[11px]">Trade</span>
+                                    <span class="hidden md:block font-medium text-[11px]">Sell</span>
+                                </a>
+                            </div>
+                            <div class="hidden md:block flex-none">
+                                <a href="{{ route('register') }}"
+                                    class="inline-block rounded-xs border border-buy-green w-24 px-1 pt-1 pb-0 text-center text-buy-green hover:bg-buy-green hover:text-white active:bg-buy-green active:text-white">
+                                    <span class="block font-medium text-sm">3347.91</span>
+                                    <span class="block font-medium text-[11px]">Buy</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
             <div id="horizontal-alignment-2" class="hidden" role="tabpanel"
                 aria-labelledby="horizontal-alignment-item-2">
+                <div class="lg:flex lg:items-center lg:mb-5">
+                    <div class="flex-1 flex items-center space-x-1 mb-5 lg:mb-0">
+                        <div>
+                            <h3 class="text-zinc-700 font-semibold text-lg md:text-2xl">
+                                Cryptocurrencies
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="hidden md:flex items-center border-b border-gray-200 py-3.5">
+                        <div class="flex-1">
+                            <p class="text-xs font-medium text-gray-400">Name</p>
+                        </div>
+                        <div class="flex-1">
+                            <p class="text-xs font-medium text-gray-400">1D Change</p>
+                        </div>
+                    </div>
+                    @foreach ($cryptoMarketData as $data)
+                        <div wire:key="market-data-crypto-{{ $data['symbol'] }}"
+                            class="flex items-center border-b border-gray-100 py-3.5">
+                            <div class="flex-1 flex items-center">
+                                <div class="flex-none w-12">
+                                    <img src="{{ asset($data['iconUrlPath']) }}" width="30" alt=""
+                                        srcset="">
+                                </div>
+                                <div class="shrink">
+                                    <p class="text-xs md:text-sm text-zinc-700 font-semibold mb-0.5">
+                                        {{ $data['name'] }}
+                                    </p>
+                                    <p class="text-xs font-medium text-gray-400">{{ $data['symbol'] }}</p>
+                                </div>
+                            </div>
+                            <div class="flex-1 text-end md:flex md:items-center md:space-x-3">
+                                <div class="hidden md:block flex-1 text-start">
+                                    <p class="text-sm font-medium">+1.45%</p>
+                                </div>
+                                <div class="flex-none">
+                                    <a href="{{ route('register') }}"
+                                        class="rounded-xs border border-accent w-24 px-1 pt-1 pb-0 text-center inline-block text-accent hover:bg-accent-hover hover:text-white active:bg-accent-hover active:text-white">
+                                        <span class="block font-medium text-sm">{{ $data['priceUsd'] }}</span>
+                                        <span class="block md:hidden font-medium text-[11px]">Trade</span>
+                                        <span class="hidden md:block font-medium text-[11px]">Sell</span>
+                                    </a>
+                                </div>
+                                <div class="hidden md:block flex-none">
+                                    <a href="{{ route('register') }}"
+                                        class="inline-block rounded-xs border border-buy-green w-24 px-1 pt-1 pb-0 text-center text-buy-green hover:bg-buy-green hover:text-white active:bg-buy-green active:text-white">
+                                        <span class="block font-medium text-sm">{{ $data['priceUsd'] }}</span>
+                                        <span class="block font-medium text-[11px]">Buy</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+
+            <div id="horizontal-alignment-3" class="hidden" role="tabpanel"
+                aria-labelledby="horizontal-alignment-item-3">
                 <div class="lg:flex lg:items-center lg:mb-5">
                     <div class="flex-1 flex items-center space-x-1 mb-5 lg:mb-0">
                         <div>
@@ -180,8 +346,8 @@
                 </div>
             </div>
 
-            <div id="horizontal-alignment-3" class="hidden" role="tabpanel"
-                aria-labelledby="horizontal-alignment-item-3">
+            <div id="horizontal-alignment-4" class="hidden" role="tabpanel"
+                aria-labelledby="horizontal-alignment-item-4">
                 <div class="lg:flex lg:items-center lg:mb-5">
                     <div class="flex-1 flex items-center space-x-1 mb-5 lg:mb-0">
                         <div>
@@ -223,7 +389,7 @@
                                 <div class="flex-none">
                                     <a href="{{ route('register') }}"
                                         class="rounded-xs border border-accent w-24 px-1 pt-1 pb-0 text-center inline-block text-accent hover:bg-accent-hover hover:text-white active:bg-accent-hover active:text-white">
-                                        <span class="block font-medium text-sm">{{ $data['price'] }}</span>
+                                        <span class="block font-medium text-sm">{{ $data['priceUsd'] }}</span>
                                         <span class="block md:hidden font-medium text-[11px]">Trade</span>
                                         <span class="hidden md:block font-medium text-[11px]">Sell</span>
                                     </a>
@@ -231,7 +397,7 @@
                                 <div class="hidden md:block flex-none">
                                     <a href="{{ route('register') }}"
                                         class="inline-block rounded-xs border border-buy-green w-24 px-1 pt-1 pb-0 text-center text-buy-green hover:bg-buy-green hover:text-white active:bg-buy-green active:text-white">
-                                        <span class="block font-medium text-sm">{{ $data['price'] }}</span>
+                                        <span class="block font-medium text-sm">{{ $data['priceUsd'] }}</span>
                                         <span class="block font-medium text-[11px]">Buy</span>
                                     </a>
                                 </div>
@@ -241,8 +407,8 @@
                 </div>
             </div>
 
-            <div id="horizontal-alignment-4" class="hidden" role="tabpanel"
-                aria-labelledby="horizontal-alignment-item-3">
+            <div id="horizontal-alignment-5" class="hidden" role="tabpanel"
+                aria-labelledby="horizontal-alignment-item-5">
                 <div class="lg:flex lg:items-center lg:mb-5">
                     <div class="flex-1 flex items-center space-x-1 mb-5 lg:mb-0">
                         <div>
@@ -284,7 +450,8 @@
                                 <div class="flex-none">
                                     <a href="{{ route('register') }}"
                                         class="rounded-xs border border-accent w-24 px-1 pt-1 pb-0 text-center inline-block text-accent hover:bg-accent-hover hover:text-white active:bg-accent-hover active:text-white">
-                                        <span class="block font-medium text-sm">{{ round($data['price'], 2) }}</span>
+                                        <span
+                                            class="block font-medium text-sm">{{ round($data['priceUsd'], 2) }}</span>
                                         <span class="block md:hidden font-medium text-[11px]">Trade</span>
                                         <span class="hidden md:block font-medium text-[11px]">Sell</span>
                                     </a>
@@ -292,7 +459,8 @@
                                 <div class="hidden md:block flex-none">
                                     <a href="{{ route('register') }}"
                                         class="inline-block rounded-xs border border-buy-green w-24 px-1 pt-1 pb-0 text-center text-buy-green hover:bg-buy-green hover:text-white active:bg-buy-green active:text-white">
-                                        <span class="block font-medium text-sm">{{ round($data['price'], 2) }}</span>
+                                        <span
+                                            class="block font-medium text-sm">{{ round($data['priceUsd'], 2) }}</span>
                                         <span class="block font-medium text-[11px]">Buy</span>
                                     </a>
                                 </div>
@@ -302,8 +470,8 @@
                 </div>
             </div>
 
-            <div id="horizontal-alignment-5" class="hidden" role="tabpanel"
-                aria-labelledby="horizontal-alignment-item-3">
+            <div id="horizontal-alignment-6" class="hidden" role="tabpanel"
+                aria-labelledby="horizontal-alignment-item-6">
                 <div class="lg:flex lg:items-center lg:mb-5">
                     <div class="flex-1 flex items-center space-x-1 mb-5 lg:mb-0">
                         <div>
@@ -716,7 +884,8 @@
                 strategies and fine-tune your skills—no money lost, only experience gained!</p>
             <div class="text-center">
                 <a href="{{ route('register') }}"
-                    class="rounded-xs bg-accent-hover px-6 py-3.5 text-sm inline-block font-medium text-white shadow-xs hover:bg-accent-hover">Open Account <i class="fas fa-arrow-right"></i></a>
+                    class="rounded-xs bg-accent-hover px-6 py-3.5 text-sm inline-block font-medium text-white shadow-xs hover:bg-accent-hover">Open
+                    Account <i class="fas fa-arrow-right"></i></a>
             </div>
         </div>
     </div>
@@ -758,7 +927,8 @@
 
             <div class="text-center">
                 <a href="{{ route('register') }}"
-                    class="rounded-xs bg-accent-hover px-6 py-3.5 text-sm inline-block font-medium text-white shadow-xs hover:bg-accent-hover">Open Account<i class="fas fa-arrow-right"></i></a>
+                    class="rounded-xs bg-accent-hover px-6 py-3.5 text-sm inline-block font-medium text-white shadow-xs hover:bg-accent-hover">Open
+                    Account<i class="fas fa-arrow-right"></i></a>
             </div>
         </div>
     </div>
