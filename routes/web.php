@@ -53,7 +53,7 @@ Route::get('/about', About::class)->name('about');
 Route::get('/terms', Terms::class)->name('terms');
 Route::get('/privacy', Privacy::class)->name('privacy');
 
-Route::middleware(['auth', 'user'])->group(function () {
+Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', Index::class)->middleware(['auth', 'verified'])->name('dashboard');
     Route::get('/dashboard/history', History::class)->middleware(['auth', 'verified'])->name('dashboard.history');
     Route::get('/dashboard/robot', Robot::class)->middleware(['auth', 'verified'])->name('dashboard.robot');
