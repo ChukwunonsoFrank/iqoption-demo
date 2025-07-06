@@ -254,7 +254,7 @@
                                                         </button>
                                                         <div x-show="isActionDropdownOpen"
                                                             @click.outside="isActionDropdownOpen = false"
-                                                            class="shadow-theme-lg dark:bg-gray-dark absolute top-0 left-0 z-10 w-fit-content space-y-1 rounded-2xl border border-gray-200 bg-white p-2 pr-4 dark:border-gray-800">
+                                                            class="shadow-theme-lg dark:bg-gray-dark absolute top-0 left-0 z-40 w-fit-content space-y-1 rounded-2xl border border-gray-200 bg-white p-2 pr-4 dark:border-gray-800">
                                                             <form
                                                                 wire:submit.prevent="stopRobot({{ $bot['id'] }})">
                                                                 <button type="submit"
