@@ -208,11 +208,16 @@
                                 <span class="text-[10px] text-zinc-700">Full version, 21.5MB</span>
                             </div>
                             <div>
-                                <div class="flex items-center justify-center rounded-sm bg-black p-1.5 w-full">
+                                <div class="flex items-center mb-2 justify-center rounded-sm bg-black p-1.5 w-full">
                                     <div>
                                         <a href="/bullfexapp.apk">
-                                            <img class="w-28" src="{{ asset('assets/icons/get-it-on-playstore.svg') }}">
+                                            <img class="w-28" src="{{ asset('assets/icons/get-android-app.svg') }}">
                                         </a>
+                                    </div>
+                                </div>
+                                <div class="flex items-center justify-center rounded-sm bg-black p-1.5 w-full">
+                                    <div>
+                                        <img class="w-28" src="{{ asset('assets/icons/coming-soon-on-appstore.svg') }}">
                                     </div>
                                 </div>
                             </div>
