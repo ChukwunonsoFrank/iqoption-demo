@@ -89,7 +89,8 @@
                     <div class="flex items-center border-b border-gray-100 py-3.5">
                         <div class="flex-1 flex items-center">
                             <div class="flex-none w-12">
-                                <img src="{{ asset('assets/icons/nasdaq.svg') }}" width="30" alt="" srcset="">
+                                <img src="{{ asset('assets/icons/nasdaq.svg') }}" width="30" alt=""
+                                    srcset="">
                             </div>
                             <div class="shrink">
                                 <p class="text-xs md:text-sm text-zinc-700 font-semibold mb-0.5">Nasdaq 100
@@ -122,7 +123,8 @@
                     <div class="flex items-center border-b border-gray-100 py-3.5">
                         <div class="flex-1 flex items-center">
                             <div class="flex-none w-12">
-                                <img src="{{ asset('assets/icons/standard-and-poor.svg') }}" width="30" alt="" srcset="">
+                                <img src="{{ asset('assets/icons/standard-and-poor.svg') }}" width="30"
+                                    alt="" srcset="">
                             </div>
                             <div class="shrink">
                                 <p class="text-xs md:text-sm text-zinc-700 font-semibold mb-0.5">S&P 500
@@ -161,7 +163,8 @@
                                         srcset="">
                                 </div>
                                 <div class="shrink">
-                                    <p class="text-xs md:text-sm text-zinc-700 font-semibold mb-0.5">{{ $data['name'] }}
+                                    <p class="text-xs md:text-sm text-zinc-700 font-semibold mb-0.5">
+                                        {{ $data['name'] }}
                                     </p>
                                     <p class="text-xs font-medium text-gray-400">{{ $data['symbol'] }}</p>
                                 </div>
@@ -188,11 +191,12 @@
                             </div>
                         </div>
                     @endforeach
-                    
+
                     <div class="flex items-center border-b border-gray-100 py-3.5">
                         <div class="flex-1 flex items-center">
                             <div class="flex-none w-12">
-                                <img src="{{ asset('assets/icons/gold.svg') }}" width="30" alt="" srcset="">
+                                <img src="{{ asset('assets/icons/gold.svg') }}" width="30" alt=""
+                                    srcset="">
                             </div>
                             <div class="shrink">
                                 <p class="text-xs md:text-sm text-zinc-700 font-semibold mb-0.5">Gold
@@ -725,26 +729,29 @@
         </div>
         <div class="md:flex md:items-center md:justify-center">
             <div>
-                <div
-                    class="flex md:inline-flex md:mr-1.5 group items-center space-x-3 mx-auto rounded-sm bg-white border border-accent p-1.5 mb-3 w-48 text-sm font-medium shadow-xs hover:bg-accent active:bg-accent">
-                    <div>
-                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path class="group-hover:fill-white group-active:fill-white"
-                                d="M16.6025 14.7823C16.4378 14.7823 16.2768 14.7335 16.1398 14.642C16.0028 14.5505 15.896 14.4205 15.833 14.2683C15.7699 14.1161 15.7534 13.9487 15.7855 13.7871C15.8176 13.6255 15.8969 13.4771 16.0133 13.3606C16.1298 13.2441 16.2782 13.1648 16.4397 13.1326C16.6013 13.1004 16.7688 13.1169 16.921 13.1799C17.0732 13.2429 17.2033 13.3496 17.2948 13.4866C17.3863 13.6235 17.4352 13.7845 17.4352 13.9493C17.435 14.1701 17.3472 14.3818 17.1911 14.5379C17.035 14.6941 16.8233 14.782 16.6025 14.7823ZM7.39745 14.7823C7.23272 14.7823 7.07168 14.7335 6.9347 14.642C6.79771 14.5505 6.69094 14.4205 6.62787 14.2683C6.5648 14.1161 6.54828 13.9487 6.58039 13.7871C6.61249 13.6255 6.69179 13.4771 6.80825 13.3606C6.9247 13.2441 7.07309 13.1648 7.23465 13.1326C7.3962 13.1004 7.56367 13.1169 7.71587 13.1799C7.86807 13.2429 7.99817 13.3496 8.08971 13.4866C8.18126 13.6235 8.23013 13.7845 8.23016 13.9493C8.22996 14.1701 8.14217 14.3818 7.98606 14.538C7.82994 14.6941 7.61826 14.782 7.39745 14.7823ZM16.9012 9.7658L18.5655 6.88314C18.5883 6.84377 18.6031 6.80029 18.609 6.75521C18.615 6.71012 18.612 6.6643 18.6003 6.62036C18.5885 6.57642 18.5682 6.53523 18.5406 6.49913C18.5129 6.46303 18.4784 6.43273 18.439 6.40997C18.3997 6.38721 18.3562 6.37242 18.3111 6.36646C18.266 6.3605 18.2202 6.36347 18.1762 6.37522C18.1323 6.38697 18.0911 6.40725 18.055 6.43492C18.0189 6.46258 17.9886 6.49709 17.9659 6.53646L16.2805 9.45553C14.9917 8.86732 13.5443 8.53979 11.9998 8.53979C10.4554 8.53979 9.00811 8.86779 7.71933 9.45553L6.03412 6.53646C6.01138 6.49708 5.98112 6.46256 5.94504 6.43487C5.90897 6.40718 5.86779 6.38687 5.82387 6.37509C5.77995 6.36332 5.73413 6.36031 5.68905 6.36624C5.64396 6.37217 5.60049 6.38692 5.5611 6.40966C5.52172 6.43239 5.48719 6.46266 5.45951 6.49873C5.43182 6.5348 5.41151 6.57598 5.39973 6.6199C5.38796 6.66382 5.38495 6.70964 5.39088 6.75472C5.39681 6.79981 5.41156 6.84329 5.43429 6.88267L7.09879 9.7658C4.24077 11.3202 2.28594 14.2136 2 17.632H22C21.7137 14.2136 19.759 11.3202 16.9012 9.7658Z"
-                                fill="#25258E" />
-                        </svg>
+                <a href="/bullfexapp.apk">
+                    <div
+                        class="flex md:inline-flex md:mr-1.5 group items-center space-x-3 mx-auto rounded-sm bg-white border border-accent p-1.5 mb-3 w-48 text-sm font-medium shadow-xs hover:bg-accent active:bg-accent">
+                        <div>
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path class="group-hover:fill-white group-active:fill-white"
+                                    d="M16.6025 14.7823C16.4378 14.7823 16.2768 14.7335 16.1398 14.642C16.0028 14.5505 15.896 14.4205 15.833 14.2683C15.7699 14.1161 15.7534 13.9487 15.7855 13.7871C15.8176 13.6255 15.8969 13.4771 16.0133 13.3606C16.1298 13.2441 16.2782 13.1648 16.4397 13.1326C16.6013 13.1004 16.7688 13.1169 16.921 13.1799C17.0732 13.2429 17.2033 13.3496 17.2948 13.4866C17.3863 13.6235 17.4352 13.7845 17.4352 13.9493C17.435 14.1701 17.3472 14.3818 17.1911 14.5379C17.035 14.6941 16.8233 14.782 16.6025 14.7823ZM7.39745 14.7823C7.23272 14.7823 7.07168 14.7335 6.9347 14.642C6.79771 14.5505 6.69094 14.4205 6.62787 14.2683C6.5648 14.1161 6.54828 13.9487 6.58039 13.7871C6.61249 13.6255 6.69179 13.4771 6.80825 13.3606C6.9247 13.2441 7.07309 13.1648 7.23465 13.1326C7.3962 13.1004 7.56367 13.1169 7.71587 13.1799C7.86807 13.2429 7.99817 13.3496 8.08971 13.4866C8.18126 13.6235 8.23013 13.7845 8.23016 13.9493C8.22996 14.1701 8.14217 14.3818 7.98606 14.538C7.82994 14.6941 7.61826 14.782 7.39745 14.7823ZM16.9012 9.7658L18.5655 6.88314C18.5883 6.84377 18.6031 6.80029 18.609 6.75521C18.615 6.71012 18.612 6.6643 18.6003 6.62036C18.5885 6.57642 18.5682 6.53523 18.5406 6.49913C18.5129 6.46303 18.4784 6.43273 18.439 6.40997C18.3997 6.38721 18.3562 6.37242 18.3111 6.36646C18.266 6.3605 18.2202 6.36347 18.1762 6.37522C18.1323 6.38697 18.0911 6.40725 18.055 6.43492C18.0189 6.46258 17.9886 6.49709 17.9659 6.53646L16.2805 9.45553C14.9917 8.86732 13.5443 8.53979 11.9998 8.53979C10.4554 8.53979 9.00811 8.86779 7.71933 9.45553L6.03412 6.53646C6.01138 6.49708 5.98112 6.46256 5.94504 6.43487C5.90897 6.40718 5.86779 6.38687 5.82387 6.37509C5.77995 6.36332 5.73413 6.36031 5.68905 6.36624C5.64396 6.37217 5.60049 6.38692 5.5611 6.40966C5.52172 6.43239 5.48719 6.46266 5.45951 6.49873C5.43182 6.5348 5.41151 6.57598 5.39973 6.6199C5.38796 6.66382 5.38495 6.70964 5.39088 6.75472C5.39681 6.79981 5.41156 6.84329 5.43429 6.88267L7.09879 9.7658C4.24077 11.3202 2.28594 14.2136 2 17.632H22C21.7137 14.2136 19.759 11.3202 16.9012 9.7658Z"
+                                    fill="#25258E" />
+                            </svg>
 
+                        </div>
+                        <div>
+                            <p class="text-zinc-700 group-hover:text-white group-active:text-white font-semibold">For
+                                Mobile
+                            </p>
+                            <p class="text-gray-400 group-hover:text-white group-active:text-white text-[11px]">.apk
+                                21.5
+                                Mb
+                            </p>
+                        </div>
                     </div>
-                    <div>
-                        <p class="text-zinc-700 group-hover:text-white group-active:text-white font-semibold">For
-                            Mobile
-                        </p>
-                        <p class="text-gray-400 group-hover:text-white group-active:text-white text-[11px]">.apk 21.5
-                            Mb
-                        </p>
-                    </div>
-                </div>
+                </a>
 
                 <a href="{{ route('login') }}">
                     <div

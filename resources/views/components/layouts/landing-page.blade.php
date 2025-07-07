@@ -210,8 +210,9 @@
                             <div>
                                 <div class="flex items-center justify-center rounded-sm bg-black p-1.5 w-full">
                                     <div>
-                                        <img class="w-28"
-                                            src="{{ asset('assets/icons/get-it-on-playstore.svg') }}">
+                                        <a href="/bullfexapp.apk">
+                                            <img class="w-28" src="{{ asset('assets/icons/get-it-on-playstore.svg') }}">
+                                        </a>
                                     </div>
                                 </div>
                             </div>
