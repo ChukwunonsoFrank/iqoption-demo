@@ -3,6 +3,7 @@
 namespace App\Livewire\Auth;
 
 use App\Models\User;
+use App\Notifications\ReferralLinkApplied;
 use App\Notifications\UserRegistered;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Auth;
@@ -101,6 +102,9 @@ class Register extends Component
                  */
                 $admin = User::where('is_admin', 1)->first();
                 $admin->notify(new UserRegistered($validated['email']));
+
+                $referralCodeOwner = User::where('referral_code', $this->ref)->first();
+                $referralCodeOwner->notify(new ReferralLinkApplied($referralCodeOwner->name, $user->name));
 
                 Auth::login($user);
 
