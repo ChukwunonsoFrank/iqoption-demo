@@ -80,6 +80,11 @@
                     </div>
                     <div class="hidden lg:block">
                         <div class="ml-4 flex space-x-2 items-center md:ml-6">
+                            <div>
+                                <div class="language-select language-select--style ">
+                                    <div class="gtranslate_wrapper"></div>
+                                </div>
+                            </div>
                             <a href="{{ route('login') }}"
                                 class="rounded-xs border border-accent px-3.5 py-2.5 text-sm font-medium text-accent shadow-xs hover:bg-accent hover:text-white">Log
                                 In</a>
@@ -88,12 +93,13 @@
                                 Up</a>
                         </div>
                     </div>
-                    <div>
-                        <div class="language-select language-select--style ">
-                            <div class="gtranslate_wrapper"></div>
-                        </div>
-                    </div>
+
                     <div class="flex space-x-3 lg:hidden">
+                        <div>
+                            <div class="language-select language-select--style mt-2">
+                                <div class="gtranslate_wrapper"></div>
+                            </div>
+                        </div>
                         <a href="{{ route('login') }}">
                             <div class="border border-accent rounded-full p-2">
                                 <!--  Auth button -->
@@ -258,6 +264,18 @@
         }
     </script>
     <script src="https://cdn.gtranslate.net/widgets/latest/popup.js" defer></script>
+    <script>
+        // Wait for the DOM to be fully loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Select all elements with class 'gt_switcher-popup'
+            document.querySelectorAll('.gt_switcher-popup').forEach(function(el) {
+                // Find all span children and hide them
+                el.querySelectorAll('span').forEach(function(span) {
+                    span.style.display = 'none';
+                });
+            });
+        });
+    </script>
     @livewireScripts
     @vite('resources/js/app.js')
 </body>
