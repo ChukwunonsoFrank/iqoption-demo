@@ -25,9 +25,9 @@
             display: none !important;
         }
 
-        .gt_white_content {
+        /* .gt_white_content {
             top: 200% !important;
-        }
+        } */
     </style>
 </head>
 
