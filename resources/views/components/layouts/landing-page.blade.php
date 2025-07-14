@@ -24,6 +24,10 @@
         [x-cloak] {
             display: none !important;
         }
+
+        .gt_white_content {
+            top: 200% !important;
+        }
     </style>
 </head>
 
@@ -82,6 +86,11 @@
                             <a href="{{ route('register') }}"
                                 class="rounded-xs bg-accent px-3.5 py-2.5 text-sm font-medium text-white shadow-xs hover:bg-accent-hover">Sign
                                 Up</a>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="language-select language-select--style ">
+                            <div class="gtranslate_wrapper"></div>
                         </div>
                     </div>
                     <div class="flex space-x-3 lg:hidden">
@@ -211,13 +220,15 @@
                                 <div class="flex items-center mb-2 justify-center rounded-sm bg-black p-1.5 w-full">
                                     <div>
                                         <a href="/bullfexapp.apk">
-                                            <img class="w-28" src="{{ asset('assets/icons/get-android-app.svg') }}">
+                                            <img class="w-28"
+                                                src="{{ asset('assets/icons/get-android-app.svg') }}">
                                         </a>
                                     </div>
                                 </div>
                                 <div class="flex items-center justify-center rounded-sm bg-black p-1.5 w-full">
                                     <div>
-                                        <img class="w-28" src="{{ asset('assets/icons/coming-soon-on-appstore.svg') }}">
+                                        <img class="w-28"
+                                            src="{{ asset('assets/icons/coming-soon-on-appstore.svg') }}">
                                     </div>
                                 </div>
                             </div>
@@ -237,6 +248,16 @@
     </div>
 
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script>
+        window.gtranslateSettings = {
+            "default_language": "en",
+            "detect_browser_language": true,
+            "wrapper_selector": ".gtranslate_wrapper",
+            "flag_size": 24,
+            "flag_style": "3d"
+        }
+    </script>
+    <script src="https://cdn.gtranslate.net/widgets/latest/popup.js" defer></script>
     @livewireScripts
     @vite('resources/js/app.js')
 </body>
