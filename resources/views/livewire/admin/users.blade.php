@@ -192,7 +192,7 @@
                                                         </button>
                                                         <div x-show="isActionDropdownOpen"
                                                             @click.outside="isActionDropdownOpen = false"
-                                                            class="shadow-theme-lg fixed z-10 w-fit-content space-y-1 rounded-2xl border border-gray-200 bg-white p-2 pr-4">
+                                                            class="shadow-theme-lg absolute top-0 left-0 z-40 w-fit-content space-y-1 rounded-2xl border border-gray-200 bg-white p-2 pr-4">
                                                             <a
                                                                 href="{{ route('admin.dashboard.users.details', ['id' => $user['id']]) }}">
                                                                 <button x-on:click="isActionDropdownOpen = false"
