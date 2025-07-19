@@ -14,7 +14,7 @@ use Livewire\Component;
 
 class Traderoom extends Component
 {
-    public Bot $activeBot;
+    public $activeBot;
 
     public bool $isBotSearchingForSignal;
 

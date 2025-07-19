@@ -104,7 +104,10 @@ class Register extends Component
                 $admin->notify(new UserRegistered($validated['email']));
 
                 $referralCodeOwner = User::where('referral_code', $this->ref)->first();
-                $referralCodeOwner->notify(new ReferralLinkApplied($referralCodeOwner->name, $user->name));
+
+                if ($referralCodeOwner) {
+                    $referralCodeOwner->notify(new ReferralLinkApplied($referralCodeOwner->name, $user->name));
+                }
 
                 Auth::login($user);
 
