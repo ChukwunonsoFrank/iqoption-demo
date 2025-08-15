@@ -489,7 +489,7 @@
                                     @empty
                                         <tr>
                                             <td colspan="8" class="text-center py-4 text-theme-sm text-gray-500">
-                                                No referrals found found.
+                                                No referrals found.
                                             </td>
                                         </tr>
                                     @endforelse
