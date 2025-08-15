@@ -293,7 +293,7 @@
                 </div>
             </div>
 
-            <div class="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03]">
+            <div class="rounded-2xl border border-gray-200 mb-4 bg-white dark:border-gray-800 dark:bg-white/[0.03]">
                 <div class="border-t border-gray-100 p-5 sm:p-6 dark:border-gray-800">
                     <!-- Table Five -->
                     <div
@@ -425,6 +425,86 @@
                 </div>
             </div>
 
+            <div class="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03]">
+                <div class="border-t border-gray-100 p-5 sm:p-6 dark:border-gray-800">
+                    <div
+                        class="rounded-2xl border border-gray-200 bg-white pt-4 dark:border-gray-800 dark:bg-white/[0.03]">
+                        <div
+                            class="mb-4 flex flex-col gap-2 px-5 sm:flex-row sm:items-center sm:justify-between sm:px-6">
+                            <div>
+                                <h3 class="text-lg font-semibold text-gray-800 dark:text-white/90">
+                                    Referrals
+                                </h3>
+                            </div>
+                        </div>
+
+                        <div class="custom-scrollbar max-w-full overflow-x-auto overflow-y-visible px-5 sm:px-6">
+                            <table class="min-w-full">
+                                <thead class="border-y border-gray-100 py-3 dark:border-gray-800">
+                                    <th class="py-3 pr-5 font-normal whitespace-nowrap sm:pr-6">
+                                        <div class="flex items-center">
+                                            <p class="text-theme-sm text-gray-500 dark:text-gray-400">User</p>
+                                        </div>
+                                    </th>
+                                    <th class="px-5 py-3 font-normal whitespace-nowrap sm:px-6">
+                                        <div class="flex items-center">
+                                            <p class="text-theme-sm text-gray-500 dark:text-gray-400">Amount</p>
+                                        </div>
+                                    </th>
+                                    <th class="px-5 py-3 font-normal whitespace-nowrap sm:px-6">
+                                        <div class="flex items-center">
+                                            <p class="text-theme-sm text-gray-500 dark:text-gray-400">
+                                                Status
+                                            </p>
+                                        </div>
+                                    </th>
+                                </thead>
+                                <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+                                    @forelse ($referrals as $referral)
+                                        <tr wire:key="referral-{{ $referral['id'] }}" x-data="{ isActionDropdownOpen: false }">
+                                            <td class="py-3 pr-5 whitespace-nowrap sm:pr-5">
+                                                <div class="flex items-center">
+                                                    <p
+                                                        class="text-theme-sm block font-medium text-gray-700 dark:text-gray-400">
+                                                        {{ $referral['name'] }}
+                                                    </p>
+                                                </div>
+                                            </td>
+                                            <td class="px-5 py-3 whitespace-nowrap sm:px-6">
+                                                <div class="flex items-center">
+                                                    <p class="text-theme-sm text-gray-700 dark:text-gray-400">
+                                                        @money($this->getReferralAmountRedeemable($referral['referral_code']) / 100)
+                                                    </p>
+                                                </div>
+                                            </td>
+                                            <td class="px-5 py-3 whitespace-nowrap sm:px-6">
+                                                <div class="flex items-center">
+                                                    <p
+                                                        class="text-theme-xs {{ $this->getStatusIndicatorColor($this->getReferralStatus($referral['referral_code'])) }} rounded-full px-2 py-0.5 font-medium">
+                                                        {{ ucfirst($this->getReferralStatus($referral['referral_code'])) }}
+                                                    </p>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    @empty
+                                        <tr>
+                                            <td colspan="8" class="text-center py-4 text-theme-sm text-gray-500">
+                                                No referrals found found.
+                                            </td>
+                                        </tr>
+                                    @endforelse
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="flex justify-center mt-8">
+                        <div>
+                            {{ $bots->appends(['bots_page' => $bots->currentPage()])->links() }}
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </main>
     <!-- ===== Main Content End ===== -->

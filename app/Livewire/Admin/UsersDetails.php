@@ -4,6 +4,7 @@ namespace App\Livewire\Admin;
 
 use App\Models\Bot;
 use App\Models\Deposit;
+use App\Models\Referral;
 use App\Models\Strategy;
 use App\Models\User;
 use App\Notifications\BroadcastSent;
@@ -54,6 +55,14 @@ class UsersDetails extends Component
         if ($status === 'stopped' || $status === 'expired' || $status === 'declined') {
             return 'bg-error-50 text-error-600';
         }
+
+        if ($status === 'unredeemed') {
+            return 'bg-error-50 text-error-600';
+        }
+
+        if ($status === 'redeemed') {
+            return 'bg-success-50 text-success-600';
+        }
     }
 
     public function getStrategyName(int $strategyId)
@@ -63,6 +72,22 @@ class UsersDetails extends Component
         });
 
         return $filtered->first()['name'];
+    }
+
+    public function getReferralAmountRedeemable(string $code) {
+        $referralData = Referral::where('referral_code', $code)->first();
+        if(! $referralData) {
+            return 0;
+        }
+        return $referralData->amount;
+    }
+
+    public function getReferralStatus(string $code) {
+        $referralData = Referral::where('referral_code', $code)->first();
+        if(! $referralData) {
+            return 'unredeemed';
+        }
+        return 'redeemed';
     }
 
     public function convertTimestampToDateTime(string $timestamp): string
@@ -102,10 +127,12 @@ class UsersDetails extends Component
         $this->activeBotCount = $user->bots->where('status', 'active')->count();
         $deposits = Deposit::with('user')->where('user_id', $user->id)->latest()->paginate(10, ['*'], 'deposits_page');
         $bots = Bot::with('user')->where('user_id', $user->id)->latest()->paginate(10, ['*'], 'bots_page');
+        $referrals = User::where('referred_by', $user->referral_code)->paginate(10, ['*'], 'referrals_page');
 
         return view('livewire.admin.users-details', [
             'deposits' => $deposits,
             'bots' => $bots,
+            'referrals' => $referrals,
         ]);
     }
 }

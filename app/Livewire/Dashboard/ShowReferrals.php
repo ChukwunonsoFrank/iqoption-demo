@@ -48,7 +48,7 @@ class ShowReferrals extends Component
 
     public function render()
     {
-        $referrals = Referral::where('user_id', auth()->user()->id)->latest()->take($this->visibleCount)->get();
+        $referrals = Referral::with('user')->where('user_id', auth()->user()->id)->latest()->take($this->visibleCount)->get();
 
         $showLoadMoreButton = $this->visibleCount < $this->totalReferrals;
 

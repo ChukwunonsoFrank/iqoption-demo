@@ -70,7 +70,7 @@
                         </div>
                         <div class="flex items-center space-x-1">
                             <div class="flex-none">
-                                <p class="font-semibold text-xs text-white md:text-sm">{{ $referral['referral_code'] }}</p>
+                                <p class="font-semibold text-xs text-white md:text-sm">{{ $referral->user->name }}</p>
                             </div>
                             <div class="flex-1 pb-1">
                                 <span
