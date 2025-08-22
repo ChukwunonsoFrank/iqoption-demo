@@ -1,4 +1,4 @@
-<div x-data wire:poll.1s="refreshTimer" class="px-4 lg:px-0 h-full">
+<div x-data="traderoom" class="px-4 lg:px-0 h-full">
     <div class="lg:flex lg:h-full">
         <livewire:dashboard.partials.desktop-navbar />
         <div class="lg:h-full lg:flex-1 lg:px-80 lg:pt-6">
@@ -15,38 +15,38 @@
 
                     <div class="flex items-center space-x-3 border border-gray-700 rounded-lg p-4 mb-4">
                         <div class="flex-1">
-                            <template x-if="$wire.isBotSearchingForSignal === false">
+                            <template x-if="isBotSearchingForSignal === false">
                                 <div class="flex items-center justify-center bg-navbar w-fit">
-                                    <p class="text-white font-normal text-2xl">{{ $this->timer }}</p>
+                                    <p x-text='timer' class="text-white font-normal text-2xl"></p>
                                 </div>
                             </template>
-                            <template x-if="$wire.isBotSearchingForSignal === true">
+                            <template x-if="isBotSearchingForSignal === true">
                                 <div wire:ignore class="flex items-center justify-center bg-navbar w-fit">
                                     <i class="fa-solid fa-spinner fa-spin-pulse fa-2x text-green-500"></i>
                                 </div>
                             </template>
                         </div>
                         <div class="flex-none w-fit">
-                            <template x-if="$wire.isBotSearchingForSignal === false">
+                            <template x-if="isBotSearchingForSignal === false">
                                 <div class="flex flex-col">
                                     <div>
                                         <p class="text-zinc-300 text-[11px] text-center">Robot is trading</p>
                                     </div>
                                     <div class="flex items-center space-x-1 rounded-lg">
                                         <div>
-                                            <img src="{{ asset($this->assetIcon) }}" alt="">
+                                            <img x-bind:src="assetIcon" alt="">
                                         </div>
                                         <div>
-                                            <p class="font-semibold text-white text-[15px]">{{ $this->asset }}</p>
+                                            <p x-text="asset" class="font-semibold text-white text-[15px]"></p>
                                         </div>
                                         <div class="pb-1">
-                                            <span
-                                                class="inline-flex items-center gap-x-1.5 py-0.5 px-1.5 rounded-md text-[9px] font-normal {{ $this->sentiment === 'BUY' ? 'bg-green-600' : 'bg-red-600' }} text-white">{{ $this->sentiment }}</span>
+                                            <span x-text="sentiment"
+                                                class="inline-flex items-center gap-x-1.5 py-0.5 px-1.5 rounded-md text-[9px] font-normal text-white" x-bind:class="sentiment === 'BUY' ? 'bg-green-600' : 'bg-red-600'"></span>
                                         </div>
                                     </div>
                                 </div>
                             </template>
-                            <template x-if="$wire.isBotSearchingForSignal === true">
+                            <template x-if="isBotSearchingForSignal === true">
                                 <div class="flex flex-col space-y-1">
                                     <div>
                                         <p class="text-zinc-300 text-[11px] text-center">Fetching signals...</p>
@@ -134,7 +134,7 @@
                     </div>
 
                     <div>
-                        <button wire:click="toggleStopRobotConfirmationModal()" type="button"
+                        <button x-on:click="toggleStopRobotConfirmationModal()" type="button"
                             class="py-3 cursor-pointer px-4 w-full md:px-6 md:py-3 text-center gap-x-2 text-sm md:text-base font-semibold rounded-lg bg-accent text-white focus:outline-hidden disabled:opacity-50 disabled:pointer-events-none">
                             Stop the robot
                         </button>
@@ -165,13 +165,14 @@
                 </div>
             </div>
 
-            <div wire:show="isStopRobotConfirmationModalOpen" class="fixed top-0 left-0 h-svh w-full px-4 lg:px-96 pt-6 z-20 bg-dashboard">
+            <div x-cloak x-show="isStopRobotConfirmationModalOpen"
+                class="fixed top-0 left-0 h-svh w-full px-4 lg:px-96 pt-6 z-20 bg-dashboard">
                 <div class="w-full h-full flex items-center justify-center">
                     <div class="max-w-sm mx-auto flex flex-col bg-navbar rounded-xl pointer-events-auto">
                         <div class="flex justify-between items-center py-3 px-4 dark:border-neutral-700">
                             <h3 class="font-bold text-gray-800 dark:text-white">
                             </h3>
-                            <button wire:click="toggleStopRobotConfirmationModal()" type="button"
+                            <button x-on:click="toggleStopRobotConfirmationModal()" type="button"
                                 class="size-8 inline-flex justify-center items-center gap-x-2 rounded-full border border-transparent bg-gray-100 text-gray-800 hover:bg-gray-200 focus:outline-hidden focus:bg-gray-200 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-700 dark:hover:bg-neutral-600 dark:text-neutral-400 dark:focus:bg-neutral-600"
                                 aria-label="Close">
                                 <span class="sr-only">Close</span>
@@ -190,13 +191,14 @@
                         </div>
                         <div class="py-3 px-4">
                             <div>
-                                <button type="button" wire:click="stopRobot()" type="button" wire:loading.attr="disabled"
+                                <button type="button" x-on:click="destroy()" wire:click="stopRobot()" type="button"
+                                    wire:loading.attr="disabled"
                                     class="p-3 w-full text-center text-sm font-semibold rounded-lg border border-transparent bg-accent text-white cursor-pointer hover:bg-accent-hover focus:outline-hidden focus:bg-accent disabled:opacity-50 disabled:pointer-events-none">
                                     Confirm
                                 </button>
                             </div>
                             <div class="mt-3">
-                                <button wire:click="toggleStopRobotConfirmationModal()" type="button"
+                                <button x-on:click="toggleStopRobotConfirmationModal()" type="button"
                                     class="p-3 w-full text-center text-sm font-semibold rounded-lg border border-gray-200 bg-white text-gray-800 shadow-2xs cursor-pointer hover:bg-gray-50 focus:outline-hidden focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:text-white dark:hover:bg-neutral-700 dark:focus:bg-neutral-700"
                                     data-hs-overlay="#hs-vertically-centered-modal">
                                     Cancel
@@ -282,3 +284,126 @@
         });
     </script>
 @endscript
+
+<script>
+    document.addEventListener('alpine:init', () => {
+        Alpine.data('traderoom', () => ({
+            timer: '',
+            timeLeft: {},
+            timerInterval: null,
+            isBotSearchingForSignal: '',
+            isStopRobotConfirmationModalOpen: false,
+            asset: '',
+            assetIcon: '',
+            sentiment: '',
+
+            init() {
+                // Start the timer when the component initializes
+                this.startTimer();
+            },
+
+            startTimer() {
+                this.timerInterval = setInterval(() => {
+                    this.refreshTimer();
+                }, 1000);
+            },
+
+            stopTimer() {
+                if (this.timerInterval) {
+                    clearInterval(this.timerInterval);
+                    this.timerInterval = null;
+                }
+            },
+
+            toggleStopRobotConfirmationModal() {
+                this.isStopRobotConfirmationModalOpen = !this.isStopRobotConfirmationModalOpen;
+            },
+
+            calculateTimeLeftTillNextCheckpoint(checkpoint) {
+                let difference = checkpoint - Date.now();
+
+                if (0 > difference) {
+                    return {
+                        minutes: 0,
+                        seconds: 0
+                    }
+                }
+
+                let minutes = Math.floor((difference / (1000 * 60)) % 60);
+                let seconds = Math.floor((difference / 1000) % 60);
+
+                return {
+                    minutes: minutes,
+                    seconds: seconds
+                }
+            },
+
+            formatTimeLeft(minutes, seconds) {
+                let minuteString = 0;
+                let secondString = 0;
+
+                if (minutes < 10) {
+                    minuteString = `0${String(minutes)}`;
+                } else {
+                    minuteString = String(minutes);
+                }
+
+                if (seconds < 10) {
+                    secondString = `0${String(seconds)}`;
+                } else {
+                    secondString = String(seconds);
+                }
+
+                return `${minuteString}:${secondString}`;
+            },
+
+            toggleSearchingForSignals(minutes, seconds) {
+                if (minutes === 5 && seconds > 0) {
+                    this.isBotSearchingForSignal = true;
+                }
+
+                if (minutes === 5 && seconds === 0) {
+                    this.isBotSearchingForSignal = false;
+                }
+
+                if (minutes <= 4) {
+                    this.isBotSearchingForSignal = false;
+                }
+
+                if (minutes === 0 && seconds === 0) {
+                    this.isBotSearchingForSignal = true;
+                }
+            },
+
+            refreshTimer() {
+                this.timeLeft = this.calculateTimeLeftTillNextCheckpoint(this.$wire
+                .timerCheckpoint);
+                this.asset = this.$wire.asset;
+                this.assetIcon = `/${this.$wire.assetIcon}`
+                this.sentiment = this.$wire.sentiment;
+
+                if (Date.now() > this.$wire.timerCheckpoint) {
+                    this.$wire.refreshAssetData();
+                    this.timeLeft = this.calculateTimeLeftTillNextCheckpoint(this.$wire
+                        .timerCheckpoint);
+                    this.asset = this.$wire.asset;
+                    this.assetIcon = `/${this.$wire.assetIcon}`;
+                    this.sentiment = this.$wire.sentiment;
+                    let nextCheckpoint = new Date(Number(this.$wire.timerCheckpoint)).getTime() + (
+                        5 * 60 + 8) * 1000;
+                    this.timeLeft = this.calculateTimeLeftTillNextCheckpoint(nextCheckpoint);
+                }
+
+                let formatted = this.formatTimeLeft(this.timeLeft.minutes, this.timeLeft.seconds);
+                this.timer = formatted;
+
+                this.toggleSearchingForSignals(this.timeLeft.minutes, this.timeLeft.seconds);
+            },
+
+            // Clean up when component is destroyed
+            destroy() {
+                this.stopTimer();
+            }
+        }))
+    })
+</script>

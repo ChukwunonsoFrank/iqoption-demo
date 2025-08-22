@@ -2,17 +2,23 @@
 
 namespace App\Jobs;
 
-use App\Models\Bot;
-use App\Models\Trade;
-use App\Models\User;
 use Carbon\Carbon;
-use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Foundation\Queue\Queueable;
+use App\Models\Bot;
+use App\Models\User;
+use App\Models\Trade;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Foundation\Queue\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
 
 class RefreshActiveBots implements ShouldQueue
 {
     use Queueable;
+
+    /**
+     * The number of seconds the job can run before timing out.
+     * Prevents long-running jobs from overlapping if the lock fails.
+     */
+    public int $timeout = 120;
 
     /**
      * Create a new job instance.
@@ -27,84 +33,174 @@ class RefreshActiveBots implements ShouldQueue
      */
     public function handle(): void
     {
-        /**
-         * Fetch all bots with the status of 'active' and batch process.
-         */
-        Bot::with(['user:id,demo_balance,live_balance'])->where('status', 'active')->chunk(100, function ($bots) {
-            foreach ($bots as $bot) {
-                $checkpoint = intval($bot['timer_checkpoint']);
-                $endDate = intval($bot['end']);
-                $now = now()->getTimestampMs();
+        $now = now();
+        $nowMs = $now->getTimestampMs();
 
-                /**
-                 * Check if the trade duration has been exhausted and expire
-                 * the bot automatically.
-                 */
-                if ($now > $endDate) {
-                    $accountType = $bot['account_type'];
+        $botsToExpire = [];
+        $userBalancesToUpdate = [];
+        $tradesToCreate = [];
+        $botsForCheckpointUpdate = [];
 
-                    if ($accountType === "demo") {
-                        $amount = $this->normalizeAmount($bot['amount']);
-                        $currentBalance = $this->normalizeAmount($bot->user->demo_balance);
-                        $profit = $this->normalizeAmount($bot['profit']);
+        // 1. Collect data by iterating through bots once.
+        Bot::with(['user:id,demo_balance,live_balance'])
+            ->where('status', 'active')
+            ->chunk(200, function ($bots) use ($now, $nowMs, &$botsToExpire, &$userBalancesToUpdate, &$tradesToCreate, &$botsForCheckpointUpdate) {
+                foreach ($bots as $bot) {
+                    // --- Handle Bot Expiration ---
+                    if ($nowMs > intval($bot->end)) {
+                        $botsToExpire[] = $bot->id;
+                        $profit = $this->normalizeAmount($bot->profit);
+                        $amount = $this->normalizeAmount($bot->amount);
+                        $currentBalance = $this->normalizeAmount(
+                            $bot->account_type === 'demo' ? $bot->user->demo_balance : $bot->user->live_balance
+                        );
                         $newBalance = $currentBalance + $amount + $profit;
-                        $serialized = $this->serializeAmount($newBalance);
 
-                        DB::transaction(function () use ($serialized, $bot) {
-                            Bot::where('id', $bot['id'])->update(['status' => 'expired']);
-                            User::where('id', $bot->user->id)->update(['demo_balance' => $serialized]);
-                        });
+                        if (!isset($userBalancesToUpdate[$bot->user->id])) {
+                            $userBalancesToUpdate[$bot->user->id] = ['live' => null, 'demo' => null];
+                        }
+                        $userBalancesToUpdate[$bot->user->id][$bot->account_type] = $this->serializeAmount($newBalance);
+
+                        continue; // Expired bots don't need a checkpoint update.
                     }
 
-                    if ($accountType === "live") {
-                        $amount = $this->normalizeAmount($bot['amount']);
-                        $currentBalance = $this->normalizeAmount($bot->user->live_balance);
-                        $profit = $this->normalizeAmount($bot['profit']);
-                        $newBalance = $currentBalance + $amount + $profit;
-                        $serialized = $this->serializeAmount($newBalance);
+                    // --- Handle Bot Checkpoint Update ---
+                    if ($nowMs > intval($bot->timer_checkpoint)) {
+                        $assetToTrade = $this->generateAssetToTrade($now->isWeekday());
+                        $profitPosition = $bot->profit_position;
+                        $profitValue = json_decode($bot->profit_values, true)[$profitPosition] ?? 0;
+                        $updatedTotalProfit = $this->normalizeAmount($bot->profit) + $profitValue;
 
-                        DB::transaction(function () use ($serialized, $bot) {
-                            $bot->update(['status' => 'expired']);
-                            User::where('id', $bot->user->id)->update(['live_balance' => $serialized]);
-                        });
-                    }
-                }
-
-                /**
-                 * Get the current datetime and compare this with the timer_checkpoint
-                 * of each bot.
-                 */
-                if ($now > $checkpoint) {
-                    $assetToTrade = $this->generateAssetToTrade();
-                    $newCheckpoint = Carbon::createFromTimestampMs($checkpoint)->addMinutes(5)->addSeconds(32)->getTimestampMs();
-                    $profitPosition = $bot['profit_position'];
-                    $profit = json_decode($bot['profit_values'])[$profitPosition];
-                    $updatedTotalProfit = $this->normalizeAmount($bot['profit']) + $profit;
-
-                    DB::transaction(function () use ($bot, $assetToTrade, $newCheckpoint, $updatedTotalProfit, $profitPosition, $profit) {
-                        $bot->update([
+                        $botsForCheckpointUpdate[$bot->id] = [
                             'asset' => $assetToTrade['display_name'],
                             'asset_class' => $assetToTrade['asset_class'],
                             'asset_ticker' => $assetToTrade['ticker_symbol'],
                             'asset_image_url' => $assetToTrade['image_url'],
                             'sentiment' => $assetToTrade['sentiment'],
-                            'timer_checkpoint' => strval($newCheckpoint),
+                            'timer_checkpoint' => strval(Carbon::createFromTimestampMs($bot->timer_checkpoint)->addMinutes(5)->addSeconds(8)->getTimestampMs()),
                             'profit' => $this->serializeAmount($updatedTotalProfit),
-                            'profit_position' => $profitPosition + 1
-                        ]);
+                            'profit_position' => $profitPosition + 1,
+                        ];
 
-                        Trade::create([
-                            'user_id' => $bot['user_id'],
-                            'asset' => $bot['asset'],
-                            'asset_image_url' => $bot['asset_image_url'],
-                            'account_type' => $bot['account_type'],
-                            'profit' => $this->serializeAmount($profit),
-                            'sentiment' => $bot['sentiment']
-                        ]);
-                    });
+                        $tradesToCreate[] = [
+                            'user_id' => $bot->user_id,
+                            'asset' => $assetToTrade['display_name'],
+                            'asset_image_url' => $assetToTrade['image_url'],
+                            'account_type' => $bot->account_type,
+                            'profit' => $this->serializeAmount($profitValue),
+                            'sentiment' => $assetToTrade['sentiment'],
+                            'created_at' => $now,
+                            'updated_at' => $now,
+                        ];
+                    }
                 }
+            });
+
+        // 2. Perform all collected DB operations in a single transaction.
+        if (!empty($botsToExpire) || !empty($userBalancesToUpdate) || !empty($botsForCheckpointUpdate) || !empty($tradesToCreate)) {
+            DB::transaction(function () use ($botsToExpire, $userBalancesToUpdate, $botsForCheckpointUpdate, $tradesToCreate) {
+                $this->expireBotsInBulk($botsToExpire);
+                $this->updateUserBalancesInBulk($userBalancesToUpdate);
+                $this->updateBotCheckpointsInBulk($botsForCheckpointUpdate);
+                $this->createTradesInBulk($tradesToCreate);
+            });
+        }
+    }
+
+    // --- Bulk Operation Helper Methods ---
+
+    private function expireBotsInBulk(array $botIds): void
+    {
+        if (empty($botIds)) {
+            return;
+        }
+        Bot::whereIn('id', $botIds)->update(['status' => 'expired']);
+    }
+
+    private function createTradesInBulk(array $tradesData): void
+    {
+        if (empty($tradesData)) {
+            return;
+        }
+        Trade::insert($tradesData);
+    }
+
+    private function updateUserBalancesInBulk(array $updates): void
+    {
+        if (empty($updates)) {
+            return;
+        }
+
+        $demoUpdates = array_filter(array_column($updates, 'demo'));
+        $liveUpdates = array_filter(array_column($updates, 'live'));
+
+        if (!empty($demoUpdates)) {
+            $this->performBulkUpdate('users', $demoUpdates, 'demo_balance');
+        }
+        if (!empty($liveUpdates)) {
+            $this->performBulkUpdate('users', $liveUpdates, 'live_balance');
+        }
+    }
+
+    private function updateBotCheckpointsInBulk(array $updates): void
+    {
+        if (empty($updates)) {
+            return;
+        }
+
+        // Each column to update needs its own CASE statement.
+        $columnsToUpdate = [
+            'asset',
+            'asset_class',
+            'asset_ticker',
+            'asset_image_url',
+            'sentiment',
+            'timer_checkpoint',
+            'profit',
+            'profit_position'
+        ];
+
+        $updateDataByColumn = [];
+        foreach ($columnsToUpdate as $column) {
+            $updateDataByColumn[$column] = array_column($updates, $column, 'id');
+        }
+
+        $this->performBulkUpdate('bots', $updates, $columnsToUpdate);
+    }
+
+    /**
+     * Performs a bulk update using a raw SQL CASE statement.
+     * Can handle single or multiple column updates.
+     */
+    private function performBulkUpdate(string $table, array $values, $columns): void
+    {
+        if (empty($values)) {
+            return;
+        }
+
+        $cases = [];
+        $bindings = [];
+        $ids = [];
+
+        $columns = is_array($columns) ? $columns : [$columns];
+        $firstValue = reset($values);
+        $idColumn = 'id'; // Assuming 'id' is the key.
+
+        foreach ($columns as $column) {
+            $caseSql = "`$column` = CASE `$idColumn` ";
+            foreach ($values as $id => $value) {
+                $caseSql .= "WHEN ? THEN ? ";
+                array_push($bindings, $id, is_array($value) ? $value[$column] : $value);
             }
-        });
+            $caseSql .= "ELSE `$column` END";
+            $cases[] = $caseSql;
+        }
+
+        $ids = array_keys($values);
+        $updateSql = "UPDATE `$table` SET " . implode(', ', $cases) . " WHERE `$idColumn` IN (" . rtrim(str_repeat('?,', count($ids)), ',') . ")";
+        $bindings = array_merge($bindings, $ids);
+
+        DB::update($updateSql, $bindings);
     }
 
     public function normalizeAmount(int $amount): int | float

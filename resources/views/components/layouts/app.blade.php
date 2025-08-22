@@ -71,9 +71,10 @@
         <livewire:dashboard.partials.mobile-navbar />
     </main>
 
+    @livewireScripts
+    @vite('resources/js/app.js')
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <script src="{{ asset('assets/js/clipboard.min.js') }}"></script>
-    @livewireScripts
 </body>
 
 </html>

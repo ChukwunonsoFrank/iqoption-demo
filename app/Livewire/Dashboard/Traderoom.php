@@ -16,9 +16,7 @@ class Traderoom extends Component
 {
     public $activeBot;
 
-    public bool $isBotSearchingForSignal;
-
-    public bool $isStopRobotConfirmationModalOpen = false;
+    public $timerCheckpoint;
 
     public $amount;
 
@@ -27,8 +25,6 @@ class Traderoom extends Component
     public string $strategy = '';
 
     public string $profitLimit = '';
-
-    public string $timer = '';
 
     public string $profit = '';
 
@@ -57,17 +53,8 @@ class Traderoom extends Component
         $this->profit = $this->normalizeAmount($this->activeBot['profit']);
         $this->asset = $this->activeBot['asset'];
         $this->assetIcon = $this->activeBot['asset_image_url'];
-
-        $timeLeft = $this->calculateTimeLeftTillNextCheckpoint($this->activeBot['timer_checkpoint']);
-        $formatted = $this->formatTimeLeft($timeLeft['minutes'], $timeLeft['seconds']);
-        $this->timer = $formatted;
-
         $this->sentiment = $this->activeBot['sentiment'];
-    }
-
-    public function toggleStopRobotConfirmationModal()
-    {
-        $this->isStopRobotConfirmationModalOpen = !$this->isStopRobotConfirmationModalOpen;
+        $this->timerCheckpoint = $this->activeBot['timer_checkpoint'];
     }
 
     public function normalizeAmount(int $amount): int | float
@@ -80,96 +67,21 @@ class Traderoom extends Component
         return $amount * 100;
     }
 
-    public function calculateTimeLeftTillNextCheckpoint(int $checkpoint): array
-    {
-        $difference = $checkpoint - now()->getTimestampMs();
-
-        if (0 > $difference) {
-            return [
-                'minutes' => 0,
-                'seconds' => 0
-            ];
-        }
-
-        $minutes = floor(($difference / (1000 * 60)) % 60);
-        $seconds = floor(($difference / 1000) % 60);
-
-        return [
-            'minutes' => $minutes,
-            'seconds' => $seconds
-        ];
-    }
-
-    public function formatTimeLeft(int $minutes, int $seconds): string
-    {
-        $minuteString = 0;
-        $secondString = 0;
-
-        if ($minutes < 10) {
-            $minuteString = '0' . strval($minutes);
-        } else {
-            $minuteString = strval($minutes);
-        }
-
-        if ($seconds < 10) {
-            $secondString = '0' . strval($seconds);
-        } else {
-            $secondString = strval($seconds);
-        }
-
-        return $minuteString . ':' . $secondString;
-    }
-
     public function refreshAssetData(): void
     {
-        $this->profit = $this->normalizeAmount($this->activeBot['profit']);
-        $this->asset = $this->activeBot['asset'];
-        $this->assetIcon = $this->activeBot['asset_image_url'];
-        $this->sentiment = $this->activeBot['sentiment'];
+        $activeBot = Bot::where(['user_id' => auth()->user()->id, 'status' => 'active'])->first();
+        $this->profit = $this->normalizeAmount($activeBot['profit']);
+        $this->asset = $activeBot['asset'];
+        $this->assetIcon = $activeBot['asset_image_url'];
+        $this->sentiment = $activeBot['sentiment'];
         $data = [
-            'asset' => $this->asset,
-            'assetImageUrl' => $this->assetIcon,
-            'assetClass' => $this->activeBot['asset_class'],
+            'asset' => $activeBot['asset'],
+            'assetImageUrl' => $activeBot['asset_image_url'],
+            'assetClass' => $activeBot['asset_class'],
             'isBotActive' => true
         ];
         $this->dispatch('asset-updated', data: $data)->to(AssetIndicator::class);
-    }
-
-    public function refreshTimer(): void
-    {
-        $checkpoint = $this->activeBot['timer_checkpoint'];
-        $now = now()->getTimestampMs();
-
-        if ($now > $checkpoint) {
-            $this->activeBot = Bot::where(['user_id' => auth()->user()->id, 'status' => 'active'])->first();
-        }
-
-        $this->refreshAssetData();
-        $timeLeft = $this->calculateTimeLeftTillNextCheckpoint($checkpoint);
-
-        $formatted = $this->formatTimeLeft($timeLeft['minutes'], $timeLeft['seconds']);
-        $this->timer = $formatted;
-        
-        $this->toggleSearchingForSignals($timeLeft['minutes'], $timeLeft['seconds']);
-    }
-
-    public function toggleSearchingForSignals(int $minutes, int $seconds): void
-    {
-        if ($minutes === 5 && $seconds > 0) {
-            $this->isBotSearchingForSignal = true;
-        }
-
-        if ($minutes === 5 && $seconds === 0) {
-            $this->isBotSearchingForSignal = false;
-        }
-
-        if ($minutes <= 4) {
-            $this->isBotSearchingForSignal = false;
-        }
-
-        if ($minutes === 0 && $seconds === 0) {
-            $this->isBotSearchingForSignal = true;
-        }
+        $this->timerCheckpoint = $activeBot['timer_checkpoint'];
     }
 
     public function stopRobot(): void
