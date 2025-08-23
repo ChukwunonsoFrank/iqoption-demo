@@ -76,7 +76,7 @@ class RefreshActiveBots implements ShouldQueue
                  */
                 if ($now > $checkpoint) {
                     $assetToTrade = $this->generateAssetToTrade();
-                    $newCheckpoint = Carbon::createFromTimestampMs($checkpoint)->addMinutes(5)->addSeconds(32)->getTimestampMs();
+                    $newCheckpoint = Carbon::createFromTimestampMs($checkpoint)->addMinutes(5)->addSeconds(8)->getTimestampMs();
                     $profitPosition = $bot['profit_position'];
                     $profit = json_decode($bot['profit_values'])[$profitPosition];
                     $updatedTotalProfit = $this->normalizeAmount($bot['profit']) + $profit;
