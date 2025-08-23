@@ -43,6 +43,11 @@ class Traderoom extends Component
 
         $this->activeBot = Bot::where(['user_id' => auth()->user()->id, 'status' => 'active'])->first();
 
+        if (is_null($this->activeBot)) {
+            $this->redirectRoute('dashboard.robot');
+            return;
+        }
+
         $this->amount = $this->normalizeAmount($this->activeBot['amount']);
         $this->accountType = $this->activeBot['account_type'] === 'demo' ? 'Demo account' : 'Live account';
 
