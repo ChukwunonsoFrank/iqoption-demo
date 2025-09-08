@@ -65,7 +65,7 @@ class Login extends Component
 
                 session()->flash('just_logged_in', true);
 
-                if (Auth::user()->is_admin === 1) {
+                if (Auth::user()->is_admin) {
                     return redirect('/admin/dashboard');
                 }
 
