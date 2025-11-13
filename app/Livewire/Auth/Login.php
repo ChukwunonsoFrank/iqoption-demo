@@ -20,90 +20,90 @@ use Livewire\Component;
 
 class Login extends Component
 {
-    #[Validate('required|string|email')]
-    public string $email = '';
+  #[Validate('required|string|email')]
+  public string $email = '';
 
-    #[Validate('required|string')]
-    public string $password = '';
+  #[Validate('required|string')]
+  public string $password = '';
 
-    public bool $remember = false;
+  public bool $remember = false;
 
-    public $gRecaptchaResponse;
+  public $gRecaptchaResponse;
 
-    /**
-     * Handle an incoming authentication request.
-     */
-    public function login()
-    {
-        try {
-            if (is_null($this->gRecaptchaResponse)) {
-                $this->dispatch('login-error', message: 'Please confirm you are not a robot.')->self();
-            }
+  /**
+   * Handle an incoming authentication request.
+   */
+  public function login()
+  {
+    try {
+      if (is_null($this->gRecaptchaResponse)) {
+        $this->dispatch('login-error', message: 'Please confirm you are not a robot.')->self();
+      }
 
-            $recatpchaResponse = Http::get("https://www.google.com/recaptcha/api/siteverify", [
-                'secret' => config('services.recaptcha.secret'),
-                'response' => $this->gRecaptchaResponse
-            ]);
+      $recatpchaResponse = Http::get("https://www.google.com/recaptcha/api/siteverify", [
+        'secret' => config('services.recaptcha.secret'),
+        'response' => $this->gRecaptchaResponse
+      ]);
 
-            $result = $recatpchaResponse->json();
+      $result = $recatpchaResponse->json();
 
-            if ($recatpchaResponse->successful() && $result['success'] == true) {
-                $this->validate();
+      if ($recatpchaResponse->successful() && $result['success'] == true) {
+        $this->validate();
 
-                $this->ensureIsNotRateLimited();
+        $this->ensureIsNotRateLimited();
 
-                if (! Auth::attempt(['email' => $this->email, 'password' => $this->password], $this->remember)) {
-                    RateLimiter::hit($this->throttleKey());
+        if (! Auth::attempt(['email' => $this->email, 'password' => $this->password], $this->remember)) {
+          RateLimiter::hit($this->throttleKey());
 
-                    throw ValidationException::withMessages([
-                        'email' => __('auth.failed'),
-                    ]);
-                }
-
-                RateLimiter::clear($this->throttleKey());
-                Session::regenerate();
-
-                session()->flash('just_logged_in', true);
-
-                if (Auth::user()->is_admin) {
-                    return redirect('/admin/dashboard');
-                }
-
-                $this->redirectIntended(default: route('dashboard', absolute: false));
-            } else {
-                $this->dispatch('login-error', message: 'Please confirm you are not a robot.')->self();
-            }
-        } catch (\Exception $e) {
-            $this->dispatch('login-error', message: $e->getMessage())->self();
-        }
-    }
-
-    /**
-     * Ensure the authentication request is not rate limited.
-     */
-    protected function ensureIsNotRateLimited(): void
-    {
-        if (! RateLimiter::tooManyAttempts($this->throttleKey(), 5)) {
-            return;
+          throw ValidationException::withMessages([
+            'email' => __('auth.failed'),
+          ]);
         }
 
-        event(new Lockout(request()));
+        RateLimiter::clear($this->throttleKey());
+        Session::regenerate();
 
-        $seconds = RateLimiter::availableIn($this->throttleKey());
+        session()->flash('just_logged_in', true);
 
-        throw ValidationException::withMessages([
-            'email' => __('auth.throttle', [
-                'seconds' => $seconds,
-                'minutes' => ceil($seconds / 60),
-            ]),
-        ]);
+        if (Auth::user()->is_admin) {
+          return redirect('/admin/dashboard');
+        }
+
+        $this->redirectIntended(default: route('dashboard', absolute: false));
+      } else {
+        $this->dispatch('login-error', message: 'Please confirm you are not a robot.')->self();
+      }
+    } catch (\Exception $e) {
+      $this->dispatch('login-error', message: $e->getMessage())->self();
+    }
+  }
+
+  /**
+   * Ensure the authentication request is not rate limited.
+   */
+  protected function ensureIsNotRateLimited(): void
+  {
+    if (! RateLimiter::tooManyAttempts($this->throttleKey(), 5)) {
+      return;
     }
 
-    /**
-     * Get the authentication rate limiting throttle key.
-     */
-    protected function throttleKey(): string
-    {
-        return Str::transliterate(Str::lower($this->email) . '|' . request()->ip());
-    }
+    event(new Lockout(request()));
+
+    $seconds = RateLimiter::availableIn($this->throttleKey());
+
+    throw ValidationException::withMessages([
+      'email' => __('auth.throttle', [
+        'seconds' => $seconds,
+        'minutes' => ceil($seconds / 60),
+      ]),
+    ]);
+  }
+
+  /**
+   * Get the authentication rate limiting throttle key.
+   */
+  protected function throttleKey(): string
+  {
+    return Str::transliterate(Str::lower($this->email) . '|' . request()->ip());
+  }
 }

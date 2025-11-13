@@ -46,7 +46,8 @@
                             @click.outside="$store.withdrawPage.isPaymentMethodSelectOpen = false"
                             class="border-gray-700 bg-navbar absolute border rounded-lg w-full overflow-scroll scrollbar-hide z-10 p-2 mt-1">
                             @foreach ($this->paymentMethods as $method)
-                                <div wire:key="payment-method-{{ $method['id'] }}" wire:click="selectPaymentMethod({{ $method['id'] }})"
+                                <div wire:key="payment-method-{{ $method['id'] }}"
+                                    wire:click="selectPaymentMethod({{ $method['id'] }})"
                                     x-on:click="$store.withdrawPage.isPaymentMethodSelectOpen = false"
                                     class="hover:bg-gray-600 cursor-pointer flex items-center space-x-3 px-4 py-2 rounded-md text-[#FFFFFF]">
                                     <div class="flex-none">
@@ -72,7 +73,8 @@
                     <a wire:click="generateOTP()">
                         <button type="button" wire:loading.attr="disabled"
                             class="py-3 cursor-pointer px-4 w-full md:px-6 md:py-3 text-center gap-x-2 text-sm md:text-base font-semibold rounded-lg bg-accent text-white focus:outline-hidden disabled:opacity-50 disabled:pointer-events-none">
-                            Proceed
+                            <i wire:loading class="fa-solid fa-circle-notch fa-spin"></i>
+                            <span wire:loading.remove>Proceed</span>
                         </button>
                     </a>
                 </div>

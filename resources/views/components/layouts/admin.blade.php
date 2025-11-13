@@ -34,25 +34,12 @@ $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(valu
         <aside :class="sidebarToggle ? 'translate-x-0 lg:w-[90px]' : '-translate-x-full'"
             class="sidebar fixed top-0 left-0 z-9999 flex h-screen w-[290px] flex-col overflow-y-auto border-r border-gray-200 bg-white px-5 transition-all duration-300 lg:static lg:translate-x-0 dark:border-gray-800 dark:bg-black"
             @click.outside="sidebarToggle = false">
-            <!-- SIDEBAR HEADER -->
-            <div :class="sidebarToggle ? 'justify-center' : 'justify-between'"
-                class="sidebar-header flex items-center gap-2 pt-8 pb-7">
-                <a href="{{ route('admin.dashboard') }}">
-                    <span class="logo" :class="sidebarToggle ? 'hidden' : ''">
-                        <img class="w-12" src="{{ asset('assets/logomark.png') }}" alt="Logo" />
-                    </span>
-
-                    <img class="w-12" :class="sidebarToggle ? 'lg:block' : 'hidden'"
-                        src="{{ asset('assets/logomark.png') }}" alt="Logo" />
-                </a>
-            </div>
-            <!-- SIDEBAR HEADER -->
 
             <div class="no-scrollbar flex flex-col overflow-y-auto duration-300 ease-linear">
                 <!-- Sidebar Menu -->
                 <nav x-data="{ selected: $persist('Dashboard') }">
                     <!-- Menu Group -->
-                    <div>
+                    <div style="padding-top: 6rem;">
                         <ul class="mb-6 flex flex-col gap-4">
                             <!-- Menu Item Dashboard -->
                             <li>

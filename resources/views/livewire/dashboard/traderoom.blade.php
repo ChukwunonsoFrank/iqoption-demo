@@ -41,7 +41,8 @@
                                         </div>
                                         <div class="pb-1">
                                             <span x-text="sentiment"
-                                                class="inline-flex items-center gap-x-1.5 py-0.5 px-1.5 rounded-md text-[9px] font-normal text-white" x-bind:class="sentiment === 'BUY' ? 'bg-green-600' : 'bg-red-600'"></span>
+                                                class="inline-flex items-center gap-x-1.5 py-0.5 px-1.5 rounded-md text-[9px] font-normal text-white"
+                                                x-bind:class="sentiment === 'BUY' ? 'bg-green-600' : 'bg-red-600'"></span>
                                         </div>
                                     </div>
                                 </div>
@@ -191,10 +192,11 @@
                         </div>
                         <div class="py-3 px-4">
                             <div>
-                                <button type="button" x-on:click="destroy()" wire:click="stopRobot()" type="button"
-                                    wire:loading.attr="disabled"
+                                <button type="button" x-on:click="destroy()" wire:click="stopRobot()"
+                                    type="button" wire:loading.attr="disabled"
                                     class="p-3 w-full text-center text-sm font-semibold rounded-lg border border-transparent bg-accent text-white cursor-pointer hover:bg-accent-hover focus:outline-hidden focus:bg-accent disabled:opacity-50 disabled:pointer-events-none">
-                                    Confirm
+                                    <i wire:loading class="fa-solid fa-circle-notch fa-spin"></i>
+                                    <span wire:loading.remove>Confirm</span>
                                 </button>
                             </div>
                             <div class="mt-3">
@@ -377,7 +379,7 @@
 
             refreshTimer() {
                 this.timeLeft = this.calculateTimeLeftTillNextCheckpoint(this.$wire
-                .timerCheckpoint);
+                    .timerCheckpoint);
                 this.asset = this.$wire.asset;
                 this.assetIcon = `/${this.$wire.assetIcon}`
                 this.sentiment = this.$wire.sentiment;

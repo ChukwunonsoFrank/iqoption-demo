@@ -16,7 +16,7 @@
 
                     <div class="mt-3 flex items-end justify-between">
                         <div>
-                            <h4 class="text-2xl font-bold text-green-600">
+                            <h4 class="text-2xl font-bold text-white">
                                 @money($this->totalCommissions)
                             </h4>
                         </div>
