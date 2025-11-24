@@ -1063,7 +1063,7 @@
 
 </div>
 
-@script
+{{-- @script
     <script>
         $wire.on('fetch-market-data-error', (event) => {
             const toastMarkup = `
@@ -1088,4 +1088,4 @@
             }).showToast();
         });
     </script>
-@endscript
+@endscript --}}
