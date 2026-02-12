@@ -3,6 +3,7 @@
 namespace App\Livewire\Dashboard;
 
 use App\Models\Referral;
+use App\Models\User;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
 
@@ -10,51 +11,57 @@ use Livewire\Component;
 
 class ShowReferrals extends Component
 {
-    public $perPage = 10;
+  public $perPage = 10;
 
-    public $visibleCount;
+  public $visibleCount;
 
-    public $totalReferrals;
+  public $totalReferrals;
 
-    public $totalCommissions;
+  public $totalCommissions;
 
-    public function mount()
-    {
-        $this->totalReferrals = Referral::where('user_id', auth()->user()->id)->count();
-        $this->visibleCount = min($this->perPage, $this->totalReferrals);
-        $this->totalCommissions = Referral::where('user_id', auth()->user()->id)->sum('amount');
-        $this->totalCommissions = $this->totalCommissions / 100;
+  public function mount()
+  {
+    $this->totalReferrals = Referral::where('user_id', auth()->user()->id)->count();
+    $this->visibleCount = min($this->perPage, $this->totalReferrals);
+    $this->totalCommissions = Referral::where('user_id', auth()->user()->id)->sum('amount');
+  }
+
+  public function loadMore(): void
+  {
+    $this->visibleCount = min($this->visibleCount + $this->perPage, $this->totalReferrals);
+  }
+
+  public function getLevelPercentage(string $level)
+  {
+    if ($level === '1') {
+      return '5%';
     }
 
-    public function loadMore(): void
-    {
-        $this->visibleCount = min($this->visibleCount + $this->perPage, $this->totalReferrals);
+    if ($level === '2') {
+      return '2%';
     }
 
-    public function getLevelPercentage(string $level)
-    {
-        if ($level === '1') {
-            return '5%';
-        }
-
-        if ($level === '2') {
-            return '2%';
-        }
-
-        if ($level === '3') {
-            return '1%';
-        }
+    if ($level === '3') {
+      return '1%';
     }
+  }
 
-    public function render()
-    {
-        $referrals = Referral::with('user')->where('user_id', auth()->user()->id)->latest()->take($this->visibleCount)->get();
+  public function render()
+  {
+    $referrals = Referral::with('user')->where('user_id', auth()->user()->id)->latest()->take($this->visibleCount)->get();
 
-        $showLoadMoreButton = $this->visibleCount < $this->totalReferrals;
+    $referralCodes = $referrals->pluck('referral_code')->unique()->filter();
+    $refereesByCode = User::whereIn('referral_code', $referralCodes)->pluck('name', 'referral_code');
 
-        return view('livewire.dashboard.show-referrals', [
-            'referrals' => $referrals,
-            'showLoadMoreButton' => $showLoadMoreButton,
-        ]);
-    }
+    $referrals->each(function ($referral) use ($refereesByCode) {
+      $referral->referee_name = $refereesByCode[$referral->referral_code] ?? 'Unknown';
+    });
+
+    $showLoadMoreButton = $this->visibleCount < $this->totalReferrals;
+
+    return view('livewire.dashboard.show-referrals', [
+      'referrals' => $referrals,
+      'showLoadMoreButton' => $showLoadMoreButton,
+    ]);
+  }
 }

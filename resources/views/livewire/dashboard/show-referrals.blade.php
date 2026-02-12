@@ -70,14 +70,14 @@
                         </div>
                         <div class="flex items-center space-x-1">
                             <div class="flex-none">
-                                <p class="font-semibold text-xs text-white md:text-sm">{{ $referral->user->name }}</p>
+                                <p class="font-semibold text-xs text-white md:text-sm">{{ $referral->referee_name }}</p>
                             </div>
                             <div class="flex-1 pb-1">
                                 <span
                                     class="inline-flex items-center gap-x-1.5 py-0.5 px-1.5 rounded-md text-[9px] font-semibold bg-green-600 text-white">{{ $this->getLevelPercentage($referral['level']) }}</span>
                             </div>
                             <div class="flex-none text-end">
-                                <p class="font-semibold text-sm md:text-base text-green-500">+@money($referral['amount'] / 100)</p>
+                                <p class="font-semibold text-sm md:text-base text-green-500">+@money($referral['amount'])</p>
                             </div>
                         </div>
                     </div>
