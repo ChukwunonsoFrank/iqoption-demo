@@ -140,11 +140,17 @@
                                     @forelse ($users as $user)
                                         <tr wire:key="user-{{ $user['id'] }}" x-data="{ isActionDropdownOpen: false }">
                                             <td class="py-3 pr-5 whitespace-nowrap sm:pr-5">
-                                                <div class="flex items-center">
+                                                <div class="flex gap-x-1 items-center">
                                                     <p
                                                         class="text-theme-sm block font-medium text-gray-700 dark:text-gray-400">
                                                         {{ $user['name'] }}
                                                     </p>
+                                                    @if ($user['referrer_name'])
+                                                        <p
+                                                            class="text-theme-xs bg-success-50 text-success-600 rounded-full px-2 py-0.5 font-medium">
+                                                            {{ $user['referrer_name'] }}
+                                                        </p>
+                                                    @endif
                                                 </div>
                                             </td>
                                             <td class="px-5 py-3 whitespace-nowrap sm:px-6">
@@ -220,6 +226,14 @@
                                                                     </button>
                                                                 </form>
                                                             @endif
+                                                            <form
+                                                                wire:submit.prevent="deleteUser({{ $user['id'] }})">
+                                                                <button type="submit"
+                                                                    x-on:click="isActionDropdownOpen = false"
+                                                                    class="text-theme-xs flex w-full rounded-lg px-3 py-2 text-left font-medium text-error-600">
+                                                                    Delete
+                                                                </button>
+                                                            </form>
                                                         </div>
                                                     </div>
                                                 </div>
